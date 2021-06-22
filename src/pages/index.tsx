@@ -1,4 +1,5 @@
 import Head from 'next/head'
+import { Text } from '../components/text'
 
 const Index = () => {
   return (
@@ -9,7 +10,13 @@ const Index = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div>
-        <p>Hello World</p>
+        <Text
+         sx={{
+          fontSize: [16, 32],
+          fontWeight: 'bold',
+        }}>
+          Hello World
+        </Text>
       </div>
     </>
   )
