@@ -15,9 +15,15 @@
     "theme-ui": "^0.10.0"
   },
   "devDependencies": {
+    "@next/eslint-plugin-next": "^11.0.0",
     "@types/react": "17.0.11",
+    "@typescript-eslint/eslint-plugin": "^4.28.0",
+    "@typescript-eslint/parser": "^4.28.0",
     "eslint": "7.29.0",
     "eslint-config-next": "11.0.0",
+    "eslint-import-resolver-typescript": "^2.4.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-simple-import-sort": "^7.0.0",
     "typescript": "4.3.4"
   }
 }
