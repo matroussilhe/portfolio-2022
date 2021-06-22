@@ -15,8 +15,7 @@ const Index = () => {
           sx={{
             fontSize: [16, 32],
             fontWeight: "bold",
-          }}
-        >
+          }}>
           Hello World
         </Text>
       </div>
