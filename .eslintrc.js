@@ -192,6 +192,8 @@ module.exports = {
           ["^react", "^react-native", "^@react", "^@react-native"],
           // Anything not matched in another group
           ["^"],
+          // Internal packages
+          ["^(@components|@pages|@providers|@styles|@themes)"],
           // Relative imports
           ["^\\.\\.", "^\\."],
           // Side effect imports

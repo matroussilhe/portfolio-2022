@@ -1,6 +1,6 @@
 import Head from "next/head";
 
-import { Text } from "../components/text";
+import { Text } from "@components/text";
 
 const Index = () => {
   return (
