@@ -1,5 +1,8 @@
+import React from "react";
+
 import Head from "next/head";
 
+import { Flex } from "@components/flex";
 import { Text } from "@components/text";
 
 const Index = () => {
@@ -10,7 +13,7 @@ const Index = () => {
         <meta name="description" content="Mathieu Roussilhe's portfolio" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
+      <Flex>
         <Text
           sx={{
             fontSize: [16, 32],
@@ -18,7 +21,7 @@ const Index = () => {
           }}>
           Hello World
         </Text>
-      </div>
+      </Flex>
     </>
   );
 };
