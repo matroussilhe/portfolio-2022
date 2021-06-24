@@ -1,7 +1,24 @@
-import React, { FunctionComponent } from "react";
+import React, { FunctionComponent, useMemo } from "react";
 
-import { Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
+import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
 
-export type TextProps = ThemeUITextProps;
+import { useResponsiveProp } from "@hooks/responsive";
 
-export const Text: FunctionComponent<TextProps> = props => <ThemeUIText {...props}/>;
+export type TextProps = ThemeUITextProps & {
+  variant?: ResponsiveStyleValue<string>;
+};
+
+export const Text: FunctionComponent<TextProps> = ({
+  variant = "body1",
+  ...rest
+}) => {
+  const responsiveProp = useResponsiveProp();
+
+  const responsiveVariant = useMemo(() => responsiveProp(variant), [variant, responsiveProp]);
+
+  return (
+    <ThemeUIText
+      variant={responsiveVariant}
+      {...rest}/>
+  );
+};

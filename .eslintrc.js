@@ -8,10 +8,14 @@ module.exports = {
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
     "plugin:@next/next/recommended",
   ],
   plugins: [
     "@typescript-eslint",
+    "react",
+    "react-hooks",
     "import",
     "simple-import-sort",
   ],
@@ -24,6 +28,9 @@ module.exports = {
   settings: {
     "import/resolver": {
       typescript: {},
+    },
+    react: {
+      version: "detect",
     },
   },
   rules: {
@@ -177,6 +184,54 @@ module.exports = {
     "no-new-object": "error",
     "no-array-constructor": "error",
     "no-whitespace-before-property": "error",
+    // jsx rules
+    "jsx-quotes": ["error", "prefer-double"],
+    // react rules
+    "react/display-name": "off",
+    "react/jsx-boolean-value": "off",
+    "react/jsx-no-comment-textnodes": "warn",
+    "react/jsx-no-duplicate-props": "error",
+    "react/jsx-no-undef": "error",
+    "react/jsx-sort-props": "off",
+    "react/jsx-uses-react": "warn",
+    "react/jsx-uses-vars": "warn",
+    "react/no-did-mount-set-state": "warn",
+    "react/no-did-update-set-state": "warn",
+    "react/no-multi-comp": "off",
+    "react/no-string-refs": "warn",
+    "react/no-unknown-property": "off",
+    "react/prop-types": "off",
+    "react/react-in-jsx-scope": "warn",
+    "react/self-closing-comp": "warn",
+    "react/wrap-multilines": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-filename-extension": [
+      "error",
+      {
+        extensions: [".tsx", ".jsx"],
+      },
+    ],
+    "react/jsx-curly-spacing": [
+      "error",
+      {
+        when: "never",
+        spacing: {
+          objectLiterals: "never",
+        },
+      },
+    ],
+    "react/jsx-tag-spacing": [
+      "error",
+      {
+        "closingSlash": "never",
+        "beforeSelfClosing": "never",
+        "afterOpening": "never",
+        "beforeClosing": "never",
+      },
+    ],
+    // react-hooks rules
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "error",
     // import sorting rules (cf: https://github.com/lydell/eslint-plugin-simple-import-sort)
     "sort-imports": "off",
     "import/first": "error",
@@ -193,7 +248,7 @@ module.exports = {
           // Anything not matched in another group
           ["^"],
           // Internal packages
-          ["^(@components|@pages|@providers|@styles|@themes)"],
+          ["^(@components|@hooks|@pages|@providers|@styles|@themes)"],
           // Relative imports
           ["^\\.\\.", "^\\."],
           // Side effect imports

@@ -1,6 +1,5 @@
-// CSS reset from minireset.css
-// cf: https://github.com/jgthms/minireset.css
-const resetStyle = `
+// CSS reset from minireset.css (cf: https://github.com/jgthms/minireset.css)
+export const resetStyle = `
   html,
   body,
   p,
@@ -82,5 +81,3 @@ const resetStyle = `
     text-align: left;
   }
 `;
-
-export default resetStyle;

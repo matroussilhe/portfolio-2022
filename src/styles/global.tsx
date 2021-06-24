@@ -1,7 +1,9 @@
-const globalStyle = `
+export const rootEm = 16;
+
+export const globalStyle = `
   html,
   body {
-    font-size: 16px;
+    font-size: ${rootEm}px;
     font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     -webkit-font-smoothing: antialiased;
@@ -33,5 +35,3 @@ const globalStyle = `
     user-select: none;
   }
 `;
-
-export default globalStyle;
