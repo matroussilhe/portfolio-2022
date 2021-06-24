@@ -1,4 +1,10 @@
 export const theme = {
+  breakpoints: [
+    // "0rem", //     0 ≥ screen < 600px  | sm | mobile
+    "37.5rem", // 600px ≥ screen < 960px  | md | tablet
+    "60rem", //   960px ≥ screen < 1440px | lg | wide tablet/small desktop
+    "90rem", //  1440px ≥ screen          | xl | wide desktop
+  ],
   colors: {
     background: "#ffffff",
     primary: "#db7093",
@@ -10,13 +16,13 @@ export const theme = {
   },
   fontSizes: {
     heading1: "15.25rem", // 244 px
-    heading2: "5rem", // 80 px
-    heading3: "2.625rem", // 42 px
-    heading4: "1.625rem", // 26 px
-    heading5: "1.375rem", // 22 px
-    heading6: "1rem", // 16 px
-    body1: "1rem", // 16 px
-    body2: "0.875rem", // 14 px
+    heading2: "5rem", //      80 px
+    heading3: "2.625rem", //  42 px
+    heading4: "1.625rem", //  26 px
+    heading5: "1.375rem", //  22 px
+    heading6: "1rem", //      16 px
+    body1: "1rem", //         16 px
+    body2: "0.875rem", //     14 px
   },
   fontWeights: {
     black: 900,
