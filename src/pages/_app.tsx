@@ -14,9 +14,9 @@ const App = ({ Component, pageProps }: AppProps) => {
       <ResponsiveContextProvider>
         <Global
           styles={`
-          ${globalStyle},
-          ${resetStyle},
-        `}/>
+            ${globalStyle},
+            ${resetStyle},
+          `}/>
         <Component {...pageProps}/>
       </ResponsiveContextProvider>
     </ThemeProvider>

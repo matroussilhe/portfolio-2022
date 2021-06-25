@@ -10,8 +10,8 @@ const Index = () => {
     <>
       <Head>
         <title>Mat Roussilhe</title>
-        <meta name="description" content="Mathieu Roussilhe's portfolio" />
-        <link rel="icon" href="/favicon.ico" />
+        <meta name="description" content="Mathieu Roussilhe's portfolio"/>
+        <link rel="icon" href="/favicon.ico"/>
       </Head>
       <Flex>
         <Text

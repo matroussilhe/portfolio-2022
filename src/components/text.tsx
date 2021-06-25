@@ -4,7 +4,7 @@ import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProp
 
 import { useResponsiveProp } from "@hooks/responsive";
 
-export type TextProps = ThemeUITextProps & {
+export type TextProps = Omit<ThemeUITextProps, "variant"> & {
   variant?: ResponsiveStyleValue<string>;
 };
 
