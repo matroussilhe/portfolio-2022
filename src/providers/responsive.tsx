@@ -12,7 +12,7 @@ import { get } from "theme-ui";
 import { rootEm } from "@styles/global";
 import { theme } from "@themes/theme";
 
-export type ResponsiveContextValue = {
+export type ResponsiveContext = {
   width?: number;
   height?: number;
   breakpoints?: number[];
@@ -33,14 +33,14 @@ export type ResponsiveContextValue = {
   desktop?: boolean;
 };
 
-export const ResponsiveContext = createContext<ResponsiveContextValue>({});
+export const ResponsiveContext = createContext<ResponsiveContext>({});
 
 export const useResponsiveContext = () => {
   return useContext(ResponsiveContext);
 };
 
 export const ResponsiveContextProvider: FunctionComponent = (props) => {
-  const [value, setValue] = useState<ResponsiveContextValue>({});
+  const [value, setValue] = useState<ResponsiveContext>({});
 
   const hasWindow = typeof window !== "undefined";
   useEffect(() => {
