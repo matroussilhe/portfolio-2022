@@ -75,7 +75,7 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
         xlAndUp: !(sm || md || lg) && (xl),
         smAndDown: (sm) && !(md || lg || xl),
         mdAndDown: (sm || md) && !(lg || xl),
-        lgAndDown: (sm || md) && !(lg || xl),
+        lgAndDown: (sm || md || lg) && !(xl),
         xlAndDown: (sm || md || lg || xl),
         mobile: (sm) && !(md || lg || xl),
         tablet: (md) && !(sm || lg || xl),
