@@ -15,7 +15,7 @@ export const useResponsiveProp = () => {
 
   const responsiveProp = useCallback((prop: any) => {
     if (Array.isArray(prop)) {
-      const breapointMap = [
+      const breakpointMap = [
         smOnly,
         mdOnly,
         lgOnly,
@@ -23,7 +23,7 @@ export const useResponsiveProp = () => {
       ];
 
       // map prop value to each breakpoint in a mobile first approach
-      const breapointPropMap = breapointMap.reduce((acc, cur, idx) => {
+      const breakpointPropMap = breakpointMap.reduce((acc, cur, idx) => {
         const propValue = prop[idx];
 
         if (propValue != undefined) {
@@ -36,9 +36,9 @@ export const useResponsiveProp = () => {
       }, [] as string[]);
 
       // find corresponding prop value for current breakpoint
-      const foundIndex = breapointMap.findIndex(item => item === true);
+      const foundIndex = breakpointMap.findIndex(item => item === true);
       return foundIndex !== -1
-        ? breapointPropMap[foundIndex]
+        ? breakpointPropMap[foundIndex]
         : undefined;
     } else {
       return prop;
