@@ -1,4 +1,6 @@
-export const theme = {
+import { Theme } from "theme-ui";
+
+export const theme: Theme = {
   breakpoints: [
     // "0rem", //     0 ≥ screen < 600px  | sm | mobile
     "37.5rem", // 600px ≥ screen < 960px  | md | tablet
@@ -40,10 +42,6 @@ export const theme = {
     heading: "normal",
     body: "normal",
   },
-  fontStyle: {
-    heading: "normal",
-    body: "normal",
-  },
   text: {
     heading1: {
       fontFamily: "heading",
@@ -51,7 +49,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     heading2: {
@@ -60,7 +57,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     heading3: {
@@ -69,7 +65,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     heading4: {
@@ -78,7 +73,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     heading5: {
@@ -87,7 +81,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     heading6: {
@@ -96,7 +89,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "heading",
       letterSpacings: "heading",
-      fontStyle: "heading",
       color: "text",
     },
     body1: {
@@ -105,7 +97,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "body",
       letterSpacings: "body",
-      fontStyle: "body",
       color: "text",
     },
     body2: {
@@ -114,7 +105,6 @@ export const theme = {
       fontWeight: "medium",
       lineHeight: "body",
       letterSpacings: "body",
-      fontStyle: "body",
       color: "text",
     },
   },
