@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from "react";
+import React, { FunctionComponent } from "react";
 
 import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
 
@@ -14,11 +14,12 @@ export const Text: FunctionComponent<TextProps> = ({
 }) => {
   const responsiveProp = useResponsiveProp();
 
-  const responsiveVariant = useMemo(() => responsiveProp(variant), [variant, responsiveProp]);
+  const responsiveVariant = responsiveProp(variant);
 
   return (
     <ThemeUIText
       variant={responsiveVariant}
-      {...rest}/>
+      {...rest}
+    />
   );
 };

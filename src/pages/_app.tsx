@@ -12,11 +12,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <ThemeProvider>
       <ResponsiveContextProvider>
-        <Global
-          styles={`
-            ${globalStyle},
-            ${resetStyle},
-          `}/>
+        <Global styles={`${globalStyle}${resetStyle}`}/>
         <Component {...pageProps}/>
       </ResponsiveContextProvider>
     </ThemeProvider>

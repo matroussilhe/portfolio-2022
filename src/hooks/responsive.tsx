@@ -1,9 +1,7 @@
-import { useCallback } from "react";
-
 import { useResponsiveContext } from "@providers/responsive";
 
 /**
- * Hook that parses responsive prop array into single prop based on active breakpoint
+ * Hook that returns a function used to parse a responsive prop array into a single prop based on active breakpoint
  */
 export const useResponsiveProp = () => {
   const {
@@ -13,7 +11,7 @@ export const useResponsiveProp = () => {
     xlOnly,
   } = useResponsiveContext();
 
-  const responsiveProp = useCallback((prop: any) => {
+  const responsiveProp = (prop: any) => {
     if (Array.isArray(prop)) {
       const breakpointMap = [
         smOnly,
@@ -43,7 +41,7 @@ export const useResponsiveProp = () => {
     } else {
       return prop;
     }
-  }, [smOnly, mdOnly, lgOnly, xlOnly]);
+  };
 
   return responsiveProp;
 };
