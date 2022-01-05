@@ -14,35 +14,35 @@ const DebugResponsive = () => {
         flexWrap: "wrap",
       }}>
       <Box
-        bg={"#264653"}
         sx={{
-          mt: ["12px", "100px"],
           width: ["100%", "75%", "50%", "25%"],
+          mt: ["12px", "100px"],
+          backgroundColor: "#264653",
         }}>
         <Text
           variant={["body2", "body1", "heading2", "heading1"]}
           sx={{
-            color: "#ffffff",
+            color: "#FFFFFF",
           }}>
             Hello there!
         </Text>
       </Box>
       <Responsive mdAndDown>
         <Box
-          bg={"#2a9d8f"}
           sx={{
             width: ["100%", "75%", "50%", "25%"],
+            backgroundColor: "#2A9D8F",
           }}/>
       </Responsive>
       <Box
-        bg={"#e9c46a"}
         sx={{
           width: ["100%", "75%", "50%", "25%"],
+          backgroundColor: "#E9C46A",
         }}/>
       <Box
-        bg={"#f4a261"}
         sx={{
           width: ["100%", "75%", "50%", "25%"],
+          backgroundColor: "#F4A261",
         }}/>
     </Flex>
   );

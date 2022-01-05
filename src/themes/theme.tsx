@@ -8,8 +8,8 @@ export const theme: Theme = {
     "90rem", //  1440px ≥ screen          | xl | wide desktop
   ],
   colors: {
-    background: "#ffffff",
-    primary: "#db7093",
+    background: "#FFFFFF",
+    primary: "#DB7093",
     text: "#000000",
   },
   fonts: {
