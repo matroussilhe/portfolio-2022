@@ -8,7 +8,10 @@ import { Text } from "@components/text";
 
 const Index = () => {
   // WIP: placeholders
-  const title = "어이 Hello, I’m Mathieu a full stack developer building something special and mostly foucs on these technologies. I’m currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
+  const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
+  const workTitle = "Selected work";
+  const archiveTitle = "Archive";
+  const footerTitle = "FOOTER";
 
   return (
     <>
@@ -26,12 +29,55 @@ const Index = () => {
         <Box
           sx={{
             width: ["50%"],
-            pl: [8],
+            pl: [6],
           }}>
           <Text variant={"heading3"}>
-            {title}
+            {homeTitle}
           </Text>
         </Box>
+      </Flex>
+      <Flex
+        sx={{
+          height: "100vh",
+          backgroundColor: "#FFFFFF",
+        }}>
+        <Box
+          sx={{
+            width: ["100%"],
+            pl: [6],
+            mt: [10],
+          }}>
+          <Text variant={"heading3"}>
+            {workTitle}
+          </Text>
+        </Box>
+      </Flex>
+      <Flex
+        sx={{
+          height: "100vh",
+          backgroundColor: "#FFFFFF",
+        }}>
+        <Box
+          sx={{
+            width: ["100%"],
+            pl: [6],
+            mt: [10],
+          }}>
+          <Text variant={"heading3"}>
+            {archiveTitle}
+          </Text>
+        </Box>
+      </Flex>
+      <Flex
+        sx={{
+          height: "50vh",
+          backgroundColor: "#FFFFFF",
+          alignItems: "center",
+          justifyContent: "center",
+        }}>
+        <Text variant={"heading2"}>
+          {footerTitle}
+        </Text>
       </Flex>
     </>
   );
