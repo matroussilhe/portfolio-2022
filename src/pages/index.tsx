@@ -1,7 +1,5 @@
 import React from "react";
 
-import Head from "next/head";
-
 import {
   Box,
   Button,
@@ -18,11 +16,6 @@ const Index = () => {
 
   return (
     <>
-      <Head>
-        <title>Mat Roussilhe | Software Engineer</title>
-        <meta name="description" content="Mathieu Roussilhe's portfolio"/>
-        <link rel="icon" href="/favicon.ico"/>
-      </Head>
       <Flex
         sx={{
           height: "100vh",
