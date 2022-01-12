@@ -4,8 +4,10 @@ import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProp
 
 import { useResponsiveProp } from "@hooks";
 
+export type TextVariant = "heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6" | "body1" | "body2";
+
 export type TextProps = Omit<ThemeUITextProps, "variant"> & {
-  variant?: ResponsiveStyleValue<string>;
+  variant?: ResponsiveStyleValue<TextVariant>;
 };
 
 export const Text: FunctionComponent<TextProps> = ({

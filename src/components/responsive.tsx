@@ -5,7 +5,7 @@ import { ResponsiveContext, useResponsiveContext } from "@providers";
 export type ResponsiveProps = Omit<ResponsiveContext, "width" | "height" | "breakpoints">;
 
 export const Responsive: React.FunctionComponent<ResponsiveProps> = (props) => {
-  const { ...responsiveContext } = useResponsiveContext();
+  const responsiveContext = useResponsiveContext();
 
   let show = false;
   for (const [key, value] of Object.entries(props)) {

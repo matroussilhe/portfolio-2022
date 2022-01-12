@@ -4,6 +4,7 @@ import Head from "next/head";
 
 import {
   Box,
+  Button,
   Flex,
   Text,
 } from "@components";
@@ -18,7 +19,7 @@ const Index = () => {
   return (
     <>
       <Head>
-        <title>Mat Roussilhe</title>
+        <title>Mat Roussilhe | Software Engineer</title>
         <meta name="description" content="Mathieu Roussilhe's portfolio"/>
         <link rel="icon" href="/favicon.ico"/>
       </Head>
@@ -36,6 +37,15 @@ const Index = () => {
           <Text variant={"heading3"}>
             {homeTitle}
           </Text>
+          <Button variant="primary" size="lg" shape="round">
+            Informations
+          </Button>
+          <Button variant="secondary" size="md" shape="square">
+            Informations
+          </Button>
+          <Button>
+            Informations
+          </Button>
         </Box>
       </Flex>
       <Flex
