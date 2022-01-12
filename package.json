@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "eslint-autofix": "eslint --fix --ext .js,.jsx,.ts,.tsx ./",
+    "eslint-check": "eslint --quiet --ext .js,.jsx,.ts,.tsx ./",
+    "typescript-check": "tsc --project ./tsconfig.json"
   },
   "dependencies": {
     "@emotion/react": "^11.7.1",
