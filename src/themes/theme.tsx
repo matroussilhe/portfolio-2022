@@ -42,10 +42,19 @@ export const theme: Theme = {
     248, // 31
     256, // 32
   ],
+  // TODO: remove unused colors
+  // TODO: add color's lighter/darker variants if needed (300, 500, 700, ...)
   colors: {
+    primary: "#000000",
+    secondary: "#FFFFFF",
     background: "#FFFFFF",
-    primary: "#DB7093",
-    text: "#000000",
+    surface: "#FFFFFF",
+    error: "#B00020",
+    "on-primary": "#FFFFFF",
+    "on-secondary": "#000000",
+    "on-background": "#000000",
+    "on-surface": "#000000",
+    "on-error": "#FFFFFF",
   },
   fonts: {
     heading: "Helvetica, sans-serif",
@@ -83,7 +92,7 @@ export const theme: Theme = {
       fontSize: "heading1",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     heading2: {
@@ -91,7 +100,7 @@ export const theme: Theme = {
       fontSize: "heading2",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     heading3: {
@@ -99,7 +108,7 @@ export const theme: Theme = {
       fontSize: "heading3",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     heading4: {
@@ -107,7 +116,7 @@ export const theme: Theme = {
       fontSize: "heading4",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     heading5: {
@@ -115,7 +124,7 @@ export const theme: Theme = {
       fontSize: "heading5",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     heading6: {
@@ -123,7 +132,7 @@ export const theme: Theme = {
       fontSize: "heading6",
       fontWeight: "medium",
       lineHeight: "heading",
-      letterSpacings: "heading",
+      letterSpacing: "heading",
       color: "text",
     },
     body1: {
@@ -131,7 +140,7 @@ export const theme: Theme = {
       fontSize: "body1",
       fontWeight: "medium",
       lineHeight: "body",
-      letterSpacings: "body",
+      letterSpacing: "body",
       color: "text",
     },
     body2: {
@@ -139,8 +148,24 @@ export const theme: Theme = {
       fontSize: "body2",
       fontWeight: "medium",
       lineHeight: "body",
-      letterSpacings: "body",
+      letterSpacing: "body",
       color: "text",
+    },
+  },
+  buttons: {
+    primary: {
+      color: "on-primary",
+      backgroundColor: "primary",
+      "&:hover": {
+        backgroundColor: "primary",
+      },
+    },
+    secondary: {
+      color: "on-secondary",
+      backgroundColor: "secondary",
+      "&:hover": {
+        backgroundColor: "primary",
+      },
     },
   },
 };
