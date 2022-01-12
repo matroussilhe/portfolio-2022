@@ -3,10 +3,8 @@ import React from "react";
 import { Global } from "@emotion/react";
 import type { AppProps } from "next/app";
 
-import { ResponsiveContextProvider } from "@providers/responsive";
-import { ThemeProvider } from "@providers/theme";
-import { globalStyle } from "@styles/global";
-import { resetStyle } from "@styles/reset";
+import { ResponsiveContextProvider, ThemeProvider } from "@providers";
+import { globalStyle, resetStyle } from "@styles";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (

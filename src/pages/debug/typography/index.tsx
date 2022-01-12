@@ -1,8 +1,10 @@
 import React from "react";
 
-import { Box } from "@components/box";
-import { Flex } from "@components/flex";
-import { Text } from "@components/text";
+import {
+  Box,
+  Flex,
+  Text,
+} from "@components";
 
 const DebugTypograhpy = () => {
   const text = "Sample text.";

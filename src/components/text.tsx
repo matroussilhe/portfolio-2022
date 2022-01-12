@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
 
-import { useResponsiveProp } from "@hooks/responsive";
+import { useResponsiveProp } from "@hooks";
 
 export type TextProps = Omit<ThemeUITextProps, "variant"> & {
   variant?: ResponsiveStyleValue<string>;

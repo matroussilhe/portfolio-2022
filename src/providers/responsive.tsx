@@ -9,8 +9,8 @@ import React, {
 import throttle from "lodash.throttle";
 import { get } from "theme-ui";
 
-import { rootEm } from "@styles/global";
-import { theme } from "@themes/theme";
+import { rootEm } from "@styles";
+import { theme } from "@themes";
 
 export type ResponsiveContext = {
   width?: number;

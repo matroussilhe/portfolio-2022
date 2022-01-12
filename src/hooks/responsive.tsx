@@ -1,4 +1,4 @@
-import { useResponsiveContext } from "@providers/responsive";
+import { useResponsiveContext } from "@providers";
 
 /**
  * Hook that returns a function used to parse a responsive prop array into a single prop based on active breakpoint

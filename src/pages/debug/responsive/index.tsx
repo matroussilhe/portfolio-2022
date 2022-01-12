@@ -1,9 +1,11 @@
 import React from "react";
 
-import { Box } from "@components/box";
-import { Flex } from "@components/flex";
-import { Responsive } from "@components/responsive";
-import { Text } from "@components/text";
+import {
+  Box,
+  Flex,
+  Responsive,
+  Text,
+} from "@components";
 
 const DebugResponsive = () => {
   return (

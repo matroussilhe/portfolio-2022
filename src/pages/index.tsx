@@ -2,9 +2,11 @@ import React from "react";
 
 import Head from "next/head";
 
-import { Box } from "@components/box";
-import { Flex } from "@components/flex";
-import { Text } from "@components/text";
+import {
+  Box,
+  Flex,
+  Text,
+} from "@components";
 
 const Index = () => {
   // WIP: placeholders

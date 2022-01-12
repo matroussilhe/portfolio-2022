@@ -20,20 +20,38 @@
     "jsxImportSource": "theme-ui",
     "baseUrl": ".",
     "paths": {
+      "@components": [
+        "./src/components"
+      ],
       "@components/*": [
         "./src/components/*"
+      ],
+      "@hooks": [
+        "./src/hooks"
       ],
       "@hooks/*": [
         "./src/hooks/*"
       ],
+      "@pages": [
+        "./src/pages"
+      ],
       "@pages/*": [
         "./src/pages/*"
+      ],
+      "@providers": [
+        "./src/providers"
       ],
       "@providers/*": [
         "./src/providers/*"
       ],
+      "@styles": [
+        "./src/styles"
+      ],
       "@styles/*": [
         "./src/styles/*"
+      ],
+      "@themes": [
+        "./src/themes"
       ],
       "@themes/*": [
         "./src/themes/*"
