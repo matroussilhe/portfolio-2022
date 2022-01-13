@@ -91,8 +91,8 @@ export const theme: Theme = {
     "on-error": "#FFFFFF",
   },
   fonts: {
-    heading: "Helvetica, sans-serif",
-    body: "Arial, sans-serif",
+    heading: "Signifier, serif",
+    body: "Scto Grotesk A, sans-serif",
   },
   fontSizes: {
     heading1: "15.25rem", // 244 px
@@ -189,6 +189,9 @@ export const theme: Theme = {
   buttons: {
     default: {
       cursor: "pointer",
+      fontFamily: "body",
+      lineHeight: "body",
+      letterSpacing: "body",
     },
     primary: {
       variant: "buttons.default",

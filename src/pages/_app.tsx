@@ -5,7 +5,7 @@ import type { AppProps } from "next/app";
 import Head from "next/head";
 
 import { ResponsiveContextProvider, ThemeProvider } from "@providers";
-import { globalStyle, resetStyle } from "@styles";
+import { fontStyle, globalStyle, resetStyle } from "@styles";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -17,7 +17,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <ThemeProvider>
         <ResponsiveContextProvider>
-          <Global styles={`${globalStyle}${resetStyle}`}/>
+          <Global styles={`${fontStyle}${globalStyle}${resetStyle}`}/>
           <Component {...pageProps}/>
         </ResponsiveContextProvider>
       </ThemeProvider>

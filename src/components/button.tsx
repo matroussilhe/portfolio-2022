@@ -28,19 +28,19 @@ const size = variant({
       px: "16px",
       py: "4px",
       fontSize: "body1",
-      minWidth: "64px",
+      fontWeight: "medium",
     },
     md: {
       px: "16px",
       py: "8px",
       fontSize: "body1",
-      minWidth: "72px",
+      fontWeight: "medium",
     },
     lg: {
       px: "20px",
       py: "12px",
-      fontSize: "heading6",
-      minWidth: "80px",
+      fontSize: "body1",
+      fontWeight: "medium",
     },
   },
 } as VariantArgs);
