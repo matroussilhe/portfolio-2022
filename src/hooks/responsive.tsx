@@ -1,3 +1,5 @@
+import { ResponsiveStyleValue } from "theme-ui";
+
 import { useResponsiveContext } from "@providers";
 
 /**
@@ -11,7 +13,7 @@ export const useResponsiveProp = () => {
     xlOnly,
   } = useResponsiveContext();
 
-  const responsiveProp = (prop: any) => {
+  const getResponsiveProp = <T extends unknown>(prop: ResponsiveStyleValue<T>): T | undefined => {
     if (Array.isArray(prop)) {
       const breakpointMap = [
         smOnly,
@@ -31,17 +33,17 @@ export const useResponsiveProp = () => {
         }
 
         return acc;
-      }, [] as string[]);
+      }, [] as (T | undefined | null | false)[]);
 
       // find corresponding prop value for current breakpoint
       const foundIndex = breakpointMap.findIndex(item => item === true);
       return foundIndex !== -1
-        ? breakpointPropMap[foundIndex]
+        ? breakpointPropMap[foundIndex] || undefined
         : undefined;
     } else {
-      return prop;
+      return prop || undefined;
     }
   };
 
-  return responsiveProp;
+  return getResponsiveProp;
 };

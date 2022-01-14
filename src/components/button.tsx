@@ -68,11 +68,11 @@ export const Button: FunctionComponent<ButtonProps> = ({
   shape = "round",
   ...rest
 }) => {
-  const responsiveProp = useResponsiveProp();
+  const getResponsiveProp = useResponsiveProp();
 
-  const responsiveVariant = responsiveProp(variant);
-  const responsiveSize = responsiveProp(size);
-  const responsiveShape = responsiveProp(shape);
+  const responsiveVariant = getResponsiveProp(variant);
+  const responsiveSize = getResponsiveProp(size);
+  const responsiveShape = getResponsiveProp(shape);
 
   return (
     <StyledThemeUIButton

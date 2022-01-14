@@ -14,9 +14,9 @@ export const Text: FunctionComponent<TextProps> = ({
   variant = "body1",
   ...rest
 }) => {
-  const responsiveProp = useResponsiveProp();
+  const getResponsiveProp = useResponsiveProp();
 
-  const responsiveVariant = responsiveProp(variant);
+  const responsiveVariant = getResponsiveProp(variant);
 
   return (
     <ThemeUIText
