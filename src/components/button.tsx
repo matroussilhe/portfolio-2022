@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import { variant, VariantArgs } from "styled-system";
 import { Button as ThemeUIButton, ButtonProps as ThemeUIButtonProps, ResponsiveStyleValue } from "theme-ui";
 
-import { useResponsiveProp } from "@hooks";
+import { useResponsive } from "@hooks";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "sm" | "md" | "lg";
@@ -68,7 +68,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   shape = "round",
   ...rest
 }) => {
-  const getResponsiveProp = useResponsiveProp();
+  const getResponsiveProp = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
   const responsiveSize = getResponsiveProp(size);
