@@ -2,44 +2,45 @@ import React, { FunctionComponent } from "react";
 
 import styled from "@emotion/styled";
 import { variant, VariantArgs } from "styled-system";
-import { Button as ThemeUIButton, ButtonProps as ThemeUIButtonProps, ResponsiveStyleValue } from "theme-ui";
+import { ResponsiveStyleValue } from "theme-ui";
 
+import { Box, BoxProps } from "@components";
 import { useResponsive } from "@hooks";
 
-export type ButtonVariant = "primary" | "secondary";
-export type ButtonSize = "sm" | "md" | "lg";
-export type ButtonShape = "round" | "square";
+export type TagVariant = "primary" | "secondary";
+export type TagSize = "sm" | "md" | "lg";
+export type TagShape = "round" | "square";
 
-export type ButtonProps = Omit<ThemeUIButtonProps, "variant" | "size" | "shape"> & {
-  variant?: ResponsiveStyleValue<ButtonVariant>;
-  size?: ResponsiveStyleValue<ButtonSize>;
-  shape?: ResponsiveStyleValue<ButtonShape>;
+export type TagProps = Omit<BoxProps, "variant" | "size" | "shape"> & {
+  variant?: ResponsiveStyleValue<TagVariant>;
+  size?: ResponsiveStyleValue<TagSize>;
+  shape?: ResponsiveStyleValue<TagShape>;
 };
 
-export type StyledThemeUIButtonProps = Omit<ThemeUIButtonProps, "size" | "shape"> & {
-  size?: ButtonSize;
-  shape?: ButtonShape;
+export type StyledBoxProps = Omit<BoxProps, "size" | "shape"> & {
+  size?: TagSize;
+  shape?: TagShape;
 };
 
 const size = variant({
   prop: "size",
   variants: {
     sm: {
-      px: "40px",
+      px: "8px",
       py: "8px",
       fontSize: "body2",
       fontWeight: "medium",
     },
     md: {
-      px: "60px",
-      py: "12px",
+      px: "6px",
+      py: "6px",
       fontSize: "body2",
       fontWeight: "medium",
     },
     lg: {
-      px: "80px",
-      py: "16px",
-      fontSize: "heading4",
+      px: "4px",
+      py: "4px",
+      fontSize: "heading5",
       fontWeight: "medium",
     },
   },
@@ -57,12 +58,12 @@ const shape = variant({
   },
 } as VariantArgs);
 
-const StyledThemeUIButton = styled(ThemeUIButton)<StyledThemeUIButtonProps>(
+const StyledBox = styled(Box)<StyledBoxProps>(
   size,
   shape,
 );
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const Tag: FunctionComponent<TagProps> = ({
   variant = "primary",
   size = "md",
   shape = "round",
@@ -75,8 +76,8 @@ export const Button: FunctionComponent<ButtonProps> = ({
   const responsiveShape = getResponsiveProp(shape);
 
   return (
-    <StyledThemeUIButton
-      variant={responsiveVariant}
+    <StyledBox
+      variant={responsiveVariant ? `tags.${responsiveVariant}` : undefined}
       size={responsiveSize}
       shape={responsiveShape}
       {...rest}

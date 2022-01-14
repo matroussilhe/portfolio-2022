@@ -6,6 +6,7 @@ import {
   Box,
   Button,
   Flex,
+  Tag,
   Text,
 } from "@components";
 
@@ -44,6 +45,15 @@ const Index = () => {
           <Button>
             Informations
           </Button>
+          <Tag variant="primary" size="lg" shape="round">
+            React
+          </Tag>
+          <Tag variant="secondary" size="md" shape="square">
+            Vue.js
+          </Tag>
+          <Tag>
+            AWS
+          </Tag>
         </Box>
       </Flex>
       <Flex

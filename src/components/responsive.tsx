@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 
 import { ResponsiveContext, useResponsiveContext } from "@providers";
 
 export type ResponsiveProps = Omit<ResponsiveContext, "width" | "height" | "breakpoints">;
 
-export const Responsive: React.FunctionComponent<ResponsiveProps> = (props) => {
+export const Responsive: FunctionComponent<ResponsiveProps> = (props) => {
   const responsiveContext = useResponsiveContext();
 
   let show = false;

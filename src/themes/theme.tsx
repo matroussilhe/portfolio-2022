@@ -1,6 +1,10 @@
-import { Theme } from "theme-ui";
+import { Theme as ThemeUITheme } from "theme-ui";
 
-export const theme: Theme = {
+export type Theme = typeof theme;
+
+const getTheme = <T extends ThemeUITheme>(theme: T): T => theme;
+
+export const theme = getTheme({
   config: {
     useCustomProperties: true,
     initialColorModeName: "light",
@@ -269,4 +273,28 @@ export const theme: Theme = {
       },
     },
   },
-};
+  variants: {
+    tags: {
+      default: {
+        display: "inline-block",
+        borderWidth: 1,
+        borderStyle: "solid",
+        fontFamily: "body",
+        lineHeight: 1,
+        letterSpacing: "body",
+      },
+      primary: {
+        variant: "variants.tags.default",
+        color: "primary-500",
+        borderColor: "primary-500",
+        backgroundColor: "on-primary-500",
+      },
+      secondary: {
+        variant: "variants.tags.default",
+        color: "secondary-500",
+        borderColor: "secondary-500",
+        backgroundColor: "on-secondary-500",
+      },
+    },
+  },
+});
