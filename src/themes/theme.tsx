@@ -249,7 +249,7 @@ export const theme: Theme = {
     default: {
       cursor: "pointer",
       fontFamily: "body",
-      lineHeight: "body",
+      lineHeight: 1,
       letterSpacing: "body",
     },
     primary: {
