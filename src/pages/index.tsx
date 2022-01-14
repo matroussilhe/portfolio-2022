@@ -1,5 +1,7 @@
 import React from "react";
 
+import { useColorMode } from "theme-ui";
+
 import {
   Box,
   Button,
@@ -8,18 +10,21 @@ import {
 } from "@components";
 
 const Index = () => {
-  // WIP: placeholders
+  // DEBUG: placeholders
   const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
   const workTitle = "Selected work";
   const archiveTitle = "Archive";
   const footerTitle = "FOOTER";
+
+  // DEBUG: color mode change
+  const [colorMode, setColorMode] = useColorMode();
 
   return (
     <>
       <Flex
         sx={{
           height: "100vh",
-          backgroundColor: "#F2F2F2",
+          backgroundColor: "background",
           alignItems: "center",
         }}>
         <Box
@@ -30,8 +35,8 @@ const Index = () => {
           <Text variant={"heading3"}>
             {homeTitle}
           </Text>
-          <Button variant="primary" size="lg" shape="round">
-            Informations
+          <Button variant="primary" size="lg" shape="round" onClick={() => setColorMode(colorMode === "light" ? "dark" : "light")}>
+            Change theme
           </Button>
           <Button variant="secondary" size="md" shape="square">
             Informations
@@ -44,7 +49,7 @@ const Index = () => {
       <Flex
         sx={{
           height: "100vh",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "background",
         }}>
         <Box
           sx={{
@@ -60,7 +65,7 @@ const Index = () => {
       <Flex
         sx={{
           height: "100vh",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "background",
         }}>
         <Box
           sx={{
@@ -76,7 +81,7 @@ const Index = () => {
       <Flex
         sx={{
           height: "50vh",
-          backgroundColor: "#FFFFFF",
+          backgroundColor: "background",
           alignItems: "center",
           justifyContent: "center",
         }}>
