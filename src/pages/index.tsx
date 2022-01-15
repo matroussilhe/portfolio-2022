@@ -1,5 +1,7 @@
 import React from "react";
 
+import { getTests, Test } from "@utils";
+import { GetStaticProps, NextPage } from "next";
 import { useColorMode } from "theme-ui";
 
 import {
@@ -10,7 +12,21 @@ import {
   Text,
 } from "@components";
 
-const Index = () => {
+export type IndexProps = {
+  tests: Test;
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  const tests = await getTests();
+
+  return {
+    props: {
+      tests,
+    },
+  };
+};
+
+const Index: NextPage<IndexProps> = (props) => {
   // DEBUG: placeholders
   const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
   const workTitle = "Selected work";

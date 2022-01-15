@@ -55,13 +55,17 @@
       ],
       "@themes/*": [
         "./src/themes/*"
+      ],
+      "@utils": [
+        "./src/utils"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
       ]
     }
   },
   "include": [
     "next-env.d.ts",
-    "next.config.js",
-    "**/.eslintrc.js",
     "**/*.ts",
     "**/*.tsx"
   ],

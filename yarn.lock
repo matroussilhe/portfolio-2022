@@ -320,6 +320,35 @@
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
 
+"@prismicio/client@^6.0.0":
+  version "6.0.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/client/-/client-6.0.0.tgz#1345ec7011a586b71694e1a400c24ac3502dd09b"
+  integrity sha512-xI3wj/3kq//kyVRom04dmcQHICKSxpndwoBBsOXhcSbYiaXvXO7nFYYLsKQh0LL8uXpTt3rJsKVyUgl1ClAUCg==
+  dependencies:
+    "@prismicio/helpers" "^2.0.0"
+    "@prismicio/types" "^0.1.21"
+
+"@prismicio/helpers@^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/helpers/-/helpers-2.0.0.tgz#ac975a7930d798835addd44cccb4598e26f53a50"
+  integrity sha512-8xnK2pj+us935wAvJvPdk4o6Zhn/z99aUWwaGYJBbNqQy8x0pahgXY1L3l6s6+9xcEdJy6kKL8IfvFS6U0tpXg==
+  dependencies:
+    "@prismicio/richtext" "^2.0.0-beta.3"
+    "@prismicio/types" "^0.1.20"
+    escape-html "^1.0.3"
+
+"@prismicio/richtext@^2.0.0-beta.3":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/@prismicio/richtext/-/richtext-2.0.0.tgz#681e1ea847e1973086d45e285b12f649e1e2d5a3"
+  integrity sha512-XH2DJZUz0LEHO45UmZsabUKuHB+kHGqORLp5fYJ+RlpmRBcKowjI9hcQZqS/rvWMTY/l948yJvy0/MlCIiLz6w==
+  dependencies:
+    "@prismicio/types" "^0.1.19"
+
+"@prismicio/types@^0.1.19", "@prismicio/types@^0.1.20", "@prismicio/types@^0.1.21":
+  version "0.1.21"
+  resolved "https://registry.yarnpkg.com/@prismicio/types/-/types-0.1.21.tgz#2d5f8a3f85435859ff290be96235b450b164a4e7"
+  integrity sha512-TMO4zpHlBFdvULDU5KQxeHOkI72lCkEKT3YwKhqiaiQWRVp7s3w27mXHjOWVBOlH/2qrzck219O84zBE6HzaMg==
+
 "@rushstack/eslint-patch@^1.0.6":
   version "1.0.6"
   resolved "https://registry.yarnpkg.com/@rushstack/eslint-patch/-/eslint-patch-1.0.6.tgz#023d72a5c4531b4ce204528971700a78a85a0c50"
@@ -1435,6 +1464,11 @@ escalade@^3.1.1:
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/escalade/-/escalade-3.1.1.tgz#d8cfdc7000965c5a0174b4a82eaa5c0552742e40"
   integrity sha512-k0er2gUkLf8O0zKJiAhmkTnJlTvINGv7ygDNPbeIsX/TJjGJZHuh9B2UxbsaEkmlEo9MfhrSzmhIlhRlI2GXnw==
+
+escape-html@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/escape-html/-/escape-html-1.0.3.tgz#0258eae4d3d0c0974de1c169188ef0051d1d1988"
+  integrity sha1-Aljq5NPQwJdN4cFpGI7wBR0dGYg=
 
 escape-string-regexp@^1.0.5:
   version "1.0.5"
