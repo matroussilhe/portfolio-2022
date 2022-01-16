@@ -3,6 +3,7 @@ import React, { FunctionComponent } from "react";
 import { Archive } from "@utils";
 
 import {
+  Box,
   Flex,
   Text,
 } from "@components";
@@ -16,12 +17,14 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
 }) => {
   return (
     <Flex>
-      <Text>
-        {archive.title}
-      </Text>
-      <Text>
-        {archive.description}
-      </Text>
+      <Box>
+        <Text>
+          {archive.title}
+        </Text>
+        <Text>
+          {archive.description}
+        </Text>
+      </Box>
     </Flex>
   );
 };
