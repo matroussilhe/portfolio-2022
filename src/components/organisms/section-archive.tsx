@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react";
 
+import { Archive } from "@utils";
+
 import {
   Box,
   Flex,
@@ -9,7 +11,7 @@ import {
 
 export type SectionArchiveProps = {
   title: string;
-  archives: any[];
+  archives: Archive[];
 };
 
 export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({

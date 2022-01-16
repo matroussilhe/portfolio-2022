@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from "react";
 
+import { Archive } from "@utils";
+
 import {
   Flex,
   Text,
 } from "@components";
 
 export type ListItemArchiveProps = {
-  archive: any;
+  archive: Archive;
 };
 
 export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({

@@ -1,5 +1,6 @@
 import React, { FunctionComponent } from "react";
 
+import { Archive } from "@utils";
 import { useColorMode } from "theme-ui";
 
 import {
@@ -12,7 +13,7 @@ import {
 } from "@components";
 
 export type LayoutIndexProps = {
-  archives: any[];
+  archives: Archive[];
 };
 
 export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({

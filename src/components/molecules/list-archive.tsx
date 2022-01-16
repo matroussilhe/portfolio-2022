@@ -1,12 +1,14 @@
 import React, { FunctionComponent } from "react";
 
+import { Archive } from "@utils";
+
 import {
   Flex,
   ListItemArchive,
 } from "@components";
 
 export type ListArchiveProps = {
-  archives: any[];
+  archives: Archive[];
 };
 
 export const ListArchive: FunctionComponent<ListArchiveProps> = ({

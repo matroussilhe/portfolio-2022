@@ -1,53 +1,36 @@
 import React from "react";
 
 import {
-  client,
-  helper,
-  Test,
+  getIndexPageDocument,
+  IndexPageDocument,
+  parseIndexPageDocument,
 } from "@utils";
 import { GetStaticProps, NextPage } from "next";
 
-import {
-  Box,
-  Button,
-  Flex,
-  Tag,
-  Text,
-} from "@components";
 import { LayoutIndex } from "@components/templates/layout-index";
 
 export type IndexProps = {
-  tests: Test;
+  document: IndexPageDocument;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  // const tests = await getTests();
-  try {
-    const document = await client().getByUID("index", "index");
-    console.log("document: ", document);
+  const document = await getIndexPageDocument();
+  const parsedDocument = parseIndexPageDocument(document);
 
-    console.log("raw: ", document.data.body[0].primary.description);
-    console.log("helper: ", helper.asText(document.data.body[0].primary.description));
-
-    return {
-      props: {
-        document,
-      },
-    };
-  } catch (error) {
-    console.error(error);
-
-    return { props: {}};
-  }
+  return {
+    props: {
+      document: parsedDocument,
+    },
+  };
 };
 
-const Index: NextPage<IndexProps> = (props) => {
+const Index: NextPage<IndexProps> = ({ document }) => {
   // DEBUG:
-  console.log("props: ", props);
+  console.log("document : ", document);
 
   return (
     <LayoutIndex
-      archives={[{ title: "title test", description: "description test" }]}
+      archives={document.archives}
     />
   );
 };
