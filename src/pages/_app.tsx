@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 
 import { Global } from "@emotion/react";
 import type { AppProps } from "next/app";
@@ -9,7 +9,7 @@ import { fontStyle, globalStyle, resetStyle } from "@styles";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <>
+    <Fragment>
       <Head>
         <title>{"Mat Roussilhe | Software Engineer"}</title>
         <meta name={"description"} content={"Mathieu Roussilhe's portfolio"}/>
@@ -21,7 +21,7 @@ const App = ({ Component, pageProps }: AppProps) => {
           <Component {...pageProps}/>
         </ResponsiveContextProvider>
       </ThemeProvider>
-    </>
+    </Fragment>
   );
 };
 

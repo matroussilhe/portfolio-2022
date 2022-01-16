@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 
 import { Archive } from "@utils";
 import { useColorMode } from "theme-ui";
@@ -29,7 +29,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
   const footerTitle = "FOOTER";
 
   return (
-    <>
+    <Fragment>
       <Flex
         sx={{
           height: "100vh",
@@ -95,6 +95,6 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
           {footerTitle}
         </Text>
       </Flex>
-    </>
+    </Fragment>
   );
 };

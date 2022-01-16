@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 
 import { Archive } from "@utils";
 
@@ -24,13 +24,15 @@ export const ListArchive: FunctionComponent<ListArchiveProps> = ({
         const isFirst = index === 0;
 
         return (
-          <>
+          <Fragment key={`list-item-archive-${index}`}>
             {isFirst &&
               <Divider/>
             }
-            <ListItemArchive key={`list-item-archive-${index}`} archive={archive}/>
+            <ListItemArchive
+              archive={archive}
+            />
             <Divider/>
-          </>
+          </Fragment>
         );
       })}
     </Flex>
