@@ -1,6 +1,8 @@
 import React from "react";
 
-import { getTests, Test } from "@utils";
+import {
+  client, getTests, helper, Test,
+} from "@utils";
 import { GetStaticProps, NextPage } from "next";
 import { useColorMode } from "theme-ui";
 
@@ -17,16 +19,30 @@ export type IndexProps = {
 };
 
 export const getStaticProps: GetStaticProps = async () => {
-  const tests = await getTests();
+  // const tests = await getTests();
+  try {
+    const document = await client().getByUID("index", "index");
+    console.log("document: ", document);
 
-  return {
-    props: {
-      tests,
-    },
-  };
+    console.log("data.body[0].primary.description: ", document.data.body[0].primary.description);
+    console.log("prismicH: ", helper.asText(document.data.body[0].primary.description));
+
+    return {
+      props: {
+        document,
+      },
+    };
+  } catch (error) {
+    console.error(error);
+
+    return { props: {}};
+  }
 };
 
 const Index: NextPage<IndexProps> = (props) => {
+  // DEBUG:
+  console.log("props: ", props);
+
   // DEBUG: placeholders
   const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
   const workTitle = "Selected work";
