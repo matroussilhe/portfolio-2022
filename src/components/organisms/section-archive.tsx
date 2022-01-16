@@ -2,9 +2,8 @@ import React, { FunctionComponent } from "react";
 
 import {
   Box,
-  Button,
   Flex,
-  Tag,
+  ListArchive,
   Text,
 } from "@components";
 
@@ -29,12 +28,12 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
           pl: [6],
           mt: [10],
         }}>
-        <Box
-          sx={{}}
-        />
         <Text variant={"heading3"}>
           {title}
         </Text>
+        <ListArchive
+          archives={archives}
+        />
       </Box>
     </Flex>
   );

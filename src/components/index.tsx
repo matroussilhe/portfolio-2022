@@ -6,5 +6,7 @@ export * from "./atoms/link";
 export * from "./atoms/responsive";
 export * from "./atoms/tag";
 export * from "./atoms/text";
+export * from "./molecules/list-archive";
+export * from "./molecules/list-item-archive";
 export * from "./organisms/section-archive";
 export * from "./templates/layout-index";
