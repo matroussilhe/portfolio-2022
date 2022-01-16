@@ -34,18 +34,21 @@ const DebugResponsive = () => {
           sx={{
             width: ["100%", "75%", "50%", "25%"],
             backgroundColor: "#2A9D8F",
-          }}/>
+          }}
+        />
       </Responsive>
       <Box
         sx={{
           width: ["100%", "75%", "50%", "25%"],
           backgroundColor: "#E9C46A",
-        }}/>
+        }}
+      />
       <Box
         sx={{
           width: ["100%", "75%", "50%", "25%"],
           backgroundColor: "#F4A261",
-        }}/>
+        }}
+      />
     </Flex>
   );
 };

@@ -14,7 +14,7 @@ import {
   Tag,
   Text,
 } from "@components";
-import { IndexLayout } from "@components/templates/index-layout";
+import { LayoutIndex } from "@components/templates/layout-index";
 
 export type IndexProps = {
   tests: Test;
@@ -52,7 +52,7 @@ const Index: NextPage<IndexProps> = (props) => {
   const footerTitle = "FOOTER";
 
   return (
-    <IndexLayout
+    <LayoutIndex
       homeTitle={homeTitle}
       workTitle={workTitle}
       archiveTitle={archiveTitle}

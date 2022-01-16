@@ -236,6 +236,13 @@ module.exports = {
         "children": "always",
       },
     ],
+    "react/jsx-closing-bracket-location": [
+      "error",
+      {
+        "nonEmpty": "after-props",
+        "selfClosing": "tag-aligned",
+      },
+    ],
     "react/jsx-equals-spacing": ["error", "never"],
     // react-hooks rules
     "react-hooks/rules-of-hooks": "error",

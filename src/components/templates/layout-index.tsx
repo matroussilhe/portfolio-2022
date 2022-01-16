@@ -6,18 +6,19 @@ import {
   Box,
   Button,
   Flex,
+  SectionArchive,
   Tag,
   Text,
 } from "@components";
 
-export type IndexLayoutProps = {
+export type LayoutIndexProps = {
   homeTitle: string;
   workTitle: string;
   archiveTitle: string;
   footerTitle: string;
 };
 
-export const IndexLayout: FunctionComponent<IndexLayoutProps> = ({
+export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
   homeTitle,
   workTitle,
   archiveTitle,
@@ -78,22 +79,10 @@ export const IndexLayout: FunctionComponent<IndexLayoutProps> = ({
           </Text>
         </Box>
       </Flex>
-      <Flex
-        sx={{
-          height: "100vh",
-          backgroundColor: "background",
-        }}>
-        <Box
-          sx={{
-            width: ["100%"],
-            pl: [6],
-            mt: [10],
-          }}>
-          <Text variant={"heading3"}>
-            {archiveTitle}
-          </Text>
-        </Box>
-      </Flex>
+      <SectionArchive
+        title={archiveTitle}
+        archives={[]}
+      />
       <Flex
         sx={{
           height: "50vh",
