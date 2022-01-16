@@ -1,5 +1,6 @@
 export * from "./atoms/box";
 export * from "./atoms/button";
+export * from "./atoms/divider";
 export * from "./atoms/flex";
 export * from "./atoms/image";
 export * from "./atoms/link";

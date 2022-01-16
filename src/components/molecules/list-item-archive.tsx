@@ -16,7 +16,9 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex>
+    <Flex sx={{
+      my: 9,
+    }}>
       <Box>
         <Text>
           {archive.title}

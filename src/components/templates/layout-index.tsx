@@ -39,7 +39,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         <Box
           sx={{
             width: ["50%"],
-            pl: [6],
+            px: [8],
           }}>
           <Text variant={"heading3"}>
             {homeTitle}
@@ -72,7 +72,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         <Box
           sx={{
             width: ["100%"],
-            pl: [6],
+            px: [8],
             mt: [10],
           }}>
           <Text variant={"heading3"}>

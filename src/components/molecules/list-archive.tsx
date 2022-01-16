@@ -3,6 +3,7 @@ import React, { FunctionComponent } from "react";
 import { Archive } from "@utils";
 
 import {
+  Divider,
   Flex,
   ListItemArchive,
 } from "@components";
@@ -15,14 +16,21 @@ export const ListArchive: FunctionComponent<ListArchiveProps> = ({
   archives,
 }) => {
   return (
-    <Flex>
+    <Flex
+      sx={{
+        flexDirection: "column",
+      }}>
       {archives.map((archive, index) => {
         const isFirst = index === 0;
-        const isLast = index === archives.length - 1;
 
-        // TODO: render diviers
         return (
-          <ListItemArchive key={`list-item-archive-${index}`} archive={archive}/>
+          <>
+            {isFirst &&
+              <Divider/>
+            }
+            <ListItemArchive key={`list-item-archive-${index}`} archive={archive}/>
+            <Divider/>
+          </>
         );
       })}
     </Flex>

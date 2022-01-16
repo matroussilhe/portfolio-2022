@@ -27,10 +27,14 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
       <Box
         sx={{
           width: ["100%"],
-          pl: [6],
+          px: [8],
           mt: [10],
         }}>
-        <Text variant={"heading3"}>
+        <Text
+          variant={"heading3"}
+          sx={{
+            mb: 4,
+          }}>
           {title}
         </Text>
         <ListArchive
