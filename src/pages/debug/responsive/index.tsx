@@ -26,7 +26,7 @@ const DebugResponsive = () => {
           sx={{
             color: "#FFFFFF",
           }}>
-            Hello there!
+          {"Hello there!"}
         </Text>
       </Box>
       <Responsive mdAndDown>

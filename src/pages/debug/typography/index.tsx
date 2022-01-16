@@ -18,49 +18,49 @@ const DebugTypograhpy = () => {
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading1">{text}</Text>
+        <Text variant={"heading1"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading2">{text}</Text>
+        <Text variant={"heading2"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading3">{text}</Text>
+        <Text variant={"heading3"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading4">{text}</Text>
+        <Text variant={"heading4"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading5">{text}</Text>
+        <Text variant={"heading5"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="heading6">{text}</Text>
+        <Text variant={"heading6"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="body1">{text}</Text>
+        <Text variant={"body1"}>{text}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant="body2">{text}</Text>
+        <Text variant={"body2"}>{text}</Text>
       </Box>
     </Flex>
   );

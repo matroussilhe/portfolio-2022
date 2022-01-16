@@ -65,7 +65,9 @@
     }
   },
   "include": [
+    "next.config.js",
     "next-env.d.ts",
+    ".eslintrc.js",
     "**/*.ts",
     "**/*.tsx"
   ],
