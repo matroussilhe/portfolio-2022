@@ -5,7 +5,8 @@ import { Archive } from "@utils";
 import {
   Box,
   Flex,
-  ListArchive,
+  List,
+  ListItemArchive,
   Text,
 } from "@components";
 
@@ -37,9 +38,15 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
           }}>
           {title}
         </Text>
-        <ListArchive
-          archives={archives}
-        />
+        <List
+          gap={"lg"}>
+          {archives.map((archive, index) => (
+            <ListItemArchive
+              key={`list-item-archive-${index}`}
+              archive={archive}
+            />
+          ))}
+        </List>
       </Box>
     </Flex>
   );

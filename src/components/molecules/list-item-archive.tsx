@@ -5,6 +5,7 @@ import { Archive } from "@utils";
 import {
   Box,
   Flex,
+  Grid,
   Tag,
   Text,
 } from "@components";
@@ -17,9 +18,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex sx={{
-      my: 9,
-    }}>
+    <Flex>
       <Box
         sx={{
           width: ["col12.8"],
@@ -45,13 +44,16 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
         sx={{
           width: ["col12.4"],
         }}>
-        {archive.tags.map((tag, index) => (
-          <Tag
-            key={`list-item-archive-tag-${index}`}
-            size={"md"}>
-            {tag}
-          </Tag>
-        ))}
+        <Grid
+          gap={"sm"}>
+          {archive.tags.map((tag, index) => (
+            <Tag
+              key={`list-item-archive-tag-${index}`}
+              size={"md"}>
+              {tag}
+            </Tag>
+          ))}
+        </Grid>
       </Box>
     </Flex>
   );
