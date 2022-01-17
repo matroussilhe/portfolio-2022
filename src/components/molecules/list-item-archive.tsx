@@ -4,8 +4,10 @@ import { Archive } from "@utils";
 
 import {
   Box,
+  Button,
   Flex,
   Grid,
+  Link,
   Tag,
   Text,
 } from "@components";
@@ -18,10 +20,13 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex>
+    <Flex
+      sx={{
+        flex: "1 1 auto",
+      }}>
       <Box
         sx={{
-          width: ["col12.8"],
+          width: ["col12.6"],
         }}>
         <Text
           variant={"body2"}
@@ -42,7 +47,12 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
       </Box>
       <Box
         sx={{
-          width: ["col12.4"],
+          width: ["col12.3"],
+        }}
+      />
+      <Box
+        sx={{
+          width: ["col12.3"],
         }}>
         <Grid
           gap={"sm"}>
@@ -54,6 +64,17 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             </Tag>
           ))}
         </Grid>
+        <Link href={archive.button.href} target={"_blank"}>
+          <Button
+            variant={"primary"}
+            size={"md"}
+            shape={"round"}
+            sx={{
+              mt: 6,
+            }}>
+            {archive.button.text}
+          </Button>
+        </Link>
       </Box>
     </Flex>
   );

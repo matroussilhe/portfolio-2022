@@ -25,7 +25,6 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
   // DEBUG: placeholders
   const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
   const workTitle = "Selected work";
-  const archiveTitle = "Archives";
   const footerTitle = "FOOTER";
 
   return (
@@ -81,7 +80,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         </Box>
       </Flex>
       <SectionArchive
-        title={archiveTitle}
+        title={"Archive"}
         archives={archives}
       />
       <Flex

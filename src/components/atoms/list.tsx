@@ -34,8 +34,8 @@ const gridItemGap = variant({
       mb: 4,
     },
     lg: {
-      mt: 9,
-      mb: 9,
+      mt: 8,
+      mb: 8,
     },
   },
 } as VariantArgs);
