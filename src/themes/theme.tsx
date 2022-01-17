@@ -155,8 +155,8 @@ export const theme = getTheme({
   },
   fonts: {
     heading: "Signifier, serif",
-    body: "Scto Grotesk A, sans-serif",
-    label: "Scto Grotesk A, sans-serif",
+    body: "\"Scto Grotesk A\", sans-serif",
+    label: "\"Scto Grotesk A\", sans-serif",
   },
   fontSizes: {
     heading1: "8.75rem", //  140 px
