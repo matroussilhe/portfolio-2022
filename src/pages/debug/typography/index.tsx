@@ -7,8 +7,6 @@ import {
 } from "@components";
 
 const DebugTypograhpy = () => {
-  const text = "Sample text.";
-
   return (
     <Flex
       sx={{
@@ -18,49 +16,61 @@ const DebugTypograhpy = () => {
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading1"}>{text}</Text>
+        <Text variant={"heading1"}>{"heading1"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading2"}>{text}</Text>
+        <Text variant={"heading2"}>{"heading2"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading3"}>{text}</Text>
+        <Text variant={"heading3"}>{"heading3"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading4"}>{text}</Text>
+        <Text variant={"heading4"}>{"heading4"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading5"}>{text}</Text>
+        <Text variant={"body1"}>{"body1"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"heading6"}>{text}</Text>
+        <Text variant={"body2"}>{"body2"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"body1"}>{text}</Text>
+        <Text variant={"body3"}>{"body3"}</Text>
       </Box>
       <Box
         sx={{
           paddingBottom: "16px",
         }}>
-        <Text variant={"body2"}>{text}</Text>
+        <Text variant={"label1"}>{"label1"}</Text>
+      </Box>
+      <Box
+        sx={{
+          paddingBottom: "16px",
+        }}>
+        <Text variant={"label2"}>{"label2"}</Text>
+      </Box>
+      <Box
+        sx={{
+          paddingBottom: "16px",
+        }}>
+        <Text variant={"label3"}>{"label3"}</Text>
       </Box>
     </Flex>
   );

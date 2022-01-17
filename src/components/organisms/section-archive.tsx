@@ -31,7 +31,7 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
           mt: [10],
         }}>
         <Text
-          variant={"heading3"}
+          variant={"heading2"}
           sx={{
             mb: 4,
           }}>

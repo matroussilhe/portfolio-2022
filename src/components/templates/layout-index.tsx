@@ -75,7 +75,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
             px: [8],
             mt: [10],
           }}>
-          <Text variant={"heading3"}>
+          <Text variant={"heading2"}>
             {workTitle}
           </Text>
         </Box>
@@ -91,7 +91,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
           alignItems: "center",
           justifyContent: "center",
         }}>
-        <Text variant={"heading2"}>
+        <Text variant={"heading1"}>
           {footerTitle}
         </Text>
       </Flex>

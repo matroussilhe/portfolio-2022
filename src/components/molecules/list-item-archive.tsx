@@ -20,10 +20,20 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
       my: 9,
     }}>
       <Box>
-        <Text>
+        <Text
+          variant={"body2"}
+          sx={{
+            mb: 2,
+            fontWeight: "bold",
+          }}>
           {archive.title}
         </Text>
-        <Text>
+        <Text
+          variant={"body3"}
+          sx={{
+            whiteSpace: "pre-wrap",
+            lineHeight: 1.2,
+          }}>
           {archive.description}
         </Text>
       </Box>

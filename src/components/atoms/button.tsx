@@ -39,7 +39,7 @@ const size = variant({
     lg: {
       px: "80px",
       py: "16px",
-      fontSize: "heading4",
+      fontSize: "body2",
       fontWeight: "medium",
     },
   },

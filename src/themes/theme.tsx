@@ -156,16 +156,19 @@ export const theme = getTheme({
   fonts: {
     heading: "Signifier, serif",
     body: "Scto Grotesk A, sans-serif",
+    label: "Scto Grotesk A, sans-serif",
   },
   fontSizes: {
-    heading1: "15.25rem", // 244 px
-    heading2: "5rem", //      80 px
+    heading1: "8.75rem", //  140 px
+    heading2: "3.75rem", //   60 px
     heading3: "2.625rem", //  42 px
-    heading4: "1.625rem", //  26 px
-    heading5: "1.375rem", //  22 px
-    heading6: "1rem", //      16 px
-    body1: "1rem", //         16 px
-    body2: "0.875rem", //     14 px
+    heading4: "2rem", //      32 px
+    body1: "1.5rem", //       24 px
+    body2: "1.375rem", //     22 px
+    body3: "1.25rem", //      20 px
+    label1: "1rem", //        16 px
+    label2: "0.75rem", //     12 px
+    label3: "0.625rem", //    10 px
   },
   fontWeights: {
     black: 900,
@@ -176,18 +179,20 @@ export const theme = getTheme({
     thin: 100,
   },
   lineHeights: {
-    heading: 1.5,
-    body: 1.5,
+    heading: 1.2,
+    body: 1.2,
+    label: 1.2,
   },
   letterSpacings: {
     heading: "normal",
     body: "normal",
+    label: "normal",
   },
   text: {
     heading1: {
       fontFamily: "heading",
       fontSize: "heading1",
-      fontWeight: "medium",
+      fontWeight: "regular",
       lineHeight: "heading",
       letterSpacing: "heading",
       color: "on-background",
@@ -195,7 +200,7 @@ export const theme = getTheme({
     heading2: {
       fontFamily: "heading",
       fontSize: "heading2",
-      fontWeight: "medium",
+      fontWeight: "regular",
       lineHeight: "heading",
       letterSpacing: "heading",
       color: "on-background",
@@ -203,7 +208,7 @@ export const theme = getTheme({
     heading3: {
       fontFamily: "heading",
       fontSize: "heading3",
-      fontWeight: "medium",
+      fontWeight: "regular",
       lineHeight: "heading",
       letterSpacing: "heading",
       color: "on-background",
@@ -211,23 +216,7 @@ export const theme = getTheme({
     heading4: {
       fontFamily: "heading",
       fontSize: "heading4",
-      fontWeight: "medium",
-      lineHeight: "heading",
-      letterSpacing: "heading",
-      color: "on-background",
-    },
-    heading5: {
-      fontFamily: "heading",
-      fontSize: "heading5",
-      fontWeight: "medium",
-      lineHeight: "heading",
-      letterSpacing: "heading",
-      color: "on-background",
-    },
-    heading6: {
-      fontFamily: "heading",
-      fontSize: "heading6",
-      fontWeight: "medium",
+      fontWeight: "regular",
       lineHeight: "heading",
       letterSpacing: "heading",
       color: "on-background",
@@ -235,7 +224,7 @@ export const theme = getTheme({
     body1: {
       fontFamily: "body",
       fontSize: "body1",
-      fontWeight: "medium",
+      fontWeight: "light",
       lineHeight: "body",
       letterSpacing: "body",
       color: "on-background",
@@ -243,9 +232,41 @@ export const theme = getTheme({
     body2: {
       fontFamily: "body",
       fontSize: "body2",
-      fontWeight: "medium",
+      fontWeight: "light",
       lineHeight: "body",
       letterSpacing: "body",
+      color: "on-background",
+    },
+    body3: {
+      fontFamily: "body",
+      fontSize: "body3",
+      fontWeight: "light",
+      lineHeight: "body",
+      letterSpacing: "body",
+      color: "on-background",
+    },
+    label1: {
+      fontFamily: "label",
+      fontSize: "label1",
+      fontWeight: "light",
+      lineHeight: "label",
+      letterSpacing: "label",
+      color: "on-background",
+    },
+    label2: {
+      fontFamily: "label",
+      fontSize: "label2",
+      fontWeight: "light",
+      lineHeight: "label",
+      letterSpacing: "label",
+      color: "on-background",
+    },
+    label3: {
+      fontFamily: "label",
+      fontSize: "label3",
+      fontWeight: "light",
+      lineHeight: "label",
+      letterSpacing: "label",
       color: "on-background",
     },
   },
@@ -255,6 +276,7 @@ export const theme = getTheme({
       fontFamily: "body",
       lineHeight: 1,
       letterSpacing: "body",
+      whiteSpace: "nowrap",
     },
     primary: {
       variant: "buttons.default",
