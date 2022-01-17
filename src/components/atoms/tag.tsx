@@ -26,21 +26,22 @@ const size = variant({
   prop: "size",
   variants: {
     sm: {
-      px: "8px",
-      py: "8px",
-      fontSize: "body2",
+      px: "4px",
+      py: "4px",
+      fontSize: "label2",
       fontWeight: "medium",
     },
     md: {
+      height: "auto",
       px: "6px",
       py: "6px",
-      fontSize: "body2",
+      fontSize: "label2",
       fontWeight: "medium",
     },
     lg: {
       px: "4px",
       py: "4px",
-      fontSize: "heading5",
+      fontSize: "body2",
       fontWeight: "medium",
     },
   },
