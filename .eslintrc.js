@@ -263,7 +263,7 @@ module.exports = {
           // Anything not matched in another group
           ["^"],
           // Internal packages
-          ["^(@components|@hooks|@pages|@providers|@styles|@themes)"],
+          ["^(@components|@hooks|@pages|@providers|@styles|@themes|@utils)"],
           // Relative imports
           ["^\\.\\.", "^\\."],
           // Side effect imports

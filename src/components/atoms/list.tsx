@@ -2,12 +2,13 @@ import React, { Fragment, FunctionComponent, ReactNode } from "react";
 
 import styled from "@emotion/styled";
 import { variant, VariantArgs } from "styled-system";
-import { ResponsiveStyleValue } from "theme-ui";
+import { FlexProps, ResponsiveStyleValue } from "theme-ui";
 
 import {
+  Box,
+  BoxProps,
   Divider,
   Flex,
-  FlexProps,
 } from "@components";
 import { useResponsive } from "@hooks";
 
@@ -16,9 +17,11 @@ export type ListGap = "sm" | "md" | "lg";
 export type ListProps = {
   children: ReactNode[];
   gap?: ResponsiveStyleValue<ListGap>;
+  containerProps?: FlexProps;
+  itemProps?: BoxProps;
 };
 
-export type StyledFlexListItemProps = FlexProps & {
+type StyledBoxListItemProps = BoxProps & {
   gap?: ListGap;
 };
 
@@ -40,13 +43,15 @@ const gridItemGap = variant({
   },
 } as VariantArgs);
 
-const StyledFlexListItem = styled(Flex)<StyledFlexListItemProps>(
+const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
   gridItemGap,
 );
 
 export const List: FunctionComponent<ListProps> = ({
-  gap = "md",
   children,
+  gap = "md",
+  containerProps,
+  itemProps,
 }) => {
   const getResponsiveProp = useResponsive();
 
@@ -56,7 +61,8 @@ export const List: FunctionComponent<ListProps> = ({
     <Flex
       sx={{
         flexDirection: "column",
-      }}>
+      }}
+      {...containerProps}>
       {children?.map?.((child, index) => {
         const isFirst = index === 0;
 
@@ -65,10 +71,11 @@ export const List: FunctionComponent<ListProps> = ({
             {isFirst &&
               <Divider/>
             }
-            <StyledFlexListItem
-              gap={responsiveGap}>
+            <StyledBoxListItem
+              gap={responsiveGap}
+              {...itemProps}>
               {child}
-            </StyledFlexListItem>
+            </StyledBoxListItem>
             <Divider/>
           </Fragment>
         );

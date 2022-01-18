@@ -1,7 +1,5 @@
 import React, { FunctionComponent } from "react";
 
-import { Archive } from "@utils";
-
 import {
   Box,
   Button,
@@ -11,6 +9,7 @@ import {
   Tag,
   Text,
 } from "@components";
+import { Archive } from "@utils";
 
 export type ListItemArchiveProps = {
   archive: Archive;
@@ -20,10 +19,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex
-      sx={{
-        flex: "1 1 auto",
-      }}>
+    <Flex>
       <Box
         sx={{
           width: ["col12.6"],

@@ -1,6 +1,5 @@
 import React, { Fragment, FunctionComponent } from "react";
 
-import { Archive } from "@utils";
 import { useColorMode } from "theme-ui";
 
 import {
@@ -8,15 +7,21 @@ import {
   Button,
   Flex,
   SectionArchive,
-  Tag,
+  SectionWork,
   Text,
 } from "@components";
+import {
+  Archive,
+  Work,
+} from "@utils";
 
 export type LayoutIndexProps = {
+  works: Work[];
   archives: Archive[];
 };
 
 export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
+  works,
   archives,
 }) => {
   // DEBUG: color mode change
@@ -24,7 +29,6 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
 
   // DEBUG: placeholders
   const homeTitle = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
-  const workTitle = "Selected work";
   const footerTitle = "FOOTER";
 
   return (
@@ -46,39 +50,12 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
           <Button variant={"primary"} size={"lg"} shape={"round"} onClick={() => setColorMode(colorMode === "light" ? "dark" : "light")}>
             {"Change theme"}
           </Button>
-          <Button variant={"secondary"} size={"md"} shape={"square"}>
-            {"Informations"}
-          </Button>
-          <Button>
-            {"Informations"}
-          </Button>
-          <Tag variant={"primary"} size={"lg"} shape={"round"}>
-            {"React"}
-          </Tag>
-          <Tag variant={"secondary"} size={"md"} shape={"square"}>
-            {"Vue.js"}
-          </Tag>
-          <Tag>
-            {"AWS"}
-          </Tag>
         </Box>
       </Flex>
-      <Flex
-        sx={{
-          height: "100vh",
-          backgroundColor: "background",
-        }}>
-        <Box
-          sx={{
-            width: ["100%"],
-            px: [8],
-            mt: [10],
-          }}>
-          <Text variant={"heading2"}>
-            {workTitle}
-          </Text>
-        </Box>
-      </Flex>
+      <SectionWork
+        title={"Selected Work"}
+        works={works}
+      />
       <SectionArchive
         title={"Archive"}
         archives={archives}

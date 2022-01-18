@@ -3,20 +3,20 @@ import React, { FunctionComponent } from "react";
 import {
   Box,
   Flex,
-  List,
-  ListItemArchive,
+  Grid,
+  GridItemWork,
   Text,
 } from "@components";
-import { Archive } from "@utils";
+import { Work } from "@utils";
 
-export type SectionArchiveProps = {
+export type SectionWorkProps = {
   title: string;
-  archives: Archive[];
+  works: Work[];
 };
 
-export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
+export const SectionWork: FunctionComponent<SectionWorkProps> = ({
   title,
-  archives,
+  works,
 }) => {
   return (
     <Flex
@@ -32,19 +32,24 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
         <Text
           variant={"heading2"}
           sx={{
-            mb: 4,
+            mb: 8,
           }}>
           {title}
         </Text>
-        <List
-          gap={"lg"}>
-          {archives.map((archive, index) => (
-            <ListItemArchive
-              key={`list-item-archive-${index}`}
-              archive={archive}
+        <Grid
+          gap={"lg"}
+          itemProps={{
+            sx: {
+              width: ["col12.6"],
+            },
+          }}>
+          {works.map((work, index) => (
+            <GridItemWork
+              key={`grid-item-work-${index}`}
+              work={work}
             />
           ))}
-        </List>
+        </Grid>
       </Box>
     </Flex>
   );

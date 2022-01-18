@@ -5,6 +5,8 @@ import { variant, VariantArgs } from "styled-system";
 import { ResponsiveStyleValue } from "theme-ui";
 
 import {
+  Box,
+  BoxProps,
   Flex,
   FlexProps,
 } from "@components";
@@ -15,13 +17,15 @@ export type GridGap = "sm" | "md" | "lg";
 export type GridProps = {
   children: ReactNode[];
   gap?: ResponsiveStyleValue<GridGap>;
+  containerProps?: FlexProps;
+  itemProps?: BoxProps;
 };
 
-export type StyledFlexGridProps = FlexProps & {
+type StyledFlexGridContainerProps = FlexProps & {
   gap?: GridGap;
 };
 
-export type StyledFlexGridItemProps = FlexProps & {
+type StyledBoxListItemProps = BoxProps & {
   gap?: GridGap;
 };
 
@@ -49,7 +53,7 @@ const gridGap = variant({
   },
 } as VariantArgs);
 
-const StyledFlexGrid = styled(Flex)<StyledFlexGridProps>(
+const StyledFlexGridContainer = styled(Flex)<StyledFlexGridContainerProps>(
   gridGap,
 );
 
@@ -57,48 +61,56 @@ const gridItemGap = variant({
   prop: "gap",
   variants: {
     sm: {
-      mt: "4px",
-      mb: "4px",
-      ml: "4px",
-      mr: "4px",
+      pt: "4px",
+      pb: "4px",
+      pl: "4px",
+      pr: "4px",
     },
     md: {
-      mt: "8px",
-      mb: "8px",
-      ml: "8px",
-      mr: "8px",
+      pt: "8px",
+      pb: "8px",
+      pl: "8px",
+      pr: "8px",
     },
     lg: {
-      mt: "12px",
-      mb: "12px",
-      ml: "12px",
-      mr: "12px",
+      pt: "12px",
+      pb: "12px",
+      pl: "12px",
+      pr: "12px",
     },
   },
 } as VariantArgs);
 
-const StyledFlexGridItem = styled(Flex)<StyledFlexGridItemProps>(
+const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
   gridItemGap,
 );
 
 export const Grid: FunctionComponent<GridProps> = ({
-  gap = "md",
   children,
+  gap = "md",
+  containerProps,
+  itemProps,
 }) => {
   const getResponsiveProp = useResponsive();
 
   const responsiveGap = getResponsiveProp(gap);
 
   return (
-    <StyledFlexGrid
-      gap={responsiveGap}>
+    <StyledFlexGridContainer
+      gap={responsiveGap}
+      sx={{
+        flexDirection: "row",
+        flexWrap: "wrap",
+      }}
+      {...containerProps}>
       {children?.map?.((child, index) => (
-        <StyledFlexGridItem
+        <StyledBoxListItem
           key={`grid-item-${index}`}
-          gap={responsiveGap}>
+          gap={responsiveGap}
+          {...itemProps}>
           {child}
-        </StyledFlexGridItem>
+        </StyledBoxListItem>
       ))}
-    </StyledFlexGrid>
+    </StyledFlexGridContainer>
   );
 };

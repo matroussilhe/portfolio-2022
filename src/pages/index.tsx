@@ -1,13 +1,13 @@
 import React from "react";
 
+import { GetStaticProps, NextPage } from "next";
+
+import { LayoutIndex } from "@components/templates/layout-index";
 import {
   getIndexPageDocument,
   IndexPageDocument,
   parseIndexPageDocument,
 } from "@utils";
-import { GetStaticProps, NextPage } from "next";
-
-import { LayoutIndex } from "@components/templates/layout-index";
 
 export type IndexProps = {
   document: IndexPageDocument;
@@ -35,6 +35,7 @@ const Index: NextPage<IndexProps> = ({ document, rawDocument }) => {
 
   return (
     <LayoutIndex
+      works={document.works}
       archives={document.archives}
     />
   );

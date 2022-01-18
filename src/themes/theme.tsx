@@ -179,9 +179,9 @@ export const theme = getTheme({
     thin: 100,
   },
   lineHeights: {
-    heading: 1.2,
+    heading: 1,
     body: 1.2,
-    label: 1.2,
+    label: 1,
   },
   letterSpacings: {
     heading: "normal",
