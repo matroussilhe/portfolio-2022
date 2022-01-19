@@ -64,7 +64,9 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             </Tag>
           ))}
         </Grid>
-        <Link href={archive.button.href} target={"_blank"}>
+        <Link
+          href={archive.button.href}
+          target={"_blank"}>
           <Button
             variant={"primary"}
             size={"md"}

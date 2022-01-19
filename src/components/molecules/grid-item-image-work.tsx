@@ -21,7 +21,8 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
 
   if (!isDoubleImage) {
     return (
-      <Link href={href}>
+      <Link
+        href={href}>
         <Box
           sx={{
             position: "relative",
@@ -33,8 +34,8 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
               position: "absolute",
               top: 0,
               bottom: 0,
-              right: 0,
               left: 0,
+              right: 0,
               width: "100%",
               alignItems: "center",
               justifyContent: "center",
@@ -52,7 +53,8 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
     );
   } else {
     return (
-      <Link href={href}>
+      <Link
+        href={href}>
         <Flex
           sx={{
             flexDirection: "column",
@@ -68,8 +70,8 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
                 position: "absolute",
                 top: 0,
                 bottom: 0,
-                right: 0,
                 left: 0,
+                right: 0,
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "flex-end",

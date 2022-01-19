@@ -16,7 +16,8 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = () => {
         alignItems: "center",
         justifyContent: "center",
       }}>
-      <Text variant={"heading1"}>
+      <Text
+        variant={"heading1"}>
         {"FOOTER"}
       </Text>
     </Flex>

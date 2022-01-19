@@ -4,7 +4,6 @@ import {
   Box,
   Flex,
   Grid,
-  Image,
   Tag,
   Text,
 } from "@components";
@@ -40,9 +39,10 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
           mb: 2,
           pl: 2,
         }}>
-        <Flex sx={{
-          alignItems: "center",
-        }}>
+        <Flex
+          sx={{
+            alignItems: "center",
+          }}>
           <Text
             variant={"body2"}
             sx={{
