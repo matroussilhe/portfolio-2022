@@ -30,6 +30,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
           mb: 2,
         }}>
         <GridItemImageWork
+          href={work.link}
           images={work.images}
         />
       </Box>
