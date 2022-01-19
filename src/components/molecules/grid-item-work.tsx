@@ -10,6 +10,8 @@ import {
 } from "@components";
 import { Work } from "@utils";
 
+import { GridItemImageWork } from "./grid-item-image-work";
+
 export type GridItemWorkProps = {
   work: Work;
 };
@@ -24,13 +26,11 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
       }}>
       <Box
         sx={{
-          backgroundColor: "palevioletred",
           width: ["col12.12"],
-          p: 10,
           mb: 2,
         }}>
-        <Image
-          src={work.images[0]}
+        <GridItemImageWork
+          images={work.images}
         />
       </Box>
       <Box

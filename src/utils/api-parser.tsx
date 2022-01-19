@@ -1,16 +1,13 @@
 import { helper } from "@utils";
 
-export type WorkButton = {
-  text: string;
-  href: string;
-};
+export type WorkImage = string;
 
 export type Work = {
   title: string;
   subtitle: string;
   link: string;
   tags: string[];
-  images: any[];
+  images: WorkImage[];
 };
 
 export type ArchiveButton = {
