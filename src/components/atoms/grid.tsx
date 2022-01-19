@@ -45,10 +45,10 @@ const gridGap = variant({
       mr: "-8px",
     },
     lg: {
-      mt: "-12px",
-      mb: "-12px",
-      ml: "-12px",
-      mr: "-12px",
+      mt: "-24px",
+      mb: "-24px",
+      ml: "-24px",
+      mr: "-24px",
     },
   },
 } as VariantArgs);
@@ -73,10 +73,10 @@ const gridItemGap = variant({
       pr: "8px",
     },
     lg: {
-      pt: "12px",
-      pb: "12px",
-      pl: "12px",
-      pr: "12px",
+      pt: "24px",
+      pb: "24px",
+      pl: "24px",
+      pr: "24px",
     },
   },
 } as VariantArgs);

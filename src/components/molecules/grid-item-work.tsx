@@ -36,7 +36,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
       <Box
         sx={{
           width: ["col12.12"],
-          mb: 5,
+          mb: 2,
           pl: 2,
         }}>
         <Flex sx={{
@@ -48,6 +48,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
               flex: "0 0 auto",
               mr: 1,
               fontWeight: "bold",
+              lineHeight: 1,
             }}>
             {work.title}
           </Text>
@@ -56,7 +57,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
             sx={{
               flex: "1 1 auto",
               whiteSpace: "pre-wrap",
-              lineHeight: 1.2,
+              lineHeight: 1,
             }}>
             {work.subtitle}
           </Text>

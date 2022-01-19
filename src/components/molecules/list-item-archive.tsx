@@ -19,7 +19,10 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex>
+    <Flex
+      sx={{
+        mx: 1,
+      }}>
       <Box
         sx={{
           width: ["col12.6"],
@@ -29,6 +32,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           sx={{
             mb: 2,
             fontWeight: "bold",
+            lineHeight: 1.2,
           }}>
           {archive.title}
         </Text>

@@ -27,12 +27,12 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
         sx={{
           width: ["100%"],
           px: [8],
-          mt: [10],
+          mt: [20],
         }}>
         <Text
           variant={"heading2"}
           sx={{
-            mb: 8,
+            mb: 10,
           }}>
           {title}
         </Text>
