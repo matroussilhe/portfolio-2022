@@ -27,7 +27,6 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
           sx={{
             position: "relative",
             pt: "56.25%",
-            cursor: "pointer",
           }}>
           <Flex
             sx={{
@@ -58,7 +57,6 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
         <Flex
           sx={{
             flexDirection: "column",
-            cursor: "pointer",
           }}>
           <Box
             sx={{

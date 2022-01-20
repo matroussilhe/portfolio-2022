@@ -56,6 +56,22 @@ export const theme = getTheme({
     248, // 31
     256, // 32
   ],
+  sizes: {
+    col12: {
+      1: "8.3333%",
+      2: "16.6666%",
+      3: "25%",
+      4: "33.3333%",
+      5: "41.6666%",
+      6: "50%",
+      7: "58.3333%",
+      8: "66.6666%",
+      9: "75%",
+      10: "83.3333%",
+      11: "91.6666%",
+      12: "100%",
+    },
+  },
   colors: {
     "primary-50": "#E0E0E0",
     "primary-100": "#B3B3B3",
@@ -271,6 +287,14 @@ export const theme = getTheme({
       color: "on-background",
     },
   },
+  links: {
+    default: {
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
+    },
+  },
   buttons: {
     default: {
       cursor: "pointer",
@@ -318,22 +342,6 @@ export const theme = getTheme({
         borderColor: "secondary-500",
         backgroundColor: "on-secondary-500",
       },
-    },
-  },
-  sizes: {
-    col12: {
-      1: "8.3333%",
-      2: "16.6666%",
-      3: "25%",
-      4: "33.3333%",
-      5: "41.6666%",
-      6: "50%",
-      7: "58.3333%",
-      8: "66.6666%",
-      9: "75%",
-      10: "83.3333%",
-      11: "91.6666%",
-      12: "100%",
     },
   },
 });

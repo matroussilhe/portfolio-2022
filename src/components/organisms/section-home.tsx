@@ -3,6 +3,7 @@ import React, { FunctionComponent } from "react";
 import {
   Box,
   Flex,
+  SectionFooterHome,
   Text,
 } from "@components";
 
@@ -42,58 +43,8 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
       <Flex
         sx={{
           height: "100px",
-          alignItems: "flex-end",
         }}>
-        <Box
-          sx={{
-            flex: "1 0 auto",
-          }}>
-          <Flex
-            sx={{
-              flexDirection: "column",
-            }}>
-            <Flex
-              sx={{
-                flex: "1 0 auto",
-                alignItems: "baseline",
-              }}>
-              <Text
-                variant={"label3"}
-                sx={{
-                  width: "64px",
-                }}>
-                {"EMAIL"}
-              </Text>
-              <Text>
-                {"Mathieu.roussilhe@gmail.com"}
-              </Text>
-            </Flex>
-            <Flex
-              sx={{
-                flex: "1 0 auto",
-                alignItems: "baseline",
-              }}>
-              <Text
-                variant={"label3"}
-                sx={{
-                  width: "64px",
-                }}>
-                {"SOCIAL"}
-              </Text>
-              <Text>
-                {"Linkedin, Instagram"}
-              </Text>
-            </Flex>
-          </Flex>
-        </Box>
-        <Box
-          sx={{
-            flex: "0 1 auto",
-          }}>
-          <Text>
-            {"14:20 New York City"}
-          </Text>
-        </Box>
+        <SectionFooterHome/>
       </Flex>
     </Flex>
   );
