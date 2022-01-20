@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react";
 import {
   Box,
   Flex,
-  Text,
+  IconClock,
   TextSocial,
 } from "@components";
 
@@ -60,9 +60,7 @@ export const SectionFooterHome: FunctionComponent<SectionFooterHomeProps> = () =
         sx={{
           flex: "0 1 auto",
         }}>
-        <Text>
-          {"14:20 New York City"}
-        </Text>
+        <IconClock/>
       </Box>
     </Flex>
   );

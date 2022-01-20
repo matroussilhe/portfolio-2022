@@ -23,6 +23,7 @@ export const Icon: FunctionComponent<IconProps> = ({
 
   const style = {
     color,
+    fontSize: 0,
   };
 
   const handleBeforeInjection = (svg: SVGSVGElement) => {

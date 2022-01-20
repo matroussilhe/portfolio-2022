@@ -11,6 +11,7 @@ export * from "./atoms/responsive";
 export * from "./atoms/tag";
 export * from "./atoms/text";
 export * from "./molecules/grid-item-work";
+export * from "./molecules/icon-clock";
 export * from "./molecules/icon-theme";
 export * from "./molecules/list-item-archive";
 export * from "./molecules/text-social";

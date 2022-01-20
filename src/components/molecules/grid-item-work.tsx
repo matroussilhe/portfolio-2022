@@ -41,7 +41,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
         }}>
         <Flex
           sx={{
-            alignItems: "center",
+            alignItems: "baseline",
           }}>
           <Text
             variant={"body2"}
