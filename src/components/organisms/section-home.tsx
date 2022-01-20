@@ -2,9 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import {
   Box,
-  Button,
   Flex,
-  IconTheme,
   Text,
 } from "@components";
 
@@ -24,32 +22,8 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
       <Flex
         sx={{
           height: "100px",
-          alignItems: "flex-start",
-        }}>
-        <Box
-          sx={{
-            flex: "1 0 auto",
-          }}>
-          <IconTheme/>
-        </Box>
-        <Box
-          sx={{
-            flex: "0 1 auto",
-          }}>
-          <Button
-            variant={"primary"}
-            size={"lg"}
-            shape={"round"}>
-            {"Works (4)"}
-          </Button>
-          <Button
-            variant={"primary"}
-            size={"lg"}
-            shape={"round"}>
-            {"Informations"}
-          </Button>
-        </Box>
-      </Flex>
+        }}
+      />
       <Flex
         sx={{
           flex: "1 0 auto",

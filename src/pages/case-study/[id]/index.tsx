@@ -3,10 +3,7 @@ import React from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { useRouter } from "next/router";
 
-import {
-  Flex,
-  Text,
-} from "@components";
+import { LayoutCaseStudy } from "@components";
 
 export type CaseStudyProps = {};
 
@@ -33,16 +30,9 @@ const CaseStudy: NextPage<CaseStudyProps> = ({}) => {
   const { id } = router.query;
 
   return (
-    <Flex
-      sx={{
-        height: "100vh",
-        alignItems: "center",
-        justifyContent: "center",
-      }}>
-      <Text>
-        {`${id} case study`}
-      </Text>
-    </Flex>
+    <LayoutCaseStudy
+      id={id as string}
+    />
   );
 };
 

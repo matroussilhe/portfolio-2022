@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import {
+  Header,
   SectionArchive,
   SectionFooter,
   SectionHome,
@@ -22,6 +23,9 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
 }) => {
   return (
     <Fragment>
+      <Header
+        workCount={works.length}
+      />
       <SectionHome/>
       <SectionWork
         title={"Selected Work"}

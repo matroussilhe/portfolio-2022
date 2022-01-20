@@ -31,8 +31,8 @@ const size = variant({
       fontWeight: "medium",
     },
     md: {
-      px: "60px",
-      py: "12px",
+      px: "64px",
+      py: "13px",
       fontSize: "body2",
       fontWeight: "medium",
     },
