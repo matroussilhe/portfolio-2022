@@ -1,6 +1,7 @@
 import { Theme as ThemeUITheme } from "theme-ui";
 
 export type Theme = typeof theme;
+export type ThemeColor = keyof typeof theme.colors;
 
 const getTheme = <T extends ThemeUITheme>(theme: T): T => theme;
 

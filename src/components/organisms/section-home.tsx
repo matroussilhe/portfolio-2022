@@ -1,19 +1,16 @@
 import React, { FunctionComponent } from "react";
 
-import { useColorMode } from "theme-ui";
-
 import {
   Box,
   Button,
   Flex,
+  IconTheme,
   Text,
 } from "@components";
 
 export type SectionHomeProps = {};
 
 export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
-  const [colorMode, setColorMode] = useColorMode();
-
   const title = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
 
   return (
@@ -33,13 +30,7 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
           sx={{
             flex: "1 0 auto",
           }}>
-          <Button
-            variant={"primary"}
-            size={"lg"}
-            shape={"round"}
-            onClick={() => setColorMode(colorMode === "light" ? "dark" : "light")}>
-            {"Change theme"}
-          </Button>
+          <IconTheme/>
         </Box>
         <Box
           sx={{
