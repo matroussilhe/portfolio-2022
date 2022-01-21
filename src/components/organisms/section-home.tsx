@@ -1,17 +1,14 @@
 import React, { FunctionComponent } from "react";
 
 import {
-  Box,
   Flex,
   SectionFooterHome,
-  Text,
+  SectionIntroductionHome,
 } from "@components";
 
 export type SectionHomeProps = {};
 
 export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
-  const title = "어이 Hello, I'm Mathieu a full stack developer building something special and mostly foucs on these technologies. I'm currently fully employed at QMIT Inc. | 저는 웹 개발자입니다. and live in SEOUL KOREA.";
-
   return (
     <Flex
       sx={{
@@ -28,17 +25,8 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
       <Flex
         sx={{
           flex: "1 0 auto",
-          alignItems: "center",
         }}>
-        <Box
-          sx={{
-            px: [8],
-          }}>
-          <Text
-            variant={"heading3"}>
-            {title}
-          </Text>
-        </Box>
+        <SectionIntroductionHome/>
       </Flex>
       <Flex
         sx={{
