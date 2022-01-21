@@ -5,6 +5,7 @@ import {
   Button,
   Flex,
   IconTheme,
+  Link,
 } from "@components";
 
 export type HeaderProps = {
@@ -46,12 +47,15 @@ export const Header: FunctionComponent<HeaderProps> = ({
           }}>
           {`Works (${workCount})`}
         </Button>
-        <Button
-          variant={"primary"}
-          size={"md"}
-          shape={"round"}>
-          {"Informations"}
-        </Button>
+        <Link
+          href={"/about"}>
+          <Button
+            variant={"primary"}
+            size={"md"}
+            shape={"round"}>
+            {"Informations"}
+          </Button>
+        </Link>
       </Box>
     </Flex>
   );

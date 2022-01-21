@@ -21,5 +21,6 @@ export * from "./organisms/section-footer";
 export * from "./organisms/section-footer-home";
 export * from "./organisms/section-home";
 export * from "./organisms/section-work";
+export * from "./templates/layout-about";
 export * from "./templates/layout-case-study";
 export * from "./templates/layout-index";
