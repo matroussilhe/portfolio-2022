@@ -31,6 +31,7 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
         sx={{
           width: "64px",
           fontWeight: "bold",
+          color: "on-surface",
         }}>
         {label}
       </Text>
@@ -48,6 +49,7 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
                 mr: !isLast ? 1 : 0,
                 fontFamily: "body",
                 fontWeight: "bold",
+                color: "on-surface",
               }}>
               {link.text}{!isLast ? "," : ""}
             </Text>

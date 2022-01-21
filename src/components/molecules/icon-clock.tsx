@@ -93,13 +93,14 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
       <Icon
         src={"/images/circle.svg"}
         size={"20px"}
-        color={"on-background"}
+        color={"on-surface"}
       />
       <Text
         variant={"label2"}
         sx={{
           ml: 1,
           fontWeight: "light",
+          color: "on-surface",
         }}>
         {`${item.time} ${item.city}`}
       </Text>

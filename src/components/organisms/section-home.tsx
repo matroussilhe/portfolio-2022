@@ -15,7 +15,7 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
         width: "100%",
         height: "100vh",
         flexDirection: "column",
-        backgroundColor: "#F2F2F2", // TODO: add color to theme (color/on-color pair)
+        backgroundColor: "surface",
       }}>
       <Flex
         sx={{

@@ -25,7 +25,7 @@ export const IconTheme: FunctionComponent<IconThemeProps> = () => {
       <Icon
         src={"/images/circle.svg"}
         size={"20px"}
-        color={"on-background"}
+        color={"on-surface"}
       />
     </Box>
   );
