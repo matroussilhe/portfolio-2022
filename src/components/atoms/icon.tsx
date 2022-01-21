@@ -3,6 +3,7 @@ import { Props as ReactSVGProps, ReactSVG } from "react-svg";
 
 import { ResponsiveStyleValue } from "theme-ui";
 
+import { Box } from "@components";
 import { useResponsive } from "@hooks";
 import { ThemeColor } from "@themes";
 
@@ -22,7 +23,7 @@ export const Icon: FunctionComponent<IconProps> = ({
   const responsiveSize = getResponsiveProp(size);
 
   const style = {
-    color,
+    color: "inherit",
     fontSize: 0,
   };
 
@@ -36,10 +37,15 @@ export const Icon: FunctionComponent<IconProps> = ({
   };
 
   return (
-    <ReactSVG
-      src={src}
-      style={style}
-      beforeInjection={(handleBeforeInjection)}
-    />
+    <Box
+      sx={{
+        color: color,
+      }}>
+      <ReactSVG
+        src={src}
+        style={style}
+        beforeInjection={(handleBeforeInjection)}
+      />
+    </Box>
   );
 };
