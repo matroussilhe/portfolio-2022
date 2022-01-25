@@ -44,7 +44,7 @@ const getTime = (mode: IconClockMode) => {
 
 const getCity = (mode: IconClockMode) => {
   if (mode === "en") {
-    return "New York City";
+    return "NEW YORK CITY";
   } else {
     return "서울";
   }
@@ -99,7 +99,7 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
         variant={"label2"}
         sx={{
           ml: 1,
-          fontWeight: "light",
+          fontWeight: "medium",
           color: "on-surface",
         }}>
         {`${item.time} ${item.city}`}
