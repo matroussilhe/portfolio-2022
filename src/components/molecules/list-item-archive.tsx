@@ -2,9 +2,9 @@ import React, { FunctionComponent } from "react";
 
 import {
   Box,
-  Button,
   Flex,
   Grid,
+  Icon,
   Link,
   Tag,
   Text,
@@ -19,25 +19,38 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
   archive,
 }) => {
   return (
-    <Flex
-      sx={{
-        mx: 1,
-      }}>
+    <Flex>
       <Box
         sx={{
-          width: ["col12.6"],
+          width: ["col12.1"],
         }}>
         <Text
           variant={"body2"}
           sx={{
-            mb: 2,
             fontWeight: "bold",
-            lineHeight: 1.2,
+          }}>
+          {archive.date}
+        </Text>
+      </Box>
+      <Box
+        sx={{
+          width: ["col12.1"],
+        }}>
+        <Text
+          variant={"body2"}
+          sx={{
+            fontWeight: "bold",
           }}>
           {archive.title}
         </Text>
+      </Box>
+      <Box
+        sx={{
+          width: ["col12.6"],
+          px: 8,
+        }}>
         <Text
-          variant={"body3"}
+          variant={"label1"}
           sx={{
             whiteSpace: "pre-wrap",
             lineHeight: 1.2,
@@ -45,11 +58,6 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           {archive.description}
         </Text>
       </Box>
-      <Box
-        sx={{
-          width: ["col12.3"],
-        }}
-      />
       <Box
         sx={{
           width: ["col12.3"],
@@ -64,20 +72,26 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             </Tag>
           ))}
         </Grid>
+      </Box>
+      <Box
+        sx={{
+          width: ["col12.1"],
+        }}>
         {archive.link &&
+        <Flex
+          sx={{
+            justifyContent: "flex-end",
+          }}>
           <Link
             href={archive.link}
             target={"_blank"}>
-            <Button
-              variant={"primary"}
-              size={"md"}
-              shape={"round"}
-              sx={{
-                mt: 6,
-              }}>
-              {"icon"}
-            </Button>
+            <Icon
+              src={"/images/arrow.svg"}
+              size={"16px"}
+              color={"on-background"}
+            />
           </Link>
+        </Flex>
         }
       </Box>
     </Flex>

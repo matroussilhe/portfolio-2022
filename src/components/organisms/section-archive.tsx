@@ -25,16 +25,17 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
         sx={{
           width: ["100%"],
           px: [8],
-          mt: [8],
+          mt: [20],
         }}>
         <TextSectionTitle
           title={"Archive"}
           subtitle={"(EXTERNAL LINKS)"}
         />
         <List
-          gap={"lg"}
+          gap={"md"}
           containerSx={{
             mt: 6,
+            px: 2,
           }}>
           {archives.map((archive, index) => (
             <ListItemArchive

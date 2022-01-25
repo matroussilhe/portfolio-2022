@@ -1,0 +1,16 @@
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  version="1.0"
+  width="64.000000pt"
+  height="64.000000pt"
+  viewBox="0 0 64.000000 64.000000"
+  fill="currentcolor">
+  <g
+    transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+    fill="currentcolor"
+    stroke="none">
+    <path
+      d="M130 575 l0 -65 142 0 143 0 -208 -208 -207 -207 47 -48 48 -47 207 207 208 208 0 -143 0 -142 65 0 65 0 0 255 0 255 -255 0 -255 0 0 -65z"
+    />
+  </g>
+</svg>

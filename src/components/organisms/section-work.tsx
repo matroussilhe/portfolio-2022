@@ -35,6 +35,7 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
           gap={"lg"}
           containerSx={{
             mt: 10,
+            px: 2,
           }}
           itemSx={{
             width: ["col12.6"],
