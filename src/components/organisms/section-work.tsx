@@ -5,17 +5,15 @@ import {
   Flex,
   Grid,
   GridItemWork,
-  Text,
+  TextSectionTitle,
 } from "@components";
 import { Work } from "@utils";
 
 export type SectionWorkProps = {
-  title: string;
   works: Work[];
 };
 
 export const SectionWork: FunctionComponent<SectionWorkProps> = ({
-  title,
   works,
 }) => {
   return (
@@ -29,19 +27,17 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
           px: [8],
           mt: [20],
         }}>
-        <Text
-          variant={"heading2"}
-          sx={{
-            mb: 10,
-          }}>
-          {title}
-        </Text>
+        <TextSectionTitle
+          title={"Selected Work"}
+          subtitle={"(CASE STUDIES)"}
+        />
         <Grid
           gap={"lg"}
-          itemProps={{
-            sx: {
-              width: ["col12.6"],
-            },
+          containerSx={{
+            mt: 10,
+          }}
+          itemSx={{
+            width: ["col12.6"],
           }}>
           {works.map((work, index) => (
             <GridItemWork

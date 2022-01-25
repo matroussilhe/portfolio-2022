@@ -2,7 +2,7 @@ import React, { FunctionComponent, ReactNode } from "react";
 
 import styled from "@emotion/styled";
 import { variant, VariantArgs } from "styled-system";
-import { ResponsiveStyleValue } from "theme-ui";
+import { ResponsiveStyleValue, ThemeUIStyleObject } from "theme-ui";
 
 import {
   Box,
@@ -17,8 +17,8 @@ export type GridGap = "sm" | "md" | "lg";
 export type GridProps = {
   children: ReactNode[];
   gap?: ResponsiveStyleValue<GridGap>;
-  containerProps?: FlexProps;
-  itemProps?: BoxProps;
+  containerSx?: ThemeUIStyleObject;
+  itemSx?: ThemeUIStyleObject;
 };
 
 type StyledFlexGridContainerProps = FlexProps & {
@@ -88,8 +88,8 @@ const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
 export const Grid: FunctionComponent<GridProps> = ({
   children,
   gap = "md",
-  containerProps,
-  itemProps,
+  containerSx,
+  itemSx,
 }) => {
   const getResponsiveProp = useResponsive();
 
@@ -101,13 +101,15 @@ export const Grid: FunctionComponent<GridProps> = ({
       sx={{
         flexDirection: "row",
         flexWrap: "wrap",
-      }}
-      {...containerProps}>
+        ...containerSx,
+      }}>
       {children?.map?.((child, index) => (
         <StyledBoxListItem
           key={`grid-item-${index}`}
           gap={responsiveGap}
-          {...itemProps}>
+          sx={{
+            ...itemSx,
+          }}>
           {child}
         </StyledBoxListItem>
       ))}

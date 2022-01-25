@@ -64,19 +64,21 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             </Tag>
           ))}
         </Grid>
-        <Link
-          href={archive.button.href}
-          target={"_blank"}>
-          <Button
-            variant={"primary"}
-            size={"md"}
-            shape={"round"}
-            sx={{
-              mt: 6,
-            }}>
-            {archive.button.text}
-          </Button>
-        </Link>
+        {archive.link &&
+          <Link
+            href={archive.link}
+            target={"_blank"}>
+            <Button
+              variant={"primary"}
+              size={"md"}
+              shape={"round"}
+              sx={{
+                mt: 6,
+              }}>
+              {"icon"}
+            </Button>
+          </Link>
+        }
       </Box>
     </Flex>
   );

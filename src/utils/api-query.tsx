@@ -6,7 +6,7 @@ export const getIndexPageDocument = async () => {
 
     return document;
   } catch (error) {
-    console.error(error);
+    console.error("query error: ", error);
 
     return null;
   }

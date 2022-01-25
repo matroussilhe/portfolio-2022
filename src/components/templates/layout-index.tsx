@@ -28,11 +28,9 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
       />
       <SectionHome/>
       <SectionWork
-        title={"Selected Work"}
         works={works}
       />
       <SectionArchive
-        title={"Archive"}
         archives={archives}
       />
       <SectionFooter/>

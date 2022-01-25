@@ -5,17 +5,15 @@ import {
   Flex,
   List,
   ListItemArchive,
-  Text,
+  TextSectionTitle,
 } from "@components";
 import { Archive } from "@utils";
 
 export type SectionArchiveProps = {
-  title: string;
   archives: Archive[];
 };
 
 export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
-  title,
   archives,
 }) => {
   return (
@@ -29,15 +27,15 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
           px: [8],
           mt: [8],
         }}>
-        <Text
-          variant={"heading2"}
-          sx={{
-            mb: 6,
-          }}>
-          {title}
-        </Text>
+        <TextSectionTitle
+          title={"Archive"}
+          subtitle={"(EXTERNAL LINKS)"}
+        />
         <List
-          gap={"lg"}>
+          gap={"lg"}
+          containerSx={{
+            mt: 6,
+          }}>
           {archives.map((archive, index) => (
             <ListItemArchive
               key={`list-item-archive-${index}`}

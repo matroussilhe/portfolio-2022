@@ -11,11 +11,13 @@ import { WorkImage } from "@utils";
 export type GridItemImageWorkProps = {
   href: string;
   images: WorkImage[];
+  color: string;
 };
 
 export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
   href,
   images,
+  color,
 }) => {
   const isDoubleImage = images[0] && images[1];
 
@@ -38,7 +40,7 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
               width: "100%",
               alignItems: "center",
               justifyContent: "center",
-              backgroundColor: "palevioletred",
+              backgroundColor: color,
             }}>
             <Image
               src={images[0]}
@@ -73,7 +75,7 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "flex-end",
-                backgroundColor: "palevioletred",
+                backgroundColor: color,
               }}>
               <Image
                 src={images[0]}
@@ -99,7 +101,7 @@ export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
                 width: "100%",
                 alignItems: "center",
                 justifyContent: "flex-start",
-                backgroundColor: "palevioletred",
+                backgroundColor: color,
               }}>
               <Image
                 src={images[1]}
