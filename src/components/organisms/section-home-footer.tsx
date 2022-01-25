@@ -7,9 +7,9 @@ import {
   TextSocial,
 } from "@components";
 
-export type SectionFooterHomeProps = {};
+export type SectionHomeFooterProps = {};
 
-export const SectionFooterHome: FunctionComponent<SectionFooterHomeProps> = () => {
+export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = () => {
   return (
     <Flex
       sx={{

@@ -2,8 +2,8 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
-  SectionFooterHome,
-  SectionIntroductionHome,
+  SectionHomeFooter,
+  SectionHomeIntroduction,
 } from "@components";
 
 export type SectionHomeProps = {};
@@ -26,13 +26,13 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
         sx={{
           flex: "1 0 auto",
         }}>
-        <SectionIntroductionHome/>
+        <SectionHomeIntroduction/>
       </Flex>
       <Flex
         sx={{
           height: "100px",
         }}>
-        <SectionFooterHome/>
+        <SectionHomeFooter/>
       </Flex>
     </Flex>
   );

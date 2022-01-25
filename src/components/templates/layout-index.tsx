@@ -24,6 +24,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
   return (
     <Fragment>
       <Header
+        iconColor={"on-surface"}
         workCount={works.length}
       />
       <SectionHome/>

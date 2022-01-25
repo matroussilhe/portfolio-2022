@@ -6,9 +6,9 @@ import {
   TextAnimated,
 } from "@components";
 
-export type SectionIntroductionHomeProps = {};
+export type SectionHomeIntroductionProps = {};
 
-export const SectionIntroductionHome: FunctionComponent<SectionIntroductionHomeProps> = () => {
+export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionProps> = () => {
   return (
     <Flex
       sx={{
@@ -19,13 +19,13 @@ export const SectionIntroductionHome: FunctionComponent<SectionIntroductionHomeP
           px: [8],
         }}>
         <TextAnimated>
-          {"아이 Hello, I’m Mathieu a full stack developer"}
+          {"아이 Hello, I'm Mathieu a full stack developer"}
         </TextAnimated>
         <TextAnimated>
           {"building something special and mostly"}
         </TextAnimated>
         <TextAnimated>
-          {"focus on these technologies. I’m currently"}
+          {"focus on these technologies. I'm currently"}
         </TextAnimated>
         <TextAnimated>
           {"fully employed at QMIT Inc. | 저는 웹 개발자"}

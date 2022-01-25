@@ -7,9 +7,13 @@ import {
   Icon,
 } from "@components";
 
-export type IconThemeProps = {};
+export type IconThemeProps = {
+  color?: string;
+};
 
-export const IconTheme: FunctionComponent<IconThemeProps> = () => {
+export const IconTheme: FunctionComponent<IconThemeProps> = ({
+  color,
+}) => {
   const [colorMode, setColorMode] = useColorMode();
 
   const handleClick = () => {
@@ -25,7 +29,7 @@ export const IconTheme: FunctionComponent<IconThemeProps> = () => {
       <Icon
         src={"/images/circle.svg"}
         size={"20px"}
-        color={"on-surface"}
+        color={color}
       />
     </Box>
   );

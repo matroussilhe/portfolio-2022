@@ -9,10 +9,12 @@ import {
 } from "@components";
 
 export type HeaderProps = {
+  iconColor: string;
   workCount: number;
 };
 
 export const Header: FunctionComponent<HeaderProps> = ({
+  iconColor,
   workCount,
 }) => {
   return (
@@ -29,7 +31,9 @@ export const Header: FunctionComponent<HeaderProps> = ({
         sx={{
           flex: "1 0 auto",
         }}>
-        <IconTheme/>
+        <IconTheme
+          color={iconColor}
+        />
       </Box>
       <Box
         sx={{
