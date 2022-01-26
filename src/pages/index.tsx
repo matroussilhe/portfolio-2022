@@ -7,7 +7,7 @@ import {
   getIndexPageDocument,
   IndexPageDocument,
   parseIndexPageDocument,
-} from "@utils";
+} from "@services";
 
 export type IndexProps = {
   document: IndexPageDocument;

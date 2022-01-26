@@ -7,7 +7,7 @@ import {
   Tag,
   Text,
 } from "@components";
-import { Work } from "@utils";
+import { Work } from "@services";
 
 import { GridItemImageWork } from "./grid-item-image-work";
 

@@ -9,7 +9,7 @@ import {
   Tag,
   Text,
 } from "@components";
-import { Archive } from "@utils";
+import { Archive } from "@services";
 
 export type ListItemArchiveProps = {
   archive: Archive;

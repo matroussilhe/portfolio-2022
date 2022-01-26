@@ -7,7 +7,7 @@ import {
   ListItemArchive,
   TextSectionTitle,
 } from "@components";
-import { Archive } from "@utils";
+import { Archive } from "@services";
 
 export type SectionArchiveProps = {
   archives: Archive[];

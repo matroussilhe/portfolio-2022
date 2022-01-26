@@ -16,6 +16,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
   return (
     <Fragment>
       <Header
+        iconColor={"on-surface"}
         workCount={4}
       />
       <Flex

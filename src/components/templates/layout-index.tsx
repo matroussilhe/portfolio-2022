@@ -10,7 +10,7 @@ import {
 import {
   Archive,
   Work,
-} from "@utils";
+} from "@services";
 
 export type LayoutIndexProps = {
   works: Work[];

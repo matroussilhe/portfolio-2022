@@ -7,7 +7,7 @@ import {
   GridItemWork,
   TextSectionTitle,
 } from "@components";
-import { Work } from "@utils";
+import { Work } from "@services";
 
 export type SectionWorkProps = {
   works: Work[];

@@ -6,7 +6,7 @@ import {
   Image,
   Link,
 } from "@components";
-import { WorkImage } from "@utils";
+import { WorkImage } from "@services";
 
 export type GridItemImageWorkProps = {
   href: string;

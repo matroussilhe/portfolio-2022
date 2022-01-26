@@ -44,6 +44,12 @@
       "@providers/*": [
         "./src/providers/*"
       ],
+      "@services": [
+        "./src/services"
+      ],
+      "@services/*": [
+        "./src/services/*"
+      ],
       "@styles": [
         "./src/styles"
       ],
@@ -55,12 +61,6 @@
       ],
       "@themes/*": [
         "./src/themes/*"
-      ],
-      "@utils": [
-        "./src/utils"
-      ],
-      "@utils/*": [
-        "./src/utils/*"
       ]
     }
   },
