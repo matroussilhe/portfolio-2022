@@ -4,12 +4,11 @@ import {
   Box,
   Flex,
   Grid,
+  GridItemWorkImage,
   Tag,
   Text,
 } from "@components";
 import { Work } from "@services";
-
-import { GridItemImageWork } from "./grid-item-image-work";
 
 export type GridItemWorkProps = {
   work: Work;
@@ -28,7 +27,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
           width: ["col12.12"],
           mb: 2,
         }}>
-        <GridItemImageWork
+        <GridItemWorkImage
           href={work.link}
           images={work.images}
           color={work.color}

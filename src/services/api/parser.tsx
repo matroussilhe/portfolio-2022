@@ -57,9 +57,9 @@ export type Social = SocialItem[];
 export type AboutPageDocument = {
   bio: Bio;
   expertise: Expertise;
-  skills: Skill[];
-  interests: Skill[];
-  socials: Social[];
+  skills: Skill[]; // TODO: find a better name to inform about array structure (e.g. skills/SkillArray[])
+  interests: Interest[]; // TODO: find a better name to inform about array structure (e.g. interests/InterestArray[])
+  socials: Social[]; // TODO: find a better name to inform about array structure (e.g. socials/SocialArray[])
 };
 
 const parseGroupItem = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {

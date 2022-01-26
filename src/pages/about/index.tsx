@@ -34,7 +34,13 @@ const About: NextPage<AboutProps> = ({ document, rawDocument }) => {
   console.log("raw document : ", rawDocument);
 
   return (
-    <LayoutAbout/>
+    <LayoutAbout
+      bio={document.bio}
+      expertise={document.expertise}
+      skills={document.skills}
+      interests={document.interests}
+      socials={document.socials}
+    />
   );
 };
 

@@ -8,13 +8,13 @@ import {
 } from "@components";
 import { WorkImage } from "@services";
 
-export type GridItemImageWorkProps = {
+export type GridItemWorkImageProps = {
   href: string;
   images: WorkImage[];
   color: string;
 };
 
-export const GridItemImageWork: FunctionComponent<GridItemImageWorkProps> = ({
+export const GridItemWorkImage: FunctionComponent<GridItemWorkImageProps> = ({
   href,
   images,
   color,

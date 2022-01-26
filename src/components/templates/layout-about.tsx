@@ -6,10 +6,29 @@ import {
   SectionInformation,
   SectionPhoto,
 } from "@components";
+import {
+  Bio,
+  Expertise,
+  Interest,
+  Skill,
+  Social,
+} from "@services";
 
-export type LayoutAboutProps = {};
+export type LayoutAboutProps = {
+  bio: Bio;
+  expertise: Expertise;
+  skills: Skill[];
+  interests: Interest[];
+  socials: Social[];
+};
 
-export const LayoutAbout: FunctionComponent<LayoutAboutProps> = () => {
+export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
+  bio,
+  expertise,
+  skills,
+  interests,
+  socials,
+}) => {
   return (
     <Fragment>
       <Header
@@ -18,7 +37,13 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = () => {
       />
       <Flex>
         <SectionPhoto/>
-        <SectionInformation/>
+        <SectionInformation
+          bio={bio}
+          expertise={expertise}
+          skills={skills}
+          interests={interests}
+          socials={socials}
+        />
       </Flex>
     </Fragment>
   );

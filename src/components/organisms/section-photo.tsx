@@ -11,7 +11,6 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = () => {
     <Flex
       sx={{
         width: ["col12.6"],
-        height: "100vh",
         backgroundColor: "#323F94", // TODO: add color to theme
       }}
     />
