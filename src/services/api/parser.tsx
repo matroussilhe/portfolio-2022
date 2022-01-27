@@ -9,7 +9,8 @@ export type Work = {
   date: string;
   tags: string[];
   images: WorkImage[];
-  color: string;
+  colorLight: string;
+  colorDark: string;
   link: string;
 };
 
@@ -104,7 +105,8 @@ export const parseIndexPageDocument = (document: any): IndexPageDocument => {
             item.primary?.first_image?.url || null,
             item.primary?.second_image?.url || null,
           ],
-          color: item.primary.color,
+          colorLight: item.primary.color_light,
+          colorDark: item.primary.color_dark,
           link: item.primary.link,
         });
       } else if (item.slice_type === "archive") {
@@ -151,8 +153,12 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
 
       return acc;
     }, {
-      bio: { description: "" },
-      expertise: { description: "" },
+      bio: {
+        description: "",
+      },
+      expertise: {
+        description: "",
+      },
       skills: [],
       interests: [],
       socials: [],
@@ -163,8 +169,12 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
     console.error("parseAboutPageDocument error: ", error);
 
     return {
-      bio: { description: "" },
-      expertise: { description: "" },
+      bio: {
+        description: "",
+      },
+      expertise: {
+        description: "",
+      },
       skills: [],
       interests: [],
       socials: [],

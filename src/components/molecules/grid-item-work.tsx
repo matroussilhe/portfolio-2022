@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react";
 
+import { useColorMode } from "theme-ui";
+
 import {
   Box,
   Flex,
@@ -17,6 +19,8 @@ export type GridItemWorkProps = {
 export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
   work,
 }) => {
+  const [colorMode] = useColorMode();
+
   return (
     <Flex
       sx={{
@@ -30,7 +34,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
         <GridItemWorkImage
           href={work.link}
           images={work.images}
-          color={work.color}
+          color={colorMode === "light" ? work.colorLight : work.colorDark}
         />
       </Box>
       <Box
