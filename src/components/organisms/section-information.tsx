@@ -83,7 +83,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         {"실력_SKILLS"}
       </Text>
       <Grid
-        gap={"sm"}
+        gap={"lg"}
         containerSx={{
           mb: 12,
         }}
