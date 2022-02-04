@@ -39,15 +39,18 @@ export const Header: FunctionComponent<HeaderProps> = ({
         sx={{
           flex: "0 1 auto",
         }}>
-        <Button
-          variant={"primary"}
-          size={"md"}
-          shape={"round"}
-          sx={{
-            mr: 3,
-          }}>
-          {`Works (${workCount})`}
-        </Button>
+        <Link
+          href={"/"}>
+          <Button
+            variant={"primary"}
+            size={"md"}
+            shape={"round"}
+            sx={{
+              mr: 3,
+            }}>
+            {`Works (${workCount})`}
+          </Button>
+        </Link>
         <Link
           href={"/about"}>
           <Button
