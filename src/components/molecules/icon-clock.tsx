@@ -5,81 +5,152 @@ import {
   Icon,
   Text,
 } from "@components";
+import {
+  get,
+} from "@services";
 
-export type IconClockMode = "en" | "ko";
+export type GeolocationData = {
+  city: string;
+  timezone: string;
+};
+
+export type IconClockMode = "local" | "other";
 
 export type IconClockProps = {};
 
-const getNewYorkTime = () => {
-  return Intl
-    .DateTimeFormat(
-      "en-US",
-      {
-        timeZone: "America/New_York",
-        timeStyle: "short",
-      },
-    )
-    .format(new Date());
+const getGeolocationData = async (): Promise<GeolocationData | undefined> => {
+  const response = await get("http://ip-api.com/json/?fields=status,city,timezone");
+
+  if (response?.status === "success") {
+    return {
+      timezone: response.timezone,
+      city: response.city,
+    };
+  } else {
+    return undefined;
+  }
 };
 
-const getSeoulTime = () => {
+const getOtherTime = () => {
   return Intl
     .DateTimeFormat(
       "ko-KR",
       {
         timeZone: "Asia/Seoul",
-        timeStyle: "short",
+        hourCycle: "h23",
+        hour: "2-digit",
+        minute: "2-digit",
       },
     )
     .format(new Date());
 };
 
-const getTime = (mode: IconClockMode) => {
-  if (mode === "en") {
-    return getNewYorkTime();
+const getOtherCity = () => {
+  return "서울";
+};
+
+const getFallbackTime = () => {
+  return Intl
+    .DateTimeFormat(
+      "en-US",
+      {
+        timeZone: "America/New_York",
+        hourCycle: "h23",
+        hour: "2-digit",
+        minute: "2-digit",
+      },
+    )
+    .format(new Date());
+};
+
+const getFallbackCity = () => {
+  return "NEW YORK CITY";
+};
+
+const getLocalTime = (data: GeolocationData | undefined) => {
+  if (!data?.timezone) {
+    return getFallbackTime();
+  }
+
+  return Intl
+    .DateTimeFormat(
+      "en-US",
+      {
+        timeZone: data.timezone,
+        hourCycle: "h23",
+        hour: "2-digit",
+        minute: "2-digit",
+      },
+    )
+    .format(new Date());
+};
+
+const getLocalCity = (data: GeolocationData | undefined) => {
+  if (!data?.city) {
+    return getFallbackCity();
+  }
+
+  return data.city.toUpperCase();
+};
+
+const getTime = (mode: IconClockMode, data?: GeolocationData) => {
+  if (mode === "local") {
+    return getLocalTime(data);
   } else {
-    return getSeoulTime();
+    return getOtherTime();
   }
 };
 
-const getCity = (mode: IconClockMode) => {
-  if (mode === "en") {
-    return "NEW YORK CITY";
+const getCity = (mode: IconClockMode, data?: GeolocationData) => {
+  if (mode === "local") {
+    return getLocalCity(data);
   } else {
-    return "서울";
+    return getOtherCity();
   }
-};
-
-const getItem = (mode: IconClockMode) => {
-  return {
-    time: getTime(mode),
-    city: getCity(mode),
-  };
 };
 
 export const IconClock: FunctionComponent<IconClockProps> = () => {
-  const [mode, setMode] = useState<IconClockMode>("en");
-  const [item, setItem] = useState(getItem(mode));
+  const [data, setData] = useState<GeolocationData>();
+  const [mode, setMode] = useState<IconClockMode>("local");
+  const [time, setTime] = useState<string>("");
+  const [city, setCity] = useState<string>("");
 
+  // request geolocation data
+  useEffect(() => {
+    async function getData() {
+      const data = await getGeolocationData();
+
+      setData(data);
+      setTime(getLocalTime(data));
+      setCity(getLocalCity(data));
+    }
+
+    getData();
+  }, []);
+
+  // update time every second
   useEffect(() => {
     const id = setInterval(() => {
-      setItem(getItem(mode));
+      setTime(getTime(mode, data));
     }, 1000);
 
     return () => clearInterval(id);
-  }, [mode]);
+  }, [mode, data]);
 
+  // change mode on click
   const handleClick = () => {
-    if (mode === "en") {
-      const newMode = "ko";
+    if (mode === "local") {
+      const newMode = "other";
 
       setMode(newMode);
-      setItem(getItem(newMode));
+      setTime(getTime(newMode));
+      setCity(getCity(newMode));
     } else {
-      const newMode = "en";
+      const newMode = "local";
 
       setMode(newMode);
-      setItem(getItem(newMode));
+      setTime(getTime(newMode, data));
+      setCity(getCity(newMode, data));
     }
   };
 
@@ -102,7 +173,7 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
           fontWeight: "medium",
           color: "on-surface",
         }}>
-        {`${item.time} ${item.city}`}
+        {`${time} ${city}`}
       </Text>
     </Flex>
   );
