@@ -23,7 +23,7 @@ export const GridItemInformationText: FunctionComponent<GridItemInformationTextP
           key={`grid-item-information-text-${index}`}
           variant={"heading5"}
           sx={{
-            mb: 1,
+            mb: 2,
           }}>
           {item.text}
         </Text>

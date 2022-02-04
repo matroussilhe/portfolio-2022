@@ -24,7 +24,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
         top: 0,
         left: 0,
         width: "100%",
-        pt: 4,
+        pt: 3,
         px: 6,
       }}>
       <Box
@@ -46,7 +46,7 @@ export const Header: FunctionComponent<HeaderProps> = ({
             size={"md"}
             shape={"round"}
             sx={{
-              mr: 3,
+              mr: 2,
             }}>
             {`Works (${workCount})`}
           </Button>

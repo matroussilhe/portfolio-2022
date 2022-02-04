@@ -24,7 +24,7 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
       <Box
         sx={{
           width: ["100%"],
-          px: [8],
+          px: [6],
           mt: [20],
         }}>
         <TextSectionTitle
@@ -34,8 +34,7 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
         <Grid
           gap={"lg"}
           containerSx={{
-            mt: 10,
-            px: 2,
+            pt: 15,
           }}
           itemSx={{
             width: ["col12.6"],

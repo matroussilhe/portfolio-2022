@@ -29,7 +29,7 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
           target={"_blank"}>
           <Flex
             sx={{
-              mb: 1,
+              mb: 2,
               alignItems: "flex-start",
             }}>
             <Text
@@ -41,7 +41,7 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
             </Text>
             <Icon
               src={"/images/arrow.svg"}
-              size={"12px"}
+              size={"14px"}
               color={"on-background"}
             />
           </Flex>

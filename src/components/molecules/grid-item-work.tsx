@@ -29,7 +29,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
       <Box
         sx={{
           width: ["col12.12"],
-          mb: 2,
+          mb: 3,
         }}>
         <GridItemWorkImage
           href={work.link}

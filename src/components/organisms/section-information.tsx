@@ -36,14 +36,15 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         width: ["col12.6"],
         backgroundColor: "background",
         flexDirection: "column",
-        py: 20,
-        px: 8,
+        pt: 25,
+        pb: 10,
+        px: 10,
       }}>
       <Text
         variant={"body2"}
         sx={{
           ml: 4,
-          mb: 8,
+          mb: 5,
           fontWeight: "black",
         }}>
         {"전기_BIO"}
@@ -60,7 +61,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body2"}
         sx={{
           ml: 4,
-          mb: 8,
+          mb: 5,
           fontWeight: "black",
         }}>
         {"전문지식_EXPERTISE"}
@@ -77,15 +78,15 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body2"}
         sx={{
           ml: 4,
-          mb: 8,
+          mb: 5,
           fontWeight: "black",
         }}>
         {"실력_SKILLS"}
       </Text>
       <Grid
-        gap={"lg"}
+        gap={"md"}
         containerSx={{
-          mb: 12,
+          pb: 12,
         }}
         itemSx={{
           width: ["col12.6"],
@@ -101,15 +102,15 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body2"}
         sx={{
           ml: 4,
-          mb: 8,
+          mb: 5,
           fontWeight: "black",
         }}>
         {"취미_OTHER INTERESTS"}
       </Text>
       <Grid
-        gap={"sm"}
+        gap={"md"}
         containerSx={{
-          mb: 12,
+          pb: 12,
         }}
         itemSx={{
           width: ["col12.6"],
@@ -125,13 +126,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body2"}
         sx={{
           ml: 4,
-          mb: 8,
+          mb: 5,
           fontWeight: "black",
         }}>
         {"연락처_SOCIALS"}
       </Text>
       <Grid
-        gap={"sm"}
+        gap={"md"}
         itemSx={{
           width: ["col12.6"],
         }}>
