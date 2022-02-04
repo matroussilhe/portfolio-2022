@@ -159,4 +159,60 @@ export const fontStyle = `
     font-style: italic;
     font-weight: 100;
   }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-Bold.woff2") format("woff2"), url("/fonts/Maison-Bold.woff") format("woff");
+    font-style: normal;
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-BoldOblique.woff2") format("woff2"), url("/fonts/Maison-BoldOblique.woff") format("woff");
+    font-style: italic;
+    font-weight: 700;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-Medium.woff2") format("woff2"), url("/fonts/Maison-Medium.woff") format("woff");
+    font-style: normal;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-MediumOblique.woff2") format("woff2"), url("/fonts/Maison-MediumOblique.woff") format("woff");
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-Regular.woff2") format("woff2"), url("/fonts/Maison-Regular.woff") format("woff");
+    font-style: normal;
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-RegularOblique.woff2") format("woff2"), url("/fonts/Maison-RegularOblique.woff") format("woff");
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-Light.woff2") format("woff2"), url("/fonts/Maison-Light.woff") format("woff");
+    font-style: normal;
+    font-weight: 300;
+  }
+
+  @font-face {
+    font-family: "Maison";
+    src: url("/fonts/Maison-LightOblique.woff2") format("woff2"), url("/fonts/Maison-LightOblique.woff") format("woff");
+    font-style: italic;
+    font-weight: 300;
+  }
 `;
