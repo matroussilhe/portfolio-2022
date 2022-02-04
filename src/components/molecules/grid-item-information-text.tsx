@@ -21,7 +21,7 @@ export const GridItemInformationText: FunctionComponent<GridItemInformationTextP
       {items.map((item, index) => (
         <Text
           key={`grid-item-information-text-${index}`}
-          variant={"body1"}
+          variant={"heading5"}
           sx={{
             mb: 1,
           }}>

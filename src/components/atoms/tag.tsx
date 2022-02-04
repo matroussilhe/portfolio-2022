@@ -28,21 +28,21 @@ const size = variant({
     sm: {
       px: "4px",
       py: "4px",
-      fontSize: "label2",
-      fontWeight: "medium",
+      fontSize: "label3",
+      fontWeight: "regular",
     },
     md: {
       height: "auto",
       px: "6px",
       py: "6px",
       fontSize: "label2",
-      fontWeight: "medium",
+      fontWeight: "regular",
     },
     lg: {
-      px: "4px",
-      py: "4px",
-      fontSize: "body2",
-      fontWeight: "medium",
+      px: "8px",
+      py: "8px",
+      fontSize: "label1",
+      fontWeight: "regular",
     },
   },
 } as VariantArgs);

@@ -11,10 +11,10 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 }) => {
   return (
     <Text
-      variant={"heading3"}
+      variant={"heading4"}
       sx={{
-        color: "on-surface",
         lineHeight: 1.2,
+        color: "on-surface",
       }}>
       {children}
     </Text>

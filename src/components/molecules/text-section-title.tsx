@@ -23,14 +23,12 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
         variant={"heading2"}
         sx={{
           mr: 1,
+          fontWeight: "bold",
         }}>
         {title}
       </Text>
       <Text
-        variant={"label1"}
-        sx={{
-          fontWeight: "regular",
-        }}>
+        variant={"label1"}>
         {subtitle}
       </Text>
     </Flex>

@@ -40,16 +40,16 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         px: 8,
       }}>
       <Text
-        variant={"label1"}
+        variant={"body2"}
         sx={{
           ml: 4,
           mb: 8,
-          fontWeight: "bold",
+          fontWeight: "black",
         }}>
         {"전기_BIO"}
       </Text>
       <Text
-        variant={"body3"}
+        variant={"body1"}
         sx={{
           mb: 12,
           whiteSpace: "pre-wrap",
@@ -57,16 +57,16 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         {bio.description}
       </Text>
       <Text
-        variant={"label1"}
+        variant={"body2"}
         sx={{
           ml: 4,
           mb: 8,
-          fontWeight: "bold",
+          fontWeight: "black",
         }}>
         {"전문지식_EXPERTISE"}
       </Text>
       <Text
-        variant={"body3"}
+        variant={"body1"}
         sx={{
           mb: 12,
           whiteSpace: "pre-wrap",
@@ -74,11 +74,11 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         {expertise.description}
       </Text>
       <Text
-        variant={"label1"}
+        variant={"body2"}
         sx={{
           ml: 4,
           mb: 8,
-          fontWeight: "bold",
+          fontWeight: "black",
         }}>
         {"실력_SKILLS"}
       </Text>
@@ -98,11 +98,11 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         ))}
       </Grid>
       <Text
-        variant={"label1"}
+        variant={"body2"}
         sx={{
           ml: 4,
           mb: 8,
-          fontWeight: "bold",
+          fontWeight: "black",
         }}>
         {"취미_OTHER INTERESTS"}
       </Text>
@@ -122,11 +122,11 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         ))}
       </Grid>
       <Text
-        variant={"label1"}
+        variant={"body2"}
         sx={{
           ml: 4,
           mb: 8,
-          fontWeight: "bold",
+          fontWeight: "black",
         }}>
         {"연락처_SOCIALS"}
       </Text>

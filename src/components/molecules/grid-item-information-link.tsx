@@ -33,7 +33,7 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
               alignItems: "flex-start",
             }}>
             <Text
-              variant={"body1"}
+              variant={"heading5"}
               sx={{
                 mr: 1,
               }}>

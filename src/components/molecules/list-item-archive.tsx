@@ -25,7 +25,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           width: ["col12.1"],
         }}>
         <Text
-          variant={"body2"}
+          variant={"heading6"}
           sx={{
             fontWeight: "bold",
           }}>
@@ -37,7 +37,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           width: ["col12.1"],
         }}>
         <Text
-          variant={"body2"}
+          variant={"heading6"}
           sx={{
             fontWeight: "bold",
           }}>
@@ -50,10 +50,10 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           px: 8,
         }}>
         <Text
-          variant={"label1"}
+          variant={"body3"}
           sx={{
-            whiteSpace: "pre-wrap",
             lineHeight: 1.2,
+            whiteSpace: "pre-wrap",
           }}>
           {archive.description}
         </Text>

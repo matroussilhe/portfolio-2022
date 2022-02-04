@@ -30,6 +30,7 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
         variant={"label3"}
         sx={{
           width: "64px",
+          fontFamily: "body",
           fontWeight: "bold",
           color: "on-surface",
         }}>

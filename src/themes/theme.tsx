@@ -132,16 +132,18 @@ export const theme = getTheme({
     label: "Maison, monospace",
   },
   fontSizes: {
-    heading1: "8.75rem", //  140 px
-    heading2: "3.75rem", //   60 px
-    heading3: "2.625rem", //  42 px
-    heading4: "2rem", //      32 px
-    body1: "1.5rem", //       24 px
-    body2: "1.375rem", //     22 px
-    body3: "1.25rem", //      20 px
-    label1: "1rem", //        16 px
-    label2: "0.75rem", //     12 px
-    label3: "0.625rem", //    10 px
+    heading1: "11.25rem", // 180px
+    heading2: "4.5rem", //    72px
+    heading3: "3rem", //      48px
+    heading4: "2rem", //      32px
+    heading5: "1.75rem", //   28px
+    heading6: "1.375rem", //  22px
+    body1: "1.25rem", //      20px
+    body2: "1rem", //         16px
+    body3: "0.875rem", //     14px
+    label1: "0.875rem", //    14px
+    label2: "0.75rem", //     12px
+    label3: "0.625rem", //    10px
   },
   fontWeights: {
     black: 900,
@@ -194,10 +196,26 @@ export const theme = getTheme({
       letterSpacing: "heading",
       color: "on-background",
     },
+    heading5: {
+      fontFamily: "heading",
+      fontSize: "heading5",
+      fontWeight: "regular",
+      lineHeight: "heading",
+      letterSpacing: "heading",
+      color: "on-background",
+    },
+    heading6: {
+      fontFamily: "heading",
+      fontSize: "heading6",
+      fontWeight: "regular",
+      lineHeight: "heading",
+      letterSpacing: "heading",
+      color: "on-background",
+    },
     body1: {
       fontFamily: "body",
       fontSize: "body1",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "body",
       letterSpacing: "body",
       color: "on-background",
@@ -205,7 +223,7 @@ export const theme = getTheme({
     body2: {
       fontFamily: "body",
       fontSize: "body2",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "body",
       letterSpacing: "body",
       color: "on-background",
@@ -213,7 +231,7 @@ export const theme = getTheme({
     body3: {
       fontFamily: "body",
       fontSize: "body3",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "body",
       letterSpacing: "body",
       color: "on-background",
@@ -221,7 +239,7 @@ export const theme = getTheme({
     label1: {
       fontFamily: "label",
       fontSize: "label1",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "label",
       letterSpacing: "label",
       color: "on-background",
@@ -229,7 +247,7 @@ export const theme = getTheme({
     label2: {
       fontFamily: "label",
       fontSize: "label2",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "label",
       letterSpacing: "label",
       color: "on-background",
@@ -237,7 +255,7 @@ export const theme = getTheme({
     label3: {
       fontFamily: "label",
       fontSize: "label3",
-      fontWeight: "light",
+      fontWeight: "regular",
       lineHeight: "label",
       letterSpacing: "label",
       color: "on-background",

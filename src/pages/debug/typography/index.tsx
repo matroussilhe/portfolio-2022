@@ -40,6 +40,18 @@ const DebugTypograhpy = () => {
         sx={{
           paddingBottom: "16px",
         }}>
+        <Text variant={"heading5"}>{"heading5"}</Text>
+      </Box>
+      <Box
+        sx={{
+          paddingBottom: "16px",
+        }}>
+        <Text variant={"heading6"}>{"heading6"}</Text>
+      </Box>
+      <Box
+        sx={{
+          paddingBottom: "16px",
+        }}>
         <Text variant={"body1"}>{"body1"}</Text>
       </Box>
       <Box

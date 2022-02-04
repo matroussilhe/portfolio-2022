@@ -48,17 +48,16 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
             justifyContent: "space-between",
           }}>
           <Text
-            variant={"body2"}
+            variant={"heading6"}
             sx={{
-              fontWeight: "bold",
               lineHeight: 1,
+              fontWeight: "bold",
             }}>
             {work.title}
           </Text>
           <Text
             variant={"label1"}
             sx={{
-              fontWeight: "medium",
               lineHeight: 1,
             }}>
             {work.date}
@@ -75,7 +74,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
             justifyContent: "space-between",
           }}>
           <Text
-            variant={"body3"}
+            variant={"body1"}
             sx={{
               lineHeight: 1,
             }}>
