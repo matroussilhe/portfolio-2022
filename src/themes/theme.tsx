@@ -247,7 +247,7 @@ export const theme = getTheme({
     default: {
       textDecoration: "none",
       "&:hover": {
-        textDecoration: "none",
+        textDecoration: "underline",
       },
     },
   },

@@ -45,9 +45,6 @@ export const Header: FunctionComponent<HeaderProps> = ({
           shape={"round"}
           sx={{
             mr: 3,
-            textDecoration: "underline",
-            textDecorationThickness: "1px",
-            textUnderlineOffset: "2px",
           }}>
           {`Works (${workCount})`}
         </Button>
