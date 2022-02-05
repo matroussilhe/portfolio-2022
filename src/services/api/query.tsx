@@ -2,7 +2,7 @@ import { client } from "@services";
 
 export const getIndexPageDocument = async () => {
   try {
-    const document = await client().getByUID("index_page", "index_page_main");
+    const document = await client().getByUID("index_page", "main");
 
     return document;
   } catch (error) {
@@ -14,7 +14,7 @@ export const getIndexPageDocument = async () => {
 
 export const getAboutPageDocument = async () => {
   try {
-    const document = await client().getByUID("about_page", "about_page_main");
+    const document = await client().getByUID("about_page", "main");
 
     return document;
   } catch (error) {

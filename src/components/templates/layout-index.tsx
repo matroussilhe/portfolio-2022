@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import {
-  Header,
+  Navbar,
   SectionArchive,
   SectionFooter,
   SectionHome,
@@ -23,7 +23,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
 }) => {
   return (
     <Fragment>
-      <Header
+      <Navbar
         iconColor={"on-surface"}
         workCount={works.length}
       />

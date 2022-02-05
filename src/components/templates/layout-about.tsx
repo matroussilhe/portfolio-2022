@@ -2,7 +2,7 @@ import React, { Fragment, FunctionComponent } from "react";
 
 import {
   Flex,
-  Header,
+  Navbar,
   SectionInformation,
   SectionPhoto,
 } from "@components";
@@ -31,7 +31,7 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
 }) => {
   return (
     <Fragment>
-      <Header
+      <Navbar
         iconColor={"surface"}
         workCount={4}
       />

@@ -8,12 +8,12 @@ import {
   Link,
 } from "@components";
 
-export type HeaderProps = {
+export type NavbarProps = {
   iconColor: string;
   workCount: number;
 };
 
-export const Header: FunctionComponent<HeaderProps> = ({
+export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
   workCount,
 }) => {

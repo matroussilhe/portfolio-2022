@@ -11,8 +11,8 @@ export const getStaticPaths: GetStaticPaths = async () => {
   // TODO: fetch all possible case study ids from prismic and add them to path
   return {
     paths: [
-      "/case-study/qmit",
-      "/case-study/withgoods",
+      "/case-studies/qmit",
+      "/case-studies/withgoods",
     ],
     fallback: false,
   };

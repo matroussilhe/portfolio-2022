@@ -20,7 +20,7 @@ export * from "./molecules/list-item-archive";
 export * from "./molecules/text-animated";
 export * from "./molecules/text-section-title";
 export * from "./molecules/text-social";
-export * from "./organisms/header";
+export * from "./organisms/navbar";
 export * from "./organisms/section-archive";
 export * from "./organisms/section-footer";
 export * from "./organisms/section-home";
