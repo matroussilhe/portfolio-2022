@@ -63,6 +63,10 @@ export type AboutPageDocument = {
   socials: Social[]; // TODO: find a better name to inform about array structure (e.g. socials/SocialArray[])
 };
 
+// CASE STUDY
+// TODO: typing
+export type CaseStudyPageDocument = any;
+
 const parseGroupItem = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {
   // group items by group value
   const groupedItems = item.items.reduce((acc: any, item: any) => {
@@ -127,7 +131,7 @@ export const parseIndexPageDocument = (document: any): IndexPageDocument => {
 
     return result;
   } catch (error) {
-    console.error("parseIndexPageDocument error: ", error);
+    console.error("parser error: ", error);
 
     return {
       works: [],
@@ -166,7 +170,7 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
 
     return result;
   } catch (error) {
-    console.error("parseAboutPageDocument error: ", error);
+    console.error("parser error: ", error);
 
     return {
       bio: {
