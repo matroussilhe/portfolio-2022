@@ -5,7 +5,7 @@ import { Link as ThemeUILink, LinkProps as ThemeUILinkProps } from "theme-ui";
 
 import { useResponsive } from "@hooks";
 
-export type LinkVariant = "default";
+export type LinkVariant = "default" | "discreet";
 
 export type LinkProps = NextLinkProps & ThemeUILinkProps;
 

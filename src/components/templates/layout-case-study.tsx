@@ -21,6 +21,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
       <Navbar
         iconColor={"on-surface"}
         workCount={4}
+        showBack={true}
       />
       <Flex>
         <SectionHeader

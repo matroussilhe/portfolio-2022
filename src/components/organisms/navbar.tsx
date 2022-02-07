@@ -6,16 +6,19 @@ import {
   Flex,
   IconTheme,
   Link,
+  Text,
 } from "@components";
 
 export type NavbarProps = {
   iconColor: string;
   workCount: number;
+  showBack?: boolean;
 };
 
 export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
   workCount,
+  showBack = false,
 }) => {
   return (
     <Flex
@@ -26,15 +29,32 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
         width: "100%",
         pt: 3,
         px: 6,
+        alignItems: showBack ? "center" : "flex-start",
       }}>
       <Box
         sx={{
-          flex: "1 0 auto",
+          flex: "0 1 auto",
         }}>
-        <IconTheme
-          color={iconColor}
-        />
+        {showBack ? (
+          <Link
+            variant={"discreet"}
+            href={"/"}>
+            <Text
+              variant={"heading6"}>
+              {"BACK"}
+            </Text>
+          </Link>
+        ) : (
+          <IconTheme
+            color={iconColor}
+          />
+        )}
       </Box>
+      <Box
+        sx={{
+          flex: "1 0 auto",
+        }}
+      />
       <Box
         sx={{
           flex: "0 1 auto",

@@ -268,6 +268,12 @@ export const theme = getTheme({
         textDecoration: "underline",
       },
     },
+    discreet: {
+      textDecoration: "none",
+      "&:hover": {
+        textDecoration: "none",
+      },
+    },
   },
   buttons: {
     default: {
