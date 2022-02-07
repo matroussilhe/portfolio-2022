@@ -9,6 +9,7 @@ import {
 import {
   CaseStudyPageDocument,
   getCaseStudyPageDocument,
+  parseCaseStudyPageDocument,
 } from "@services";
 
 export type CaseStudyProps = {
@@ -30,13 +31,11 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const document = await getCaseStudyPageDocument(context?.params?.id as string | undefined);
-  // TODO: parse document
-  // const parsedDocument = parseCaseStudyPageDocument(document);
+  const parsedDocument = parseCaseStudyPageDocument(document);
 
   return {
     props: {
-      // TODO: parse document
-      // document: parsedDocument,
+      document: parsedDocument,
       // DEBUG:
       rawDocument: document,
     },

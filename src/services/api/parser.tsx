@@ -64,8 +64,21 @@ export type AboutPageDocument = {
 };
 
 // CASE STUDY
-// TODO: typing
-export type CaseStudyPageDocument = any;
+export type Header = {
+  title: string;
+  subtitle: string;
+  image: string;
+  role: string;
+  timeline: string;
+  tags: string[];
+  credit: string;
+  introduction: string;
+  link: string;
+};
+
+export type CaseStudyPageDocument = {
+  header: Header;
+};
 
 const parseGroupItem = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {
   // group items by group value
@@ -182,6 +195,58 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       skills: [],
       interests: [],
       socials: [],
+    };
+  }
+};
+
+export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument => {
+  try {
+    const result: CaseStudyPageDocument = document.data.body.reduce((acc: CaseStudyPageDocument, item: any) => {
+      if (item.slice_type === "header") {
+        acc.header = {
+          title: helper.asText(item.primary.title) || "",
+          subtitle: helper.asText(item.primary.subtitle) || "",
+          image: item.primary.image.url || "",
+          role: helper.asText(item.primary.role) || "",
+          timeline: helper.asText(item.primary.timeline) || "",
+          tags: item.items.map((item: any) => item.tag),
+          credit: helper.asText(item.primary.credit) || "",
+          introduction: helper.asText(item.primary.introduction) || "",
+          link: item.primary.link || "",
+        };
+      }
+
+      return acc;
+    }, {
+      header: {
+        title: "",
+        subtitle: "",
+        image: "",
+        role: "",
+        timeline: "",
+        tags: [],
+        credit: "",
+        introduction: "",
+        link: "",
+      },
+    });
+
+    return result;
+  } catch (error) {
+    console.error("parser error: ", error);
+
+    return {
+      header: {
+        title: "",
+        subtitle: "",
+        image: "",
+        role: "",
+        timeline: "",
+        tags: [],
+        credit: "",
+        introduction: "",
+        link: "",
+      },
     };
   }
 };
