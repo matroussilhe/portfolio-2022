@@ -6,6 +6,7 @@ import {
   GridItemInformationLink,
   GridItemInformationText,
   Text,
+  TextParagraphTitle,
 } from "@components";
 import {
   Bio,
@@ -40,15 +41,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         pb: 10,
         px: 10,
       }}>
-      <Text
-        variant={"body2"}
+      <TextParagraphTitle
         sx={{
           ml: 4,
           mb: 5,
-          fontWeight: "black",
         }}>
         {"전기_BIO"}
-      </Text>
+      </TextParagraphTitle>
       <Text
         variant={"body1"}
         sx={{
@@ -57,15 +56,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         }}>
         {bio.description}
       </Text>
-      <Text
-        variant={"body2"}
+      <TextParagraphTitle
         sx={{
           ml: 4,
           mb: 5,
-          fontWeight: "black",
         }}>
         {"전문지식_EXPERTISE"}
-      </Text>
+      </TextParagraphTitle>
       <Text
         variant={"body1"}
         sx={{
@@ -74,15 +71,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         }}>
         {expertise.description}
       </Text>
-      <Text
-        variant={"body2"}
+      <TextParagraphTitle
         sx={{
           ml: 4,
           mb: 5,
-          fontWeight: "black",
         }}>
         {"실력_SKILLS"}
-      </Text>
+      </TextParagraphTitle>
       <Grid
         gap={"md"}
         containerSx={{
@@ -98,15 +93,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           />
         ))}
       </Grid>
-      <Text
-        variant={"body2"}
+      <TextParagraphTitle
         sx={{
           ml: 4,
           mb: 5,
-          fontWeight: "black",
         }}>
         {"취미_OTHER INTERESTS"}
-      </Text>
+      </TextParagraphTitle>
       <Grid
         gap={"md"}
         containerSx={{
@@ -122,15 +115,13 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           />
         ))}
       </Grid>
-      <Text
-        variant={"body2"}
+      <TextParagraphTitle
         sx={{
           ml: 4,
           mb: 5,
-          fontWeight: "black",
         }}>
         {"연락처_SOCIALS"}
-      </Text>
+      </TextParagraphTitle>
       <Grid
         gap={"md"}
         itemSx={{

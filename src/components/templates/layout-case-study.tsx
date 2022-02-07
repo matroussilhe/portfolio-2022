@@ -3,15 +3,18 @@ import React, { Fragment, FunctionComponent } from "react";
 import {
   Flex,
   Navbar,
-  Text,
+  SectionHeader,
 } from "@components";
+import {
+  Header,
+} from "@services";
 
 export type LayoutCaseStudyProps = {
-  id: string;
+  header: Header;
 };
 
 export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
-  id,
+  header,
 }) => {
   return (
     <Fragment>
@@ -19,15 +22,10 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         iconColor={"on-surface"}
         workCount={4}
       />
-      <Flex
-        sx={{
-          height: "100vh",
-          alignItems: "center",
-          justifyContent: "center",
-        }}>
-        <Text>
-          {`${id} case study`}
-        </Text>
+      <Flex>
+        <SectionHeader
+          header={header}
+        />
       </Flex>
     </Fragment>
   );

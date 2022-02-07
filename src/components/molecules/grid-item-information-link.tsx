@@ -2,9 +2,8 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
-  Icon,
   Link,
-  Text,
+  TextIcon,
 } from "@components";
 import {
   Social,
@@ -27,24 +26,9 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
           key={`grid-item-information-link-${index}`}
           href={item.link}
           target={"_blank"}>
-          <Flex
-            sx={{
-              mb: 2,
-              alignItems: "flex-start",
-            }}>
-            <Text
-              variant={"heading5"}
-              sx={{
-                mr: 1,
-              }}>
-              {item.text}
-            </Text>
-            <Icon
-              src={"/images/arrow.svg"}
-              size={"14px"}
-              color={"on-background"}
-            />
-          </Flex>
+          <TextIcon>
+            {item.text}
+          </TextIcon>
         </Link>
       ))}
     </Flex>
