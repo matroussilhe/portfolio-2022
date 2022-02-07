@@ -4,12 +4,14 @@ import {
   Flex,
   Icon,
   Text,
+  TextProps,
 } from "@components";
 
-export type TextIconProps = {};
+export type TextIconProps = TextProps & {};
 
 export const TextIcon: FunctionComponent<TextIconProps> = ({
   children,
+  ...rest
 }) => {
   return (
     <Flex
@@ -21,12 +23,13 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
         variant={"heading5"}
         sx={{
           mr: 1,
-        }}>
+        }}
+        {...rest}>
         {children}
       </Text>
       <Icon
         src={"/images/arrow.svg"}
-        size={"14px"}
+        size={"12px"}
         color={"on-background"}
       />
     </Flex>

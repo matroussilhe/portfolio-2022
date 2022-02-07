@@ -150,7 +150,10 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           <Link
             href={header.link}
             target={"_blank"}>
-            <TextIcon>
+            <TextIcon
+              sx={{
+                fontSize: "1.75rem",
+              }}>
               {"See live website"}
             </TextIcon>
           </Link>

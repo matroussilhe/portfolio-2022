@@ -40,7 +40,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
             variant={"discreet"}
             href={"/"}>
             <Text
-              variant={"heading6"}>
+              variant={"heading5"}>
               {"BACK"}
             </Text>
           </Link>
