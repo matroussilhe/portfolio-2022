@@ -76,8 +76,15 @@ export type Header = {
   link: string;
 };
 
+export type Footer = {
+  title: string;
+  subtitle: string;
+  link: string;
+};
+
 export type CaseStudyPageDocument = {
   header: Header;
+  footer: Footer;
 };
 
 const parseGroupItem = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {
@@ -214,6 +221,12 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
           introduction: helper.asText(item.primary.introduction) || "",
           link: item.primary.link || "",
         };
+      } else if (item.slice_type === "footer") {
+        acc.footer = {
+          title: helper.asText(item.primary.title) || "",
+          subtitle: helper.asText(item.primary.subtitle) || "",
+          link: item.primary.link || "",
+        };
       }
 
       return acc;
@@ -227,6 +240,11 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         tags: [],
         credit: "",
         introduction: "",
+        link: "",
+      },
+      footer: {
+        title: "",
+        subtitle: "",
         link: "",
       },
     });
@@ -245,6 +263,11 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         tags: [],
         credit: "",
         introduction: "",
+        link: "",
+      },
+      footer: {
+        title: "",
+        subtitle: "",
         link: "",
       },
     };
