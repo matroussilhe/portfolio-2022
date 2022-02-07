@@ -160,6 +160,7 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
       sx={{
         alignItems: "center",
         cursor: "pointer",
+        userSelect: "none",
       }}>
       <Icon
         src={"/images/circle.svg"}

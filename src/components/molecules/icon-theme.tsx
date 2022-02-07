@@ -25,6 +25,7 @@ export const IconTheme: FunctionComponent<IconThemeProps> = ({
       onClick={handleClick}
       sx={{
         cursor: "pointer",
+        userSelect: "none",
       }}>
       <Icon
         src={"/images/circle.svg"}
