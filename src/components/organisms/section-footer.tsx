@@ -1,9 +1,8 @@
 import React, { FunctionComponent } from "react";
 
-import { Link } from "theme-ui";
-
 import {
   Flex,
+  Link,
   Text,
 } from "@components";
 import {

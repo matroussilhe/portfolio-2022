@@ -266,6 +266,7 @@ export const theme = getTheme({
       textDecoration: "none",
       "&:hover": {
         textDecoration: "underline",
+        textDecorationColor: "on-background",
       },
     },
     discreet: {
