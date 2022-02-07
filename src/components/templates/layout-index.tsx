@@ -1,9 +1,9 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import {
+  Flex,
   Navbar,
   SectionArchive,
-  SectionFooter,
   SectionHome,
   SectionWork,
 } from "@components";
@@ -27,14 +27,18 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         iconColor={"on-surface"}
         workCount={works.length}
       />
-      <SectionHome/>
-      <SectionWork
-        works={works}
-      />
-      <SectionArchive
-        archives={archives}
-      />
-      <SectionFooter/>
+      <Flex
+        sx={{
+          flexDirection: "column",
+        }}>
+        <SectionHome/>
+        <SectionWork
+          works={works}
+        />
+        <SectionArchive
+          archives={archives}
+        />
+      </Flex>
     </Fragment>
   );
 };

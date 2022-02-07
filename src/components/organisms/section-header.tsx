@@ -25,11 +25,10 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
   return (
     <Flex
       sx={{
-        backgroundColor: "background",
-        flexDirection: "column",
-        width: "100%",
         pt: 25,
         pb: 10,
+        flexDirection: "column",
+        backgroundColor: "background",
       }}>
       <Text
         variant={"heading1"}

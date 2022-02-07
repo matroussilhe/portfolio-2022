@@ -16,7 +16,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
       }}>
       <Box
         sx={{
-          px: [6],
+          px: 6,
         }}>
         <TextAnimated>
           {"아이 Hello, I'm Mathieu a full stack developer"}

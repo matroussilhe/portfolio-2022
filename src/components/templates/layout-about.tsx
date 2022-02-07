@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import {
+  Box,
   Flex,
   Navbar,
   SectionInformation,
@@ -35,15 +36,29 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
         iconColor={"surface"}
         workCount={4}
       />
-      <Flex>
-        <SectionPhoto/>
-        <SectionInformation
-          bio={bio}
-          expertise={expertise}
-          skills={skills}
-          interests={interests}
-          socials={socials}
-        />
+      <Flex
+        sx={{
+          flexDirection: "row",
+          flexWrap: "wrap",
+        }}>
+        <Box
+          sx={{
+            width: ["col12.6"],
+          }}>
+          <SectionPhoto/>
+        </Box>
+        <Box
+          sx={{
+            width: ["col12.6"],
+          }}>
+          <SectionInformation
+            bio={bio}
+            expertise={expertise}
+            skills={skills}
+            interests={interests}
+            socials={socials}
+          />
+        </Box>
       </Flex>
     </Fragment>
   );

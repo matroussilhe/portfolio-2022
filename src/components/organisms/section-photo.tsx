@@ -10,7 +10,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = () => {
   return (
     <Flex
       sx={{
-        width: ["col12.6"],
+        height: "100%",
         backgroundColor: "#323F94", // TODO: add color to theme
       }}
     />

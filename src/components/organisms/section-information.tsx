@@ -34,7 +34,6 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
   return (
     <Flex
       sx={{
-        width: ["col12.6"],
         backgroundColor: "background",
         flexDirection: "column",
         pt: 25,

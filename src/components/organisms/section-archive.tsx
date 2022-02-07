@@ -23,9 +23,9 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
       }}>
       <Box
         sx={{
-          width: ["100%"],
           px: [6],
-          mt: [20],
+          pt: [20],
+          pb: [20],
         }}>
         <TextSectionTitle
           title={"Archive"}

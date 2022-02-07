@@ -23,9 +23,8 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
       }}>
       <Box
         sx={{
-          width: ["100%"],
           px: [6],
-          mt: [20],
+          pt: [20],
         }}>
         <TextSectionTitle
           title={"Selected Work"}
