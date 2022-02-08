@@ -1,7 +1,6 @@
 import React, { FunctionComponent } from "react";
 
 import {
-  Box,
   Flex,
   List,
   ListItemArchive,
@@ -19,31 +18,29 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
   return (
     <Flex
       sx={{
+        px: [6],
+        pt: [20],
+        pb: [20],
+        flexDirection: "column",
         backgroundColor: "background",
       }}>
-      <Box
-        sx={{
-          px: [6],
-          pt: [20],
-          pb: [20],
+
+      <TextSectionTitle
+        title={"Archive"}
+        subtitle={"(EXTERNAL LINKS)"}
+      />
+      <List
+        gap={"lg"}
+        containerSx={{
+          pt: 15,
         }}>
-        <TextSectionTitle
-          title={"Archive"}
-          subtitle={"(EXTERNAL LINKS)"}
-        />
-        <List
-          gap={"lg"}
-          containerSx={{
-            pt: 15,
-          }}>
-          {archives.map((archive, index) => (
-            <ListItemArchive
-              key={`list-item-archive-${index}`}
-              archive={archive}
-            />
-          ))}
-        </List>
-      </Box>
+        {archives.map((archive, index) => (
+          <ListItemArchive
+            key={`list-item-archive-${index}`}
+            archive={archive}
+          />
+        ))}
+      </List>
     </Flex>
   );
 };
