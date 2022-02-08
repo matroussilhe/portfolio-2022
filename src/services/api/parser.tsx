@@ -102,7 +102,7 @@ export type Footer = {
 
 export type CaseStudyPageDocument = {
   header: Header;
-  content: Content[];
+  contents: Content[];
   footer: Footer;
 };
 
@@ -241,12 +241,12 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
           link: item.primary.link || "",
         };
       } else if (item.slice_type === "section_title") {
-        acc.content.push({
+        acc.contents.push({
           type: item.slice_type,
           title: helper.asText(item.primary.title) || "",
         });
       } else if (item.slice_type === "paragraph_title") {
-        acc.content.push({
+        acc.contents.push({
           type: item.slice_type,
           title: helper.asText(item.primary.title) || "",
         });
@@ -271,7 +271,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         introduction: "",
         link: "",
       },
-      content: [],
+      contents: [],
       footer: {
         title: "",
         subtitle: "",
@@ -295,7 +295,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         introduction: "",
         link: "",
       },
-      content: [],
+      contents: [],
       footer: {
         title: "",
         subtitle: "",

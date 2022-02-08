@@ -49,6 +49,7 @@ const CaseStudy: NextPage<CaseStudyProps> = ({ document, rawDocument }) => {
   return (
     <LayoutCaseStudy
       header={document.header}
+      contents={document.contents}
       footer={document.footer}
     />
   );
