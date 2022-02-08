@@ -64,6 +64,12 @@ export type AboutPageDocument = {
 };
 
 // CASE STUDY
+export const ContentSliceTypes = [
+  "section_title",
+  "paragraph_title",
+] as const;
+export type ContentSliceType = typeof ContentSliceTypes[number];
+
 export type Header = {
   title: string;
   subtitle: string;
@@ -76,6 +82,18 @@ export type Header = {
   link: string;
 };
 
+export type SectionTitle = {
+  type: ContentSliceType;
+  title: string;
+};
+
+export type ParagraphTitle = {
+  type: ContentSliceType;
+  title: string;
+};
+
+export type Content = SectionTitle | ParagraphTitle;
+
 export type Footer = {
   title: string;
   subtitle: string;
@@ -84,6 +102,7 @@ export type Footer = {
 
 export type CaseStudyPageDocument = {
   header: Header;
+  content: Content[];
   footer: Footer;
 };
 
@@ -221,6 +240,16 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
           introduction: helper.asText(item.primary.introduction) || "",
           link: item.primary.link || "",
         };
+      } else if (item.slice_type === "section_title") {
+        acc.content.push({
+          type: item.slice_type,
+          title: helper.asText(item.primary.title) || "",
+        });
+      } else if (item.slice_type === "paragraph_title") {
+        acc.content.push({
+          type: item.slice_type,
+          title: helper.asText(item.primary.title) || "",
+        });
       } else if (item.slice_type === "footer") {
         acc.footer = {
           title: helper.asText(item.primary.title) || "",
@@ -242,6 +271,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         introduction: "",
         link: "",
       },
+      content: [],
       footer: {
         title: "",
         subtitle: "",
@@ -265,6 +295,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         introduction: "",
         link: "",
       },
+      content: [],
       footer: {
         title: "",
         subtitle: "",
