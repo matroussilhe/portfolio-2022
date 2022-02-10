@@ -67,6 +67,10 @@ export type AboutPageDocument = {
 export const ContentSliceTypes = [
   "section_title",
   "subsection_title",
+  "center_paragraph",
+  "left_image_right_paragraph",
+  "top_image_bottom_paragraph",
+  "left_quote_right_paragraph",
 ] as const;
 export type ContentSliceType = typeof ContentSliceTypes[number];
 
@@ -83,16 +87,41 @@ export type Header = {
 };
 
 export type SectionTitle = {
-  type: ContentSliceType;
+  type: "section_title";
   title: string;
 };
 
 export type SubsectionTitle = {
-  type: ContentSliceType;
+  type: "subsection_title";
   title: string;
 };
 
-export type Content = SectionTitle | SubsectionTitle;
+export type CenterParagraph = {
+  type: "center_paragraph";
+  paragraph: string;
+};
+
+export type LeftImageRightParagraph = {
+  type: "left_image_right_paragraph";
+  image: string;
+  legend: string;
+  paragraph: string;
+};
+
+export type TopImageBottomParagraph = {
+  type: "top_image_bottom_paragraph";
+  image: string;
+  legend: string;
+  paragraph: string;
+};
+
+export type LeftQuoteRightParagraph = {
+  type: "left_quote_right_paragraph";
+  quote: string;
+  paragraph: string;
+};
+
+export type Content = SectionTitle | SubsectionTitle | CenterParagraph | LeftImageRightParagraph | TopImageBottomParagraph | LeftQuoteRightParagraph;
 
 export type Footer = {
   title: string;
@@ -249,6 +278,31 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         acc.contents.push({
           type: item.slice_type,
           title: helper.asText(item.primary.title) || "",
+        });
+      } else if (item.slice_type === "center_paragraph") {
+        acc.contents.push({
+          type: item.slice_type,
+          paragraph: helper.asText(item.primary.paragraph) || "",
+        });
+      } else if (item.slice_type === "left_image_right_paragraph") {
+        acc.contents.push({
+          type: item.slice_type,
+          image: item.primary.image.url || "",
+          legend: item.primary.legend || "",
+          paragraph: helper.asText(item.primary.paragraph) || "",
+        });
+      } else if (item.slice_type === "top_image_bottom_paragraph") {
+        acc.contents.push({
+          type: item.slice_type,
+          image: item.primary.image.url || "",
+          legend: item.primary.legend || "",
+          paragraph: helper.asText(item.primary.paragraph) || "",
+        });
+      } else if (item.slice_type === "left_quote_right_paragraph") {
+        acc.contents.push({
+          type: item.slice_type,
+          quote: helper.asText(item.primary.quote) || "",
+          paragraph: helper.asText(item.primary.paragraph) || "",
         });
       } else if (item.slice_type === "footer") {
         acc.footer = {
