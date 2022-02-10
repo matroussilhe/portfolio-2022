@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
-  SectionContentParagraphTitle,
+  SectionContentSubsectionTitle,
 } from "@components";
 import {
   Content,
@@ -31,9 +31,9 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
               content={content}
             />
           );
-        } else if (content.type === "paragraph_title") {
+        } else if (content.type === "subsection_title") {
           return (
-            <SectionContentParagraphTitle
+            <SectionContentSubsectionTitle
               key={`section-content-${index}`}
               content={content}
             />

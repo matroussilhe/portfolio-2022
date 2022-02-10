@@ -4,14 +4,14 @@ import {
   Text,
 } from "@components";
 import {
-  ParagraphTitle,
+  SubsectionTitle,
 } from "@services";
 
-export type SectionContentParagraphTitleProps = {
-  content: ParagraphTitle;
+export type SectionContentSubsectionTitleProps = {
+  content: SubsectionTitle;
 };
 
-export const SectionContentParagraphTitle: FunctionComponent<SectionContentParagraphTitleProps> = ({
+export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubsectionTitleProps> = ({
   content,
 }) => {
   return (
