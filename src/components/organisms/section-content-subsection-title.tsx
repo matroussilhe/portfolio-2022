@@ -26,7 +26,7 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
         sx={{
           mb: 4,
         }}>
-        {content.title}
+        {content.title.toUpperCase()}
       </Text>
     </FlexColumnSpacer>
   );
