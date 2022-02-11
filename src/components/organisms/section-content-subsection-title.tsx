@@ -9,10 +9,12 @@ import {
 } from "@services";
 
 export type SectionContentSubsectionTitleProps = {
+  index: number;
   content: SubsectionTitle;
 };
 
 export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubsectionTitleProps> = ({
+  index,
   content,
 }) => {
   return (

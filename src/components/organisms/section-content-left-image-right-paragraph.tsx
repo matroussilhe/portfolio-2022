@@ -13,10 +13,12 @@ import {
 } from "@services";
 
 export type SectionContentLeftImageRightParagraphProps = {
+  index: number;
   content: LeftImageRightParagraph;
 };
 
 export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionContentLeftImageRightParagraphProps> = ({
+  index,
   content,
 }) => {
   return (

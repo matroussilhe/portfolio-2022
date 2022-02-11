@@ -11,10 +11,12 @@ import {
 } from "@services";
 
 export type SectionContentCenterParagraphProps = {
+  index: number;
   content: CenterParagraph;
 };
 
 export const SectionContentCenterParagraph: FunctionComponent<SectionContentCenterParagraphProps> = ({
+  index,
   content,
 }) => {
   return (
