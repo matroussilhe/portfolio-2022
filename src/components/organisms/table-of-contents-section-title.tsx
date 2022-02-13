@@ -34,26 +34,11 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
         alignItems: "center",
       }}>
       <Text
+        variant={"body1"}
         sx={{
           ...(isActive ? activeSx : {}),
         }}>
-        <Flex>
-          <Text
-            variant={"body1"}
-            sx={{
-              fontWeight: "bold",
-            }}>
-            {indexString}
-          </Text>
-          <Text
-            variant={"body1"}>
-            &nbsp;{"-"}&nbsp;
-          </Text>
-          <Text
-            variant={"body1"}>
-            {content.title}
-          </Text>
-        </Flex>
+        <span sx={{ fontWeight: "bold" }}>{indexString}</span>&nbsp;{"-"}&nbsp;{content.title}
       </Text>
     </Flex>
   );
