@@ -27,8 +27,14 @@ export const getVerticallyClosestEntry = (first?: IntersectionObserverEntry, sec
     const entryVerticalCenter = getVerticalCenter(entry) || 0;
 
     const difference = Math.abs(firstVerticalCenter - entryVerticalCenter);
-
-    if (acc.difference && difference <= acc.difference) {
+    console.log("difference: ", difference);
+    console.log("acc.difference: ", acc.difference);
+    if (!acc.difference) {
+      return {
+        difference,
+        entry,
+      };
+    } else if (difference <= acc.difference) {
       console.log("difference: ", difference);
       console.log("acc.difference: ", acc.difference);
       return {
@@ -39,6 +45,34 @@ export const getVerticallyClosestEntry = (first?: IntersectionObserverEntry, sec
 
     return acc;
   }, { difference: undefined, entry: undefined } as {difference: number | undefined; entry: IntersectionObserverEntry | undefined});
+};
+
+export type IntersectionObserverEntryDifference = { difference: number; entry: IntersectionObserverEntry };
+export const getTopClosestEntry = (first?: IntersectionObserverEntry, second?: IntersectionObserverEntry[]): IntersectionObserverEntryDifference | undefined => {
+  if (!first || !second) return undefined;
+
+  const firstVerticalTop = first.intersectionRect.top;
+
+  return second?.reduce((acc: any, entry: IntersectionObserverEntry) => {
+    const entryVerticalTop = entry.intersectionRect.top;
+
+    const difference = Math.abs(firstVerticalTop - entryVerticalTop);
+    if (!acc) {
+      // first found
+      return {
+        difference,
+        entry,
+      };
+    } else if (difference <= acc.difference) {
+      // closer found
+      return {
+        difference,
+        entry,
+      };
+    }
+
+    return acc;
+  }, undefined);
 };
 
 // TODO: rename hook or make a separate function cause it checks overlapp not intersection

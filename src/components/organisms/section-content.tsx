@@ -21,8 +21,9 @@ import {
 } from "@components";
 import {
   areVerticallyOverlapping,
+  getTopClosestEntry,
   getVerticallyClosestEntry,
-  useIntersectionObserver, useOnScreen,
+  useIntersectionObserver,
 } from "@hooks";
 import {
   Content,
@@ -46,11 +47,26 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const elementRef = useRef<HTMLDivElement>(null);
+
+  const [closestEntry, setClosestEntry] = useState<IntersectionObserverEntry>();
+
   // WIP: object type
   const tocRefsRef = useRef([createRef<HTMLDivElement>()]);
 
   // WIP: object type
-  const targetRefsRef = useRef(contents.map(() => createRef<HTMLDivElement>()));
+  const targetRefsRef = useRef(contents.map((content) => {
+    const ref = createRef<HTMLDivElement>();
+    ref.current?.setAttribute("TYPOS", content.type);
+
+    return ref;
+  }));
+
+  useLayoutEffect(() => {
+    targetRefsRef.current.forEach((targetRef, index) => {
+      targetRef.current?.setAttribute("contentIndex", index.toString());
+      targetRef.current?.setAttribute("contentType", contents[index].type);
+    });
+  }, [contents]);
 
   // TODO: remove entries return if calculations are made in hooks not here
   // TODO: other option is to make englobe/touch calculation here and use hook just to get entries
@@ -58,17 +74,27 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   const { entries: tocEntries } = useIntersectionObserver(tocRefsRef.current);
   // console.log("tocEntries: ", tocEntries);
 
-  const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current, { root: containerRef.current });
-  // const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current);
-  console.log("contentEntries: ", contentEntries);
+  // const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current, { root: containerRef.current });
+  const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current);
+  // console.log("contentEntries: ", contentEntries);
 
   const overlappings = contentEntries?.filter((contentEntry: IntersectionObserverEntry) => {
     return areVerticallyOverlapping(tocEntries?.[0], contentEntry);
   });
   // console.log("overlappings: ", overlappings);
 
-  const verticallyClosestEntry = getVerticallyClosestEntry(tocEntries?.[0], contentEntries);
-  console.log("verticallyClosestEntry: ", verticallyClosestEntry);
+  useEffect(() => {
+    const entryDifference = getTopClosestEntry(tocEntries?.[0], contentEntries);
+
+    const DIFFERENCE_THRESHOLD = 50; // distance between top of toc and closest entry found
+    // for entries entering from the top
+    if (entryDifference && entryDifference.difference <= DIFFERENCE_THRESHOLD) {
+      console.log("entryDifference: ", entryDifference);
+      console.log("entryDifference.entry.target.nodeType: ", entryDifference.entry.target.nodeType);
+      console.log("entryDifference.entry.target.attributes.contentType: ", entryDifference.entry.target.attributes.contentIndex);
+      console.log("entryDifference.entry.target.attributes.contentType: ", entryDifference.entry.target.attributes.contentType);
+    }
+  }, [contentEntries, tocEntries]);
 
   const contentIndexes: ContentIndexes = {
     "section_title": 0,
