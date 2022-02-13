@@ -2,7 +2,6 @@ import React, {
   createRef,
   FunctionComponent,
   useEffect,
-  useLayoutEffect,
   useMemo,
   useRef,
   useState,
@@ -51,7 +50,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   const { entries } = useIntersectionObserver(contentRefs);
 
   // set attributes on each content ref to provide metadata to intersection observer entries
-  useLayoutEffect(() => {
+  useEffect(() => {
     contentRefs.forEach((contentRef, index) => {
       contentRef.current?.setAttribute("contentIndex", index.toString());
       contentRef.current?.setAttribute("contentType", contents[index].type);
