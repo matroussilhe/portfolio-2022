@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent } from "react";
 
 import styled from "@emotion/styled";
 import { variant, VariantArgs } from "styled-system";
@@ -62,12 +62,12 @@ const StyledThemeUIButton = styled(ThemeUIButton)<StyledThemeUIButtonProps>(
   shape,
 );
 
-export const Button: FunctionComponent<ButtonProps> = ({
+export const Button: FunctionComponent<ButtonProps> = forwardRef<HTMLButtonElement, ButtonProps>(({
   variant = "primary",
   size = "md",
   shape = "round",
   ...rest
-}) => {
+}, ref) => {
   const getResponsiveProp = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
@@ -76,10 +76,11 @@ export const Button: FunctionComponent<ButtonProps> = ({
 
   return (
     <StyledThemeUIButton
+      ref={ref}
       variant={responsiveVariant}
       size={responsiveSize}
       shape={responsiveShape}
       {...rest}
     />
   );
-};
+});

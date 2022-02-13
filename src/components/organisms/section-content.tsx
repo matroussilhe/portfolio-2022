@@ -1,4 +1,13 @@
-import React, { FunctionComponent, useMemo } from "react";
+import React, {
+  createRef,
+  FunctionComponent,
+  RefObject,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState,
+} from "react";
 
 import {
   Flex,
@@ -10,6 +19,11 @@ import {
   SectionContentTopImageBottomParagraph,
   TableOfContents,
 } from "@components";
+import {
+  areVerticallyOverlapping,
+  getVerticallyClosestEntry,
+  useIntersectionObserver, useOnScreen,
+} from "@hooks";
 import {
   Content,
   ContentSliceType,
@@ -30,6 +44,32 @@ export type ContentIndexes = {
 export const SectionContent: FunctionComponent<SectionContentProps> = ({
   contents,
 }) => {
+  const containerRef = useRef<HTMLDivElement>(null);
+  const elementRef = useRef<HTMLDivElement>(null);
+  // WIP: object type
+  const tocRefsRef = useRef([createRef<HTMLDivElement>()]);
+
+  // WIP: object type
+  const targetRefsRef = useRef(contents.map(() => createRef<HTMLDivElement>()));
+
+  // TODO: remove entries return if calculations are made in hooks not here
+  // TODO: other option is to make englobe/touch calculation here and use hook just to get entries
+  // TODO: other option is call intersectionObserver hook both for element and targets then compare their intersections rectangles (if better than page postion, not sure)
+  const { entries: tocEntries } = useIntersectionObserver(tocRefsRef.current);
+  // console.log("tocEntries: ", tocEntries);
+
+  const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current, { root: containerRef.current });
+  // const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current);
+  console.log("contentEntries: ", contentEntries);
+
+  const overlappings = contentEntries?.filter((contentEntry: IntersectionObserverEntry) => {
+    return areVerticallyOverlapping(tocEntries?.[0], contentEntry);
+  });
+  // console.log("overlappings: ", overlappings);
+
+  const verticallyClosestEntry = getVerticallyClosestEntry(tocEntries?.[0], contentEntries);
+  console.log("verticallyClosestEntry: ", verticallyClosestEntry);
+
   const contentIndexes: ContentIndexes = {
     "section_title": 0,
     "subsection_title": 0,
@@ -58,6 +98,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         backgroundColor: "background",
       }}>
       <TableOfContents
+        ref={tocRefsRef.current[0]}
         contents={contents}
       />
       {contents.map((content, index) => {
@@ -73,6 +114,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         return (
           <ContentComponent
             key={`section-content-${index}`}
+            ref={targetRefsRef.current[index]}
             index={contentIndex}
             content={content}
           />

@@ -1,4 +1,9 @@
-import React, { FunctionComponent, useMemo } from "react";
+import React, {
+  forwardRef,
+  FunctionComponent,
+  Ref,
+  useMemo,
+} from "react";
 
 import {
   ContentComponents,
@@ -12,12 +17,13 @@ import {
 } from "@services";
 
 export type TableOfContentsProps = {
+  ref?: Ref<HTMLDivElement>;
   contents: Content[];
 };
 
-export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
+export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardRef<HTMLDivElement, TableOfContentsProps>(({
   contents,
-}) => {
+}, ref) => {
   const contentIndexes: ContentIndexes = {
     "section_title": 0,
     "subsection_title": 0,
@@ -40,7 +46,11 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
 
   return (
     <Flex
+      ref={ref}
       sx={{
+        position: "fixed",
+        top: 1,
+        left: 1,
         flexDirection: "column",
       }}>
       {contents.map((content, index) => {
@@ -63,4 +73,4 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
       })}
     </Flex>
   );
-};
+});

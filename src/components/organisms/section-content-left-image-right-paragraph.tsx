@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent, Ref } from "react";
 
 import {
   Box,
@@ -13,19 +13,21 @@ import {
 } from "@services";
 
 export type SectionContentLeftImageRightParagraphProps = {
+  ref?: Ref<HTMLDivElement>;
   index: number;
   content: LeftImageRightParagraph;
 };
 
-export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionContentLeftImageRightParagraphProps> = ({
+export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionContentLeftImageRightParagraphProps> = forwardRef<HTMLDivElement, SectionContentLeftImageRightParagraphProps>(({
   index,
   content,
-}) => {
+}, ref) => {
   return (
     <FlexColumnSpacer
       leftColumnWidth={"col12.3"}
       centerColumnWidth={"col12.9"}>
       <Flex
+        ref={ref}
         sx={{
           mb: 8,
           flexDirection: "row",
@@ -66,4 +68,4 @@ export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionCon
       </Flex>
     </FlexColumnSpacer>
   );
-};
+});

@@ -1,4 +1,4 @@
-import React, { FunctionComponent, useMemo } from "react";
+import React, { forwardRef, FunctionComponent, useMemo } from "react";
 
 import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
 
@@ -10,10 +10,10 @@ export type TextProps = Omit<ThemeUITextProps, "variant"> & {
   variant?: ResponsiveStyleValue<TextVariant>;
 };
 
-export const Text: FunctionComponent<TextProps> = ({
+export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, TextProps>(({
   variant = "body1",
   ...rest
-}) => {
+}, ref) => {
   const getResponsiveProp = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
@@ -50,9 +50,10 @@ export const Text: FunctionComponent<TextProps> = ({
 
   return (
     <ThemeUIText
+      ref={ref}
       variant={responsiveVariant}
       as={as}
       {...rest}
     />
   );
-};
+});

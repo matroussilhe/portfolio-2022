@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent, Ref } from "react";
 
 import {
   Box,
@@ -11,19 +11,21 @@ import {
 } from "@services";
 
 export type SectionContentCenterParagraphProps = {
+  ref?: Ref<HTMLDivElement>;
   index: number;
   content: CenterParagraph;
 };
 
-export const SectionContentCenterParagraph: FunctionComponent<SectionContentCenterParagraphProps> = ({
+export const SectionContentCenterParagraph: FunctionComponent<SectionContentCenterParagraphProps> = forwardRef<HTMLDivElement, SectionContentCenterParagraphProps>(({
   index,
   content,
-}) => {
+}, ref) => {
   return (
     <FlexColumnSpacer
       leftColumnWidth={"col12.3"}
       centerColumnWidth={"col12.9"}>
       <Flex
+        ref={ref}
         sx={{
           mb: 8,
           flexDirection: "row",
@@ -54,4 +56,4 @@ export const SectionContentCenterParagraph: FunctionComponent<SectionContentCent
       </Flex>
     </FlexColumnSpacer>
   );
-};
+});
