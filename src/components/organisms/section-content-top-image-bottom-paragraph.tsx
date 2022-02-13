@@ -14,12 +14,10 @@ import {
 
 export type SectionContentTopImageBottomParagraphProps = {
   ref?: Ref<HTMLDivElement>;
-  index: number;
   content: TopImageBottomParagraph;
 };
 
 export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionContentTopImageBottomParagraphProps> = forwardRef<HTMLDivElement, SectionContentTopImageBottomParagraphProps>(({
-  index,
   content,
 }, ref) => {
   return (

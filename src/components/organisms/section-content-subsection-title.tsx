@@ -10,12 +10,10 @@ import {
 
 export type SectionContentSubsectionTitleProps = {
   ref?: Ref<HTMLDivElement>;
-  index: number;
   content: SubsectionTitle;
 };
 
 export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubsectionTitleProps> = forwardRef<HTMLDivElement, SectionContentSubsectionTitleProps>(({
-  index,
   content,
 }, ref) => {
   return (

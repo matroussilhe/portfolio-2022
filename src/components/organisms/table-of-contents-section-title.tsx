@@ -9,15 +9,23 @@ import {
 } from "@services";
 
 export type TableOfContentsSectionTitleProps = {
-  index: number;
   content: SectionTitle;
+  index: number;
+  isActive: boolean;
 };
 
 export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSectionTitleProps> = ({
-  index,
   content,
+  index,
+  isActive,
 }) => {
   const indexString = (index + 1).toString().padStart(2, "0");
+
+  const activeSx = {
+    textDecoration: isActive ? "underline" : "none",
+    textDecorationThickness: "1px",
+    textUnderlineOffset: "4px",
+  };
 
   return (
     <Flex
@@ -26,19 +34,26 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
         alignItems: "center",
       }}>
       <Text
-        variant={"body1"}
         sx={{
-          fontWeight: "bold",
+          ...(isActive ? activeSx : {}),
         }}>
-        {indexString}
-      </Text>
-      <Text
-        variant={"body1"}>
-        &nbsp;{"-"}&nbsp;
-      </Text>
-      <Text
-        variant={"body1"}>
-        {content.title}
+        <Flex>
+          <Text
+            variant={"body1"}
+            sx={{
+              fontWeight: "bold",
+            }}>
+            {indexString}
+          </Text>
+          <Text
+            variant={"body1"}>
+            &nbsp;{"-"}&nbsp;
+          </Text>
+          <Text
+            variant={"body1"}>
+            {content.title}
+          </Text>
+        </Flex>
       </Text>
     </Flex>
   );

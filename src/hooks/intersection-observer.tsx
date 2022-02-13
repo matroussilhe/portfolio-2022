@@ -76,7 +76,7 @@ export const getTopClosestEntry = (first?: IntersectionObserverEntry, second?: I
 };
 
 // TODO: rename hook or make a separate function cause it checks overlapp not intersection
-export const useIntersectionObserver = (targetRefs: RefObject<HTMLDivElement>[], options?: IntersectionObserverInit) => {
+export const useIntersectionObserver = (targetRefs?: RefObject<HTMLDivElement>[], options?: IntersectionObserverInit) => {
   const observerRef = useRef<IntersectionObserver>();
 
   const [entries, setEntries] = useState<IntersectionObserverEntry[]>();
@@ -98,6 +98,8 @@ export const useIntersectionObserver = (targetRefs: RefObject<HTMLDivElement>[],
   }, [options]);
 
   useEffect(() => {
+    if (!targetRefs) return;
+
     // register observers
     targetRefs.forEach((targetRef) => {
       if (!targetRef.current) return;

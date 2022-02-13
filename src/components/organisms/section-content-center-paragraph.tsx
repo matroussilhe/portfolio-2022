@@ -12,12 +12,10 @@ import {
 
 export type SectionContentCenterParagraphProps = {
   ref?: Ref<HTMLDivElement>;
-  index: number;
   content: CenterParagraph;
 };
 
 export const SectionContentCenterParagraph: FunctionComponent<SectionContentCenterParagraphProps> = forwardRef<HTMLDivElement, SectionContentCenterParagraphProps>(({
-  index,
   content,
 }, ref) => {
   return (

@@ -9,13 +9,13 @@ import {
 
 export type SectionContentSectionTitleProps = {
   ref?: Ref<HTMLDivElement>;
-  index: number;
   content: SectionTitle;
+  index: number;
 };
 
 export const SectionContentSectionTitle: FunctionComponent<SectionContentSectionTitleProps> = forwardRef<HTMLDivElement, SectionContentSectionTitleProps>(({
-  index,
   content,
+  index,
 }, ref) => {
   const indexString = (index + 1).toString().padStart(2, "0");
 
