@@ -1,7 +1,6 @@
 import React, {
   createRef,
   FunctionComponent,
-  RefObject,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -21,9 +20,6 @@ import {
   TableOfContentsActiveContent,
 } from "@components";
 import {
-  areVerticallyOverlapping,
-  getTopClosestEntry,
-  getVerticallyClosestEntry,
   useIntersectionObserver,
 } from "@hooks";
 import {
@@ -46,52 +42,47 @@ export type ContentIndexes = {
 export const SectionContent: FunctionComponent<SectionContentProps> = ({
   contents,
 }) => {
+  const tableOfContentsRef = useRef<HTMLDivElement>(null);
+  const contentRefs = contents.map(() => createRef<HTMLDivElement>());
+
   const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
 
-  // WIP: object type
-  // FIXME: no need for toc ref, use isVisible and distance to top of screen instead?
-  const tocRefsRef = useRef([createRef<HTMLDivElement>()]);
-  // WIP: object type
-  const targetRefsRef = useRef(contents.map((content) => {
-    const ref = createRef<HTMLDivElement>();
-    ref.current?.setAttribute("TYPOS", content.type);
+  // observe content intersection changes
+  const { entries } = useIntersectionObserver(contentRefs);
 
-    return ref;
-  }));
-
-  // WIP: tag refs with attributes
+  // set attributes on each content ref to provide metadata to intersection observer entries
   useLayoutEffect(() => {
-    targetRefsRef.current.forEach((targetRef, index) => {
-      targetRef.current?.setAttribute("contentIndex", index.toString());
-      targetRef.current?.setAttribute("contentType", contents[index].type);
+    contentRefs.forEach((contentRef, index) => {
+      contentRef.current?.setAttribute("contentIndex", index.toString());
+      contentRef.current?.setAttribute("contentType", contents[index].type);
     });
-  }, [contents]);
+  }, [contentRefs, contents]);
 
-  const { entries: tocEntries } = useIntersectionObserver(tocRefsRef.current);
-  // TODO: tweek margin/treshold to trigger intersection more generously
-  const { entries: contentEntries } = useIntersectionObserver(targetRefsRef.current);
-
-  // on intersection, find closest entry to table of content and set it as active content
+  // update active content on intersection change
   useEffect(() => {
-    const entryDifference = getTopClosestEntry(tocEntries?.[0], contentEntries);
+    if (!tableOfContentsRef.current || !entries) return;
 
-    const DIFFERENCE_THRESHOLD = 100; // distance between top of toc and closest entry found
-    // for entries entering from the top
-    if (entryDifference && entryDifference.difference <= DIFFERENCE_THRESHOLD) {
-      const type = entryDifference.entry.target.getAttribute("contentType") || undefined;
-      const index = entryDifference.entry.target.getAttribute("contentIndex") || undefined;
+    // find entry located above table of contents (i.e. entry that started to leave screen from above)
+    const { y } = tableOfContentsRef.current?.getBoundingClientRect();
+    const foundEntry = entries.find((entry) => {
+      return entry.boundingClientRect.y <= y;
+    });
+    if (!foundEntry) return;
 
-      if (type && index != undefined) {
-        setActiveContent({
-          type: type as ContentSliceType,
-          index: parseInt(index, 10),
-        });
-      }
+    // get metadata from entry
+    const type = foundEntry.target.getAttribute("contentType") || undefined;
+    const index = foundEntry.target.getAttribute("contentIndex") || undefined;
+
+    // set active content
+    if (type && index != undefined) {
+      setActiveContent({
+        type: type as ContentSliceType,
+        index: parseInt(index, 10),
+      });
     }
-  }, [contentEntries, tocEntries]);
+  }, [entries]);
 
-  let sectionTitleIndex = 0;
-
+  // map content type to component
   const contentComponents: ContentComponents = useMemo(() => {
     return {
       "section_title": SectionContentSectionTitle,
@@ -103,6 +94,9 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
     };
   }, []);
 
+  // display index in front of section titles
+  let sectionTitleIndex = 0;
+
   return (
     <Flex
       sx={{
@@ -111,27 +105,26 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         backgroundColor: "background",
       }}>
       <TableOfContents
-        ref={tocRefsRef.current[0]}
+        ref={tableOfContentsRef}
         contents={contents}
         activeContent={activeContent}
       />
       {contents.map((content, index) => {
-        // get component by type
+        // get content component by type
         const ContentComponent = contentComponents[content.type];
 
-        // get type specific props
+        // get type's specific props
         const extraProps: any = {};
         if (content.type === "section_title") {
+          // set index prop
           extraProps.index = sectionTitleIndex;
-
-          // increment index for type
           sectionTitleIndex = ++sectionTitleIndex;
         }
 
         return (
           <ContentComponent
             key={`section-content-${index}`}
-            ref={targetRefsRef.current[index]}
+            ref={contentRefs[index]}
             content={content}
             {...extraProps}
           />

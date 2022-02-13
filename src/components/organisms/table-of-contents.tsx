@@ -10,7 +10,6 @@ import React, {
 
 import {
   ContentComponents,
-  ContentIndexes,
   Flex,
   TableOfContentsSectionTitle,
   TableOfContentsSubsectionTitle,
@@ -35,8 +34,29 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
   contents,
   activeContent,
 }, ref) => {
-  let sectionTitleIndex = 0;
+  const [activeSection, setActiveSection] = useState<number>();
+  const [activeSubsection, setActiveSubsection] = useState<number>();
 
+  // find first content that matches provided type from previous contents
+  const findPreviousContentIndexByType = useCallback((type: ContentSliceType, index: number) => {
+    for (let i = index; i >= 0; --i) {
+      if (contents[i].type === type) {
+        return i;
+      }
+    }
+  }, [contents]);
+
+  // update active section and subsection on active content change
+  useEffect(() => {
+    if (!activeContent) return;
+
+    const aboveSectionTitleIndex = findPreviousContentIndexByType("section_title", activeContent.index);
+    const aboveSubectionTitleIndex = findPreviousContentIndexByType("subsection_title", activeContent.index);
+    setActiveSection(aboveSectionTitleIndex);
+    setActiveSubsection(aboveSubectionTitleIndex);
+  }, [activeContent, findPreviousContentIndexByType]);
+
+  // map content type to component
   const contentComponents: ContentComponents = useMemo(() => {
     return {
       "section_title": TableOfContentsSectionTitle,
@@ -48,29 +68,11 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
     };
   }, []);
 
-  console.log("activeContent: ", activeContent);
+  // display index in front of section titles
+  let sectionTitleIndex = 0;
+
+  // hide non-active subsection titles
   const visibility = activeContent && activeContent.type !== "section_title" ? "visible" : "hidden";
-  // console.log("visibility: ", visibility);
-
-  const [activeSection, setActiveSection] = useState<number>();
-  const [activeSubsection, setActiveSubsection] = useState<number>();
-
-  const getAboveContentIndexByType = useCallback((type: ContentSliceType, index: number) => {
-    for (let i = index; i >= 0; --i) {
-      if (contents[i].type === type) {
-        return i;
-      }
-    }
-  }, [contents]);
-
-  useEffect(() => {
-    if (!activeContent) return;
-    const aboveSectionTitleIndex = getAboveContentIndexByType("section_title", activeContent.index);
-    const aboveSubectionTitleIndex = getAboveContentIndexByType("subsection_title", activeContent.index);
-
-    setActiveSection(aboveSectionTitleIndex);
-    setActiveSubsection(aboveSubectionTitleIndex);
-  }, [activeContent, getAboveContentIndexByType]);
 
   return (
     <Flex
@@ -83,22 +85,22 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
         visibility,
       }}>
       {contents.map((content, index) => {
-        // get component by type
+        // get content component by type
         const ContentComponent = contentComponents[content.type];
 
-        // get type specific props
+        // get type's specific props
         const extraProps: any = {};
         if (content.type === "section_title") {
           // set isActive prop
-          extraProps.isActive = activeSection === index;
+          extraProps.isActive = index === activeSection;
 
           // set index prop
           extraProps.index = sectionTitleIndex;
           sectionTitleIndex = ++sectionTitleIndex;
         }
 
-        // hide non active subsections
-        if (content.type === "subsection_title" && activeSubsection !== index) return null;
+        // hide non-active subsection titles
+        if (content.type === "subsection_title" && index !== activeSubsection) return null;
 
         return (
           <ContentComponent

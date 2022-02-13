@@ -3,7 +3,9 @@ import { ResponsiveStyleValue } from "theme-ui";
 import { useResponsiveContext } from "@providers";
 
 /**
- * Hook that returns a function used to parse a responsive prop array into a single prop based on active breakpoint
+ * Hook containing responsive helper functions
+ *
+ * @returns function used to parse a prop array into a single prop based on active breakpoint
  */
 export const useResponsive = () => {
   const {
