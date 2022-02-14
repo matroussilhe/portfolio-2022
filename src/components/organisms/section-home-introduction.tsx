@@ -18,21 +18,26 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         sx={{
           px: 6,
         }}>
-        <TextAnimated>
-          {"아이 Hello, I'm Mathieu a full stack developer"}
-        </TextAnimated>
-        <TextAnimated>
-          {"building something special and mostly"}
-        </TextAnimated>
-        <TextAnimated>
-          {"focus on these technologies. I'm currently"}
-        </TextAnimated>
-        <TextAnimated>
-          {"fully employed at QMIT Inc. | 저는 웹 개발자"}
-        </TextAnimated>
-        <TextAnimated>
-          {"입니다. and live in SEOUL KOREA."}
-        </TextAnimated>
+        <TextAnimated
+          text={"아이 Hello, I'm Mathieu a full stack developer"}
+          delay={0}
+        />
+        <TextAnimated
+          text={"building something special and mostly"}
+          delay={250}
+        />
+        <TextAnimated
+          text={"focus on these technologies. I'm currently"}
+          delay={500}
+        />
+        <TextAnimated
+          text={"fully employed at QMIT Inc. | 저는 웹 개발자"}
+          delay={750}
+        />
+        <TextAnimated
+          text={"입니다. and live in SEOUL KOREA."}
+          delay={1000}
+        />
       </Box>
     </Flex>
   );

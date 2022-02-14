@@ -14,9 +14,10 @@ const DebugTextAnimated = () => {
         flexWrap: "wrap",
         p: 5,
       }}>
-      <TextAnimated>
-        {"I am text, my name is Text and I lived in Texas"}
-      </TextAnimated>
+      <TextAnimated
+        text={"Hi guys, my name is Mathieu and I am from France"}
+        delay={0}
+      />
     </Flex>
   );
 };
