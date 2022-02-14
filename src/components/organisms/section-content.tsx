@@ -61,7 +61,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   useEffect(() => {
     if (!tableOfContentsRef.current || !entries) return;
 
-    // find entry located above table of contents (i.e. entry that started to leave screen from above)
+    // find entry located above table of contents (i.e. entry that started to enter/leave screen from above)
     const { y } = tableOfContentsRef.current?.getBoundingClientRect();
     const foundEntry = entries.find((entry) => {
       return entry.boundingClientRect.y <= y;
