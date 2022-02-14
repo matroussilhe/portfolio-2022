@@ -28,9 +28,7 @@ export const Icon: FunctionComponent<IconProps> = ({
   };
 
   const handleBeforeInjection = (svg: SVGSVGElement) => {
-    if (!svg || !responsiveSize) {
-      return;
-    }
+    if (!svg || !responsiveSize) return;
 
     svg.setAttribute("width", responsiveSize);
     svg.setAttribute("height", responsiveSize);

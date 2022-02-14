@@ -18,12 +18,13 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   // TODO: get text as prop
   const text = "Hi guys, my name is Mathieu and I am from France";
   // TODO: get delay as prop
-  const delay = 1000;
+  const delay = 0;
 
   const options = {
-    speed: 75, // write speed in ms
-    probability: 50, // probability for glitch appearance
-    glitches: "가나다", // characters used as glitch
+    speed: 100, // write speed in ms
+    newGlitchProbability: 50, // probability for glitch to appear on write
+    replaceGlitchProbability: 50, // probability for glitch to be replaced on write
+    glitches: "X", // characters used as glitch
   };
 
   const intervalRef = useRef<NodeJS.Timeout>();
@@ -95,10 +96,19 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     }
   }, [stop]);
 
-  const addCharacter = useCallback(() => {
-    const roll = getRandomInteger(0, 100);
+  const addString = (str: string, char: string, index: number) => {
+    return `${str.slice(0, index)}${char}${str.slice(index)}`;
+  };
 
-    if (roll <= options.probability) {
+  const replaceString = (str: string, char: string, index: number) => {
+    return `${str.slice(0, index)}${char}${str.slice(index + char.length)}`;
+  };
+
+  const write = useCallback(() => {
+    let roll = getRandomInteger(0, 100);
+
+    if (roll <= options.newGlitchProbability) {
+      // TODO: don't add
       // add glitch to end of string
       const glitches = getRandomGlitches(1);
       glitchCountRef.current = glitchCountRef.current + 1;
@@ -107,13 +117,36 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       // update output
       outputRef.current = newOutput;
       setOutput(newOutput);
-    } else {
-      // clear glitches
-      clearGlitches();
-      glitchCountRef.current = 0;
 
-      // add text character to end of string
-      const newOutput = `${outputRef.current}${text[indexRef.current]}`;
+      return;
+    }
+
+    roll = getRandomInteger(0, 100);
+    if (roll <= options.replaceGlitchProbability) {
+      if (glitchCountRef.current <= 0) return;
+
+      // replace glitch with text character
+      const newOutput = replaceString(
+        outputRef.current,
+        text[indexRef.current],
+        outputRef.current.length - glitchCountRef.current
+      );
+
+      glitchCountRef.current = glitchCountRef.current - 1;
+
+      // update output
+      outputRef.current = newOutput;
+      setOutput(newOutput);
+
+      // update progression
+      updateIndex();
+    } else {
+      // add text character at the end of string
+      const newOutput = addString(
+        outputRef.current,
+        text[indexRef.current],
+        outputRef.current.length - glitchCountRef.current
+      );
 
       // update output
       outputRef.current = newOutput;
@@ -122,7 +155,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       // update progression
       updateIndex();
     }
-  }, [clearGlitches, getRandomGlitches, updateIndex, options.probability]);
+  }, [getRandomGlitches, options.newGlitchProbability, options.replaceGlitchProbability, updateIndex]);
 
   // update output state on change
   useEffect(() => {
@@ -131,8 +164,8 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 
   // update callback on change
   useEffect(() => {
-    callbackRef.current = addCharacter;
-  }, [addCharacter]);
+    callbackRef.current = write;
+  }, [write]);
 
   // init interval
   useEffect(() => {
