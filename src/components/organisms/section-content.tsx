@@ -41,21 +41,22 @@ export type ContentIndexes = {
 export const SectionContent: FunctionComponent<SectionContentProps> = ({
   contents,
 }) => {
+  const ref = useRef<HTMLDivElement>(null);
   const tableOfContentsRef = useRef<HTMLDivElement>(null);
-  const contentRefs = contents.map(() => createRef<HTMLDivElement>());
+  const contentComponentRefs = contents.map(() => createRef<HTMLDivElement>());
 
   const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
 
   // observe content intersection changes
-  const { entries } = useIntersectionObserver(contentRefs);
+  const { entries } = useIntersectionObserver(contentComponentRefs);
 
   // set attributes on each content ref to provide metadata to intersection observer entries
   useEffect(() => {
-    contentRefs.forEach((contentRef, index) => {
+    contentComponentRefs.forEach((contentRef, index) => {
       contentRef.current?.setAttribute("contentIndex", index.toString());
       contentRef.current?.setAttribute("contentType", contents[index].type);
     });
-  }, [contentRefs, contents]);
+  }, [contentComponentRefs, contents]);
 
   // update active content on intersection change
   useEffect(() => {
@@ -81,6 +82,10 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
     }
   }, [entries]);
 
+  // determine if component is inside viewport
+  const { top, bottom } = ref.current?.getBoundingClientRect() || { top: 0, bottom: 0 };
+  const isInsideViewport = top < 0 && bottom > 0;
+
   // map content type to component
   const contentComponents: ContentComponents = useMemo(() => {
     return {
@@ -98,6 +103,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 
   return (
     <Flex
+      ref={ref}
       sx={{
         px: 5,
         flexDirection: "column",
@@ -107,6 +113,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         ref={tableOfContentsRef}
         contents={contents}
         activeContent={activeContent}
+        isVisible={isInsideViewport}
       />
       {contents.map((content, index) => {
         // get content component by type
@@ -122,8 +129,8 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 
         return (
           <ContentComponent
+            ref={contentComponentRefs[index]}
             key={`section-content-${index}`}
-            ref={contentRefs[index]}
             content={content}
             {...extraProps}
           />

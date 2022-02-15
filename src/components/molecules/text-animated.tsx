@@ -114,36 +114,6 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     clearInterval(intervalRef.current);
   }, []);
 
-  const renderOuput = () => {
-    // render placeholder when output is empty (i.e. before start)
-    if (output.length === 0) {
-      return <span>&nbsp;</span>;
-    }
-
-    return output.map((item, index) => {
-      if (item.type === "character") {
-        return (
-          <span
-            key={index}>
-            {item.value}
-          </span>
-        );
-      } else if (item.type === "glitch") {
-        return (
-          <span
-            key={index}
-            sx={{
-              opacity: 0.35,
-            }}>
-            {item.value}
-          </span>
-        );
-      } else {
-        return null;
-      }
-    });
-  };
-
   const updateIndex = useCallback(() => {
     const newIndex = indexRef.current + 1;
     indexRef.current = newIndex;
@@ -224,6 +194,36 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 
     return () => intervalRef.current ? clearInterval(intervalRef.current) : undefined;
   }, [delay, start]);
+
+  const renderOuput = () => {
+    // render placeholder when output is empty (i.e. before start)
+    if (output.length === 0) {
+      return <span>&nbsp;</span>;
+    }
+
+    return output.map((item, index) => {
+      if (item.type === "character") {
+        return (
+          <span
+            key={index}>
+            {item.value}
+          </span>
+        );
+      } else if (item.type === "glitch") {
+        return (
+          <span
+            key={index}
+            sx={{
+              opacity: 0.35,
+            }}>
+            {item.value}
+          </span>
+        );
+      } else {
+        return null;
+      }
+    });
+  };
 
   return (
     <Text

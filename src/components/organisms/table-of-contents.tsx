@@ -28,11 +28,13 @@ export type TableOfContentsProps = {
   ref?: Ref<HTMLDivElement>;
   contents: Content[];
   activeContent?: TableOfContentsActiveContent;
+  isVisible?: boolean;
 };
 
 export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardRef<HTMLDivElement, TableOfContentsProps>(({
   contents,
   activeContent,
+  isVisible,
 }, ref) => {
   const [activeSection, setActiveSection] = useState<number>();
   const [activeSubsection, setActiveSubsection] = useState<number>();
@@ -71,9 +73,15 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
   // display index in front of section titles
   let sectionTitleIndex = 0;
 
-  // hide non-active subsection titles
-  const visibility = activeContent && activeContent.type !== "section_title" ? "visible" : "hidden";
+  // control visibility
+  const isActiveContentDefined = !!activeContent;
+  const isActiveContentSectionTitle = activeContent?.type === "section_title";
+  const visibility = isVisible && !isActiveContentSectionTitle && isActiveContentDefined ? "visible" : "hidden";
 
+  console.log("isVisible: ", isVisible);
+  console.log("isActiveContentDefined: ", isActiveContentDefined);
+  console.log("isActiveContentSectionTitle: ", isActiveContentSectionTitle);
+  console.log("visibility: ", visibility);
   return (
     <Flex
       ref={ref}
