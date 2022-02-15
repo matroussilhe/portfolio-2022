@@ -43,27 +43,27 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const tableOfContentsRef = useRef<HTMLDivElement>(null);
-  const contentComponentRefs = contents.map(() => createRef<HTMLDivElement>());
+  const contentRefs = contents.map(() => createRef<HTMLDivElement>());
 
   const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
 
   // observe content intersection changes
-  const { entries } = useIntersectionObserver(contentComponentRefs);
+  const { entries } = useIntersectionObserver(contentRefs);
 
   // set attributes on each content ref to provide metadata to intersection observer entries
   useEffect(() => {
-    contentComponentRefs.forEach((contentRef, index) => {
+    contentRefs.forEach((contentRef, index) => {
       contentRef.current?.setAttribute("contentIndex", index.toString());
       contentRef.current?.setAttribute("contentType", contents[index].type);
     });
-  }, [contentComponentRefs, contents]);
+  }, [contentRefs, contents]);
 
   // update active content on intersection change
   useEffect(() => {
     if (!tableOfContentsRef.current || !entries) return;
 
     // find entry located above table of contents (i.e. entry that started to enter/leave screen from above)
-    const { y } = tableOfContentsRef.current?.getBoundingClientRect();
+    const { y } = tableOfContentsRef.current.getBoundingClientRect();
     const foundEntry = entries.find((entry) => {
       return entry.boundingClientRect.y <= y;
     });
@@ -113,6 +113,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         ref={tableOfContentsRef}
         contents={contents}
         activeContent={activeContent}
+        contentRefs={contentRefs}
         isVisible={isInsideViewport}
       />
       {contents.map((content, index) => {
@@ -129,7 +130,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 
         return (
           <ContentComponent
-            ref={contentComponentRefs[index]}
+            ref={contentRefs[index]}
             key={`section-content-${index}`}
             content={content}
             {...extraProps}

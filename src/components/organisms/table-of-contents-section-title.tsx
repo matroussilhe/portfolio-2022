@@ -12,12 +12,14 @@ export type TableOfContentsSectionTitleProps = {
   content: SectionTitle;
   index: number;
   isActive: boolean;
+  onClick: () => void;
 };
 
 export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSectionTitleProps> = ({
   content,
   index,
   isActive,
+  onClick,
 }) => {
   const indexString = (index + 1).toString().padStart(2, "0");
 
@@ -29,9 +31,11 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
 
   return (
     <Flex
+      onClick={onClick}
       sx={{
         mb: 1,
         alignItems: "center",
+        cursor: "pointer",
       }}>
       <Text
         variant={"body1"}
