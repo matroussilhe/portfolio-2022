@@ -6,9 +6,12 @@ import React, {
   useState,
 } from "react";
 
+import { keyframes } from "@emotion/react";
+
 import {
   Text,
 } from "@components";
+import { theme } from "@themes";
 
 export type TextAnimatedOutputItem = {
   type: "glitch" | "character";
@@ -32,16 +35,41 @@ export type TextAnimatedProps = {
   options?: TextAnimatedOptions; // animation options
 };
 
+const distortion = 5;
+const distort1 = keyframes`
+  0 % { top: ${50 - distortion}%; left: ${50 - distortion}%; }
+  12.5% { top: ${50 - distortion}%; left: 50%; }
+  25% { top: ${50 - distortion}%; left: ${50 + distortion}%; }
+  37.5% { top: 50%; left: ${50 + distortion}%; }
+  50% { top: ${50 + distortion}%; left: ${50 + distortion}%; }
+  62.5% { top: ${50 + distortion}%; left: 50%; }
+  75% { top: ${50 + distortion}%; left: ${50 - distortion}%; }
+  87.5% { top: 50%; left: ${50 - distortion}%; }
+  100% { top: ${50 - distortion}%; left: ${50 - distortion}%; }
+`;
+
+const distort2 = keyframes`
+  0% { top: ${50 + distortion}%; left: ${50 + distortion}%; }
+  12.5% { top: 50%; left: ${50 + distortion}%; }
+  25% { top: ${50 - distortion}%; left: ${50 + distortion}%; }
+  37.5% { top: ${50 - distortion}%; left: 50%; }
+  50% { top: ${50 - distortion}%; left: ${50 - distortion}%; }
+  62.5% { top: 50%; left: ${50 - distortion}%; }
+  75% { top: ${50 + distortion}%; left: ${50 - distortion}%; }
+  87.5% { top: ${50 + distortion}%; left: 50%; }
+  100% { top: ${50 + distortion}%; left: ${50 + distortion}%; }
+`;
+
 export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   text,
   duration = 1000,
   delay = 0,
   options = {
-    newGlitchProbability: 5,
+    newGlitchProbability: 0,
     replaceGlitchProbability: 20,
-    glitches: "ㅂㅈㄷㄱ숌ㄴㅇㄹㅎㅋㅌㅊ펴ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡ",
-    minStartingGlitches: 2,
-    maxStartingGlitches: 4,
+    glitches: "-_/|\\",
+    minStartingGlitches: 4,
+    maxStartingGlitches: 8,
   },
 }) => {
   const [output, setOutput] = useState<TextAnimatedOutput>([]);
@@ -120,7 +148,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     indexRef.current = newIndex;
 
     const maxIndex = text.length;
-    if (newIndex === maxIndex) {
+    if (newIndex >= maxIndex) {
       stop();
     }
   }, [stop, text.length]);
@@ -189,11 +217,14 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   // init
   useEffect(() => {
     // start after delay
-    setTimeout(() => {
+    const timeout = setTimeout(() => {
       start();
     }, delay);
 
-    return () => intervalRef.current ? clearInterval(intervalRef.current) : undefined;
+    return () => {
+      clearTimeout(timeout);
+      intervalRef.current ? clearInterval(intervalRef.current) : undefined;
+    };
   }, [delay, start]);
 
   const renderOuput = () => {
@@ -215,7 +246,27 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
           <span
             key={`glitch-${index}`}
             sx={{
-              opacity: 0.35,
+              // textShadow: `0px 0px 4px ${theme.colors["grayscale-900"]}`,
+              position: "relative",
+              opacity: 0.25,
+              "&:before, &:after": {
+                position: "absolute",
+                content: `${JSON.stringify(item.value)}`,
+                transform: "translate(-50%, -50%)",
+                zIndex: -1,
+              },
+              "&::before": {
+                top: "49.5%",
+                left: "49.5%",
+                animation: `${distort1} 600ms linear infinite`,
+                color: "grayscale-900",
+              },
+              "&:after": {
+                top: "${50 + distortion}%",
+                left: "${50 + distortion}%",
+                animation: `${distort2} 600ms linear infinite`,
+                color: "grayscale-200",
+              },
             }}>
             {item.value}
           </span>

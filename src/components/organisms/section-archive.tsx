@@ -24,7 +24,6 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
         flexDirection: "column",
         backgroundColor: "background",
       }}>
-
       <TextSectionTitle
         title={"Archive"}
         subtitle={"(EXTERNAL LINKS)"}

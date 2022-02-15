@@ -16,6 +16,7 @@ const DebugTextAnimated = () => {
       }}>
       <TextAnimated
         text={"Hi guys, my name is Mathieu and I am from France"}
+        duration={3000000}
         delay={0}
       />
     </Flex>
