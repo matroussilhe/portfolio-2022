@@ -48,17 +48,17 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             <TextAnimated
               text={"focus on these technologies. I'm currently"}
               duration={1200}
-              delay={1800}
+              delay={2400}
             />
             <TextAnimated
               text={"fully employed at QMIT Inc."}
               duration={1200}
-              delay={2700}
+              delay={3600}
             />
             <TextAnimated
               text={"and live in SEOUL KOREA."}
               duration={1200}
-              delay={3600}
+              delay={4800}
             />
           </Fragment>
         ) : (
@@ -77,17 +77,17 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             <TextAnimated
               text={"이러한 기술에 집중합니다. 저는 지금"}
               duration={1200}
-              delay={1800}
+              delay={2400}
             />
             <TextAnimated
               text={"QMIT Inc. 주식회사의 완전 고용"}
               duration={1200}
-              delay={2700}
+              delay={3600}
             />
             <TextAnimated
               text={"그리고 서울 코리아에 살고 있습니다."}
               duration={1200}
-              delay={3600}
+              delay={4800}
             />
           </Fragment>
         )}
