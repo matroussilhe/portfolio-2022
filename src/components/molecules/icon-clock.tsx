@@ -137,21 +137,13 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
     return () => clearInterval(id);
   }, [mode, data]);
 
-  // change mode on click
+  // toggle mode on click
   const handleClick = () => {
-    if (mode === "local") {
-      const newMode = "other";
+    const newMode = mode === "local" ? "other" : "local";
 
-      setMode(newMode);
-      setTime(getTime(newMode));
-      setCity(getCity(newMode));
-    } else {
-      const newMode = "local";
-
-      setMode(newMode);
-      setTime(getTime(newMode, data));
-      setCity(getCity(newMode, data));
-    }
+    setMode(newMode);
+    setTime(getTime(newMode, data));
+    setCity(getCity(newMode, data));
   };
 
   return (

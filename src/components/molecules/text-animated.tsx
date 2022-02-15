@@ -18,7 +18,6 @@ export type TextAnimatedOutputItem = {
 export type TextAnimatedOutput = TextAnimatedOutputItem[];
 
 export type TextAnimatedOptions = {
-  speed: number; // character writing speed in ms
   newGlitchProbability: number; // probability for glitch to appear on write (0~100%)
   replaceGlitchProbability: number; // probability for glitch to be replaced on write (0~100%)
   glitches: string; // characters used as glitch
@@ -28,16 +27,17 @@ export type TextAnimatedOptions = {
 
 export type TextAnimatedProps = {
   text: string;
+  duration?: number; // animation duration
   delay?: number; // delay before animation start
   options?: TextAnimatedOptions; // animation options
 };
 
 export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   text,
+  duration = 1000,
   delay = 0,
   options = {
-    speed: 35,
-    newGlitchProbability: 10,
+    newGlitchProbability: 5,
     replaceGlitchProbability: 20,
     glitches: "ㅂㅈㄷㄱ숌ㄴㅇㄹㅎㅋㅌㅊ펴ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡ",
     minStartingGlitches: 2,
@@ -100,11 +100,12 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     initOutput();
 
     // start interval
+    const writeSpeed = duration / text.length;
     const id = setInterval(() => {
       callbackRef.current?.();
-    }, options.speed);
+    }, writeSpeed);
     intervalRef.current = id;
-  }, [initOutput, options.speed]);
+  }, [duration, initOutput, text.length]);
 
   const stop = useCallback(() => {
     if (!intervalRef.current) return;
@@ -205,14 +206,14 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       if (item.type === "character") {
         return (
           <span
-            key={index}>
+            key={`character-${index}`}>
             {item.value}
           </span>
         );
       } else if (item.type === "glitch") {
         return (
           <span
-            key={index}
+            key={`glitch-${index}`}
             sx={{
               opacity: 0.35,
             }}>
@@ -229,7 +230,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     <Text
       variant={"heading4"}
       sx={{
-        lineHeight: 1.2,
+        lineHeight: 1.4,
         color: "on-surface",
       }}>
       {renderOuput()}
