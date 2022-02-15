@@ -24,7 +24,7 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
       ref={ref}
       variant={"heading1"}
       sx={{
-        mb: 10,
+        py: 5,
         fontWeight: "bold",
       }}>
       {indexString}&nbsp;{content.title}

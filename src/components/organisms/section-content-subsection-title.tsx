@@ -24,7 +24,7 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
         ref={ref}
         variant={"heading3"}
         sx={{
-          mb: 4,
+          py: 2,
         }}>
         {content.title.toUpperCase()}
       </Text>

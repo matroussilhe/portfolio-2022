@@ -25,7 +25,7 @@ export const SectionContentCenterParagraph: FunctionComponent<SectionContentCent
       <Flex
         ref={ref}
         sx={{
-          mb: 8,
+          py: 4,
           flexDirection: "row",
           flexWrap: "wrap",
         }}>
