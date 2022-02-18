@@ -11,7 +11,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Fragment>
       <Head>
-        <title>{"Mat Roussilhe | Software Engineer"}</title>
+        <title>{"Mat Roussilhe | Fullstack Engineer"}</title>
         <meta name={"description"} content={"Mathieu Roussilhe's portfolio"}/>
         <link rel={"icon"} href={"/favicon.ico"}/>
       </Head>
