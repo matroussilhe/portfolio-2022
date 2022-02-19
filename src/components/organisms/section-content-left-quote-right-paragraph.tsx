@@ -43,12 +43,12 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
         </Box>
         <Box
           sx={{
-            width: "col12.4",
+            width: "col12.2",
           }}
         />
         <Box
           sx={{
-            width: "col12.4",
+            width: "col12.6",
           }}>
           <Text
             variant={"body1"}

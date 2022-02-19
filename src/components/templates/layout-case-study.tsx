@@ -10,6 +10,7 @@ import {
 import {
   Content,
   Footer,
+  generateId,
   Header,
 } from "@services";
 
@@ -39,6 +40,8 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
           header={header}
         />
         <SectionContent
+          // WIP: fix toc state not reinitialized
+          key={generateId()}
           contents={contents}
         />
         <SectionFooter

@@ -39,10 +39,10 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   delay = 0,
   options = {
     newGlitchProbability: 0,
-    replaceGlitchProbability: 20,
+    replaceGlitchProbability: 25,
     glitches: "ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲ쎠ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖ",
-    minStartingGlitches: 5,
-    maxStartingGlitches: 10,
+    minStartingGlitches: 4,
+    maxStartingGlitches: 8,
   },
 }) => {
   const [output, setOutput] = useState<TextAnimatedOutput>([]);
@@ -163,6 +163,16 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 
       // update progression
       updateIndex();
+
+      // WIP: add another character/glitch on replace to avoid string going back effect
+      // // add glitch to end of string
+      // const glitches = getRandomGlitches(1, 1);
+      // glitchCountRef.current = glitchCountRef.current + 1;
+      // newOutput = [...outputRef.current, ...glitches];
+
+      // // update output
+      // outputRef.current = newOutput;
+      // setOutput(newOutput);
     } else {
       // add text character at the end of string
       const newOutput = [...outputRef.current];

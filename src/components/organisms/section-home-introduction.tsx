@@ -35,11 +35,20 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         {mode === "en" ? (
           <Fragment
             key={generateId()}>
-            <TextAnimated
-              text={"아이! Hello, I'm Mathieu a full stack developer"}
-              duration={1200}
-              delay={0}
-            />
+            {/* WIP: try double cursor text */}
+            <Flex>
+              <TextAnimated
+                text={"아이! Hello, I'm Mathieu"}
+                duration={1200}
+                delay={0}
+              />
+              &nbsp;
+              <TextAnimated
+                text={"a Fullstack Engineer"}
+                duration={1200}
+                delay={0}
+              />
+            </Flex>
             <TextAnimated
               text={"building something special and mostly"}
               duration={1200}
