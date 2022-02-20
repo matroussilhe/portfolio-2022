@@ -58,13 +58,19 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
           sx={{
             width: "col12.8",
           }}>
-          <Text
-            variant={"body1"}
+          <Flex
             sx={{
-              whiteSpace: "pre-wrap",
+              justifyContent: "flex-start",
             }}>
-            {content.paragraph}
-          </Text>
+            <Text
+              variant={"body1"}
+              sx={{
+                maxWidth: "paragraph.md",
+                whiteSpace: "pre-wrap",
+              }}>
+              {content.paragraph}
+            </Text>
+          </Flex>
         </Box>
         <Box sx={{
           width: "col12.4",

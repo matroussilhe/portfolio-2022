@@ -145,6 +145,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
             variant={"body1"}
             sx={{
               mb: 4,
+              maxWidth: "paragraph.md",
             }}>
             {header.introduction}
           </Text>

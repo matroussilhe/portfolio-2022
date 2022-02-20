@@ -36,13 +36,19 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
           sx={{
             width: "col12.4",
           }}>
-          <Text
-            variant={"heading3"}
+          <Flex
             sx={{
-              whiteSpace: "pre-wrap",
+              justifyContent: "flex-start",
             }}>
-            {content.quote}
-          </Text>
+            <Text
+              variant={"heading3"}
+              sx={{
+                maxWidth: "paragraph.md",
+                whiteSpace: "pre-wrap",
+              }}>
+              {content.quote}
+            </Text>
+          </Flex>
         </Box>
         <Box
           sx={{
@@ -53,13 +59,19 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
           sx={{
             width: "col12.6",
           }}>
-          <Text
-            variant={"body1"}
+          <Flex
             sx={{
-              whiteSpace: "pre-wrap",
+              justifyContent: "flex-end",
             }}>
-            {content.paragraph}
-          </Text>
+            <Text
+              variant={"body1"}
+              sx={{
+                maxWidth: "paragraph.md",
+                whiteSpace: "pre-wrap",
+              }}>
+              {content.paragraph}
+            </Text>
+          </Flex>
         </Box>
       </Flex>
     </FlexColumnSpacer>

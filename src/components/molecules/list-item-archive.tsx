@@ -49,14 +49,20 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           width: ["col12.6"],
           px: 8,
         }}>
-        <Text
-          variant={"body3"}
+        <Flex
           sx={{
-            lineHeight: 1.2,
-            whiteSpace: "pre-wrap",
+            justifyContent: "center",
           }}>
-          {archive.description}
-        </Text>
+          <Text
+            variant={"body3"}
+            sx={{
+              maxWidth: "paragraph.sm",
+              lineHeight: 1.2,
+              whiteSpace: "pre-wrap",
+            }}>
+            {archive.description}
+          </Text>
+        </Flex>
       </Box>
       <Box
         sx={{

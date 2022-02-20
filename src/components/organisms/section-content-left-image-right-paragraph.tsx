@@ -58,13 +58,19 @@ export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionCon
             width: "col12.4",
             pl: 3,
           }}>
-          <Text
-            variant={"body1"}
+          <Flex
             sx={{
-              whiteSpace: "pre-wrap",
+              justifyContent: "flex-end",
             }}>
-            {content.paragraph}
-          </Text>
+            <Text
+              variant={"body1"}
+              sx={{
+                maxWidth: "paragraph.md",
+                whiteSpace: "pre-wrap",
+              }}>
+              {content.paragraph}
+            </Text>
+          </Flex>
         </Box>
       </Flex>
     </FlexColumnSpacer>
