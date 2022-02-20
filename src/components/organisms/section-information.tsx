@@ -51,6 +51,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body1"}
         sx={{
           mb: 12,
+          maxWidth: "paragraph.md",
           whiteSpace: "pre-wrap",
         }}>
         {bio.description}
@@ -66,6 +67,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={"body1"}
         sx={{
           mb: 12,
+          maxWidth: "paragraph.md",
           whiteSpace: "pre-wrap",
         }}>
         {expertise.description}

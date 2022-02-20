@@ -11,8 +11,6 @@ import {
 
 export type AboutProps = {
   document: AboutPageDocument;
-  // DEBUG:
-  rawDocument: any;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -22,17 +20,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       document: parsedDocument,
-      // DEBUG:
-      rawDocument: document,
     },
   };
 };
 
-const About: NextPage<AboutProps> = ({ document, rawDocument }) => {
-  // DEBUG:
-  console.log("document : ", document);
-  console.log("raw document : ", rawDocument);
-
+const About: NextPage<AboutProps> = ({ document }) => {
   return (
     <LayoutAbout
       bio={document.bio}

@@ -16,9 +16,12 @@ export type NavbarProps = FlexProps & {
   showBack?: boolean;
 };
 
+// hardcoded value to avoid excessive query of work count
+const WORK_COUNT = 2;
+
 export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
-  workCount,
+  workCount = WORK_COUNT,
   showBack = false,
   ...rest
 }) => {

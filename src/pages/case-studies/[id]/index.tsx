@@ -13,8 +13,6 @@ import {
 
 export type CaseStudyProps = {
   document: CaseStudyPageDocument;
-  // DEBUG:
-  rawDocument: any;
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -35,17 +33,11 @@ export const getStaticProps: GetStaticProps = async (context) => {
   return {
     props: {
       document: parsedDocument,
-      // DEBUG:
-      rawDocument: document,
     },
   };
 };
 
-const CaseStudy: NextPage<CaseStudyProps> = ({ document, rawDocument }) => {
-  // DEBUG:
-  console.log("document : ", document);
-  console.log("raw document : ", rawDocument);
-
+const CaseStudy: NextPage<CaseStudyProps> = ({ document }) => {
   return (
     <LayoutCaseStudy
       header={document.header}

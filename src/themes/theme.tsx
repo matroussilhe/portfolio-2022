@@ -85,6 +85,11 @@ export const theme = getTheme({
       11: "91.6666%",
       12: "100%",
     },
+    paragraph: {
+      "sm": "560px",
+      "md": "640px",
+      "lg": "720px",
+    },
   },
   colors: {
     ...palette,

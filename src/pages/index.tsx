@@ -11,8 +11,6 @@ import {
 
 export type IndexProps = {
   document: IndexPageDocument;
-  // DEBUG:
-  rawDocument: any;
 };
 
 export const getStaticProps: GetStaticProps = async () => {
@@ -22,17 +20,11 @@ export const getStaticProps: GetStaticProps = async () => {
   return {
     props: {
       document: parsedDocument,
-      // DEBUG:
-      rawDocument: document,
     },
   };
 };
 
-const Index: NextPage<IndexProps> = ({ document, rawDocument }) => {
-  // DEBUG:
-  console.log("document : ", document);
-  console.log("raw document : ", rawDocument);
-
+const Index: NextPage<IndexProps> = ({ document }) => {
   return (
     <LayoutIndex
       works={document.works}
