@@ -12,7 +12,7 @@ import {
 } from "@components";
 import { useResponsive } from "@hooks";
 
-export type GridGap = "sm" | "md" | "lg";
+export type GridGap = "sm" | "md" | "lg" | "xl";
 
 export type GridProps = {
   children: ReactNode[];
@@ -50,6 +50,12 @@ const gridGap = variant({
       ml: "-12px",
       mr: "-12px",
     },
+    xl: {
+      mt: "-16px",
+      mb: "-16px",
+      ml: "-16px",
+      mr: "-16px",
+    },
   },
 } as VariantArgs);
 
@@ -77,6 +83,12 @@ const gridItemGap = variant({
       pb: "12px",
       pl: "12px",
       pr: "12px",
+    },
+    xl: {
+      pt: "16px",
+      pb: "16px",
+      pl: "16px",
+      pr: "16px",
     },
   },
 } as VariantArgs);

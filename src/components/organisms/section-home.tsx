@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 import {
+  Box,
   Flex,
   FlexProps,
   SectionHomeFooter,
@@ -17,21 +18,38 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = ({
       sx={{
         height: "100vh",
         flexDirection: "column",
-        justifyContent: "center",
         backgroundColor: "surface",
       }}
       {...rest}>
-      <SectionHomeIntroduction
+      <Flex
         sx={{
-          px: 6,
+          flex: "0 0 auto",
+          height: "100px",
         }}
       />
-      <SectionHomeFooter
+      <Flex
         sx={{
-          pb: 3,
-          px: 6,
-        }}
-      />
+          flex: "1 0 auto",
+          alignItems: "center",
+        }}>
+        <SectionHomeIntroduction
+          sx={{
+            px: 6,
+          }}
+        />
+      </Flex>
+      <Flex
+        sx={{
+          flex: "0 0 auto",
+          height: "100px",
+        }}>
+        <SectionHomeFooter
+          sx={{
+            pb: 3,
+            px: 6,
+          }}
+        />
+      </Flex>
     </Flex>
   );
 };

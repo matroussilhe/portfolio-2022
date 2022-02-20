@@ -5,6 +5,7 @@ import {
   Navbar,
   SectionArchive,
   SectionHome,
+  SectionHomeFooter,
   SectionWork,
 } from "@components";
 import {
@@ -34,7 +35,6 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
       <Flex
         sx={{
           flexDirection: "column",
-          pb: 12,
         }}>
         <SectionHome/>
         <SectionWork
@@ -52,6 +52,12 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
             pt: [20],
             pb: [20],
             zIndex: 1,
+          }}
+        />
+        <SectionHomeFooter
+          sx={{
+            pb: 3,
+            px: 6,
           }}
         />
       </Flex>
