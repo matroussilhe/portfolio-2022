@@ -62,7 +62,7 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
             socials={socials}
             sx={{
               pt: 25,
-              pb: 10,
+              pb: 25,
               px: 10,
             }}
           />

@@ -24,12 +24,12 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
 
   return (
     <Flex
+      ref={ref}
       sx={{
-        py: 5,
+        pb: 20,
       }}
       {...rest}>
       <Text
-        ref={ref}
         variant={"heading2"}
         sx={{
           fontWeight: "bold",

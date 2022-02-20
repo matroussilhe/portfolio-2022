@@ -43,7 +43,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
           header={header}
           sx={{
             pt: 25,
-            pb: 10,
+            pb: 20,
           }}
         />
         <SectionContent
@@ -57,7 +57,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         <SectionFooter
           footer={footer}
           sx={{
-            pt: 25,
+            pt: 20,
             pb: 25,
           }}
         />

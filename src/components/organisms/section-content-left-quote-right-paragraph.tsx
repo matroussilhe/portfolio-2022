@@ -27,7 +27,7 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
       <Flex
         ref={ref}
         sx={{
-          py: 4,
+          pb: 20,
           flexDirection: "row",
           flexWrap: "wrap",
         }}

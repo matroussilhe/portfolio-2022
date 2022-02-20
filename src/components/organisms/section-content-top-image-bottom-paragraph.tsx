@@ -29,7 +29,7 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
       <Flex
         ref={ref}
         sx={{
-          py: 4,
+          pb: 20,
           flexDirection: "row",
           flexWrap: "wrap",
         }}
@@ -37,7 +37,7 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
         <Box
           sx={{
             width: "col12.12",
-            mb: 8,
+            pb: 10,
           }}>
           <Flex
             sx={{

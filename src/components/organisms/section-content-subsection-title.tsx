@@ -24,16 +24,16 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
       leftColumnWidth={"col12.3"}
       centerColumnWidth={"col12.9"}>
       <Flex
-        sx={{
-          py: 2,
-        }}
-        {...rest}
-      />
-      <Text
         ref={ref}
-        variant={"heading4"}>
-        {content.title.toUpperCase()}
-      </Text>
+        sx={{
+          pb: 10,
+        }}
+        {...rest}>
+        <Text
+          variant={"heading4"}>
+          {content.title.toUpperCase()}
+        </Text>
+      </Flex>
     </FlexColumnSpacer>
   );
 });
