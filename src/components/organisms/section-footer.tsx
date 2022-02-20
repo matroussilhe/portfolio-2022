@@ -30,6 +30,7 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
         sx={{
           ml: "300px",
           mb: 6,
+          fontSize: "3rem",
         }}>
         {"NEXT CASE STUDY"}
       </Text>
@@ -49,6 +50,7 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
         variant={"subheading1"}
         sx={{
           ml: 8,
+          fontSize: "1.5rem",
         }}>
         {footer.subtitle.toUpperCase()}
       </Text>

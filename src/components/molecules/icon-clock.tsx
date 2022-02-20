@@ -165,7 +165,7 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
           ml: 1,
           fontFamily: "body",
           fontWeight: "bold",
-          fontSize: "12px",
+          fontSize: "0.75rem",
           color: "on-surface",
         }}>
         {`${time} ${city}`}

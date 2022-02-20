@@ -136,7 +136,7 @@ export const theme = getTheme({
     heading1: "11.25rem", //   180px
     heading2: "7.5rem", //     120px
     heading3: "4.5rem", //      72px
-    heading4: "3rem", //        48px
+    heading4: "2.625rem", //    42px
     heading5: "2rem", //        32px
     subheading1: "1.5rem", //   24px
     subheading2: "1.375rem", // 22px
