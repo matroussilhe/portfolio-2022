@@ -22,7 +22,7 @@ const DebugResponsive = () => {
           backgroundColor: "#264653",
         }}>
         <Text
-          variant={["body2", "body1", "heading2", "heading1"]}
+          variant={["body2", "body1", "heading3", "heading1"]}
           sx={{
             color: "#FFFFFF",
           }}>

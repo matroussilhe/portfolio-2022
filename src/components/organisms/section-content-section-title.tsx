@@ -30,7 +30,7 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
       {...rest}>
       <Text
         ref={ref}
-        variant={"heading1"}
+        variant={"heading2"}
         sx={{
           fontWeight: "bold",
         }}>

@@ -243,7 +243,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 
   return (
     <Text
-      variant={"heading4"}
+      variant={"heading5"}
       sx={{
         lineHeight: 1.4,
         color: "on-surface",

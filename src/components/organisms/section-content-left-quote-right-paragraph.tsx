@@ -41,7 +41,7 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
               justifyContent: "flex-start",
             }}>
             <Text
-              variant={"heading3"}
+              variant={"heading4"}
               sx={{
                 maxWidth: "paragraph.md",
                 whiteSpace: "pre-wrap",

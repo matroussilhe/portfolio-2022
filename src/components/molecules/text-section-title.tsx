@@ -20,7 +20,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
         alignItems: "flex-start",
       }}>
       <Text
-        variant={"heading2"}
+        variant={"heading3"}
         sx={{
           mr: 1,
           fontWeight: "bold",

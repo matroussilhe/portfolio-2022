@@ -25,7 +25,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           width: ["col12.1"],
         }}>
         <Text
-          variant={"heading6"}
+          variant={"subheading2"}
           sx={{
             fontWeight: "bold",
           }}>
@@ -37,7 +37,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           width: ["col12.1"],
         }}>
         <Text
-          variant={"heading6"}
+          variant={"subheading2"}
           sx={{
             fontWeight: "bold",
           }}>

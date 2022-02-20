@@ -26,7 +26,7 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
       }}
       {...rest}>
       <Text
-        variant={"heading3"}
+        variant={"heading4"}
         sx={{
           ml: "300px",
           mb: 6,
@@ -46,7 +46,8 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
         </Text>
       </Link>
       <Text
-        variant={"heading5"} sx={{
+        variant={"subheading1"}
+        sx={{
           ml: 8,
         }}>
         {footer.subtitle.toUpperCase()}

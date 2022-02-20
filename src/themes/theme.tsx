@@ -131,24 +131,21 @@ export const theme = getTheme({
       },
     },
   },
-  fonts: {
-    heading: "\"Scto Grotesk A\", sans-serif",
-    body: "\"Scto Grotesk A\", sans-serif",
-    label: "Maison, monospace",
-  },
+
   fontSizes: {
-    heading1: "11.25rem", // 180px
-    heading2: "4.5rem", //    72px
-    heading3: "3rem", //      48px
-    heading4: "2rem", //      32px
-    heading5: "1.5rem", //    24px
-    heading6: "1.375rem", //  22px
-    body1: "1.25rem", //      20px
-    body2: "1rem", //         16px
-    body3: "0.875rem", //     14px
-    label1: "0.875rem", //    14px
-    label2: "0.75rem", //     12px
-    label3: "0.625rem", //    10px
+    heading1: "11.25rem", //   180px
+    heading2: "7.5rem", //     120px
+    heading3: "4.5rem", //      72px
+    heading4: "3rem", //        48px
+    heading5: "2rem", //        32px
+    subheading1: "1.5rem", //   24px
+    subheading2: "1.375rem", // 22px
+    body1: "1.25rem", //        20px
+    body2: "1rem", //           16px
+    body3: "0.875rem", //       14px
+    label1: "0.875rem", //      14px
+    label2: "0.75rem", //       12px
+    label3: "0.625rem", //      10px
   },
   fontWeights: {
     black: 900,
@@ -158,13 +155,21 @@ export const theme = getTheme({
     light: 300,
     thin: 100,
   },
+  fonts: {
+    heading: "\"Scto Grotesk A\", sans-serif",
+    subheading: "\"Scto Grotesk A\", sans-serif",
+    body: "\"Scto Grotesk A\", sans-serif",
+    label: "Maison, monospace",
+  },
   lineHeights: {
     heading: 1,
+    subheading: 1,
     body: 1.2,
     label: 1,
   },
   letterSpacings: {
     heading: "normal",
+    subheading: "normal",
     body: "normal",
     label: "normal",
   },
@@ -209,12 +214,20 @@ export const theme = getTheme({
       letterSpacing: "heading",
       color: "on-background",
     },
-    heading6: {
-      fontFamily: "heading",
-      fontSize: "heading6",
+    subheading1: {
+      fontFamily: "subheading",
+      fontSize: "subheading1",
       fontWeight: "regular",
-      lineHeight: "heading",
-      letterSpacing: "heading",
+      lineHeight: "subheading",
+      letterSpacing: "subheading",
+      color: "on-background",
+    },
+    subheading2: {
+      fontFamily: "subheading",
+      fontSize: "subheading2",
+      fontWeight: "regular",
+      lineHeight: "subheading",
+      letterSpacing: "subheading",
       color: "on-background",
     },
     body1: {

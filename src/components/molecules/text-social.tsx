@@ -45,7 +45,7 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
             href={link.href}
             target={"_blank"}>
             <Text
-              variant={"heading4"}
+              variant={"heading5"}
               sx={{
                 mr: !isLast ? 1 : 0,
                 fontFamily: "body",

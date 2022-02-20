@@ -4,7 +4,7 @@ import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProp
 
 import { useResponsive } from "@hooks";
 
-export type TextVariant = "heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6" | "body1" | "body2" | "body3" | "label1" | "label2" | "label3";
+export type TextVariant = "heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "subheading1" | "subheading2" | "body1" | "body2" | "body3" | "label1" | "label2" | "label3";
 
 export type TextProps = Omit<ThemeUITextProps, "variant"> & {
   variant?: ResponsiveStyleValue<TextVariant>;
@@ -29,7 +29,9 @@ export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, Tex
         return "h4";
       case "heading5":
         return "h5";
-      case "heading6":
+      case "subheading1":
+        return "h6";
+      case "subheading2":
         return "h6";
       case "body1":
         return "p";

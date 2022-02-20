@@ -48,7 +48,7 @@ export const GridItemWork: FunctionComponent<GridItemWorkProps> = ({
             justifyContent: "space-between",
           }}>
           <Text
-            variant={"heading6"}
+            variant={"subheading2"}
             sx={{
               lineHeight: 1,
               fontWeight: "bold",

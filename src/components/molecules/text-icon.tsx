@@ -19,7 +19,7 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
         alignItems: "flex-start",
       }}>
       <Text
-        variant={"heading5"}
+        variant={"subheading1"}
         sx={{
           mr: 1,
         }}
