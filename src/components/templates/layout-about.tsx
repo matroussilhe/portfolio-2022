@@ -34,7 +34,6 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
     <Fragment>
       <Navbar
         iconColor={"surface"}
-        workCount={2}
         sx={{
           pt: 3,
           px: 6,

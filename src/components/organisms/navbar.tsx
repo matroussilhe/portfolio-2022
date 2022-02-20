@@ -12,16 +12,14 @@ import {
 
 export type NavbarProps = FlexProps & {
   iconColor: string;
-  workCount: number;
   showBack?: boolean;
 };
 
-// hardcoded value to avoid excessive query of work count
+// use hardcoded value to avoid excessive query of work count on each page load
 const WORK_COUNT = 2;
 
 export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
-  workCount = WORK_COUNT,
   showBack = false,
   ...rest
 }) => {
@@ -72,7 +70,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
             sx={{
               mr: 2,
             }}>
-            {`Works (${workCount})`}
+            {`Works (${WORK_COUNT})`}
           </Button>
         </Link>
         <Link

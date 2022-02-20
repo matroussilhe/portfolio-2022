@@ -26,7 +26,6 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
     <Fragment>
       <Navbar
         iconColor={"on-surface"}
-        workCount={2}
         sx={{
           pt: 3,
           px: 6,
