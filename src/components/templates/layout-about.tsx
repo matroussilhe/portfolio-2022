@@ -34,7 +34,11 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
     <Fragment>
       <Navbar
         iconColor={"surface"}
-        workCount={4}
+        workCount={2}
+        sx={{
+          pt: 3,
+          px: 6,
+        }}
       />
       <Flex
         sx={{
@@ -57,6 +61,11 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
             skills={skills}
             interests={interests}
             socials={socials}
+            sx={{
+              pt: 25,
+              pb: 10,
+              px: 10,
+            }}
           />
         </Box>
       </Flex>

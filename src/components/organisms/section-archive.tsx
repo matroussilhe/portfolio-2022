@@ -2,28 +2,28 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   List,
   ListItemArchive,
   TextSectionTitle,
 } from "@components";
 import { Archive } from "@services";
 
-export type SectionArchiveProps = {
+export type SectionArchiveProps = FlexProps & {
   archives: Archive[];
 };
 
 export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
   archives,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
-        px: [6],
-        pt: [20],
-        pb: [20],
         flexDirection: "column",
         backgroundColor: "background",
-      }}>
+      }}
+      {...rest}>
       <TextSectionTitle
         title={"Archive"}
         subtitle={"(EXTERNAL LINKS)"}

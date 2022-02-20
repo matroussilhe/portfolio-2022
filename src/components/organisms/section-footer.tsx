@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   Link,
   Text,
 } from "@components";
@@ -9,21 +10,21 @@ import {
   Footer,
 } from "@services";
 
-export type SectionFooterProps = {
+export type SectionFooterProps = FlexProps & {
   footer: Footer;
 };
 
 export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
   footer,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
-        pt: 25,
-        pb: 25,
         flexDirection: "column",
         backgroundColor: "background",
-      }}>
+      }}
+      {...rest}>
       <Text
         variant={"heading3"}
         sx={{

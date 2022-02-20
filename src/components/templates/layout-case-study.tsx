@@ -29,8 +29,12 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
     <Fragment>
       <Navbar
         iconColor={"on-surface"}
-        workCount={4}
+        workCount={2}
         showBack={true}
+        sx={{
+          pt: 3,
+          px: 6,
+        }}
       />
       <Flex
         sx={{
@@ -38,14 +42,25 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         }}>
         <SectionHeader
           header={header}
+          sx={{
+            pt: 25,
+            pb: 10,
+          }}
         />
         <SectionContent
           // WIP: fix toc state not reinitialized
           key={generateId()}
           contents={contents}
+          sx={{
+            px: 5,
+          }}
         />
         <SectionFooter
           footer={footer}
+          sx={{
+            pt: 25,
+            pb: 25,
+          }}
         />
       </Flex>
     </Fragment>

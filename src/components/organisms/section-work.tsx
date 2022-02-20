@@ -2,27 +2,28 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   Grid,
   GridItemWork,
   TextSectionTitle,
 } from "@components";
 import { Work } from "@services";
 
-export type SectionWorkProps = {
+export type SectionWorkProps = FlexProps & {
   works: Work[];
 };
 
 export const SectionWork: FunctionComponent<SectionWorkProps> = ({
   works,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
-        px: [6],
-        pt: [20],
         flexDirection: "column",
         backgroundColor: "background",
-      }}>
+      }}
+      {...rest}>
       <TextSectionTitle
         title={"Selected Work"}
         subtitle={"(CASE STUDIES)"}

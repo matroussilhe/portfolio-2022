@@ -4,19 +4,21 @@ import {
   Box,
   Flex,
   FlexColumnSpacer,
+  FlexProps,
   Text,
 } from "@components";
 import {
   CenterParagraph,
 } from "@services";
 
-export type SectionContentCenterParagraphProps = {
+export type SectionContentCenterParagraphProps = FlexProps & {
   ref?: Ref<HTMLDivElement>;
   content: CenterParagraph;
 };
 
 export const SectionContentCenterParagraph: FunctionComponent<SectionContentCenterParagraphProps> = forwardRef<HTMLDivElement, SectionContentCenterParagraphProps>(({
   content,
+  ...rest
 }, ref) => {
   return (
     <FlexColumnSpacer
@@ -28,7 +30,8 @@ export const SectionContentCenterParagraph: FunctionComponent<SectionContentCent
           py: 4,
           flexDirection: "row",
           flexWrap: "wrap",
-        }}>
+        }}
+        {...rest}>
         <Box
           sx={{
             width: "col12.2",

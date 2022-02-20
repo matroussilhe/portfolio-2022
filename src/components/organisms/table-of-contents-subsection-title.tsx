@@ -1,27 +1,33 @@
 import React, { FunctionComponent } from "react";
 
 import {
+  Flex,
+  FlexProps,
   Text,
 } from "@components";
 import {
   SubsectionTitle,
 } from "@services";
 
-export type TableOfContentsSubsectionTitleProps = {
+export type TableOfContentsSubsectionTitleProps = FlexProps & {
   content: SubsectionTitle;
 };
 
 export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSubsectionTitleProps> = ({
   content,
+  ...rest
 }) => {
   return (
-    <Text
-      variant={"body1"}
+    <Flex
       sx={{
         ml: 5,
         mb: 1,
-      }}>
-      {content.title}
-    </Text>
+      }}
+      {...rest}>
+      <Text
+        variant={"body1"}>
+        {content.title}
+      </Text>
+    </Flex>
   );
 };

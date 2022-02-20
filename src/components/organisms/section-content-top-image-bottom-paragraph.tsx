@@ -4,6 +4,7 @@ import {
   Box,
   Flex,
   FlexColumnSpacer,
+  FlexProps,
   Image,
   Text,
   TextLegend,
@@ -12,13 +13,14 @@ import {
   TopImageBottomParagraph,
 } from "@services";
 
-export type SectionContentTopImageBottomParagraphProps = {
+export type SectionContentTopImageBottomParagraphProps = FlexProps & {
   ref?: Ref<HTMLDivElement>;
   content: TopImageBottomParagraph;
 };
 
 export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionContentTopImageBottomParagraphProps> = forwardRef<HTMLDivElement, SectionContentTopImageBottomParagraphProps>(({
   content,
+  ...rest
 }, ref) => {
   return (
     <FlexColumnSpacer
@@ -30,7 +32,8 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
           py: 4,
           flexDirection: "row",
           flexWrap: "wrap",
-        }}>
+        }}
+        {...rest}>
         <Box
           sx={{
             width: "col12.12",

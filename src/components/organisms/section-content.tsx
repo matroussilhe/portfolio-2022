@@ -9,6 +9,7 @@ import React, {
 
 import {
   Flex,
+  FlexProps,
   SectionContentCenterParagraph,
   SectionContentLeftImageRightParagraph,
   SectionContentLeftQuoteRightParagraph,
@@ -26,10 +27,6 @@ import {
   ContentSliceType,
 } from "@services";
 
-export type SectionContentProps = {
-  contents: Content[];
-};
-
 export type ContentComponents = {
   [key in ContentSliceType]: FunctionComponent<any> | (() => null);
 };
@@ -38,8 +35,13 @@ export type ContentIndexes = {
   [key in ContentSliceType]: number;
 };
 
+export type SectionContentProps = FlexProps & {
+  contents: Content[];
+};
+
 export const SectionContent: FunctionComponent<SectionContentProps> = ({
   contents,
+  ...rest
 }) => {
   const ref = useRef<HTMLDivElement>(null);
   const tableOfContentsRef = useRef<HTMLDivElement>(null);
@@ -105,10 +107,10 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
     <Flex
       ref={ref}
       sx={{
-        px: 5,
         flexDirection: "column",
         backgroundColor: "background",
-      }}>
+      }}
+      {...rest}>
       <TableOfContents
         ref={tableOfContentsRef}
         contents={contents}

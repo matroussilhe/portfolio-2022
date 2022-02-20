@@ -1,13 +1,15 @@
 import React, { forwardRef, FunctionComponent, Ref } from "react";
 
 import {
+  Flex,
+  FlexProps,
   Text,
 } from "@components";
 import {
   SectionTitle,
 } from "@services";
 
-export type SectionContentSectionTitleProps = {
+export type SectionContentSectionTitleProps = FlexProps & {
   ref?: Ref<HTMLDivElement>;
   content: SectionTitle;
   index: number;
@@ -16,18 +18,24 @@ export type SectionContentSectionTitleProps = {
 export const SectionContentSectionTitle: FunctionComponent<SectionContentSectionTitleProps> = forwardRef<HTMLDivElement, SectionContentSectionTitleProps>(({
   content,
   index,
+  ...rest
 }, ref) => {
   const indexString = (index + 1).toString().padStart(2, "0");
 
   return (
-    <Text
-      ref={ref}
-      variant={"heading1"}
+    <Flex
       sx={{
         py: 5,
-        fontWeight: "bold",
-      }}>
-      {indexString}&nbsp;{content.title}
-    </Text>
+      }}
+      {...rest}>
+      <Text
+        ref={ref}
+        variant={"heading1"}
+        sx={{
+          fontWeight: "bold",
+        }}>
+        {indexString}&nbsp;{content.title}
+      </Text>
+    </Flex>
   );
 });

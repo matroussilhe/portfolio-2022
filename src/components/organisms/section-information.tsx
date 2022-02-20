@@ -2,6 +2,7 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   Grid,
   GridItemInformationLink,
   GridItemInformationText,
@@ -16,7 +17,7 @@ import {
   Social,
 } from "@services";
 
-export type SectionInformationProps = {
+export type SectionInformationProps = FlexProps & {
   bio: Bio;
   expertise: Expertise;
   skills: Skill[];
@@ -30,16 +31,15 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
   skills,
   interests,
   socials,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
         backgroundColor: "background",
         flexDirection: "column",
-        pt: 25,
-        pb: 10,
-        px: 10,
-      }}>
+      }}
+      {...rest}>
       <TextParagraphTitle
         sx={{
           ml: 4,

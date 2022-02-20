@@ -3,6 +3,7 @@ import React, { FunctionComponent } from "react";
 import {
   Box,
   Flex,
+  FlexProps,
   Grid,
   Image,
   Link,
@@ -15,21 +16,21 @@ import {
   Header,
 } from "@services";
 
-export type SectionHeaderProps = {
+export type SectionHeaderProps = FlexProps & {
   header: Header;
 };
 
 export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
   header,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
-        pt: 25,
-        pb: 10,
         flexDirection: "column",
         backgroundColor: "background",
-      }}>
+      }}
+      {...rest}>
       <Text
         variant={"heading1"}
         sx={{

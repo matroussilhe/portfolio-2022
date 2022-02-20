@@ -2,13 +2,14 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   Text,
 } from "@components";
 import {
   SectionTitle,
 } from "@services";
 
-export type TableOfContentsSectionTitleProps = {
+export type TableOfContentsSectionTitleProps = FlexProps & {
   content: SectionTitle;
   index: number;
   isActive: boolean;
@@ -20,6 +21,7 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
   index,
   isActive,
   onClick,
+  ...rest
 }) => {
   const indexString = (index + 1).toString().padStart(2, "0");
 
@@ -36,7 +38,8 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
         mb: 1,
         alignItems: "center",
         cursor: "pointer",
-      }}>
+      }}
+      {...rest}>
       <Text
         variant={"body1"}
         sx={{

@@ -4,19 +4,21 @@ import {
   Box,
   Flex,
   FlexColumnSpacer,
+  FlexProps,
   Text,
 } from "@components";
 import {
   LeftQuoteRightParagraph,
 } from "@services";
 
-export type SectionContentLeftQuoteRightParagraphProps = {
+export type SectionContentLeftQuoteRightParagraphProps = FlexProps & {
   ref?: Ref<HTMLDivElement>;
   content: LeftQuoteRightParagraph;
 };
 
 export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionContentLeftQuoteRightParagraphProps> = forwardRef<HTMLDivElement, SectionContentLeftQuoteRightParagraphProps>(({
   content,
+  ...rest
 }, ref) => {
   return (
     <FlexColumnSpacer
@@ -28,7 +30,8 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
           py: 4,
           flexDirection: "row",
           flexWrap: "wrap",
-        }}>
+        }}
+        {...rest}>
         <Box
           sx={{
             width: "col12.4",

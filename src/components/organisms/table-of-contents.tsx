@@ -6,13 +6,13 @@ import React, {
   useCallback,
   useEffect,
   useMemo,
-  useRef,
   useState,
 } from "react";
 
 import {
   ContentComponents,
   Flex,
+  FlexProps,
   TableOfContentsSectionTitle,
   TableOfContentsSubsectionTitle,
 } from "@components";
@@ -26,7 +26,7 @@ export type TableOfContentsActiveContent = {
   index: number;
 };
 
-export type TableOfContentsProps = {
+export type TableOfContentsProps = FlexProps & {
   ref?: Ref<HTMLDivElement>;
   contents: Content[];
   activeContent?: TableOfContentsActiveContent;
@@ -39,6 +39,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
   activeContent,
   contentRefs,
   isVisible,
+  ...rest
 }, ref) => {
   const [activeSection, setActiveSection] = useState<number>();
   const [activeSubsection, setActiveSubsection] = useState<number>();
@@ -91,7 +92,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
         left: 5,
         flexDirection: "column",
         visibility,
-      }}>
+      }}
+      {...rest}>
       {contents.map((content, index) => {
         // get content component by type
         const ContentComponent = contentComponents[content.type];

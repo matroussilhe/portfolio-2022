@@ -2,37 +2,36 @@ import React, { FunctionComponent } from "react";
 
 import {
   Flex,
+  FlexProps,
   SectionHomeFooter,
   SectionHomeIntroduction,
 } from "@components";
 
-export type SectionHomeProps = {};
+export type SectionHomeProps = FlexProps & {};
 
-export const SectionHome: FunctionComponent<SectionHomeProps> = () => {
+export const SectionHome: FunctionComponent<SectionHomeProps> = ({
+  ...rest
+}) => {
   return (
     <Flex
       sx={{
         height: "100vh",
         flexDirection: "column",
+        justifyContent: "center",
         backgroundColor: "surface",
-      }}>
-      <Flex
+      }}
+      {...rest}>
+      <SectionHomeIntroduction
         sx={{
-          height: "100px",
+          px: 6,
         }}
       />
-      <Flex
+      <SectionHomeFooter
         sx={{
-          flex: "1 0 auto",
-        }}>
-        <SectionHomeIntroduction/>
-      </Flex>
-      <Flex
-        sx={{
-          height: "100px",
-        }}>
-        <SectionHomeFooter/>
-      </Flex>
+          pb: 3,
+          px: 6,
+        }}
+      />
     </Flex>
   );
 };

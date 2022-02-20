@@ -3,21 +3,26 @@ import React, { FunctionComponent } from "react";
 import {
   Box,
   Flex,
+  FlexProps,
   IconClock,
   TextSocial,
 } from "@components";
 
-export type SectionHomeFooterProps = {};
+export type SectionHomeFooterProps = FlexProps & {};
 
-export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = () => {
+export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = ({
+  ...rest
+}) => {
   return (
     <Flex
       sx={{
-        width: "100%",
+        position: "fixed",
+        bottom: 0,
+        left: 0,
+        right: 0,
         alignItems: "flex-end",
-        pb: 3,
-        px: 6,
-      }}>
+      }}
+      {...rest}>
       <Box
         sx={{
           flex: "1 0 auto",

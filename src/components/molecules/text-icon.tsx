@@ -16,7 +16,6 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
   return (
     <Flex
       sx={{
-        mb: 2,
         alignItems: "flex-start",
       }}>
       <Text

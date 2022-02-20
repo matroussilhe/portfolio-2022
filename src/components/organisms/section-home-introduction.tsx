@@ -3,15 +3,18 @@ import React, { Fragment, FunctionComponent, useState } from "react";
 import {
   Box,
   Flex,
+  FlexProps,
   TextAnimated,
 } from "@components";
 import { generateId } from "@services";
 
 export type SectionHomeIntroductionMode = "en" | "ko";
 
-export type SectionHomeIntroductionProps = {};
+export type SectionHomeIntroductionProps = FlexProps & {};
 
-export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionProps> = () => {
+export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionProps> = ({
+  ...rest
+}) => {
   const [mode, setMode] = useState<SectionHomeIntroductionMode>("en");
 
   // toggle mode on click
@@ -23,13 +26,10 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
 
   return (
     <Flex
-      sx={{
-        alignItems: "center",
-      }}>
+      {...rest}>
       <Box
         onClick={handleClick}
         sx={{
-          px: 6,
           cursor: "pointer",
         }}>
         {mode === "en" ? (

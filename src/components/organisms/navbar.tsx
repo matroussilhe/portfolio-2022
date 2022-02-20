@@ -4,12 +4,13 @@ import {
   Box,
   Button,
   Flex,
+  FlexProps,
   IconTheme,
   Link,
   Text,
 } from "@components";
 
-export type NavbarProps = {
+export type NavbarProps = FlexProps & {
   iconColor: string;
   workCount: number;
   showBack?: boolean;
@@ -19,18 +20,18 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
   workCount,
   showBack = false,
+  ...rest
 }) => {
   return (
     <Flex
       sx={{
         position: "absolute",
+        width: "100%",
         top: 0,
         left: 0,
-        width: "100%",
-        pt: 3,
-        px: 6,
         alignItems: showBack ? "center" : "flex-start",
-      }}>
+      }}
+      {...rest}>
       <Box
         sx={{
           flex: "0 1 auto",

@@ -26,7 +26,10 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
           key={`grid-item-information-link-${index}`}
           href={item.link}
           target={"_blank"}>
-          <TextIcon>
+          <TextIcon
+            sx={{
+              mb: 2,
+            }}>
             {item.text}
           </TextIcon>
         </Link>

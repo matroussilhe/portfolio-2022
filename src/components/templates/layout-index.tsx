@@ -25,18 +25,34 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
     <Fragment>
       <Navbar
         iconColor={"on-surface"}
-        workCount={works.length}
+        workCount={2}
+        sx={{
+          pt: 3,
+          px: 6,
+        }}
       />
       <Flex
         sx={{
           flexDirection: "column",
+          pb: 12,
         }}>
         <SectionHome/>
         <SectionWork
           works={works}
+          sx={{
+            px: [6],
+            pt: [20],
+            zIndex: 1,
+          }}
         />
         <SectionArchive
           archives={archives}
+          sx={{
+            px: [6],
+            pt: [20],
+            pb: [20],
+            zIndex: 1,
+          }}
         />
       </Flex>
     </Fragment>

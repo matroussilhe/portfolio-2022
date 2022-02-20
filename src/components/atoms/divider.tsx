@@ -2,11 +2,14 @@ import React, { FunctionComponent } from "react";
 
 import {
   Box,
+  BoxProps,
 } from "@components";
 
-export type DividerProps = {};
+export type DividerProps = BoxProps & {};
 
-export const Divider: FunctionComponent<DividerProps> = () => {
+export const Divider: FunctionComponent<DividerProps> = ({
+  ...rest
+}) => {
   return (
     <Box
       sx={{
@@ -14,6 +17,7 @@ export const Divider: FunctionComponent<DividerProps> = () => {
         height: "1px",
         backgroundColor: "on-background",
       }}
+      {...rest}
     />
   );
 };
