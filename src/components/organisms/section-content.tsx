@@ -43,11 +43,11 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   contents,
   ...rest
 }) => {
+  const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
+
   const ref = useRef<HTMLDivElement>(null);
   const tableOfContentsRef = useRef<HTMLDivElement>(null);
   const contentRefs = contents.map(() => createRef<HTMLDivElement>());
-
-  const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
 
   // observe content intersection changes
   const { entries } = useIntersectionObserver(contentRefs);

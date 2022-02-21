@@ -1,4 +1,5 @@
 import React, {
+  createRef,
   forwardRef,
   FunctionComponent,
   Ref,
@@ -20,13 +21,22 @@ import {
   TableOfContentsSubsectionTitle,
 } from "@components";
 import {
+  usePreviousState,
+} from "@hooks";
+import {
   Content,
   ContentSliceType,
 } from "@services";
 
-const TRANSITION_NAME = "slide-fade";
-const TRANSITION_DURATION = 250;
-const TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+const SECTION_TITLE_TRANSITION_NAME = "section-title-slide";
+const SECTION_TITLE_TRANSITION_DURATION = 250;
+const SECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+
+const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
+const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
+const SUBSECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+
+const SUBSECTION_TITLE_HEIGHT = 32;
 
 export type TableOfContentsActiveContent = {
   type: ContentSliceType;
@@ -41,40 +51,74 @@ export type TableOfContentsProps = FlexProps & {
   isVisible?: boolean;
 };
 
-export type StyledFlexProps = FlexProps & {};
+export type StyledFlexSectionTitleProps = FlexProps & {};
 
-const StyledFlex = styled(Flex)<StyledFlexProps>`
+const StyledFlex = styled(Flex)<StyledFlexSectionTitleProps>`
   opacity: 0;
 
-  &.${TRANSITION_NAME}-enter {
+  &.${SECTION_TITLE_TRANSITION_NAME}-enter {
     opacity: 0;
     transform: translateY(-100%);
   }
-  
-  &.${TRANSITION_NAME}-enter-active {
+  &.${SECTION_TITLE_TRANSITION_NAME}-enter-active {
     opacity: 1;
     transform: translateY(0%);
-    transition: ${TRANSITION_DURATION}ms ${TRANSITION_EASING};
+    transition: ${SECTION_TITLE_TRANSITION_DURATION}ms ${SECTION_TITLE_TRANSITION_EASING};
+  }
+  &.${SECTION_TITLE_TRANSITION_NAME}-enter-done {
+    opacity: 1;
+    transform: translateY(0%);
   }
 
-  &.${TRANSITION_NAME}-enter-done {
-    opacity: 1;
-  }  
-  
-  &.${TRANSITION_NAME}-exit {
+  &.${SECTION_TITLE_TRANSITION_NAME}-exit {
     opacity: 1;
     transform: translateY(0%);
   }
-  
-  &.${TRANSITION_NAME}-exit-active {
+  &.${SECTION_TITLE_TRANSITION_NAME}-exit-active {
     opacity: 0;
     transform: translateY(-100%);
-    transition: ${TRANSITION_DURATION}ms ${TRANSITION_EASING};
+    transition: ${SECTION_TITLE_TRANSITION_DURATION - 50}ms ${SECTION_TITLE_TRANSITION_EASING};
   }
-  
-  &.${TRANSITION_NAME}-exit-done {
+  &.${SECTION_TITLE_TRANSITION_NAME}-exit-done {
     opacity: 0;
-  }  
+    transform: translateY(-100%);
+  }
+`;
+
+export type StyledFlexSubsectionTitleProps = FlexProps & {
+  direction: 1 | -1;
+};
+
+const StyledFlexSubsectionTitle = styled(Flex)<StyledFlexSubsectionTitleProps>`
+  opacity: 0;
+
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-enter {
+    opacity: 0;
+    transform: translateY(${props => props.direction * -50}%);
+  }
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: ${SUBSECTION_TITLE_TRANSITION_DURATION}ms ${SUBSECTION_TITLE_TRANSITION_EASING};
+  }
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-enter-done {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-exit {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-exit-active {
+    opacity: 0;
+    transform: translateY(${props => props.direction * 50}%);
+    transition: ${SUBSECTION_TITLE_TRANSITION_DURATION - 50}ms ${SUBSECTION_TITLE_TRANSITION_EASING};
+  }
+  &.${SUBSECTION_TITLE_TRANSITION_NAME}-exit-done {
+    opacity: 0;
+    transform: translateY(${props => props.direction * 50}%);
+  }
 `;
 
 export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardRef<HTMLDivElement, TableOfContentsProps>(({
@@ -85,8 +129,11 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
   ...rest
 }, ref) => {
   const [isShown, setIsShown] = useState<boolean>(false);
-  const [activeSection, setActiveSection] = useState<number>();
-  const [activeSubsection, setActiveSubsection] = useState<number>();
+  const [activeSectionTitleIndex, setActiveSectionTitleIndex] = useState<number>();
+  const [activeSubsectionTitleIndex, setActiveSubsectionTitleIndex] = useState<number>();
+  const previousActiveSubsectionTitleIndex = usePreviousState(activeSubsectionTitleIndex);
+
+  const refs = contents.map(() => createRef<HTMLDivElement>());
 
   // find first content that matches provided type from previous contents
   const findPreviousContentIndexByType = useCallback((type: ContentSliceType, index: number) => {
@@ -103,8 +150,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
 
     const aboveSectionTitleIndex = findPreviousContentIndexByType("section_title", activeContent.index);
     const aboveSubectionTitleIndex = findPreviousContentIndexByType("subsection_title", activeContent.index);
-    setActiveSection(aboveSectionTitleIndex);
-    setActiveSubsection(aboveSubectionTitleIndex);
+    setActiveSectionTitleIndex(aboveSectionTitleIndex);
+    setActiveSubsectionTitleIndex(aboveSubectionTitleIndex);
   }, [activeContent, findPreviousContentIndexByType]);
 
   // map content type to component
@@ -135,8 +182,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
     <CSSTransition
       nodeRef={ref}
       in={isShown}
-      classNames={TRANSITION_NAME}
-      timeout={TRANSITION_DURATION}>
+      classNames={SECTION_TITLE_TRANSITION_NAME}
+      timeout={SECTION_TITLE_TRANSITION_DURATION}>
       <StyledFlex
         ref={ref}
         sx={{
@@ -147,18 +194,18 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
         }}
         {...rest}>
         {contents.map((content, index) => {
-        // get content component by type
+          // get content component by type
           const ContentComponent = contentComponents[content.type];
 
           // get type's specific props
           const extraProps: any = {};
           if (content.type === "section_title") {
-          // set index prop
+            // set index prop
             extraProps.index = sectionTitleIndex;
             sectionTitleIndex = ++sectionTitleIndex;
 
             // set isActive prop
-            extraProps.isActive = index === activeSection;
+            extraProps.isActive = index === activeSectionTitleIndex;
 
             // set onClick prop
             extraProps.onClick = () => {
@@ -186,16 +233,57 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
             };
           }
 
-          // hide non-active subsection titles
-          if (content.type === "subsection_title" && index !== activeSubsection) return null;
+          // get render conditions
+          const isSectionTitle = content.type === "section_title";
+          const isSubsectionTitle = content.type === "subsection_title";
+          const isActiveSectionTitleIndex = index === activeSectionTitleIndex;
+          const isActiveSubsectionTitleIndex = index === activeSubsectionTitleIndex;
 
-          return (
+          if (isSectionTitle) {
+            // show active section title
+            return (
+              <ContentComponent
+                key={`section-content-${index}`}
+                content={content}
+                sx={{
+                  pb: isActiveSectionTitleIndex ? `${SUBSECTION_TITLE_HEIGHT}px` : "0px",
+                }}
+                {...extraProps}
+              />
+            );
+          } else if (isSubsectionTitle) {
+            // calculate animation direction
+            const direction = (activeSubsectionTitleIndex || 0) >= (previousActiveSubsectionTitleIndex || 0) ? -1 : 1;
+
+            // show active subsection title with animation
+            return (
+              <CSSTransition
+                key={`section-content-${index}`}
+                nodeRef={refs[index]}
+                in={isActiveSubsectionTitleIndex}
+                classNames={SUBSECTION_TITLE_TRANSITION_NAME}
+                timeout={SUBSECTION_TITLE_TRANSITION_DURATION}>
+                <StyledFlexSubsectionTitle
+                  ref={refs[index]}
+                  direction={direction}
+                  sx={{
+                    mt: `-${SUBSECTION_TITLE_HEIGHT}px`,
+                  }}>
+                  <ContentComponent
+                    content={content}
+                    {...extraProps}
+                  />
+                </StyledFlexSubsectionTitle>
+              </CSSTransition>
+            );
+          } else {
+            // show nothing (i.e. other content types render null)
             <ContentComponent
               key={`section-content-${index}`}
               content={content}
               {...extraProps}
-            />
-          );
+            />;
+          }
         })}
       </StyledFlex>
     </CSSTransition>
