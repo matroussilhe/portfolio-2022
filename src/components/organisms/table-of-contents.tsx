@@ -8,6 +8,9 @@ import React, {
   useMemo,
   useState,
 } from "react";
+import { CSSTransition } from "react-transition-group";
+
+import styled from "@emotion/styled";
 
 import {
   ContentComponents,
@@ -20,6 +23,10 @@ import {
   Content,
   ContentSliceType,
 } from "@services";
+
+const TRANSITION_NAME = "slide-fade";
+const TRANSITION_DURATION = 250;
+const TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
 
 export type TableOfContentsActiveContent = {
   type: ContentSliceType;
@@ -34,13 +41,50 @@ export type TableOfContentsProps = FlexProps & {
   isVisible?: boolean;
 };
 
+export type StyledFlexProps = FlexProps & {};
+
+const StyledFlex = styled(Flex)<StyledFlexProps>`
+  opacity: 0;
+
+  &.${TRANSITION_NAME}-enter {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  
+  &.${TRANSITION_NAME}-enter-active {
+    opacity: 1;
+    transform: translateY(0%);
+    transition: ${TRANSITION_DURATION}ms ${TRANSITION_EASING};
+  }
+
+  &.${TRANSITION_NAME}-enter-done {
+    opacity: 1;
+  }  
+  
+  &.${TRANSITION_NAME}-exit {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+  
+  &.${TRANSITION_NAME}-exit-active {
+    opacity: 0;
+    transform: translateY(-100%);
+    transition: ${TRANSITION_DURATION}ms ${TRANSITION_EASING};
+  }
+  
+  &.${TRANSITION_NAME}-exit-done {
+    opacity: 0;
+  }  
+`;
+
 export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardRef<HTMLDivElement, TableOfContentsProps>(({
   contents,
   activeContent,
   contentRefs,
-  isVisible,
+  isVisible = false,
   ...rest
 }, ref) => {
+  const [isShown, setIsShown] = useState<boolean>(false);
   const [activeSection, setActiveSection] = useState<number>();
   const [activeSubsection, setActiveSubsection] = useState<number>();
 
@@ -78,73 +122,82 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
   // display index in front of section titles
   let sectionTitleIndex = 0;
 
-  // control visibility attribute
-  const isActiveContentDefined = !!activeContent;
-  const isActiveContentSectionTitle = activeContent?.type === "section_title";
-  const visibility = isVisible && !isActiveContentSectionTitle && isActiveContentDefined ? "visible" : "hidden";
+  // trigger animation on visibility change
+  useEffect(() => {
+    const isActiveContentDefined = !!activeContent;
+    const isActiveContentSectionTitle = activeContent?.type === "section_title";
+    const newIsShown = isVisible && !isActiveContentSectionTitle && isActiveContentDefined;
+
+    setIsShown(newIsShown);
+  }, [activeContent, isVisible]);
 
   return (
-    <Flex
-      ref={ref}
-      sx={{
-        position: "fixed",
-        top: 5,
-        left: 5,
-        flexDirection: "column",
-        visibility,
-      }}
-      {...rest}>
-      {contents.map((content, index) => {
+    <CSSTransition
+      nodeRef={ref}
+      in={isShown}
+      classNames={TRANSITION_NAME}
+      timeout={TRANSITION_DURATION}>
+      <StyledFlex
+        ref={ref}
+        sx={{
+          position: "fixed",
+          top: 5,
+          left: 5,
+          flexDirection: "column",
+        }}
+        {...rest}>
+        {contents.map((content, index) => {
         // get content component by type
-        const ContentComponent = contentComponents[content.type];
+          const ContentComponent = contentComponents[content.type];
 
-        // get type's specific props
-        const extraProps: any = {};
-        if (content.type === "section_title") {
+          // get type's specific props
+          const extraProps: any = {};
+          if (content.type === "section_title") {
           // set index prop
-          extraProps.index = sectionTitleIndex;
-          sectionTitleIndex = ++sectionTitleIndex;
+            extraProps.index = sectionTitleIndex;
+            sectionTitleIndex = ++sectionTitleIndex;
 
-          // set isActive prop
-          extraProps.isActive = index === activeSection;
+            // set isActive prop
+            extraProps.isActive = index === activeSection;
 
-          // set onClick prop
-          extraProps.onClick = () => {
-            if (!window) return;
+            // set onClick prop
+            extraProps.onClick = () => {
+              if (!window) return;
 
-            // get active and current (i.e. destination) content refs
-            if (!activeContent) return;
-            const activeContentRef = contentRefs[activeContent.index];
-            const currentContentRef = contentRefs[index];
-            if (!activeContentRef.current || !currentContentRef.current) return;
+              // get active and current (i.e. destination) content refs
+              if (!activeContent) return;
+              const activeContentRef = contentRefs[activeContent.index];
+              const currentContentRef = contentRefs[index];
+              if (!activeContentRef.current || !currentContentRef.current) return;
 
-            // find position to scroll to (offset is used to trigger IntersectionObserver)
-            const { top: activeTop } = activeContentRef.current.getBoundingClientRect();
-            const { top: currentTop } = currentContentRef.current.getBoundingClientRect();
-            const offset = 4;
-            const direction = currentTop > activeTop ? 1 : -1;
-            const position = currentTop + window.pageYOffset + (direction * offset);
+              // find position to scroll to (offset is used to trigger IntersectionObserver)
+              const { top: activeTop } = activeContentRef.current.getBoundingClientRect();
+              const { top: currentTop } = currentContentRef.current.getBoundingClientRect();
+              const offset = 4;
+              const direction = currentTop > activeTop ? 1 : -1;
+              const position = currentTop + window.pageYOffset + (direction * offset);
 
-            // scroll
-            const options: ScrollToOptions = {
-              top: position,
-              behavior: "smooth",
+              // scroll
+              const options: ScrollToOptions = {
+                top: position,
+                behavior: "smooth",
+              };
+              window.scrollTo(options);
             };
-            window.scrollTo(options);
-          };
-        }
+          }
 
-        // hide non-active subsection titles
-        if (content.type === "subsection_title" && index !== activeSubsection) return null;
+          // hide non-active subsection titles
+          if (content.type === "subsection_title" && index !== activeSubsection) return null;
 
-        return (
-          <ContentComponent
-            key={`section-content-${index}`}
-            content={content}
-            {...extraProps}
-          />
-        );
-      })}
-    </Flex>
+          return (
+            <ContentComponent
+              key={`section-content-${index}`}
+              content={content}
+              {...extraProps}
+            />
+          );
+        })}
+      </StyledFlex>
+    </CSSTransition>
   );
 });
