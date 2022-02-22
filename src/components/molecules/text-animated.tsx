@@ -9,6 +9,9 @@ import React, {
 import {
   Text,
 } from "@components";
+import {
+  getRandomInteger,
+} from "@services";
 import { theme } from "@themes";
 
 export type TextAnimatedOutputItem = {
@@ -52,13 +55,6 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   const indexRef = useRef<number>(0);
   const outputRef = useRef<TextAnimatedOutput>(output);
   const glitchCountRef = useRef<number>(0);
-
-  const getRandomInteger = (min: number, max: number) => {
-    const minInteger = Math.ceil(min);
-    const maxInteger = Math.floor(max);
-
-    return Math.floor(Math.random() * (maxInteger - minInteger + 1)) + minInteger;
-  };
 
   const getRandomGlitches = useCallback((min: number, max: number) => {
     const amount = getRandomInteger(min, max);
