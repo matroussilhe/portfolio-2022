@@ -6,11 +6,10 @@ import {
   Image,
   Link,
 } from "@components";
-import { WorkImage } from "@services";
 
 export type GridItemWorkImageProps = {
   href: string;
-  images: WorkImage[];
+  images: string[];
   color: string;
 };
 

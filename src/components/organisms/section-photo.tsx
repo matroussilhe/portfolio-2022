@@ -1,15 +1,22 @@
 import React, { FunctionComponent } from "react";
 
 import {
-  Flex, FlexProps,
+  Box,
+  Flex,
+  FlexProps,
+  Image,
 } from "@components";
 import {
   getRandomInteger,
+  Photo,
 } from "@services";
 
-export type SectionPhotoProps = FlexProps & {};
+export type SectionPhotoProps = FlexProps & {
+  photo: Photo;
+};
 
 export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
+  photo,
   ...rest
 }) => {
   // get random background color
@@ -26,8 +33,24 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
       sx={{
         height: "100%",
         backgroundColor,
+        flexWrap: "wrap",
       }}
-      {...rest}
-    />
+      {...rest}>
+      {/* DEBUG: photos test rendering */}
+      {photo.images.map((image, index) => {
+        return (
+          <Box
+            key={`section-photo-image-${index}`}>
+            <Image
+              src={image}
+              sx={{
+                width: "300px",
+                height: "auto",
+              }}
+            />
+          </Box>
+        );
+      })}
+    </Flex>
   );
 };

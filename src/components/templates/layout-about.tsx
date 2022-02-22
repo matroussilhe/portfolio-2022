@@ -11,6 +11,7 @@ import {
   Bio,
   Expertise,
   Interest,
+  Photo,
   Skill,
   Social,
 } from "@services";
@@ -21,6 +22,7 @@ export type LayoutAboutProps = {
   skills: Skill[];
   interests: Interest[];
   socials: Social[];
+  photo: Photo;
 };
 
 export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
@@ -29,11 +31,12 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
   skills,
   interests,
   socials,
+  photo,
 }) => {
   return (
     <Fragment>
       <Navbar
-        iconColor={"background"}
+        iconColor={"on-background"}
         sx={{
           pt: 3,
           px: 6,
@@ -48,7 +51,9 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
           sx={{
             width: ["col12.6"],
           }}>
-          <SectionPhoto/>
+          <SectionPhoto
+            photo={photo}
+          />
         </Box>
         <Box
           sx={{

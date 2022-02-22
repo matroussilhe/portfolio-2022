@@ -1,14 +1,12 @@
 import { helper } from "@services";
 
 // INDEX
-export type WorkImage = string;
-
 export type Work = {
   title: string;
   subtitle: string;
   date: string;
   tags: string[];
-  images: WorkImage[];
+  images: string[];
   colorLight: string;
   colorDark: string;
   link: string;
@@ -55,12 +53,17 @@ export type SocialItem = {
 
 export type Social = SocialItem[];
 
+export type Photo = {
+  images: string[];
+};
+
 export type AboutPageDocument = {
   bio: Bio;
   expertise: Expertise;
   skills: Skill[]; // TODO: find a better name to inform about array structure (e.g. skills/SkillArray[])
   interests: Interest[]; // TODO: find a better name to inform about array structure (e.g. interests/InterestArray[])
   socials: Social[]; // TODO: find a better name to inform about array structure (e.g. socials/SocialArray[])
+  photo: Photo;
 };
 
 // CASE STUDY
@@ -221,6 +224,8 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
         acc.interests = parseGroupItem(item);
       } else if (item.slice_type === "social") {
         acc.socials = parseGroupItem(item);
+      } else if (item.slice_type === "photo") {
+        acc.photo.images = item.items.map((item: any) => item.image.url || null);
       }
 
       return acc;
@@ -234,6 +239,9 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       skills: [],
       interests: [],
       socials: [],
+      photo: {
+        images: [],
+      },
     });
 
     return result;
@@ -250,6 +258,9 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       skills: [],
       interests: [],
       socials: [],
+      photo: {
+        images: [],
+      },
     };
   }
 };

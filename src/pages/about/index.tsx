@@ -32,6 +32,7 @@ const About: NextPage<AboutProps> = ({ document }) => {
       skills={document.skills}
       interests={document.interests}
       socials={document.socials}
+      photo={document.photo}
     />
   );
 };
