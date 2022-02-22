@@ -26,11 +26,12 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
   return (
     <Flex
       sx={{
-        position: "absolute",
         width: "100%",
+        zIndex: 2,
+        position: "absolute",
         top: 0,
         left: 0,
-        alignItems: showBack ? "center" : "flex-start",
+        alignItems: "flex-start",
       }}
       {...rest}>
       <Box

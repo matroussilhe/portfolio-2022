@@ -13,7 +13,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     <Flex
       sx={{
         height: "100%",
-        backgroundColor: "#323F94", // TODO: add color to theme
+        backgroundColor: "blue-700",
       }}
       {...rest}
     />

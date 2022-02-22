@@ -28,7 +28,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
   return (
     <Fragment>
       <Navbar
-        iconColor={"on-surface"}
+        iconColor={"on-background"}
         showBack={true}
         sx={{
           pt: 3,

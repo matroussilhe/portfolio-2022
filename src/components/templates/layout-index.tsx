@@ -55,6 +55,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         />
         <SectionHomeFooter
           sx={{
+            pt: 18,
             pb: 3,
             px: 6,
           }}

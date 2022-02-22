@@ -65,11 +65,12 @@ export const List: FunctionComponent<ListProps> = ({
       }}>
       {children?.map?.((child, index) => {
         const isFirst = index === 0;
+        const isLast = index === children.length - 1;
 
         return (
           <Fragment key={`list-item-${index}`}>
             {isFirst &&
-              <Divider/>
+            <Divider/>
             }
             <StyledBoxListItem
               gap={responsiveGap}
@@ -78,7 +79,9 @@ export const List: FunctionComponent<ListProps> = ({
               }}>
               {child}
             </StyledBoxListItem>
+            {!isLast &&
             <Divider/>
+            }
           </Fragment>
         );
       })}

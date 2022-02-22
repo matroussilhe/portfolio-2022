@@ -18,6 +18,7 @@ export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = ({
       sx={{
         width: "100%",
         alignItems: "flex-end",
+        backgroundColor: "surface",
       }}
       {...rest}>
       <Box

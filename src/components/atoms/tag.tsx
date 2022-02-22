@@ -7,7 +7,7 @@ import { ResponsiveStyleValue } from "theme-ui";
 import { Box, BoxProps } from "@components";
 import { useResponsive } from "@hooks";
 
-export type TagVariant = "primary" | "secondary";
+export type TagVariant = "primary" | "secondary" | "on-background";
 export type TagSize = "sm" | "md" | "lg";
 export type TagShape = "round" | "square";
 
@@ -65,7 +65,7 @@ const StyledBox = styled(Box)<StyledBoxProps>(
 );
 
 export const Tag: FunctionComponent<TagProps> = ({
-  variant = "primary",
+  variant = "on-background",
   size = "md",
   shape = "round",
   ...rest

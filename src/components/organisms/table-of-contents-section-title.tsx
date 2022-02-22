@@ -36,6 +36,7 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
       onClick={onClick}
       sx={{
         mb: 1,
+        zIndex: 1,
         alignItems: "center",
         cursor: "pointer",
       }}

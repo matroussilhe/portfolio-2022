@@ -33,7 +33,7 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
   return (
     <Fragment>
       <Navbar
-        iconColor={"surface"}
+        iconColor={"background"}
         sx={{
           pt: 3,
           px: 6,
