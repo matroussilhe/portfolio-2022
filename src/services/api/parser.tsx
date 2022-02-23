@@ -38,20 +38,26 @@ export type SkillItem = {
   text: string;
 };
 
-export type Skill = SkillItem[];
+export type Skill = {
+  groups: SkillItem[][];
+};
 
 export type InterestItem = {
   text: string;
 };
 
-export type Interest = InterestItem[];
+export type Interest = {
+  groups: InterestItem[][];
+};
 
 export type SocialItem = {
   text: string;
   link: string;
 };
 
-export type Social = SocialItem[];
+export type Social = {
+  groups: SocialItem[][];
+};
 
 export type Photo = {
   images: string[];
@@ -60,9 +66,9 @@ export type Photo = {
 export type AboutPageDocument = {
   bio: Bio;
   expertise: Expertise;
-  skills: Skill[]; // TODO: find a better name to inform about array structure (e.g. skills/SkillArray[])
-  interests: Interest[]; // TODO: find a better name to inform about array structure (e.g. interests/InterestArray[])
-  socials: Social[]; // TODO: find a better name to inform about array structure (e.g. socials/SocialArray[])
+  skill: Skill;
+  interest: Interest;
+  social: Social;
   photo: Photo;
 };
 
@@ -138,7 +144,7 @@ export type CaseStudyPageDocument = {
   footer: Footer;
 };
 
-const parseGroupItem = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {
+const parseGroups = <T extends SkillItem | InterestItem | SocialItem>(item: any) => {
   // group items by group value
   const groupedItems = item.items.reduce((acc: any, item: any) => {
     const { text, link, group } = item;
@@ -219,11 +225,11 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       } else if (item.slice_type === "expertise") {
         acc.expertise.description = helper.asText(item.primary.description) || "";
       } else if (item.slice_type === "skill") {
-        acc.skills = parseGroupItem(item);
+        acc.skill.groups = parseGroups(item);
       } else if (item.slice_type === "interest") {
-        acc.interests = parseGroupItem(item);
+        acc.interest.groups = parseGroups(item);
       } else if (item.slice_type === "social") {
-        acc.socials = parseGroupItem(item);
+        acc.social.groups = parseGroups(item);
       } else if (item.slice_type === "photo") {
         acc.photo.images = item.items.map((item: any) => item.image.url || null);
       }
@@ -236,9 +242,15 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       expertise: {
         description: "",
       },
-      skills: [],
-      interests: [],
-      socials: [],
+      skill: {
+        groups: [],
+      },
+      interest: {
+        groups: [],
+      },
+      social: {
+        groups: [],
+      },
       photo: {
         images: [],
       },
@@ -255,9 +267,15 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       expertise: {
         description: "",
       },
-      skills: [],
-      interests: [],
-      socials: [],
+      skill: {
+        groups: [],
+      },
+      interest: {
+        groups: [],
+      },
+      social: {
+        groups: [],
+      },
       photo: {
         images: [],
       },
@@ -370,7 +388,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
   }
 };
 
-export const parseCaseStudyPageDocumentsToIds = (documents: any): string[] => {
+export const parseCaseStudyPageDocumentsIds = (documents: any): string[] => {
   try {
     const result = documents.map((document: any) => document.uid);
 

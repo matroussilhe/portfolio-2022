@@ -19,18 +19,18 @@ import {
 export type LayoutAboutProps = {
   bio: Bio;
   expertise: Expertise;
-  skills: Skill[];
-  interests: Interest[];
-  socials: Social[];
+  skill: Skill;
+  interest: Interest;
+  social: Social;
   photo: Photo;
 };
 
 export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
   bio,
   expertise,
-  skills,
-  interests,
-  socials,
+  skill,
+  interest,
+  social,
   photo,
 }) => {
   return (
@@ -62,9 +62,9 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
           <SectionInformation
             bio={bio}
             expertise={expertise}
-            skills={skills}
-            interests={interests}
-            socials={socials}
+            skill={skill}
+            interest={interest}
+            social={social}
             sx={{
               pt: 25,
               pb: 25,

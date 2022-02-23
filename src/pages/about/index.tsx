@@ -29,9 +29,9 @@ const About: NextPage<AboutProps> = ({ document }) => {
     <LayoutAbout
       bio={document.bio}
       expertise={document.expertise}
-      skills={document.skills}
-      interests={document.interests}
-      socials={document.socials}
+      skill={document.skill}
+      interest={document.interest}
+      social={document.social}
       photo={document.photo}
     />
   );

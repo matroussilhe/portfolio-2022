@@ -10,7 +10,7 @@ import {
   getCaseStudyPageDocument,
   getCaseStudyPageDocuments,
   parseCaseStudyPageDocument,
-  parseCaseStudyPageDocumentsToIds,
+  parseCaseStudyPageDocumentsIds,
 } from "@services";
 
 export type CaseStudyProps = {
@@ -19,7 +19,7 @@ export type CaseStudyProps = {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const documents = await getCaseStudyPageDocuments();
-  const ids = parseCaseStudyPageDocumentsToIds(documents);
+  const ids = parseCaseStudyPageDocumentsIds(documents);
 
   // build static paths from prismic document ids
   const paths = ids.map((id) => {

@@ -4,10 +4,13 @@ import {
   Flex,
   Text,
 } from "@components";
-import { Interest, Skill } from "@services";
+import {
+  InterestItem,
+  SkillItem,
+} from "@services";
 
 export type GridItemInformationTextProps = {
-  items: Skill | Interest;
+  items: SkillItem[] | InterestItem[];
 };
 
 export const GridItemInformationText: FunctionComponent<GridItemInformationTextProps> = ({

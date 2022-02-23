@@ -6,11 +6,11 @@ import {
   TextIcon,
 } from "@components";
 import {
-  Social,
+  SocialItem,
 } from "@services";
 
 export type GridItemInformationLinkProps = {
-  items: Social;
+  items: SocialItem[];
 };
 
 export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkProps> = ({

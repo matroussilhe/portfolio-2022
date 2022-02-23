@@ -20,17 +20,17 @@ import {
 export type SectionInformationProps = FlexProps & {
   bio: Bio;
   expertise: Expertise;
-  skills: Skill[];
-  interests: Interest[];
-  socials: Social[];
+  skill: Skill;
+  interest: Interest;
+  social: Social;
 };
 
 export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
   bio,
   expertise,
-  skills,
-  interests,
-  socials,
+  skill,
+  interest,
+  social,
   ...rest
 }) => {
   return (
@@ -87,10 +87,10 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         itemSx={{
           width: ["col12.6"],
         }}>
-        {skills.map((skill, index) => (
+        {skill.groups.map((group, index) => (
           <GridItemInformationText
             key={`grid-item-information-text-skill-${index}`}
-            items={skill}
+            items={group}
           />
         ))}
       </Grid>
@@ -109,10 +109,10 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         itemSx={{
           width: ["col12.6"],
         }}>
-        {interests.map((interest, index) => (
+        {interest.groups.map((group, index) => (
           <GridItemInformationText
             key={`grid-item-information-text-interest-${index}`}
-            items={interest}
+            items={group}
           />
         ))}
       </Grid>
@@ -128,10 +128,10 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         itemSx={{
           width: ["col12.6"],
         }}>
-        {socials.map((social, index) => (
+        {social.groups.map((group, index) => (
           <GridItemInformationLink
             key={`grid-item-information-link-interest-${index}`}
-            items={social}
+            items={group}
           />
         ))}
       </Grid>
