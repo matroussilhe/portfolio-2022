@@ -8,7 +8,9 @@ import {
 import {
   CaseStudyPageDocument,
   getCaseStudyPageDocument,
+  getCaseStudyPageDocuments,
   parseCaseStudyPageDocument,
+  parseCaseStudyPageDocumentsToIds,
 } from "@services";
 
 export type CaseStudyProps = {
@@ -16,12 +18,16 @@ export type CaseStudyProps = {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  // TODO: fetch all possible case study ids from prismic and add them to path
+  const documents = await getCaseStudyPageDocuments();
+  const ids = parseCaseStudyPageDocumentsToIds(documents);
+
+  // build static paths from prismic document ids
+  const paths = ids.map((id) => {
+    return `/case-studies/${id}`;
+  });
+
   return {
-    paths: [
-      "/case-studies/qmit",
-      "/case-studies/withgoods",
-    ],
+    paths,
     fallback: false,
   };
 };

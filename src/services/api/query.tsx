@@ -39,3 +39,15 @@ export const getCaseStudyPageDocument = async (id?: string) => {
     return null;
   }
 };
+
+export const getCaseStudyPageDocuments = async () => {
+  try {
+    const documents = await client().getAllByType("case_study_page");
+
+    return documents;
+  } catch (error) {
+    console.error("query error: ", error);
+
+    return null;
+  }
+};

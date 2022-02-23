@@ -369,3 +369,15 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
     };
   }
 };
+
+export const parseCaseStudyPageDocumentsToIds = (documents: any): string[] => {
+  try {
+    const result = documents.map((document: any) => document.uid);
+
+    return result;
+  } catch (error) {
+    console.error("parser error: ", error);
+
+    return [];
+  }
+};
