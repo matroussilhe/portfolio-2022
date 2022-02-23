@@ -160,14 +160,13 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       const easedProgess = easeInOutQuad(linearProgress);
 
       // calculate eased delay
-      const delay = duration * easedProgess;
-      delays.push(delay);
+      const easedDelay = duration * easedProgess;
+      delays.push(easedDelay);
     }
 
     return delays;
   }, [duration, text.length]);
 
-  // start animation
   const start = useCallback(() => {
     // get random glitch count based on option
     const glitchCount = getRandomInteger(options.minGlitches, options.maxGlitches);
@@ -186,7 +185,6 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     updateTimeouts(timeouts);
   }, [getActions, getDelays, initOutput, options.maxGlitches, options.minGlitches, updateTimeouts]);
 
-  // stop animation
   const stop = useCallback(() => {
     timeoutsRef.current.forEach((timeout) => {
       clearTimeout(timeout);
