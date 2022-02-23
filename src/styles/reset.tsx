@@ -1,4 +1,4 @@
-// CSS reset from minireset.css (cf: https://github.com/jgthms/minireset.css)
+// CSS reset from minireset.css (cf. https://github.com/jgthms/minireset.css)
 export const resetStyle = `
   html,
   body,

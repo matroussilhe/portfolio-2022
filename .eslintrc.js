@@ -247,7 +247,7 @@ module.exports = {
     // react-hooks rules
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "error",
-    // import sorting rules (cf: https://github.com/lydell/eslint-plugin-simple-import-sort)
+    // import sorting rules (cf. https://github.com/lydell/eslint-plugin-simple-import-sort)
     "sort-imports": "off",
     "import/first": "error",
     "import/no-duplicates": "error",

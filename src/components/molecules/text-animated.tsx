@@ -10,7 +10,9 @@ import {
   Text,
 } from "@components";
 import {
+  easeInOutQuad,
   getRandomInteger,
+  shuffle,
 } from "@services";
 import { theme } from "@themes";
 
@@ -22,11 +24,9 @@ export type TextAnimatedOutputItem = {
 export type TextAnimatedOutput = TextAnimatedOutputItem[];
 
 export type TextAnimatedOptions = {
-  newGlitchProbability: number; // probability for glitch to appear on write (0~100%)
-  replaceGlitchProbability: number; // probability for glitch to be replaced on write (0~100%)
   glitches: string; // characters used as glitch
-  minStartingGlitches: number; // minimum number of starting glitch characters
-  maxStartingGlitches: number; // maximum number of starting glitch characters
+  minGlitches: number; // minimum count of starting glitch characters
+  maxGlitches: number; // maximum count of starting glitch characters
 };
 
 export type TextAnimatedProps = {
@@ -41,26 +41,42 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   duration = 1000,
   delay = 0,
   options = {
-    newGlitchProbability: 0,
-    replaceGlitchProbability: 25,
     glitches: "ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲ쎠ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖ",
-    minStartingGlitches: 4,
-    maxStartingGlitches: 8,
+    minGlitches: 4,
+    maxGlitches: 8,
   },
 }) => {
   const [output, setOutput] = useState<TextAnimatedOutput>([]);
 
-  const intervalRef = useRef<NodeJS.Timeout>();
-  const callbackRef = useRef<() => void>();
-  const indexRef = useRef<number>(0);
   const outputRef = useRef<TextAnimatedOutput>(output);
+  const indexRef = useRef<number>(0);
   const glitchCountRef = useRef<number>(0);
+  const timeoutsRef = useRef<NodeJS.Timeout[]>([]);
 
-  const getRandomGlitches = useCallback((min: number, max: number) => {
-    const amount = getRandomInteger(min, max);
+  const updateOutput = useCallback((value) => {
+    outputRef.current = value;
+    setOutput(value);
+  }, []);
 
+  const incrementIndex = useCallback(() => {
+    indexRef.current = indexRef.current + 1;
+  }, []);
+
+  const updateGlitchCount = useCallback((value) => {
+    glitchCountRef.current = value;
+  }, []);
+
+  const decrementGlitchCount = useCallback(() => {
+    glitchCountRef.current = glitchCountRef.current - 1;
+  }, []);
+
+  const updateTimeouts = useCallback((value) => {
+    timeoutsRef.current = value;
+  }, []);
+
+  const getRandomGlitches = useCallback((count) => {
     const result: TextAnimatedOutput = [];
-    for (let i = 0; i < amount; ++i) {
+    for (let i = 0; i < count; ++i) {
       const roll = getRandomInteger(0, options.glitches.length - 1);
       const glitch = options.glitches[roll];
 
@@ -73,125 +89,109 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     return result;
   }, [options.glitches]);
 
-  const initOutput = useCallback(() => {
-    // add glitches
-    const glitches = getRandomGlitches(options.minStartingGlitches, options.maxStartingGlitches);
-    glitchCountRef.current = glitches.length;
+  const initOutput = useCallback((glitchCount) => {
+    // add glitches to output
+    const glitches = getRandomGlitches(glitchCount);
     const newOutput = [...glitches];
 
-    // update output
-    outputRef.current = newOutput;
-    setOutput(newOutput);
-  }, [getRandomGlitches, options.maxStartingGlitches, options.minStartingGlitches]);
-
-  const cleanupOutput = () => {
-    // remove all glitches
-    const newOutput = outputRef.current.filter(item => item.type !== "glitch");
-
-    // update output
-    outputRef.current = newOutput;
-    setOutput(newOutput);
-  };
-
-  const start = useCallback(() => {
-    initOutput();
-
-    // start interval
-    const writeSpeed = duration / text.length;
-    const id = setInterval(() => {
-      callbackRef.current?.();
-    }, writeSpeed);
-    intervalRef.current = id;
-  }, [duration, initOutput, text.length]);
-
-  const stop = useCallback(() => {
-    if (!intervalRef.current) return;
-
-    cleanupOutput();
-
-    clearInterval(intervalRef.current);
-  }, []);
-
-  const updateIndex = useCallback(() => {
-    const newIndex = indexRef.current + 1;
-    indexRef.current = newIndex;
-
-    const maxIndex = text.length;
-    if (newIndex >= maxIndex) {
-      stop();
-    }
-  }, [stop, text.length]);
+    updateGlitchCount(glitchCount);
+    updateOutput(newOutput);
+  }, [getRandomGlitches, updateGlitchCount, updateOutput]);
 
   const write = useCallback(() => {
-    let roll = getRandomInteger(0, 100);
+    // add character at the end of string (before glitches start)
+    const newOutput = [...outputRef.current];
+    const index = outputRef.current.length - glitchCountRef.current;
+    const value = text[index];
+    const character: TextAnimatedOutputItem = {
+      type: "character",
+      value,
+    };
+    newOutput.splice(index, 0, character);
 
-    // TODO: remove if unused
-    if (roll <= options.newGlitchProbability) {
-      // add glitch to end of string
-      const glitches = getRandomGlitches(1, 1);
-      glitchCountRef.current = glitchCountRef.current + 1;
-      const newOutput = [...outputRef.current, ...glitches];
+    incrementIndex();
+    updateOutput(newOutput);
+  }, [incrementIndex, text, updateOutput]);
 
-      // update output
-      outputRef.current = newOutput;
-      setOutput(newOutput);
+  const replace = useCallback(() => {
+    // replace glitch with character at the end of string (at glitches start)
+    const newOutput = [...outputRef.current];
+    const index = outputRef.current.length - glitchCountRef.current;
+    const value = text[index];
+    const character: TextAnimatedOutputItem = {
+      type: "character",
+      value,
+    };
+    newOutput[index] = character;
 
-      return;
+    incrementIndex();
+    decrementGlitchCount();
+    updateOutput(newOutput);
+  }, [decrementGlitchCount, incrementIndex, text, updateOutput]);
+
+  const getActions = useCallback((glitchCount) => {
+    // init actions
+    const writeCount = text.length - glitchCount;
+    const replaceCount = glitchCount;
+    const actions: (() => void)[] = [];
+    for (let i = 0; i < replaceCount; ++i) {
+      actions.push(replace);
+    }
+    for (let i = 0; i < writeCount; ++i) {
+      actions.push(write);
     }
 
-    roll = getRandomInteger(0, 100);
-    if (roll <= options.replaceGlitchProbability) {
-      if (glitchCountRef.current <= 0) return;
+    // shuffle actions
+    const shuffledActions = shuffle(actions);
 
-      // replace glitch with character
-      const newOutput = [...outputRef.current];
-      const index = outputRef.current.length - glitchCountRef.current;
-      const character: TextAnimatedOutputItem = {
-        type: "character",
-        value: text[indexRef.current],
-      };
-      newOutput[index] = character;
-      glitchCountRef.current = glitchCountRef.current - 1;
+    return shuffledActions;
+  }, [text.length, replace, write]);
 
-      // update output
-      outputRef.current = newOutput;
-      setOutput(newOutput);
+  const getDelays = useCallback(() => {
+    const linearStepDuration = duration / text.length;
 
-      // update progression
-      updateIndex();
+    const delays: number[] = [];
+    for (let i = 0; i < text.length; ++i) {
+      // calculate linear progress
+      const linearElaspedTime = i * linearStepDuration;
+      const linearProgress = linearElaspedTime / duration;
 
-      // WIP: add another character/glitch on replace to avoid string going back effect
-      // // add glitch to end of string
-      // const glitches = getRandomGlitches(1, 1);
-      // glitchCountRef.current = glitchCountRef.current + 1;
-      // newOutput = [...outputRef.current, ...glitches];
+      // calculate eased progress
+      const easedProgess = easeInOutQuad(linearProgress);
 
-      // // update output
-      // outputRef.current = newOutput;
-      // setOutput(newOutput);
-    } else {
-      // add text character at the end of string
-      const newOutput = [...outputRef.current];
-      const index = outputRef.current.length - glitchCountRef.current;
-      const character: TextAnimatedOutputItem = {
-        type: "character",
-        value: text[indexRef.current],
-      };
-      newOutput.splice(index, 0, character);
-
-      // update output
-      outputRef.current = newOutput;
-      setOutput(newOutput);
-
-      // update progression
-      updateIndex();
+      // calculate eased delay
+      const delay = duration * easedProgess;
+      delays.push(delay);
     }
-  }, [getRandomGlitches, options.newGlitchProbability, options.replaceGlitchProbability, text, updateIndex]);
 
-  // update callback on change
-  useEffect(() => {
-    callbackRef.current = write;
-  }, [write]);
+    return delays;
+  }, [duration, text.length]);
+
+  // start animation
+  const start = useCallback(() => {
+    // get random glitch count based on option
+    const glitchCount = getRandomInteger(options.minGlitches, options.maxGlitches);
+
+    initOutput(glitchCount);
+
+    // trigger actions at eased timeouts
+    const actions = getActions(glitchCount);
+    const delays = getDelays();
+    const timeouts = delays.map(((delay, index) => {
+      return setTimeout(() => {
+        actions[index]();
+      }, delay);
+    }));
+
+    updateTimeouts(timeouts);
+  }, [getActions, getDelays, initOutput, options.maxGlitches, options.minGlitches, updateTimeouts]);
+
+  // stop animation
+  const stop = useCallback(() => {
+    timeoutsRef.current.forEach((timeout) => {
+      clearTimeout(timeout);
+    });
+  }, []);
 
   // init
   useEffect(() => {
@@ -200,12 +200,14 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       start();
     }, delay);
 
+    // cleanup
     return () => {
       clearTimeout(timeout);
-      intervalRef.current ? clearInterval(intervalRef.current) : undefined;
+      stop();
     };
-  }, [delay, start]);
+  }, [delay, start, stop]);
 
+  // render on state change (i.e. ouput change)
   const renderOuput = () => {
     // render placeholder when output is empty (i.e. before start)
     if (output.length === 0) {

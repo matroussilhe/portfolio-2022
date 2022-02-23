@@ -39,35 +39,35 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             <Flex>
               <TextAnimated
                 text={"아이! Hello, I'm Mathieu"}
-                duration={1200}
+                duration={900}
                 delay={0}
               />
               &nbsp;
               <TextAnimated
                 text={"a Fullstack Engineer"}
-                duration={1200}
+                duration={900}
                 delay={0}
               />
             </Flex>
             <TextAnimated
               text={"building something special and mostly"}
-              duration={1200}
-              delay={1200}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"focus on these technologies. I'm currently"}
-              duration={1200}
-              delay={2400}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"fully employed at QMIT Inc."}
-              duration={1200}
-              delay={3600}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"and live in SEOUL KOREA."}
-              duration={1200}
-              delay={4800}
+              duration={900}
+              delay={0}
             />
           </Fragment>
         ) : (
@@ -75,28 +75,28 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             key={generateId()}>
             <TextAnimated
               text={"Hi! 안녕, 저는 풀 스택 개발자인 Mathieu입니다."}
-              duration={1200}
+              duration={900}
               delay={0}
             />
             <TextAnimated
               text={"특별하고 대부분인 무언가를 짓는 것"}
-              duration={1200}
-              delay={1200}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"이러한 기술에 집중합니다. 저는 지금"}
-              duration={1200}
-              delay={2400}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"QMIT Inc. 주식회사의 완전 고용"}
-              duration={1200}
-              delay={3600}
+              duration={900}
+              delay={0}
             />
             <TextAnimated
               text={"그리고 서울 코리아에 살고 있습니다."}
-              duration={1200}
-              delay={4800}
+              duration={900}
+              delay={0}
             />
           </Fragment>
         )}
