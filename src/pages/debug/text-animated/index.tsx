@@ -10,14 +10,15 @@ const DebugTextAnimated = () => {
     <Flex
       sx={{
         height: "100%",
-        flexDirection: "row",
-        flexWrap: "wrap",
         p: 5,
       }}>
       <TextAnimated
         text={"Hello, my name is Mathieu and I am curious about many things!"}
-        duration={1000}
-        delay={0}
+        options={{
+          duration: 3000,
+          delay: 0,
+          cursorCount: 10,
+        }}
       />
     </Flex>
   );

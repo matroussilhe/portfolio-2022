@@ -28,9 +28,9 @@ import {
   ContentSliceType,
 } from "@services";
 
-const SECTION_TITLE_TRANSITION_NAME = "section-title-slide";
-const SECTION_TITLE_TRANSITION_DURATION = 250;
-const SECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+const TABLE_OF_CONTENTS_TRANSITION_NAME = "table-of-content-slide";
+const TABLE_OF_CONTENTS_TRANSITION_DURATION = 250;
+const TABLE_OF_CONTENTS_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
 
 const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
 const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
@@ -56,30 +56,30 @@ export type StyledFlexSectionTitleProps = FlexProps & {};
 const StyledFlex = styled(Flex)<StyledFlexSectionTitleProps>`
   opacity: 0;
 
-  &.${SECTION_TITLE_TRANSITION_NAME}-enter {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-enter {
     opacity: 0;
     transform: translateY(-100%);
   }
-  &.${SECTION_TITLE_TRANSITION_NAME}-enter-active {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-enter-active {
     opacity: 1;
     transform: translateY(0%);
-    transition: ${SECTION_TITLE_TRANSITION_DURATION}ms ${SECTION_TITLE_TRANSITION_EASING};
+    transition: ${TABLE_OF_CONTENTS_TRANSITION_DURATION}ms ${TABLE_OF_CONTENTS_TRANSITION_EASING};
   }
-  &.${SECTION_TITLE_TRANSITION_NAME}-enter-done {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-enter-done {
     opacity: 1;
     transform: translateY(0%);
   }
 
-  &.${SECTION_TITLE_TRANSITION_NAME}-exit {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-exit {
     opacity: 1;
     transform: translateY(0%);
   }
-  &.${SECTION_TITLE_TRANSITION_NAME}-exit-active {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-exit-active {
     opacity: 0;
     transform: translateY(-100%);
-    transition: ${SECTION_TITLE_TRANSITION_DURATION - 50}ms ${SECTION_TITLE_TRANSITION_EASING};
+    transition: ${TABLE_OF_CONTENTS_TRANSITION_DURATION - 50}ms ${TABLE_OF_CONTENTS_TRANSITION_EASING};
   }
-  &.${SECTION_TITLE_TRANSITION_NAME}-exit-done {
+  &.${TABLE_OF_CONTENTS_TRANSITION_NAME}-exit-done {
     opacity: 0;
     transform: translateY(-100%);
   }
@@ -182,8 +182,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = forwardR
     <CSSTransition
       nodeRef={ref}
       in={isShown}
-      classNames={SECTION_TITLE_TRANSITION_NAME}
-      timeout={SECTION_TITLE_TRANSITION_DURATION}>
+      classNames={TABLE_OF_CONTENTS_TRANSITION_NAME}
+      timeout={TABLE_OF_CONTENTS_TRANSITION_DURATION}>
       <StyledFlex
         ref={ref}
         sx={{
