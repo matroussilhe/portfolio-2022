@@ -1,12 +1,11 @@
 <svg
   xmlns="http://www.w3.org/2000/svg"
-  version="1.0"
-  width="64.000000pt"
-  height="64.000000pt"
-  viewBox="0 0 64.000000 64.000000"
+  viewBox="0 0 32 32"
+  width="32"
+  height="32"
   fill="currentcolor">
   <g
-    transform="translate(0.000000,64.000000) scale(0.100000,-0.100000)"
+    transform="translate(0.000000,32) scale(0.0500000,-0.050000)"
     fill="currentcolor"
     stroke="none">
     <path

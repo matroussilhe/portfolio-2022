@@ -48,7 +48,7 @@ export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = ({
               links={[
                 {
                   href: "https://www.linkedin.com/in/matroussilhe",
-                  text: "Linkedin",
+                  text: "LinkedIn",
                 },
                 {
                   href: "https://www.instagram.com/matroussilhe",

@@ -13,7 +13,7 @@ const App = ({ Component, pageProps }: AppProps) => {
       <Head>
         <title>{"Mat Roussilhe | Fullstack Engineer"}</title>
         <meta name={"description"} content={"Mathieu Roussilhe's portfolio"}/>
-        <link rel={"icon"} href={"/favicon.ico"}/>
+        <link rel={"icon"} href={"/icons/favicon.ico"}/>
       </Head>
       <ThemeProvider>
         <ResponsiveContextProvider>
