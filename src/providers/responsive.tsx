@@ -47,8 +47,8 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
     if (hasWindow !== true) return;
 
     const themeBreakpoints = get(theme, "breakpoints") as string[];
-    const breakpoints = themeBreakpoints?.reduce((acc, cur) => {
-      acc.push(parseFloat(cur.replace("rem", "")) * rootEm);
+    const breakpoints = themeBreakpoints?.reduce((acc, item) => {
+      acc.push(parseFloat(item.replace("rem", "")) * rootEm);
 
       return acc;
     }, [0]);

@@ -25,13 +25,13 @@ export const useResponsive = () => {
       ];
 
       // map prop value to each breakpoint in a mobile first approach
-      const breakpointPropMap = breakpointMap.reduce((acc, cur, idx) => {
-        const propValue = prop[idx];
+      const breakpointPropMap = breakpointMap.reduce((acc, item, index) => {
+        const propValue = prop[index];
 
         if (propValue != undefined) {
           acc.push(propValue);
         } else {
-          acc.push(acc[idx - 1]);
+          acc.push(acc[index - 1]);
         }
 
         return acc;
