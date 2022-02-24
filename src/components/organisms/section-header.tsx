@@ -75,8 +75,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
       <Flex>
         <Box
           sx={{
-            width: ["col12.2"],
             ml: 5,
+            width: ["col12.2"],
           }}>
           <TextParagraphTitle
             sx={{
@@ -104,6 +104,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         </Box>
         <Box
           sx={{
+            mx: 5,
             width: ["col12.4"],
           }}>
           <TextParagraphTitle
@@ -138,8 +139,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         </Box>
         <Box
           sx={{
-            width: ["col12.6"],
             mr: 5,
+            width: ["col12.6"],
           }}>
           <Text
             variant={"body1"}
