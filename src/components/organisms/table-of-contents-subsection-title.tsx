@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent } from "react";
 
 import {
   Flex,
@@ -13,12 +13,13 @@ export type TableOfContentsSubsectionTitleProps = FlexProps & {
   content: SubsectionTitle;
 };
 
-export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSubsectionTitleProps> = ({
+export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSubsectionTitleProps> = forwardRef<HTMLDivElement, TableOfContentsSubsectionTitleProps>(({
   content,
   ...rest
-}) => {
+}, ref) => {
   return (
     <Flex
+      ref={ref}
       sx={{
         ml: 5,
         mb: 1,
@@ -30,4 +31,4 @@ export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSu
       </Text>
     </Flex>
   );
-};
+});

@@ -27,12 +27,8 @@ import {
   ContentSliceType,
 } from "@services";
 
-export type ContentComponents = {
-  [key in ContentSliceType]: FunctionComponent<any> | (() => null);
-};
-
-export type ContentIndexes = {
-  [key in ContentSliceType]: number;
+export type SectionContentComponent = {
+  [key in ContentSliceType]: FunctionComponent<any>;
 };
 
 export type SectionContentProps = FlexProps & {
@@ -46,28 +42,26 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   const [activeContent, setActiveContent] = useState<TableOfContentsActiveContent>();
 
   const ref = useRef<HTMLDivElement>(null);
-  const tableOfContentsRef = useRef<HTMLDivElement>(null);
-  const contentRefs = contents.map(() => createRef<HTMLDivElement>());
+  const refsRef = useRef(contents.map(() => createRef<HTMLDivElement>()));
 
   // observe content intersection changes
-  const { entries } = useIntersectionObserver(contentRefs);
+  const { entries } = useIntersectionObserver(refsRef.current);
 
   // set attributes on each content ref to provide metadata to intersection observer entries
   useEffect(() => {
-    contentRefs.forEach((contentRef, index) => {
+    refsRef.current.forEach((contentRef, index) => {
       contentRef.current?.setAttribute("contentIndex", index.toString());
       contentRef.current?.setAttribute("contentType", contents[index].type);
     });
-  }, [contentRefs, contents]);
+  }, [refsRef, contents]);
 
   // update active content on intersection change
   useEffect(() => {
-    if (!tableOfContentsRef.current || !entries) return;
+    if (!entries) return;
 
-    // find entry located above table of contents (i.e. entry that started to enter/leave screen from above)
-    const { y } = tableOfContentsRef.current.getBoundingClientRect();
+    // find entry that started to enter/leave viewport from above
     const foundEntry = entries.find((entry) => {
-      return entry.boundingClientRect.y <= y;
+      return entry.boundingClientRect.y <= 0;
     });
     if (!foundEntry) return;
 
@@ -89,7 +83,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   const isInsideViewport = top < 0 && bottom > 0;
 
   // map content type to component
-  const contentComponents: ContentComponents = useMemo(() => {
+  const components: SectionContentComponent = useMemo(() => {
     return {
       "section_title": SectionContentSectionTitle,
       "subsection_title": SectionContentSubsectionTitle,
@@ -112,15 +106,14 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
       }}
       {...rest}>
       <TableOfContents
-        ref={tableOfContentsRef}
         contents={contents}
         activeContent={activeContent}
-        contentRefs={contentRefs}
+        contentRefs={refsRef.current}
         isVisible={isInsideViewport}
       />
       {contents.map((content, index) => {
-        // get content component by type
-        const ContentComponent = contentComponents[content.type];
+        // get component by type
+        const Component = components[content.type];
 
         // get type's specific props
         const extraProps: any = {};
@@ -131,8 +124,8 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         }
 
         return (
-          <ContentComponent
-            ref={contentRefs[index]}
+          <Component
+            ref={refsRef.current[index]}
             key={`section-content-${index}`}
             content={content}
             {...extraProps}

@@ -1,4 +1,4 @@
-import React, { FunctionComponent } from "react";
+import React, { forwardRef, FunctionComponent } from "react";
 
 import {
   Flex,
@@ -16,13 +16,13 @@ export type TableOfContentsSectionTitleProps = FlexProps & {
   onClick: () => void;
 };
 
-export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSectionTitleProps> = ({
+export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSectionTitleProps> = forwardRef<HTMLDivElement, TableOfContentsSectionTitleProps>(({
   content,
   index,
   isActive,
   onClick,
   ...rest
-}) => {
+}, ref) => {
   const indexString = (index + 1).toString().padStart(2, "0");
 
   const activeSx = {
@@ -33,6 +33,7 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
 
   return (
     <Flex
+      ref={ref}
       onClick={onClick}
       sx={{
         mb: 1,
@@ -50,4 +51,4 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
       </Text>
     </Flex>
   );
-};
+});
