@@ -27,7 +27,7 @@ export const useIntersectionObserver = (targetRefs?: RefObject<HTMLDivElement>[]
     intersectionObserverRef.current = new IntersectionObserver(callback, {
       root: null,
       rootMargin: "0px",
-      threshold: [0.01, 1],
+      threshold: [0, 0.25, 0.5, 0.75, 1],
       ...options,
     });
   }, [options]);

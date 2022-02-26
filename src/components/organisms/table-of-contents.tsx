@@ -1,8 +1,6 @@
 import React, {
   createRef,
-  Fragment,
   FunctionComponent,
-  Ref,
   RefObject,
   useCallback,
   useEffect,
@@ -48,7 +46,6 @@ export type TableOfContentsActiveContent = {
 };
 
 export type TableOfContentsProps = FlexProps & {
-  ref?: Ref<HTMLDivElement>;
   contents: Content[];
   activeContent?: TableOfContentsActiveContent;
   contentRefs: RefObject<HTMLDivElement>[];
@@ -132,34 +129,16 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   isVisible = false,
   ...rest
 }) => {
-  const [isShown, setIsShown] = useState<boolean>(false);
-  // WIP:
-  const [isShown2, setIsShown2] = useState<boolean>(false);
+  const [isIn, setIsIn] = useState<boolean>(false);
   const [activeSectionTitleIndex, setActiveSectionTitleIndex] = useState<number>();
   const [activeSubsectionTitleIndex, setActiveSubsectionTitleIndex] = useState<number>();
-  // WIP:
-  // const [activeSubsectionTitleValue, setActiveSubsectionTitleValue] = useState<number>();
-  // const previousActiveSectionTitleIndex = usePreviousState(activeSectionTitleIndex);
   const previousActiveSubsectionTitleIndex = usePreviousState(activeSubsectionTitleIndex);
 
   const ref = useRef<HTMLDivElement>(null);
   const refsRef = useRef(contents.map(() => createRef<HTMLDivElement>()));
 
-  // FIXME: hard to match/find indexes if they don't match between TOC and props.contents
-  // const refsRef = useRef(contents
-  //   .filter(content => content.type === "section_title" || content.type === "subsection_title")
-  //   .map(() => createRef<HTMLDivElement>()));
-
   // find first content that matches provided type from above contents (i.e. previous in array)
   const findAboveContentIndexByType = useCallback((type: ContentSliceType, index: number) => {
-    // FIXME: doesn't work with index === 0
-    if (index === 0) {
-      if (contents[0].type === type) {
-        return 0;
-      }
-    }
-
-    // FIXME: stop when type change???
     for (let i = index; i >= 0; --i) {
       if (contents[i].type === type) {
         return i;
@@ -167,31 +146,25 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
     }
   }, [contents]);
 
+  // trigger table of contents animation on active content or visibility change
+  useEffect(() => {
+    if (!activeContent) return;
+
+    const isActiveContentSectionTitle = activeContent?.type === "section_title";
+    const newIsIn = isVisible && !isActiveContentSectionTitle;
+
+    setIsIn(newIsIn);
+  }, [activeContent, isVisible]);
+
   // update active section and subsection on active content change
   useEffect(() => {
-    // WIP:
-    // console.log("activeContent: ", activeContent);
-    // console.log("refsRef.current: ", refsRef.current);
     if (!activeContent) return;
 
     const aboveSectionTitleIndex = findAboveContentIndexByType("section_title", activeContent.index);
     const aboveSubsectionTitleIndex = findAboveContentIndexByType("subsection_title", activeContent.index);
-    // DEBUG: good debugging
-    // console.log("aboveSectionTitleIndex: ", aboveSectionTitleIndex);
-    // console.log("aboveSection: ", aboveSectionTitleIndex !== undefined ? contents[aboveSectionTitleIndex]?.title : "");
-    // console.log("aboveSubsectionTitleIndex: ", aboveSubsectionTitleIndex);
-    // console.log("aboveSubsection: ", aboveSubsectionTitleIndex !== undefined ? contents[aboveSubsectionTitleIndex]?.title : "");
     setActiveSectionTitleIndex(aboveSectionTitleIndex);
     setActiveSubsectionTitleIndex(aboveSubsectionTitleIndex);
-    // WIP:
-    // console.log("useEffect aboveSectionTitleIndex: ", aboveSectionTitleIndex);
-    // console.log("useEffect aboveSubsectionTitleIndex: ", aboveSubsectionTitleIndex);
-
-    const isActiveContentSectionTitle = activeContent?.type === "section_title";
-    const newIsShown = isVisible && !isActiveContentSectionTitle;
-
-    setIsShown(newIsShown);
-  }, [activeContent, findAboveContentIndexByType, isVisible]);
+  }, [activeContent, findAboveContentIndexByType]);
 
   // map content type to component
   const components: TableOfContentsComponent = useMemo(() => {
@@ -208,22 +181,10 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   // display index in front of section titles
   let sectionTitleIndex = 0;
 
-  // FIXME: move to above useEffect, mabye unmoved later
-  // // trigger wrapper animation on visibility change
-  // useEffect(() => {
-  //   if (!activeContent) return;
-
-  //   console.log("activeContent: ", activeContent);
-  //   const isActiveContentSectionTitle = activeContent?.type === "section_title";
-  //   const newIsShown = isVisible && !isActiveContentSectionTitle;
-
-  //   setIsShown(newIsShown);
-  // }, [activeContent, isVisible]);
-
   return (
     <CSSTransition
       nodeRef={ref}
-      in={isShown}
+      in={isIn}
       classNames={TABLE_OF_CONTENTS_TRANSITION_NAME}
       timeout={TABLE_OF_CONTENTS_TRANSITION_DURATION}>
       <StyledFlex
@@ -296,67 +257,22 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
               />
             );
           } else if (isSubsectionTitle) {
-            // FIXME: direction seems broken
+            // trigger subsection title animation
+            const isIn = index === activeSubsectionTitleIndex;
+
             // calculate animation direction
             const direction = (activeSubsectionTitleIndex || 0) >= (previousActiveSubsectionTitleIndex || 0) ? -1 : 1;
 
-            // WIP:
-            // const isVisible = previousActiveSectionTitleIndex === activeSectionTitleIndex;
-
-            // DEBUG: good debugging
-            // console.log("activeSubsectionTitleIndex: ", activeSubsectionTitleIndex);
-            // console.log("activeSubsection: ", activeSubsectionTitleIndex !== undefined ? contents[activeSubsectionTitleIndex]?.title : "");
-            // const isSameSection = previousActiveSectionTitleIndex === activeSectionTitleIndex;
-            // if (!isSameSection) {
-            //   console.log("previousActiveSectionTitleIndex: ", previousActiveSectionTitleIndex);
-            //   console.log("previousActiveSection: ", previousActiveSectionTitleIndex !== undefined ? contents[previousActiveSectionTitleIndex]?.title : "");
-            //   console.log("activeSectionTitleIndex: ", activeSectionTitleIndex);
-            //   console.log("activeSection: ", activeSectionTitleIndex !== undefined ? contents[activeSectionTitleIndex]?.title : "");
-            //   return null;
-            // }
-
-            // const isActiveSectionTitleIndex = index === activeContent?.index;
-            // const isActiveSubsectionTitleIndex = index === activeContent?.index;
-            // console.log("activeSectionTitleIndex: ", activeSectionTitleIndex);
-            // console.log("activeSection: ", activeSectionTitleIndex !== undefined ? contents[activeSectionTitleIndex]?.title : "");
-            // console.log("activeSubsectionTitleIndex: ", activeSubsectionTitleIndex);
-            // console.log("activeSubsection: ", activeSubsectionTitleIndex !== undefined ? contents[activeSubsectionTitleIndex]?.title : "");
-
-            // // WIP: hide animation not active section or subsection
-            // const newIsShown = aboveSectionTitleIndex === activeSectionTitleIndex &&
-            //   aboveSubsectionTitleIndex === activeSubsectionTitleIndex;
-            // if (newIsShown) {
-            //   console.log("loop index: ", index);
-            //   console.log("loop value: ", content.title);
-            //   console.log("loop activeSectionTitleIndex: ", activeSectionTitleIndex);
-            //   console.log("loop activeSubsectionTitleIndex: ", activeSubsectionTitleIndex);
-            // }
-
-            // only show/animate active subsection inside active section
-            const aboveSectionTitleIndex = findAboveContentIndexByType("section_title", index);
-            const aboveSubsectionTitleIndex = findAboveContentIndexByType("subsection_title", index);
-            const isAboveSectionTitleIndexActiveSectionTitleIndex = aboveSectionTitleIndex === activeSectionTitleIndex;
-            const isAboveSubsectionTitleIndexActiveSubsectionTitleIndex = aboveSubsectionTitleIndex === activeSubsectionTitleIndex;
-            const isTransitioning = isAboveSubsectionTitleIndexActiveSubsectionTitleIndex;
-            const isVisible = isAboveSectionTitleIndexActiveSectionTitleIndex;
-
-            if (isTransitioning) {
-              console.log("index: ", index);
-              console.log("aboveSubsectionTitleIndex: ", aboveSubsectionTitleIndex);
-              console.log("activeSubsectionTitleIndex: ", activeSubsectionTitleIndex);
-            }
-
-            const isActiveSubsectionTitle = index === activeSubsectionTitleIndex;
-            const isActiveSubsectionTitleIndex = index === activeSubsectionTitleIndex;
+            // hide animations from non-active section
+            const currentAboveSectionTitleIndex = findAboveContentIndexByType("section_title", index);
+            const isVisible = currentAboveSectionTitleIndex === activeSectionTitleIndex;
 
             // show active subsection title with animation
             return (
               <CSSTransition
                 key={`section-content-${index}`}
                 nodeRef={refsRef.current[index]}
-                // in={isActiveSubsectionTitleIndex}
-                // WIP:
-                in={isTransitioning}
+                in={isIn}
                 classNames={SUBSECTION_TITLE_TRANSITION_NAME}
                 timeout={SUBSECTION_TITLE_TRANSITION_DURATION}>
                 <StyledFlexSubsectionTitle
@@ -364,9 +280,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                   direction={direction}
                   sx={{
                     mt: `-${SUBSECTION_TITLE_HEIGHT}px`,
-                    // FIXME: visibility breaks with CSSTransition
-                    // visibility: isVisible ? "visible" : "hidden",
-                    opacity: isTransitioning ? 1 : 0,
+                    visibility: isVisible ? "visible" : "hidden",
                   }}>
                   <Component
                     content={content}
