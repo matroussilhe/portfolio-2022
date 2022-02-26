@@ -50,8 +50,8 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   // set attributes on each content ref to provide metadata to intersection observer entries
   useEffect(() => {
     refsRef.current.forEach((contentRef, index) => {
-      contentRef.current?.setAttribute("contentIndex", index.toString());
-      contentRef.current?.setAttribute("contentType", contents[index].type);
+      contentRef.current?.setAttribute("content-index", index.toString());
+      contentRef.current?.setAttribute("content-type", contents[index].type);
     });
   }, [refsRef, contents]);
 
@@ -59,15 +59,20 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   useEffect(() => {
     if (!entries) return;
 
-    // find entry that started to enter/leave viewport from above
+    // find entry that intersect with viewport from the top
     const foundEntry = entries.find((entry) => {
-      return entry.boundingClientRect.y <= 0;
+      const { top } = entry.boundingClientRect;
+
+      const isIntersectingWithViewport = entry.isIntersecting;
+      const isTopAboveViewport = top <= 0;
+
+      return isIntersectingWithViewport && isTopAboveViewport;
     });
     if (!foundEntry) return;
 
     // get metadata from entry
-    const type = foundEntry.target.getAttribute("contentType") || undefined;
-    const index = foundEntry.target.getAttribute("contentIndex") || undefined;
+    const type = foundEntry.target.getAttribute("content-type") || undefined;
+    const index = foundEntry.target.getAttribute("content-index") || undefined;
 
     // set active content
     if (type && index != undefined) {
@@ -78,7 +83,7 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
     }
   }, [entries]);
 
-  // determine if component is inside viewport
+  // determine if section is overlapping viewport
   const { top, bottom } = ref.current?.getBoundingClientRect() || { top: 0, bottom: 0 };
   const isInsideViewport = top < 0 && bottom > 0;
 

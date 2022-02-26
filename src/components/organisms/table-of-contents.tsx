@@ -19,9 +19,6 @@ import {
   TableOfContentsSubsectionTitle,
 } from "@components";
 import {
-  usePreviousState,
-} from "@hooks";
-import {
   Content,
   ContentSliceType,
 } from "@services";
@@ -86,16 +83,14 @@ const StyledFlex = styled(Flex)<StyledFlexSectionTitleProps>`
   }
 `;
 
-export type StyledFlexSubsectionTitleProps = FlexProps & {
-  direction: 1 | -1;
-};
+export type StyledFlexSubsectionTitleProps = FlexProps & {};
 
 const StyledFlexSubsectionTitle = styled(Flex)<StyledFlexSubsectionTitleProps>`
   opacity: 0;
 
   &.${SUBSECTION_TITLE_TRANSITION_NAME}-enter {
     opacity: 0;
-    transform: translateY(${props => props.direction * -50}%);
+    transform: translateY(-50%);
   }
   &.${SUBSECTION_TITLE_TRANSITION_NAME}-enter-active {
     opacity: 1;
@@ -113,12 +108,12 @@ const StyledFlexSubsectionTitle = styled(Flex)<StyledFlexSubsectionTitleProps>`
   }
   &.${SUBSECTION_TITLE_TRANSITION_NAME}-exit-active {
     opacity: 0;
-    transform: translateY(${props => props.direction * 50}%);
+    transform: translateY(50%);
     transition: ${SUBSECTION_TITLE_TRANSITION_DURATION - 50}ms ${SUBSECTION_TITLE_TRANSITION_EASING};
   }
   &.${SUBSECTION_TITLE_TRANSITION_NAME}-exit-done {
     opacity: 0;
-    transform: translateY(${props => props.direction * 50}%);
+    transform: translateY(50%);
   }
 `;
 
@@ -132,18 +127,23 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   const [isIn, setIsIn] = useState<boolean>(false);
   const [activeSectionTitleIndex, setActiveSectionTitleIndex] = useState<number>();
   const [activeSubsectionTitleIndex, setActiveSubsectionTitleIndex] = useState<number>();
-  const previousActiveSubsectionTitleIndex = usePreviousState(activeSubsectionTitleIndex);
 
   const ref = useRef<HTMLDivElement>(null);
   const refsRef = useRef(contents.map(() => createRef<HTMLDivElement>()));
 
-  // find first content that matches provided type from above contents (i.e. previous in array)
-  const findAboveContentIndexByType = useCallback((type: ContentSliceType, index: number) => {
+  // find first content that matches provided type from above contents
+  const findAboveContentIndexByType = useCallback((index: number, typeToFind: ContentSliceType, typeToStop?: ContentSliceType) => {
     for (let i = index; i >= 0; --i) {
-      if (contents[i].type === type) {
+      const { type } = contents[i];
+
+      if (typeToStop && type === typeToStop) {
+        return undefined;
+      } else if (type === typeToFind) {
         return i;
       }
     }
+
+    return undefined;
   }, [contents]);
 
   // trigger table of contents animation on active content or visibility change
@@ -160,8 +160,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   useEffect(() => {
     if (!activeContent) return;
 
-    const aboveSectionTitleIndex = findAboveContentIndexByType("section_title", activeContent.index);
-    const aboveSubsectionTitleIndex = findAboveContentIndexByType("subsection_title", activeContent.index);
+    const aboveSectionTitleIndex = findAboveContentIndexByType(activeContent.index, "section_title");
+    const aboveSubsectionTitleIndex = findAboveContentIndexByType(activeContent.index, "subsection_title", "section_title");
     setActiveSectionTitleIndex(aboveSectionTitleIndex);
     setActiveSubsectionTitleIndex(aboveSubsectionTitleIndex);
   }, [activeContent, findAboveContentIndexByType]);
@@ -221,11 +221,9 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
               if (!activeContentRef.current || !currentContentRef.current) return;
 
               // find position to scroll to (offset is used to trigger IntersectionObserver)
-              const { top: activeTop } = activeContentRef.current.getBoundingClientRect();
               const { top: currentTop } = currentContentRef.current.getBoundingClientRect();
               const offset = 4;
-              const direction = currentTop > activeTop ? 1 : -1;
-              const position = currentTop + window.pageYOffset + (direction * offset);
+              const position = currentTop + window.pageYOffset + offset;
 
               // scroll
               const options: ScrollToOptions = {
@@ -260,11 +258,8 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
             // trigger subsection title animation
             const isIn = index === activeSubsectionTitleIndex;
 
-            // calculate animation direction
-            const direction = (activeSubsectionTitleIndex || 0) >= (previousActiveSubsectionTitleIndex || 0) ? -1 : 1;
-
-            // hide animations from non-active section
-            const currentAboveSectionTitleIndex = findAboveContentIndexByType("section_title", index);
+            // hide animations for subsections not in active section
+            const currentAboveSectionTitleIndex = findAboveContentIndexByType(index, "section_title");
             const isVisible = currentAboveSectionTitleIndex === activeSectionTitleIndex;
 
             // show active subsection title with animation
@@ -277,7 +272,6 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                 timeout={SUBSECTION_TITLE_TRANSITION_DURATION}>
                 <StyledFlexSubsectionTitle
                   ref={refsRef.current[index]}
-                  direction={direction}
                   sx={{
                     mt: `-${SUBSECTION_TITLE_HEIGHT}px`,
                     visibility: isVisible ? "visible" : "hidden",
