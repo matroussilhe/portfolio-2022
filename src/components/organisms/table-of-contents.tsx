@@ -19,6 +19,10 @@ import {
   TableOfContentsSubsectionTitle,
 } from "@components";
 import {
+  ScrollToOptions,
+  useScroll,
+} from "@hooks";
+import {
   Content,
   ContentSliceType,
 } from "@services";
@@ -124,7 +128,10 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   isVisible = false,
   ...rest
 }) => {
+  const { scrollTo } = useScroll();
+
   const [isIn, setIsIn] = useState<boolean>(false);
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [activeSectionTitleIndex, setActiveSectionTitleIndex] = useState<number>();
   const [activeSubsectionTitleIndex, setActiveSubsectionTitleIndex] = useState<number>();
 
@@ -151,10 +158,10 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
     if (!activeContent) return;
 
     const isActiveContentSectionTitle = activeContent?.type === "section_title";
-    const newIsIn = isVisible && !isActiveContentSectionTitle;
+    const newIsIn = !isActiveContentSectionTitle && isVisible && !isScrolling;
 
     setIsIn(newIsIn);
-  }, [activeContent, isVisible]);
+  }, [activeContent, isScrolling, isVisible]);
 
   // update active section and subsection on active content change
   useEffect(() => {
@@ -212,25 +219,35 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
 
             // set onClick prop
             extraProps.onClick = () => {
-              if (!window) return;
+              const hasWindow = typeof window !== "undefined";
+              if (!hasWindow) return;
 
-              // get active and current (i.e. destination) content refs
-              if (!activeContent) return;
-              const activeContentRef = contentRefs[activeContent.index];
+              // get current content ref (i.e. scroll destination)
               const currentContentRef = contentRefs[index];
-              if (!activeContentRef.current || !currentContentRef.current) return;
+              if (!currentContentRef.current) return;
 
-              // find position to scroll to (offset is used to trigger IntersectionObserver)
+              // calculate scroll position (with offset to trigger IntersectionObserver)
               const { top: currentTop } = currentContentRef.current.getBoundingClientRect();
-              const offset = 4;
-              const position = currentTop + window.pageYOffset + offset;
-
-              // scroll
+              const triggerOffset = 4;
+              const position = currentTop + window.pageYOffset + triggerOffset;
               const options: ScrollToOptions = {
                 top: position,
                 behavior: "smooth",
               };
-              window.scrollTo(options);
+
+              // show table of contents on scroll end
+              const callback = () => {
+                // timeout to make sure scroll is completed before resuming intersection checks
+                setTimeout(() => {
+                  setIsScrolling(false);
+                }, 100);
+              };
+
+              // hide table of contents on scroll start
+              setIsScrolling(true);
+
+              // scroll to position
+              scrollTo(options, callback);
             };
           }
 

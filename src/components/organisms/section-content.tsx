@@ -59,15 +59,19 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
   useEffect(() => {
     if (!entries) return;
 
-    // find entry that intersect with viewport from the top
-    const foundEntry = entries.find((entry) => {
-      const { top } = entry.boundingClientRect;
+    // find lowest entry that intersect with viewport from the top
+    const foundEntry = entries.reduce((previousEntry, currentEntry) => {
+      const { top } = currentEntry.boundingClientRect;
 
-      const isIntersectingWithViewport = entry.isIntersecting;
+      const isIntersectingWithViewport = currentEntry.isIntersecting;
       const isTopAboveViewport = top <= 0;
+      const isLowerThanPreviousEntry = previousEntry ? top >= previousEntry.boundingClientRect.top : true;
 
-      return isIntersectingWithViewport && isTopAboveViewport;
-    });
+      if (isIntersectingWithViewport && isTopAboveViewport && isLowerThanPreviousEntry) {
+        return currentEntry;
+      }
+      return previousEntry;
+    }, undefined as IntersectionObserverEntry | undefined);
     if (!foundEntry) return;
 
     // get metadata from entry

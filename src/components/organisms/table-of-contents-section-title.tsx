@@ -34,17 +34,17 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
   return (
     <Flex
       ref={ref}
-      onClick={onClick}
       sx={{
         mb: 1,
         zIndex: 1,
         alignItems: "center",
-        cursor: "pointer",
       }}
       {...rest}>
       <Text
         variant={"body1"}
+        onClick={onClick}
         sx={{
+          cursor: "pointer",
           ...(isActive ? activeSx : {}),
         }}>
         <span sx={{ fontWeight: "bold" }}>{indexString}</span>&nbsp;{"-"}&nbsp;{content.title}
