@@ -10,6 +10,6 @@
     cy="16"
     fill="none"
     stroke="currentcolor"
-    strokeWidth="2"
+    stroke-width="1"
   />
 </svg>

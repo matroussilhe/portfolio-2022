@@ -49,9 +49,9 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
 
   // set attributes on each content ref to provide metadata to intersection observer entries
   useEffect(() => {
-    refsRef.current.forEach((contentRef, index) => {
-      contentRef.current?.setAttribute("content-index", index.toString());
-      contentRef.current?.setAttribute("content-type", contents[index].type);
+    refsRef.current.forEach((ref, index) => {
+      ref.current?.setAttribute("content-index", index.toString());
+      ref.current?.setAttribute("content-type", contents[index].type);
     });
   }, [refsRef, contents]);
 
