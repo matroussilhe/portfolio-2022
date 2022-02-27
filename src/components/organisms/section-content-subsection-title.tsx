@@ -26,7 +26,8 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
       <Flex
         ref={ref}
         sx={{
-          pb: 10,
+          pt: 5,
+          pb: 5,
         }}
         {...rest}>
         <Text

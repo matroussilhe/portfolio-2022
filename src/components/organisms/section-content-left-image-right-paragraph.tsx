@@ -29,6 +29,7 @@ export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionCon
       <Flex
         ref={ref}
         sx={{
+          pt: 0,
           pb: 20,
           flexDirection: "row",
           flexWrap: "wrap",
