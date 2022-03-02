@@ -36,38 +36,38 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
           <Fragment
             key={generateId()}>
             <TextAnimated
-              text={"아이! Hello, I'm Mathieu a Fullstack Engineer"}
+              text={"안녕! I'm Mathieu, a Fullstack Engineer"}
               options={{
                 duration: 900,
                 delay: 0,
               }}
             />
             <TextAnimated
-              text={"building something special and mostly"}
+              text={"who loves building all kinds of products"}
               options={{
                 duration: 900,
-                delay: 900,
+                delay: 0,
               }}
             />
             <TextAnimated
-              text={"focus on these technologies. I'm currently"}
+              text={"using creative and systematic solutions."}
               options={{
                 duration: 900,
-                delay: 1800,
+                delay: 0,
               }}
             />
             <TextAnimated
-              text={"fully employed at QMIT Inc."}
+              text={"I'm currently fully employed at QMIT"}
               options={{
                 duration: 900,
-                delay: 2700,
+                delay: 0,
               }}
             />
             <TextAnimated
-              text={"and live in SEOUL KOREA."}
+              text={"and live in Seoul, Korea."}
               options={{
                 duration: 900,
-                delay: 3600,
+                delay: 0,
               }}
             />
           </Fragment>
@@ -75,35 +75,35 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
           <Fragment
             key={generateId()}>
             <TextAnimated
-              text={"Hi! 안녕, 저는 풀 스택 개발자인 Mathieu입니다."}
+              text={"Hi! 저는 풀스택 엔지니어 Mathieu입니다"}
               options={{
                 duration: 900,
                 delay: 0,
               }}
             />
             <TextAnimated
-              text={"특별하고 대부분인 무언가를 짓는 것"}
+              text={"창의적이고 체계적인 솔루션을 사용하여"}
               options={{
                 duration: 900,
                 delay: 0,
               }}
             />
             <TextAnimated
-              text={"이러한 기술에 집중합니다. 저는 지금"}
+              text={"모든 종류의 제품을 만드는 것을 좋아하는 사람입니다."}
               options={{
                 duration: 900,
                 delay: 0,
               }}
             />
             <TextAnimated
-              text={"QMIT Inc. 주식회사의 완전 고용"}
+              text={"저는 현재 QMIT에 완전히 고용되어"}
               options={{
                 duration: 900,
                 delay: 0,
               }}
             />
             <TextAnimated
-              text={"그리고 서울 코리아에 살고 있습니다."}
+              text={"한국 서울에 살고 있습니다."}
               options={{
                 duration: 900,
                 delay: 0,

@@ -63,13 +63,16 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
           flex: "0 1 auto",
         }}>
         <Link
-          href={"/"}>
+          href={"/"}
+          sx={{
+            mr: 2,
+          }}>
           <Button
             variant={"primary"}
             size={"md"}
             shape={"round"}
             sx={{
-              mr: 2,
+              userSelect: "none",
             }}>
             {`Works (${WORK_COUNT})`}
           </Button>
@@ -79,7 +82,10 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
           <Button
             variant={"primary"}
             size={"md"}
-            shape={"round"}>
+            shape={"round"}
+            sx={{
+              userSelect: "none",
+            }}>
             {"Informations"}
           </Button>
         </Link>
