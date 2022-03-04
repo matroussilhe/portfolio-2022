@@ -1,7 +1,8 @@
-import React, { FunctionComponent } from "react";
+import React, { Fragment, FunctionComponent } from "react";
 
 import {
   Flex,
+  Responsive,
   Text,
 } from "@components";
 
@@ -15,22 +16,47 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
   subtitle,
 }) => {
   return (
-    <Flex
-      sx={{
-        alignItems: "flex-start",
-      }}>
-      <Text
-        variant={"heading3"}
-        sx={{
-          mr: 1,
-          fontWeight: "bold",
-        }}>
-        {title}
-      </Text>
-      <Text
-        variant={"label1"}>
-        {subtitle}
-      </Text>
-    </Flex>
+    <Fragment>
+      <Responsive mdAndDown>
+        <Flex
+          sx={{
+            flexDirection: "column",
+          }}>
+          <Text
+            variant={"heading4"}
+            sx={{
+              fontWeight: "bold",
+            }}>
+            {title}
+          </Text>
+          <Text
+            variant={"label3"}
+            sx={{
+              mt: "4px",
+            }}>
+            {subtitle}
+          </Text>
+        </Flex>
+      </Responsive>
+      <Responsive mdAndUp>
+        <Flex
+          sx={{
+            alignItems: "flex-start",
+          }}>
+          <Text
+            variant={"heading3"}
+            sx={{
+              mr: 1,
+              fontWeight: "bold",
+            }}>
+            {title}
+          </Text>
+          <Text
+            variant={"label1"}>
+            {subtitle}
+          </Text>
+        </Flex>
+      </Responsive>
+    </Fragment>
   );
 };

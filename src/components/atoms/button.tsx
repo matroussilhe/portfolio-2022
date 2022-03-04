@@ -25,8 +25,8 @@ const size = variant({
   prop: "size",
   variants: {
     sm: {
-      px: "10px",
-      py: "5px",
+      px: "16px",
+      py: "8px",
       fontSize: "body2",
       fontWeight: "medium",
     },

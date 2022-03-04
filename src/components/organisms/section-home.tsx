@@ -31,23 +31,14 @@ export const SectionHome: FunctionComponent<SectionHomeProps> = ({
           flex: "1 0 auto",
           alignItems: "center",
         }}>
-        <SectionHomeIntroduction
-          sx={{
-            px: 6,
-          }}
-        />
+        <SectionHomeIntroduction/>
       </Flex>
       <Flex
         sx={{
           flex: "0 0 auto",
           height: "100px",
         }}>
-        <SectionHomeFooter
-          sx={{
-            pb: 3,
-            px: 6,
-          }}
-        />
+        <SectionHomeFooter/>
       </Flex>
     </Flex>
   );

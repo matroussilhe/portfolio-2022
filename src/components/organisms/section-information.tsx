@@ -102,7 +102,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         {"취미_OTHER INTERESTS"}
       </TextParagraphTitle>
       <Grid
-        gap={"md"}
+        gap={"xl"}
         containerSx={{
           pb: 12,
         }}
@@ -124,7 +124,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         {"연락처_SOCIALS"}
       </TextParagraphTitle>
       <Grid
-        gap={"md"}
+        gap={"xl"}
         itemSx={{
           width: ["col12.6"],
         }}>

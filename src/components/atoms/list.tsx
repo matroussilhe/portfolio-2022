@@ -29,16 +29,16 @@ const gridItemGap = variant({
   prop: "gap",
   variants: {
     sm: {
-      mt: 2,
-      mb: 2,
+      mt: "24px",
+      mb: "24px",
     },
     md: {
-      mt: 4,
-      mb: 4,
+      mt: "32px",
+      mb: "32px",
     },
     lg: {
-      mt: 5,
-      mb: 5,
+      mt: "40px",
+      mb: "40px",
     },
   },
 } as VariantArgs);
@@ -48,10 +48,10 @@ const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
 );
 
 export const List: FunctionComponent<ListProps> = ({
-  children,
   gap = "md",
   containerSx,
   itemSx,
+  children,
 }) => {
   const getResponsiveProp = useResponsive();
 

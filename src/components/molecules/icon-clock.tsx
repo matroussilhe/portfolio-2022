@@ -160,12 +160,11 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
         color={"on-surface"}
       />
       <Text
-        variant={"label3"}
+        variant={["label3", "label2", "label2", "label2"]}
         sx={{
           ml: 1,
           fontFamily: "body",
           fontWeight: "bold",
-          fontSize: "0.75rem",
           color: "on-surface",
         }}>
         {`${time} ${city}`}

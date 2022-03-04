@@ -4,8 +4,8 @@ import {
   Flex,
   Navbar,
   SectionArchive,
+  SectionContact,
   SectionHome,
-  SectionHomeFooter,
   SectionWork,
 } from "@components";
 import {
@@ -27,37 +27,42 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
       <Navbar
         iconColor={"on-surface"}
         sx={{
-          pt: 3,
-          px: 6,
+          px: [3, 6, 6, 6],
+          pt: [2, 3, 3, 3],
         }}
       />
       <Flex
         sx={{
           flexDirection: "column",
         }}>
-        <SectionHome/>
+        <SectionHome
+          sx={{
+            px: [3, 6, 6, 6],
+            pb: [2, 3, 3, 3],
+          }}
+        />
         <SectionWork
           works={works}
           sx={{
-            px: [6],
-            pt: [20],
+            px: [3, 6, 6, 6],
+            pt: [10, 20, 20, 20],
             zIndex: 1,
           }}
         />
         <SectionArchive
           archives={archives}
           sx={{
-            px: [6],
-            pt: [20],
-            pb: [20],
+            px: [3, 6, 6, 6],
+            pt: [10, 20, 20, 20],
+            pb: [10, 20, 20, 20],
             zIndex: 1,
           }}
         />
-        <SectionHomeFooter
+        <SectionContact
           sx={{
-            pt: 18,
-            pb: 3,
-            px: 6,
+            px: [3, 6, 6, 6],
+            pt: [7, 12, 12, 12],
+            pb: [2, 3, 3, 3],
           }}
         />
       </Flex>

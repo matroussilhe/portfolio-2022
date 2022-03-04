@@ -51,10 +51,10 @@ const gridGap = variant({
       mr: "-12px",
     },
     xl: {
-      mt: "-16px",
-      mb: "-16px",
-      ml: "-16px",
-      mr: "-16px",
+      mt: "-24px",
+      mb: "-24px",
+      ml: "-24px",
+      mr: "-24px",
     },
   },
 } as VariantArgs);
@@ -85,10 +85,10 @@ const gridItemGap = variant({
       pr: "12px",
     },
     xl: {
-      pt: "16px",
-      pb: "16px",
-      pl: "16px",
-      pr: "16px",
+      pt: "24px",
+      pb: "24px",
+      pl: "24px",
+      pr: "24px",
     },
   },
 } as VariantArgs);
@@ -98,10 +98,10 @@ const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
 );
 
 export const Grid: FunctionComponent<GridProps> = ({
-  children,
   gap = "md",
   containerSx,
   itemSx,
+  children,
 }) => {
   const getResponsiveProp = useResponsive();
 

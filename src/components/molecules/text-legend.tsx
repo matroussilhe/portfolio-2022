@@ -1,5 +1,7 @@
 import React, { FunctionComponent } from "react";
 
+import { useColorMode } from "theme-ui";
+
 import {
   Box,
   Flex,
@@ -13,6 +15,8 @@ export const TextLegend: FunctionComponent<TextLegendProps> = ({
   children,
   ...rest
 }) => {
+  const [colorMode] = useColorMode();
+
   return (
     <Flex
       sx={{
@@ -23,7 +27,7 @@ export const TextLegend: FunctionComponent<TextLegendProps> = ({
           width: "2px",
           height: "16px",
           mr: 1,
-          backgroundColor: "grayscale-300", // TODO: handle dark theme
+          backgroundColor: colorMode === "light" ? "grayscale-300" : "grayscale-500",
         }}
       />
       <Text

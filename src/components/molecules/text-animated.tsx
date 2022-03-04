@@ -7,7 +7,9 @@ import React, {
 } from "react";
 
 import {
+  Space,
   Text,
+  TextProps,
 } from "@components";
 import {
   easeInOutQuad,
@@ -32,16 +34,18 @@ export type TextAnimatedOptions = {
   cursorCount?: number; // amount of cursors inside the output
 };
 
-export type TextAnimatedProps = {
-  text: string;
+export type TextAnimatedProps = TextProps & {
+  children: string;
   options?: TextAnimatedOptions;
 };
 
 export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
-  text,
   options,
+  children,
+  ...rest
 }) => {
-  // options
+  // props
+  const text = children;
   const {
     duration,
     delay,
@@ -269,7 +273,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       return (
         <span
           key={"placeholder"}>
-          &nbsp;
+          <Space/>
         </span>
       );
     }
@@ -303,12 +307,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   };
 
   return (
-    <Text
-      variant={"heading5"}
-      sx={{
-        lineHeight: 1.4,
-        color: "on-surface",
-      }}>
+    <Text {...rest}>
       {renderOuputs()}
     </Text>
   );

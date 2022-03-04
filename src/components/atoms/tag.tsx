@@ -26,21 +26,20 @@ const size = variant({
   prop: "size",
   variants: {
     sm: {
-      px: "4px",
-      py: "4px",
+      px: "5px",
+      py: "5px",
       fontSize: "label3",
       fontWeight: "regular",
     },
     md: {
-      height: "auto",
       px: "6px",
       py: "6px",
       fontSize: "label2",
       fontWeight: "regular",
     },
     lg: {
-      px: "8px",
-      py: "8px",
+      px: "7px",
+      py: "7px",
       fontSize: "label1",
       fontWeight: "regular",
     },

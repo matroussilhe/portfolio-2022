@@ -3,20 +3,21 @@ import React, { FunctionComponent } from "react";
 import {
   Flex,
   Link,
+  Space,
   Text,
 } from "@components";
 
-export type TextSocialLink = {
+export type TextContactLink = {
   text: string;
   href: string;
 };
 
-export type TextSocialProps = {
+export type TextContactProps = {
   label: string;
-  links: TextSocialLink[];
+  links: TextContactLink[];
 };
 
-export const TextSocial: FunctionComponent<TextSocialProps> = ({
+export const TextContact: FunctionComponent<TextContactProps> = ({
   label,
   links,
 }) => {
@@ -27,9 +28,9 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
         alignItems: "baseline",
       }}>
       <Text
-        variant={"label3"}
+        variant={["label4", "label3", "label3", "label3"]}
         sx={{
-          width: "64px",
+          width: ["48px", "64px", "64px", "64px"],
           fontFamily: "body",
           fontWeight: "bold",
           color: "on-surface",
@@ -45,14 +46,14 @@ export const TextSocial: FunctionComponent<TextSocialProps> = ({
             href={link.href}
             target={"_blank"}>
             <Text
-              variant={"heading5"}
+              variant={["body2", "heading5", "heading5", "heading5"]}
               sx={{
-                mr: !isLast ? 1 : 0,
                 fontFamily: "body",
                 fontWeight: "bold",
                 color: "on-surface",
+                lineHeight: 1,
               }}>
-              {link.text}{!isLast ? "," : ""}
+              {link.text}{!isLast ? "," : ""}{!isLast ? <Space/> : null}
             </Text>
           </Link>
         );

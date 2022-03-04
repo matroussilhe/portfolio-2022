@@ -31,7 +31,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
         position: "absolute",
         top: 0,
         left: 0,
-        alignItems: "flex-start",
+        alignItems: ["center", "flex-start", "flex-start", "flex-start"],
       }}
       {...rest}>
       <Box
@@ -65,11 +65,11 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
         <Link
           href={"/"}
           sx={{
-            mr: 2,
+            mr: [1, 2, 2, 2],
           }}>
           <Button
             variant={"primary"}
-            size={"md"}
+            size={["sm", "md", "md", "md"]}
             shape={"round"}
             sx={{
               userSelect: "none",
@@ -81,7 +81,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
           href={"/about"}>
           <Button
             variant={"primary"}
-            size={"md"}
+            size={["sm", "md", "md", "md"]}
             shape={"round"}
             sx={{
               userSelect: "none",

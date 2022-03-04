@@ -3,6 +3,7 @@ import React, { forwardRef, FunctionComponent, Ref } from "react";
 import {
   Flex,
   FlexProps,
+  Space,
   Text,
 } from "@components";
 import {
@@ -35,7 +36,7 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
         sx={{
           fontWeight: "bold",
         }}>
-        {indexString}&nbsp;{content.title}
+        {indexString}<Space/>{content.title}
       </Text>
     </Flex>
   );

@@ -3,6 +3,7 @@ import React, { forwardRef, FunctionComponent } from "react";
 import {
   Flex,
   FlexProps,
+  Space,
   Text,
 } from "@components";
 import {
@@ -47,7 +48,7 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
           cursor: "pointer",
           ...(isActive ? activeSx : {}),
         }}>
-        <span sx={{ fontWeight: "bold" }}>{indexString}</span>&nbsp;{"-"}&nbsp;{content.title}
+        <span sx={{ fontWeight: "bold" }}>{indexString}</span><Space/>{"-"}<Space/>{content.title}
       </Text>
     </Flex>
   );

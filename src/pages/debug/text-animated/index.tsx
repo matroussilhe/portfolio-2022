@@ -13,13 +13,13 @@ const DebugTextAnimated = () => {
         p: 5,
       }}>
       <TextAnimated
-        text={"Hello, my name is Mathieu and I am curious about many things!"}
         options={{
           duration: 3000,
           delay: 0,
           cursorCount: 10,
-        }}
-      />
+        }}>
+        {"Hello, my name is Mathieu and I am curious about many things!"}
+      </TextAnimated>
     </Flex>
   );
 };
