@@ -29,21 +29,23 @@ export const useResponsive = () => {
         const propValue = prop[index];
 
         if (propValue != undefined) {
-          acc.push(propValue);
+          acc.push(propValue as T);
         } else {
           acc.push(acc[index - 1]);
         }
 
         return acc;
-      }, [] as (T | undefined | null | false)[]);
+      }, [] as T[]);
 
       // find corresponding prop value for current breakpoint
       const foundIndex = breakpointMap.findIndex(item => item === true);
-      return foundIndex !== -1
-        ? breakpointPropMap[foundIndex] || undefined
-        : undefined;
+      if (foundIndex === -1) return undefined;
+
+      return breakpointPropMap[foundIndex];
     } else {
-      return prop || undefined;
+      if (prop == undefined) return undefined;
+
+      return prop as T;
     }
   };
 
