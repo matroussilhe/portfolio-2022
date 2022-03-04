@@ -151,6 +151,7 @@ export const theme = getTheme({
     label1: "0.875rem", //      14px
     label2: "0.75rem", //       12px
     label3: "0.625rem", //      10px
+    label4: "0.5rem", //         8px
   },
   fontWeights: {
     black: 900,
@@ -278,6 +279,14 @@ export const theme = getTheme({
     label3: {
       fontFamily: "label",
       fontSize: "label3",
+      fontWeight: "regular",
+      lineHeight: "label",
+      letterSpacing: "label",
+      color: "on-background",
+    },
+    label4: {
+      fontFamily: "label",
+      fontSize: "label4",
       fontWeight: "regular",
       lineHeight: "label",
       letterSpacing: "label",

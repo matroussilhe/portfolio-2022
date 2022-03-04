@@ -90,6 +90,12 @@ const DebugTypograhpy = () => {
         }}>
         <Text variant={"label3"}>{"label3"}</Text>
       </Box>
+      <Box
+        sx={{
+          paddingBottom: "16px",
+        }}>
+        <Text variant={"label4"}>{"label4"}</Text>
+      </Box>
     </Flex>
   );
 };
