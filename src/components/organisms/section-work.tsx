@@ -29,12 +29,12 @@ export const SectionWork: FunctionComponent<SectionWorkProps> = ({
         subtitle={"(CASE STUDIES)"}
       />
       <Grid
-        gap={["xl", "lg", "lg", "lg"]}
+        gap={["xl", "xl", "lg", "lg"]}
         containerSx={{
-          pt: [5, 15, 15, 15],
+          pt: [5, 5, 15, 15],
         }}
         itemSx={{
-          width: ["col12.12", "col12.6", "col12.6", "col12.6"],
+          width: ["col12.12", "col12.12", "col12.6", "col12.6"],
         }}>
         {works.map((work, index) => (
           <GridItemWork

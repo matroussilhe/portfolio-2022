@@ -30,7 +30,7 @@ export const TextContact: FunctionComponent<TextContactProps> = ({
       <Text
         variant={["label4", "label3", "label3", "label3"]}
         sx={{
-          width: ["48px", "64px", "64px", "64px"],
+          width: ["48px", "56px", "64px", "64px"],
           fontFamily: "body",
           fontWeight: "bold",
           color: "on-surface",
@@ -46,7 +46,7 @@ export const TextContact: FunctionComponent<TextContactProps> = ({
             href={link.href}
             target={"_blank"}>
             <Text
-              variant={["body2", "heading5", "heading5", "heading5"]}
+              variant={["body2", "subheading1", "heading5", "heading5"]}
               sx={{
                 fontFamily: "body",
                 fontWeight: "bold",

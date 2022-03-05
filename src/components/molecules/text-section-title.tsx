@@ -17,7 +17,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
 }) => {
   return (
     <Fragment>
-      <Responsive mdAndDown>
+      <Responsive smOnly>
         <Flex
           sx={{
             flexDirection: "column",
@@ -44,7 +44,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
             alignItems: "flex-start",
           }}>
           <Text
-            variant={"heading3"}
+            variant={["heading4", "heading4", "heading3", "heading3"]}
             sx={{
               mr: 1,
               fontWeight: "bold",
@@ -52,7 +52,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
             {title}
           </Text>
           <Text
-            variant={"label1"}>
+            variant={["label3", "label3", "label1", "label1"]}>
             {subtitle}
           </Text>
         </Flex>

@@ -29,9 +29,9 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
         subtitle={"(EXTERNAL LINKS)"}
       />
       <List
-        gap={["sm", "lg", "lg", "lg"]}
+        gap={["sm", "md", "lg", "lg"]}
         containerSx={{
-          pt: [5, 15, 15, 15],
+          pt: [5, 5, 15, 15],
         }}>
         {archives.map((archive, index) => (
           <ListItemArchive

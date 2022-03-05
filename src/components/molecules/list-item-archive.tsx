@@ -28,7 +28,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           }}>
           <Box
             sx={{
-              width: ["col12.3"],
+              width: ["col12.3", "col12.2"],
             }}>
             <Text
               variant={"body1"}
@@ -40,7 +40,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              width: ["col12.6"],
+              width: ["col12.6", "col12.7"],
             }}>
             <Text
               variant={"body1"}
@@ -52,7 +52,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              width: ["col12.3"],
+              width: ["col12.3", "col12.3"],
             }}>
             {archive.link &&
             <Flex
@@ -73,12 +73,12 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              mt: 2,
-              width: ["col12.12"],
+              mt: [2, 2],
+              width: ["col12.12", "col12.12"],
             }}>
             <Flex
               sx={{
-                justifyContent: "center",
+                justifyContent: "flex-start",
               }}>
               <Text
                 variant={"body3"}
@@ -93,8 +93,8 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              mt: 2,
-              width: ["col12.12"],
+              mt: [2, 2],
+              width: ["col12.12", "col12.12"],
             }}>
             <Grid
               gap={"sm"}>

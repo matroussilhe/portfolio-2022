@@ -36,7 +36,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         {mode === "en" ? (
           <Fragment
             key={generateId()}>
-            <Responsive mdAndDown>
+            <Responsive smOnly>
               <TextAnimated
                 variant={"subheading1"}
                 options={{
@@ -146,7 +146,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"live in Seoul, Korea."}
               </TextAnimated>
             </Responsive>
-            <Responsive lgAndUp>
+            <Responsive mdAndUp>
               <TextAnimated
                 variant={"heading5"}
                 options={{
@@ -212,7 +212,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         ) : (
           <Fragment
             key={generateId()}>
-            <Responsive mdAndDown>
+            <Responsive smOnly>
               <TextAnimated
                 variant={"subheading1"}
                 options={{
@@ -322,7 +322,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"한국 서울에 살고 있습니다."}
               </TextAnimated>
             </Responsive>
-            <Responsive lgAndUp>
+            <Responsive mdAndUp>
               <TextAnimated
                 variant={"heading5"}
                 options={{

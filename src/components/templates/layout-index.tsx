@@ -27,7 +27,7 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
       <Navbar
         iconColor={"on-surface"}
         sx={{
-          px: [3, 6, 6, 6],
+          px: [3, 4, 6, 6],
           pt: [2, 3, 3, 3],
         }}
       />
@@ -37,31 +37,29 @@ export const LayoutIndex: FunctionComponent<LayoutIndexProps> = ({
         }}>
         <SectionHome
           sx={{
-            px: [3, 6, 6, 6],
+            px: [3, 4, 6, 6],
             pb: [2, 3, 3, 3],
           }}
         />
         <SectionWork
           works={works}
           sx={{
-            px: [3, 6, 6, 6],
-            pt: [10, 20, 20, 20],
-            zIndex: 1,
+            px: [3, 4, 6, 6],
+            pt: [10, 10, 20, 20],
           }}
         />
         <SectionArchive
           archives={archives}
           sx={{
-            px: [3, 6, 6, 6],
-            pt: [10, 20, 20, 20],
-            pb: [10, 20, 20, 20],
-            zIndex: 1,
+            px: [3, 4, 6, 6],
+            pt: [10, 10, 20, 20],
+            pb: [10, 10, 20, 20],
           }}
         />
         <SectionContact
           sx={{
-            px: [3, 6, 6, 6],
-            pt: [7, 12, 12, 12],
+            px: [3, 4, 6, 6],
+            pt: [7, 10, 12, 12],
             pb: [2, 3, 3, 3],
           }}
         />
