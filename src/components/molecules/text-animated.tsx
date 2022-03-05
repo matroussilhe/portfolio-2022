@@ -30,7 +30,7 @@ export type TextAnimatedOptions = {
   duration?: number; // animation duration
   delay?: number; // delay before animation start
   glitches?: string; // characters used as glitch
-  probability?: string; // probability for a character to appear as glitch on init (0~100%)
+  probability?: number; // probability for a character to appear as glitch on init (0~100%)
   cursorCount?: number; // amount of cursors inside the output
 };
 
