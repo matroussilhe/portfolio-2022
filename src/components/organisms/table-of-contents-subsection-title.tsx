@@ -21,12 +21,15 @@ export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSu
     <Flex
       ref={ref}
       sx={{
-        ml: 5,
-        mb: 1,
+        mb: "12px",
+        pl: 5,
       }}
       {...rest}>
       <Text
-        variant={"body1"}>
+        variant={"body1"}
+        sx={{
+          lineHeight: 1,
+        }}>
         {content.title}
       </Text>
     </Flex>

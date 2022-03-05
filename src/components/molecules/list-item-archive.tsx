@@ -33,6 +33,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             <Text
               variant={"body1"}
               sx={{
+                lineHeight: 1,
                 fontWeight: "bold",
               }}>
               {archive.date}
@@ -45,6 +46,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
             <Text
               variant={"body1"}
               sx={{
+                lineHeight: 1,
                 fontWeight: "bold",
               }}>
               {archive.title}
@@ -84,7 +86,6 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
                 variant={"body3"}
                 sx={{
                   maxWidth: "paragraph.sm",
-                  lineHeight: 1.2,
                   whiteSpace: "pre-wrap",
                 }}>
                 {archive.description}
@@ -110,10 +111,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
         </Flex>
       </Responsive>
       <Responsive lgAndUp>
-        <Flex
-          sx={{
-            flexWrap: "wrap",
-          }}>
+        <Flex>
           <Box
             sx={{
               width: ["col12.1"],
@@ -128,7 +126,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              width: ["col12.1"],
+              width: ["col12.2"],
             }}>
             <Text
               variant={"subheading2"}
@@ -141,17 +139,13 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           <Box
             sx={{
               width: ["col12.6"],
-              px: 8,
+              pr: 3,
             }}>
-            <Flex
-              sx={{
-                justifyContent: "center",
-              }}>
+            <Flex>
               <Text
                 variant={"body3"}
                 sx={{
                   maxWidth: "paragraph.sm",
-                  lineHeight: 1.2,
                   whiteSpace: "pre-wrap",
                 }}>
                 {archive.description}
@@ -161,6 +155,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           <Box
             sx={{
               width: ["col12.3"],
+              pr: 3,
             }}>
             <Grid
               gap={"sm"}>
@@ -175,7 +170,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              width: ["col12.1"],
+              width: "16px",
             }}>
             {archive.link &&
             <Flex

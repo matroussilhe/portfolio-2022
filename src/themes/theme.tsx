@@ -170,7 +170,7 @@ export const theme = getTheme({
   lineHeights: {
     heading: 1,
     subheading: 1,
-    body: 1.2,
+    body: 1.3,
     label: 1,
   },
   letterSpacings: {

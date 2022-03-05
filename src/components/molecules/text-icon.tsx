@@ -22,6 +22,7 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
         variant={"subheading1"}
         sx={{
           mr: 1,
+          lineHeight: 1,
         }}
         {...rest}>
         {children}

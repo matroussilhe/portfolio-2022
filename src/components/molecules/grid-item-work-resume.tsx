@@ -24,7 +24,7 @@ export const GridItemWorkResume: FunctionComponent<GridItemWorkResumeProps> = ({
 }) => {
   return (
     <Fragment>
-      <Responsive mdAndDown>
+      <Responsive lgAndDown>
         <Flex
           sx={{
             pt: 2,
@@ -72,7 +72,7 @@ export const GridItemWorkResume: FunctionComponent<GridItemWorkResumeProps> = ({
           </Grid>
         </Flex>
       </Responsive>
-      <Responsive lgAndUp>
+      <Responsive xlOnly>
         <Flex
           sx={{
             pt: 3,

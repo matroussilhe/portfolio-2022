@@ -46,6 +46,7 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
               sx={{
                 maxWidth: "paragraph.md",
                 whiteSpace: "pre-wrap",
+                lineHeight: 1.2,
               }}>
               {content.quote}
             </Text>

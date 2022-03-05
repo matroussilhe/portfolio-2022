@@ -91,6 +91,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
             variant={"body1"}
             sx={{
               mb: 4,
+              lineHeight: 1,
             }}>
             {header.role}
           </Text>
@@ -101,7 +102,10 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
             {"시각표_TIMELINE"}
           </TextParagraphTitle>
           <Text
-            variant={"body1"}>
+            variant={"body1"}
+            sx={{
+              lineHeight: 1,
+            }}>
             {header.timeline}
           </Text>
         </Box>
@@ -136,7 +140,10 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
             {"크레딧_CREDITS"}
           </TextParagraphTitle>
           <Text
-            variant={"body1"}>
+            variant={"body1"}
+            sx={{
+              lineHeight: 1,
+            }}>
             {header.credit}
           </Text>
         </Box>
