@@ -59,6 +59,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           src={header.image}
           sx={{
             objectFit: "cover",
+            width: "100%",
+            height: "auto",
           }}
         />
         <Box
@@ -99,7 +101,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
             sx={{
               mb: 1,
             }}>
-            {"시각표_TIMELINE"}
+            {"타임라인_TIMELINE"}
           </TextParagraphTitle>
           <Text
             variant={"body1"}

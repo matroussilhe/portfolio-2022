@@ -21,7 +21,6 @@ const palette = {
   "blue-700": "#4C58A4",
   "green-700": "#333E34",
   "red-700": "#53261C",
-  "brown-700": "#2E281F",
 };
 
 export const theme = getTheme({

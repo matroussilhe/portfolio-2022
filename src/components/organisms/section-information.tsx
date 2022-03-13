@@ -45,7 +45,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           ml: 4,
           mb: 5,
         }}>
-        {"전기_BIO"}
+        {"소개_BIO"}
       </TextParagraphTitle>
       <Text
         variant={"body1"}
@@ -61,7 +61,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           ml: 4,
           mb: 5,
         }}>
-        {"전문지식_EXPERTISE"}
+        {"전문성_EXPERTISE"}
       </TextParagraphTitle>
       <Text
         variant={"body1"}
@@ -77,7 +77,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           ml: 4,
           mb: 5,
         }}>
-        {"실력_SKILLS"}
+        {"능력_SKILLS"}
       </TextParagraphTitle>
       <Grid
         gap={"xl"}

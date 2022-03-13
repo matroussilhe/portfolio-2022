@@ -223,19 +223,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"Hi! 저는 풀스택 엔지니어"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"Mathieu입니다"}
+                {"Hello! 저는 Mathieu입니다."}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -259,7 +247,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"솔루션을 사용하여"}
+                {"솔루션을 활용하여"}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -271,7 +259,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"모든 종류의 제품을 만드는"}
+                {"모든 종류의 제품을"}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -283,7 +271,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"것을 좋아하는 사람입니다."}
+                {"만드는 것을 좋아하는"}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -295,7 +283,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"저는 현재 QMIT에"}
+                {"풀스택 개발자입니다."}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -307,7 +295,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"완전히 고용되어"}
+                {"저는 현재 QMIT에서"}
               </TextAnimated>
               <TextAnimated
                 variant={"subheading1"}
@@ -319,7 +307,19 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"한국 서울에 살고 있습니다."}
+                {"풀타임으로 일하며"}
+              </TextAnimated>
+              <TextAnimated
+                variant={"subheading1"}
+                options={{
+                  duration: 900,
+                  delay: 0,
+                }}
+                sx={{
+                  lineHeight: 1.4,
+                  color: "on-surface",
+                }}>
+                {"대한민국 서울에 살고 있습니다."}
               </TextAnimated>
             </Responsive>
             <Responsive mdAndUp>
@@ -333,7 +333,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"Hi! 저는 풀스택 엔지니어 Mathieu입니다"}
+                {"Hello! 저는 Mathieu입니다."}
               </TextAnimated>
               <TextAnimated
                 variant={"heading5"}
@@ -345,7 +345,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"창의적이고 체계적인 솔루션을 사용하여"}
+                {"창의적이고 체계적인 솔루션을 활용하여 모든 종류의"}
               </TextAnimated>
               <TextAnimated
                 variant={"heading5"}
@@ -357,7 +357,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"모든 종류의 제품을 만드는 것을 좋아하는 사람입니다."}
+                {"제품을 만드는 것을 좋아하는 풀스택 개발자입니다."}
               </TextAnimated>
               <TextAnimated
                 variant={"heading5"}
@@ -369,7 +369,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"저는 현재 QMIT에 완전히 고용되어"}
+                {"저는 현재 QMIT에서 풀타임으로 일하며"}
               </TextAnimated>
               <TextAnimated
                 variant={"heading5"}
@@ -381,7 +381,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                   lineHeight: 1.4,
                   color: "on-surface",
                 }}>
-                {"한국 서울에 살고 있습니다."}
+                {"대한민국 서울에 살고 있습니다."}
               </TextAnimated>
             </Responsive>
           </Fragment>
