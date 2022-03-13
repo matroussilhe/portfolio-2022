@@ -19,7 +19,7 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
         alignItems: "flex-start",
       }}>
       <Text
-        variant={"subheading1"}
+        variant={["body1", "body1", "body1", "subheading1"]}
         sx={{
           mr: 1,
           lineHeight: 1,
@@ -29,7 +29,7 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
       </Text>
       <Icon
         src={"/images/arrow.svg"}
-        size={"12px"}
+        size={["10px", "10px", "10px", "12px"]}
         color={"on-background"}
       />
     </Flex>

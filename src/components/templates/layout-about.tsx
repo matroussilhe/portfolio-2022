@@ -4,6 +4,7 @@ import {
   Box,
   Flex,
   Navbar,
+  Responsive,
   SectionInformation,
   SectionPhoto,
 } from "@components";
@@ -38,8 +39,8 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
       <Navbar
         iconColor={"on-background"}
         sx={{
-          pt: 3,
-          px: 6,
+          px: [3, 4, 6, 6],
+          pt: [2, 3, 3, 3],
         }}
       />
       <Flex
@@ -47,17 +48,19 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
           flexDirection: "row",
           flexWrap: "wrap",
         }}>
+        <Responsive lgAndUp>
+          <Box
+            sx={{
+              width: ["col12.6"],
+            }}>
+            <SectionPhoto
+              photo={photo}
+            />
+          </Box>
+        </Responsive>
         <Box
           sx={{
-            width: ["col12.6"],
-          }}>
-          <SectionPhoto
-            photo={photo}
-          />
-        </Box>
-        <Box
-          sx={{
-            width: ["col12.6"],
+            width: ["col12.12", "col12.12", "col12.6", "col12.6"],
           }}>
           <SectionInformation
             bio={bio}
@@ -66,9 +69,9 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
             interest={interest}
             social={social}
             sx={{
-              pt: 25,
-              pb: 25,
-              px: 10,
+              pt: [20, 20, 25, 25],
+              pb: [0, 0, 0, 0],
+              px: [3, 4, 8, 10],
             }}
           />
         </Box>

@@ -13,7 +13,7 @@ export const TextParagraphTitle: FunctionComponent<TextParagraphTitleProps> = ({
 }) => {
   return (
     <Text
-      variant={"body2"}
+      variant={["body3", "body3", "body3", "body2"]}
       sx={{
         fontWeight: "black",
         lineHeight: 1,

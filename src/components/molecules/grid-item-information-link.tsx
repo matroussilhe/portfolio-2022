@@ -28,7 +28,7 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
           target={"_blank"}>
           <TextIcon
             sx={{
-              mb: 2,
+              mb: ["12px", "12px", "12px", 2],
             }}>
             {item.text}
           </TextIcon>

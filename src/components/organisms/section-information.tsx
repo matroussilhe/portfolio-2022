@@ -42,47 +42,47 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
       {...rest}>
       <TextParagraphTitle
         sx={{
-          ml: 4,
-          mb: 5,
+          ml: [3, 3, 4, 4],
+          mb: [4, 4, 5, 5],
         }}>
         {"소개_BIO"}
       </TextParagraphTitle>
       <Text
-        variant={"body1"}
+        variant={["body2", "body2", "body2", "body1"]}
         sx={{
-          mb: 12,
-          maxWidth: "paragraph.md",
+          pb: [8, 8, 10, 12],
+          maxWidth: "paragraph.sm",
           whiteSpace: "pre-wrap",
         }}>
         {bio.description}
       </Text>
       <TextParagraphTitle
         sx={{
-          ml: 4,
-          mb: 5,
+          ml: [3, 3, 4, 4],
+          mb: [4, 4, 5, 5],
         }}>
         {"전문성_EXPERTISE"}
       </TextParagraphTitle>
       <Text
-        variant={"body1"}
+        variant={["body2", "body2", "body2", "body1"]}
         sx={{
-          mb: 12,
-          maxWidth: "paragraph.md",
+          pb: [8, 8, 10, 12],
+          maxWidth: "paragraph.sm",
           whiteSpace: "pre-wrap",
         }}>
         {expertise.description}
       </Text>
       <TextParagraphTitle
         sx={{
-          ml: 4,
-          mb: 5,
+          ml: [3, 3, 4, 4],
+          mb: [4, 4, 5, 5],
         }}>
         {"능력_SKILLS"}
       </TextParagraphTitle>
       <Grid
-        gap={"xl"}
+        gap={["lg", "lg", "lg", "xl"]}
         containerSx={{
-          pb: 12,
+          pb: [8, 8, 10, 12],
         }}
         itemSx={{
           width: ["col12.6"],
@@ -96,15 +96,15 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
       </Grid>
       <TextParagraphTitle
         sx={{
-          ml: 4,
-          mb: 5,
+          ml: [3, 3, 4, 4],
+          mb: [4, 4, 5, 5],
         }}>
         {"취미_OTHER INTERESTS"}
       </TextParagraphTitle>
       <Grid
-        gap={"xl"}
+        gap={["lg", "lg", "lg", "xl"]}
         containerSx={{
-          pb: 12,
+          pb: [8, 8, 10, 12],
         }}
         itemSx={{
           width: ["col12.6"],
@@ -118,13 +118,16 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
       </Grid>
       <TextParagraphTitle
         sx={{
-          ml: 4,
-          mb: 5,
+          ml: [3, 3, 4, 4],
+          mb: [4, 4, 5, 5],
         }}>
         {"연락처_SOCIALS"}
       </TextParagraphTitle>
       <Grid
-        gap={"xl"}
+        gap={["lg", "lg", "lg", "xl"]}
+        containerSx={{
+          pb: [8, 8, 10, 12],
+        }}
         itemSx={{
           width: ["col12.6"],
         }}>
