@@ -26,31 +26,33 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
       }}
       {...rest}>
       <Text
-        variant={"heading4"}
+        variant={["body2", "heading5", "heading5", "heading5"]}
         sx={{
-          ml: "300px",
-          mb: 6,
-          fontSize: "3rem",
+          ml: [12, "300px", "300px", "300px"],
+          mb: ["12px", 6, 6, 6],
+          lineHeight: 1,
+          fontSize: [null, null, null, "3rem"],
         }}>
         {"NEXT CASE STUDY"}
       </Text>
       <Link
         href={footer.link}>
         <Text
-          variant={"heading1"}
+          variant={["heading4", "heading1", "heading1", "heading1"]}
           sx={{
             fontWeight: "bold",
-            ml: 5,
-            mb: 8,
+            ml: [3, 5, 5, 5],
+            mb: [2, 8, 8, 8],
           }}>
           {footer.title}
         </Text>
       </Link>
       <Text
-        variant={"subheading1"}
+        variant={["label3", "subheading1", "subheading1", "subheading1"]}
         sx={{
-          ml: 8,
-          fontSize: "1.5rem",
+          ml: [4, 8, 8, 8],
+          fontSize: [null, null, null, "1.5rem"],
+          fontFamily: "heading",
         }}>
         {footer.subtitle.toUpperCase()}
       </Text>

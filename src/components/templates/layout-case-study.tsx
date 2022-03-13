@@ -30,8 +30,8 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         iconColor={"on-background"}
         showBack={true}
         sx={{
-          pt: 3,
-          px: 6,
+          px: [3, 4, 5, 5],
+          pt: [2, 3, 3, 3],
         }}
       />
       <Flex
@@ -41,21 +41,21 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         <SectionHeader
           header={header}
           sx={{
-            pt: 25,
+            pt: [20, 20, 25, 25],
             pb: 10,
           }}
         />
         <SectionContent
           contents={contents}
           sx={{
-            px: 5,
+            px: 3,
           }}
         />
         <SectionFooter
           footer={footer}
           sx={{
             pt: 5,
-            pb: 25,
+            pb: [20, 20, 25, 25],
           }}
         />
       </Flex>

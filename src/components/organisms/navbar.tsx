@@ -36,14 +36,17 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
       {...rest}>
       <Box
         sx={{
-          flex: "0 1 auto",
+          flex: "0 0 auto",
         }}>
         {showBack ? (
           <Link
             variant={"discreet"}
             href={"/"}>
             <Text
-              variant={"subheading1"}>
+              variant={["body2", "body2", "subheading1", "subheading1"]}
+              sx={{
+                mt: ["4px", "4px", 0, 0],
+              }}>
               {"BACK"}
             </Text>
           </Link>
@@ -60,12 +63,12 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
       />
       <Box
         sx={{
-          flex: "0 1 auto",
+          flex: "0 0 auto",
         }}>
         <Link
           href={"/"}
           sx={{
-            mr: [1, 2, 2, 2],
+            mr: [1, 1, 2, 2],
           }}>
           <Button
             variant={"primary"}

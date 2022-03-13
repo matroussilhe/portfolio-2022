@@ -39,7 +39,7 @@ export const LayoutAbout: FunctionComponent<LayoutAboutProps> = ({
       <Navbar
         iconColor={"on-background"}
         sx={{
-          px: [3, 4, 6, 6],
+          px: [3, 4, 5, 5],
           pt: [2, 3, 3, 3],
         }}
       />

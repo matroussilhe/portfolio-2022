@@ -23,7 +23,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
             flexDirection: "column",
           }}>
           <Text
-            variant={"heading4"}
+            variant={"heading5"}
             sx={{
               fontWeight: "bold",
             }}>
@@ -44,7 +44,7 @@ export const TextSectionTitle: FunctionComponent<TextSectionTitleProps> = ({
             alignItems: "flex-start",
           }}>
           <Text
-            variant={["heading4", "heading4", "heading3", "heading3"]}
+            variant={["heading5", "heading5", "heading3", "heading3"]}
             sx={{
               mr: 1,
               fontWeight: "bold",

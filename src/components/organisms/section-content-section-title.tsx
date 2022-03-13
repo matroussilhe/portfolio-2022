@@ -32,7 +32,7 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
       }}
       {...rest}>
       <Text
-        variant={"heading2"}
+        variant={["heading5", "heading2", "heading2", "heading2"]}
         sx={{
           fontWeight: "bold",
         }}>

@@ -140,8 +140,9 @@ export const theme = getTheme({
     heading1: "11.25rem", //   180px
     heading2: "7.5rem", //     120px
     heading3: "4.5rem", //      72px
-    heading4: "2.625rem", //    42px
-    heading5: "2rem", //        32px
+    heading4: "3.5rem", //      56px
+    heading5: "2.625rem", //    42px
+    heading6: "2rem", //        32px
     subheading1: "1.5rem", //   24px
     subheading2: "1.375rem", // 22px
     body1: "1.25rem", //        20px
@@ -214,6 +215,14 @@ export const theme = getTheme({
     heading5: {
       fontFamily: "heading",
       fontSize: "heading5",
+      fontWeight: "regular",
+      lineHeight: "heading",
+      letterSpacing: "heading",
+      color: "on-background",
+    },
+    heading6: {
+      fontFamily: "heading",
+      fontSize: "heading6",
       fontWeight: "regular",
       lineHeight: "heading",
       letterSpacing: "heading",

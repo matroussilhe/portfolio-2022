@@ -10,6 +10,7 @@ import React, {
 import {
   Flex,
   FlexProps,
+  Responsive,
   SectionContentCenterParagraph,
   SectionContentLeftImageRightParagraph,
   SectionContentLeftQuoteRightParagraph,
@@ -114,12 +115,14 @@ export const SectionContent: FunctionComponent<SectionContentProps> = ({
         backgroundColor: "background",
       }}
       {...rest}>
-      <TableOfContents
-        contents={contents}
-        activeContent={activeContent}
-        contentRefs={refsRef.current}
-        isVisible={isInsideViewport}
-      />
+      <Responsive lgAndUp>
+        <TableOfContents
+          contents={contents}
+          activeContent={activeContent}
+          contentRefs={refsRef.current}
+          isVisible={isInsideViewport}
+        />
+      </Responsive>
       {contents.map((content, index) => {
         // get component by type
         const Component = components[content.type];

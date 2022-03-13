@@ -31,7 +31,7 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
         }}
         {...rest}>
         <Text
-          variant={"heading4"}>
+          variant={"heading5"}>
           {content.title.toUpperCase()}
         </Text>
       </Flex>

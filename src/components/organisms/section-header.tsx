@@ -7,6 +7,7 @@ import {
   Grid,
   Image,
   Link,
+  Responsive,
   Tag,
   Text,
   TextIcon,
@@ -32,28 +33,29 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
       }}
       {...rest}>
       <Text
-        variant={"heading1"}
+        variant={["heading4", "heading1", "heading1", "heading1"]}
         sx={{
-          px: 5,
-          mb: 2,
+          px: [3, 5, 5, 5],
+          mb: [1, 2, 2, 2],
           fontWeight: "bold",
         }}>
         {header.title}
       </Text>
       <Text
-        variant={"body1"}
+        variant={["label3", "body1", "body1", "body1"]}
         sx={{
-          px: 5,
-          mb: 5,
+          px: [3, 5, 5, 5],
+          mb: [3, 5, 5, 5],
           lineHeight: 1,
+          fontFamily: "heading",
         }}>
         {header.subtitle.toUpperCase()}
       </Text>
       <Flex
         sx={{
-          height: "600px",
+          height: ["200px", "600px", "600px", "600px"],
           position: "relative",
-          mb: 5,
+          mb: [3, 5, 5, 5],
         }}>
         <Image
           src={header.image}
@@ -65,7 +67,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         />
         <Box
           sx={{
-            height: "600px",
+            height: ["200px", "600px", "600px", "600px"],
             width: "100%",
             position: "absolute",
             top: 0,
@@ -74,106 +76,220 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           }}
         />
       </Flex>
-      <Flex
-        sx={{
-          px: 5,
-        }}>
-        <Box
+      <Responsive mdAndDown>
+        <Flex
           sx={{
-            pr: 2,
-            width: ["col12.2"],
+            px: 3,
+            flexWrap: "wrap",
           }}>
-          <TextParagraphTitle
+          <Box
             sx={{
-              mb: 1,
+              mb: 3,
+              width: ["col12.12"],
             }}>
-            {"역할_ROLE"}
-          </TextParagraphTitle>
-          <Text
-            variant={"body1"}
-            sx={{
-              mb: 4,
-              lineHeight: 1,
-            }}>
-            {header.role}
-          </Text>
-          <TextParagraphTitle
-            sx={{
-              mb: 1,
-            }}>
-            {"타임라인_TIMELINE"}
-          </TextParagraphTitle>
-          <Text
-            variant={"body1"}
-            sx={{
-              lineHeight: 1,
-            }}>
-            {header.timeline}
-          </Text>
-        </Box>
-        <Box
-          sx={{
-            px: 2,
-            width: ["col12.4"],
-          }}>
-          <TextParagraphTitle
-            sx={{
-              mb: 1,
-            }}>
-            {"기술_TECHNOLOGIES"}
-          </TextParagraphTitle>
-          <Grid
-            gap={"sm"}
-            containerSx={{
-              pb: 4,
-            }}>
-            {header.tags.map((tag, index) => (
-              <Tag
-                key={`section-header-tag-${index}`}
-                size={"md"}>
-                {tag}
-              </Tag>
-            ))}
-          </Grid>
-          <TextParagraphTitle
-            sx={{
-              mb: 1,
-            }}>
-            {"크레딧_CREDITS"}
-          </TextParagraphTitle>
-          <Text
-            variant={"body1"}
-            sx={{
-              lineHeight: 1,
-            }}>
-            {header.credit}
-          </Text>
-        </Box>
-        <Box
-          sx={{
-            pl: 2,
-            width: ["col12.6"],
-          }}>
-          <Text
-            variant={"body1"}
-            sx={{
-              mb: 4,
-              maxWidth: "paragraph.lg",
-            }}>
-            {header.introduction}
-          </Text>
-          <Link
-            href={header.link}
-            target={"_blank"}>
-            <TextIcon
+            <TextParagraphTitle
               sx={{
-                fontSize: "1.75rem",
+                mb: 1,
               }}>
-              {"See live website"}
-            </TextIcon>
-          </Link>
-        </Box>
-      </Flex>
+              {"타임라인_TIMELINE"}
+            </TextParagraphTitle>
+            <Text
+              variant={["body2", "body2"]}
+              sx={{
+                lineHeight: 1,
+              }}>
+              {header.timeline}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              mb: 3,
+              width: ["col12.12"],
+            }}>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"역할_ROLE"}
+            </TextParagraphTitle>
+            <Text
+              variant={["body2", "body2"]}
+              sx={{
+                lineHeight: 1,
+              }}>
+              {header.role}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              mb: 3,
+              width: ["col12.12"],
+            }}>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"크레딧_CREDITS"}
+            </TextParagraphTitle>
+            <Text
+              variant={["body2", "body2"]}
+              sx={{
+                lineHeight: 1,
+              }}>
+              {header.credit}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              mb: 3,
+              width: ["col12.12"],
+            }}>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"기술_TECHNOLOGIES"}
+            </TextParagraphTitle>
+            <Grid
+              gap={"sm"}>
+              {header.tags.map((tag, index) => (
+                <Tag
+                  key={`section-header-tag-${index}`}
+                  size={"md"}>
+                  {tag}
+                </Tag>
+              ))}
+            </Grid>
+          </Box>
+          <Box
+            sx={{
+              mb: 3,
+              width: ["col12.12"],
+            }}>
+            <Text
+              variant={["body2", "body2"]}
+              sx={{
+                maxWidth: "paragraph.lg",
+              }}>
+              {header.introduction}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              width: ["col12.12"],
+            }}>
+            <Link
+              href={header.link}
+              target={"_blank"}>
+              <TextIcon>
+                {"See live website"}
+              </TextIcon>
+            </Link>
+          </Box>
+        </Flex>
+      </Responsive>
+      <Responsive lgAndUp>
+        <Flex
+          sx={{
+            px: 5,
+          }}>
+          <Box
+            sx={{
+              pr: 2,
+              width: ["col12.2"],
+            }}>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"역할_ROLE"}
+            </TextParagraphTitle>
+            <Text
+              variant={"body1"}
+              sx={{
+                mb: 4,
+                lineHeight: 1,
+              }}>
+              {header.role}
+            </Text>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"타임라인_TIMELINE"}
+            </TextParagraphTitle>
+            <Text
+              variant={"body1"}
+              sx={{
+                lineHeight: 1,
+              }}>
+              {header.timeline}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              px: 2,
+              width: ["col12.4"],
+            }}>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"기술_TECHNOLOGIES"}
+            </TextParagraphTitle>
+            <Grid
+              gap={"sm"}
+              containerSx={{
+                pb: 4,
+              }}>
+              {header.tags.map((tag, index) => (
+                <Tag
+                  key={`section-header-tag-${index}`}
+                  size={"md"}>
+                  {tag}
+                </Tag>
+              ))}
+            </Grid>
+            <TextParagraphTitle
+              sx={{
+                mb: 1,
+              }}>
+              {"크레딧_CREDITS"}
+            </TextParagraphTitle>
+            <Text
+              variant={"body1"}
+              sx={{
+                lineHeight: 1,
+              }}>
+              {header.credit}
+            </Text>
+          </Box>
+          <Box
+            sx={{
+              pl: 2,
+              width: ["col12.6"],
+            }}>
+            <Text
+              variant={"body1"}
+              sx={{
+                mb: 4,
+                maxWidth: "paragraph.lg",
+              }}>
+              {header.introduction}
+            </Text>
+            <Link
+              href={header.link}
+              target={"_blank"}>
+              <TextIcon
+                sx={{
+                  fontSize: "1.75rem",
+                }}>
+                {"See live website"}
+              </TextIcon>
+            </Link>
+          </Box>
+        </Flex>
+      </Responsive>
     </Flex>
   );
 };

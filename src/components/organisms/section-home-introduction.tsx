@@ -148,7 +148,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             </Responsive>
             <Responsive mdAndUp>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -160,7 +160,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"안녕! I'm Mathieu, a Fullstack Engineer"}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -172,7 +172,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"who loves building all kinds of products"}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -184,7 +184,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"using creative and systematic solutions."}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -196,7 +196,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"I'm currently fully employed at QMIT"}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -324,7 +324,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             </Responsive>
             <Responsive mdAndUp>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -336,7 +336,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"Hello! 저는 Mathieu입니다."}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -348,7 +348,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"창의적이고 체계적인 솔루션을 활용하여 모든 종류의"}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -360,7 +360,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"제품을 만드는 것을 좋아하는 풀스택 개발자입니다."}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
@@ -372,7 +372,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
                 {"저는 현재 QMIT에서 풀타임으로 일하며"}
               </TextAnimated>
               <TextAnimated
-                variant={"heading5"}
+                variant={"heading6"}
                 options={{
                   duration: 900,
                   delay: 0,
