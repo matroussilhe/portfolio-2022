@@ -21,19 +21,23 @@ export const GridItemInformationLink: FunctionComponent<GridItemInformationLinkP
       sx={{
         flexDirection: "column",
       }}>
-      {items.map((item, index) => (
-        <Link
-          key={`grid-item-information-link-${index}`}
-          href={item.link}
-          target={"_blank"}>
-          <TextIcon
-            sx={{
-              mb: ["12px", "12px", "12px", 2],
-            }}>
-            {item.text}
-          </TextIcon>
-        </Link>
-      ))}
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
+
+        return (
+          <Link
+            key={`grid-item-information-link-${index}`}
+            href={item.link}
+            target={"_blank"}>
+            <TextIcon
+              sx={{
+                mb: isLast ? 0 : ["12px", "12px", "12px", 2],
+              }}>
+              {item.text}
+            </TextIcon>
+          </Link>
+        );
+      })}
     </Flex>
   );
 };

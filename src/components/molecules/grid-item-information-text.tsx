@@ -21,16 +21,20 @@ export const GridItemInformationText: FunctionComponent<GridItemInformationTextP
       sx={{
         flexDirection: "column",
       }}>
-      {items.map((item, index) => (
-        <Text
-          key={`grid-item-information-text-${index}`}
-          variant={["body1", "body1", "body1", "subheading1"]}
-          sx={{
-            mb: ["12px", "12px", "12px", 2],
-          }}>
-          {item.text}
-        </Text>
-      ))}
+      {items.map((item, index) => {
+        const isLast = index === items.length - 1;
+
+        return (
+          <Text
+            key={`grid-item-information-text-${index}`}
+            variant={["body1", "body1", "body1", "subheading1"]}
+            sx={{
+              mb: isLast ? 0 : ["12px", "12px", "12px", 2],
+            }}>
+            {item.text}
+          </Text>
+        );
+      })}
     </Flex>
   );
 };

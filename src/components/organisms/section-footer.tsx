@@ -26,10 +26,10 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
       }}
       {...rest}>
       <Text
-        variant={["body2", "heading5", "heading5", "heading5"]}
+        variant={["body2", "body1", "heading5", "heading5"]}
         sx={{
-          ml: [12, "300px", "300px", "300px"],
-          mb: ["12px", 6, 6, 6],
+          ml: [12, 16, "300px", "300px"],
+          mb: ["12px", "20px", 6, 6],
           lineHeight: 1,
           fontSize: [null, null, null, "3rem"],
         }}>
@@ -38,19 +38,19 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
       <Link
         href={footer.link}>
         <Text
-          variant={["heading4", "heading1", "heading1", "heading1"]}
+          variant={["heading4", "heading3", "heading1", "heading1"]}
           sx={{
+            ml: [3, 4, 5, 5],
+            mb: ["16px", "28px", 8, 8],
             fontWeight: "bold",
-            ml: [3, 5, 5, 5],
-            mb: [2, 8, 8, 8],
           }}>
           {footer.title}
         </Text>
       </Link>
       <Text
-        variant={["label3", "subheading1", "subheading1", "subheading1"]}
+        variant={["label3", "label2", "subheading1", "subheading1"]}
         sx={{
-          ml: [4, 8, 8, 8],
+          ml: [4, 5, 8, 8],
           fontSize: [null, null, null, "1.5rem"],
           fontFamily: "heading",
         }}>

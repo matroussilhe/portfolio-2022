@@ -42,20 +42,20 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
           header={header}
           sx={{
             pt: [20, 20, 25, 25],
-            pb: 10,
+            pb: 10, // TODO: use section_title.pt as pb
           }}
         />
         <SectionContent
           contents={contents}
           sx={{
-            px: 3,
+            px: [3, 4, 5, 5],
           }}
         />
         <SectionFooter
           footer={footer}
           sx={{
-            pt: 5,
-            pb: [20, 20, 25, 25],
+            mt: [-12, -5, 5, 5], // TODO: change to pt and change value to be contant pb - content.mb
+            pb: [8, 15, 25, 25],
           }}
         />
       </Flex>
