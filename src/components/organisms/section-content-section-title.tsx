@@ -27,12 +27,12 @@ export const SectionContentSectionTitle: FunctionComponent<SectionContentSection
     <Flex
       ref={ref}
       sx={{
-        pt: 10,
-        pb: 10,
+        pt: [4, 10, 10, 10], // WIP: responsive
+        pb: [4, 10, 10, 10], // WIP: responsive
       }}
       {...rest}>
       <Text
-        variant={["heading5", "heading2", "heading2", "heading2"]}
+        variant={["heading5", "heading3", "heading2", "heading1"]}
         sx={{
           fontWeight: "bold",
         }}>

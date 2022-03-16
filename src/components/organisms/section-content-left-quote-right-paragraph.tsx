@@ -22,31 +22,33 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
 }, ref) => {
   return (
     <FlexColumnSpacer
-      leftColumnWidth={"col12.3"}
-      centerColumnWidth={"col12.9"}>
+      // WIP: responsive
+      leftColumnWidth={["col12.0", "col12.0", "col12.3", "col12.3"]}
+      centerColumnWidth={["col12.12", "col12.12", "col12.9", "col12.9"]}>
       <Flex
         ref={ref}
         sx={{
-          pt: 0,
-          pb: 20,
+          pt: [0, 0, 0, 0],
+          pb: [8, 20, 20, 20], // WIP: responsive
           flexDirection: "row",
           flexWrap: "wrap",
         }}
         {...rest}>
         <Box
           sx={{
-            width: "col12.4",
+            width: ["col12.12", "col12.12", "col12.4", "col12.4"], // WIP: responsive
+            pb: content.paragraph ? [4, 4, 0, 0] : 0, // WIP: responsive
           }}>
           <Flex
             sx={{
               justifyContent: "flex-start",
             }}>
             <Text
-              variant={"heading5"}
+              variant={["subheading1", "heading5", "heading5", "heading5"]} // WIP: responsive
               sx={{
                 maxWidth: "paragraph.md",
                 whiteSpace: "pre-wrap",
-                lineHeight: 1.2,
+                lineHeight: 1.3,
               }}>
               {content.quote}
             </Text>
@@ -54,19 +56,19 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
         </Box>
         <Box
           sx={{
-            width: "col12.2",
+            width: ["col12.0", "col12.0", "col12.2", "col12.2"], // WIP: responsive
           }}
         />
         <Box
           sx={{
-            width: "col12.6",
+            width: ["col12.12", "col12.12", "col12.6", "col12.6"], // WIP: responsive
           }}>
           <Flex
             sx={{
               justifyContent: "flex-end",
             }}>
             <Text
-              variant={"body1"}
+              variant={["body2", "body2", "body2", "body1"]} // WIP: responsive
               sx={{
                 maxWidth: "paragraph.md",
                 whiteSpace: "pre-wrap",

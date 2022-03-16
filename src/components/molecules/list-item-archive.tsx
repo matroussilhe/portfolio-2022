@@ -75,8 +75,8 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              mt: [2, 2],
               width: ["col12.12", "col12.12"],
+              mt: [2, 2],
             }}>
             <Flex
               sx={{
@@ -94,8 +94,8 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              mt: [2, 2],
               width: ["col12.12", "col12.12"],
+              mt: [2, 2],
             }}>
             <Grid
               gap={"sm"}>
@@ -170,7 +170,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
           </Box>
           <Box
             sx={{
-              width: "16px",
+              width: ["16px"],
             }}>
             {archive.link &&
             <Flex

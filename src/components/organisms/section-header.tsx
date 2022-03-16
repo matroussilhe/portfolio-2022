@@ -60,15 +60,15 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         <Image
           src={header.image}
           sx={{
-            objectFit: "cover",
             width: "100%",
             height: "auto",
+            objectFit: "cover",
           }}
         />
         <Box
           sx={{
-            height: ["190px", "300px", "450px", "600px"],
             width: "100%",
+            height: ["190px", "300px", "450px", "600px"],
             position: "absolute",
             top: 0,
             left: 0,
@@ -84,9 +84,9 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           }}>
           <Box
             sx={{
-              mb: [3, 3],
-              pr: [0, 1],
               width: ["col12.12", "col12.4"],
+              pr: [0, 1],
+              mb: [3, 3],
             }}>
             <TextParagraphTitle
               sx={{
@@ -104,9 +104,9 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              mb: [3, 3],
-              pl: [0, 1],
               width: ["col12.12", "col12.8"],
+              pl: [0, 1],
+              mb: [3, 3],
             }}>
             <TextParagraphTitle
               sx={{
@@ -124,9 +124,9 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              mb: [3, 3],
-              pr: [0, 1],
               width: ["col12.12", "col12.4"],
+              pr: [0, 1],
+              mb: [3, 3],
             }}>
             <TextParagraphTitle
               sx={{
@@ -144,9 +144,9 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              mb: [3, 3],
-              pl: [0, 1],
               width: ["col12.12", "col12.8"],
+              pl: [0, 1],
+              mb: [3, 3],
             }}>
             <TextParagraphTitle
               sx={{
@@ -167,8 +167,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              mb: [3, 3],
               width: ["col12.12", "col12.12"],
+              mb: [3, 3],
             }}>
             <Text
               variant={["body2", "body2"]}
@@ -199,8 +199,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           }}>
           <Box
             sx={{
-              pr: 2,
               width: ["col12.2"],
+              pr: 2,
             }}>
             <TextParagraphTitle
               sx={{
@@ -232,8 +232,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              px: 2,
               width: ["col12.4"],
+              px: 2,
             }}>
             <TextParagraphTitle
               sx={{
@@ -271,8 +271,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
           </Box>
           <Box
             sx={{
-              pl: 2,
               width: ["col12.6"],
+              pl: 2,
             }}>
             <Text
               variant={[null, null, "body2", "body1"]}
