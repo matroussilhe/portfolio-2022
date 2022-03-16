@@ -33,7 +33,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
       }}
       {...rest}>
       <Text
-        variant={["heading4", "heading3", "heading1", "heading1"]}
+        variant={["heading4", "heading3", "heading2", "heading1"]}
         sx={{
           px: [3, 4, 5, 5],
           mb: [1, 1, 2, 2],
@@ -42,7 +42,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         {header.title}
       </Text>
       <Text
-        variant={["label3", "label2", "body1", "body1"]}
+        variant={["label3", "label2", "body3", "body1"]}
         sx={{
           px: [3, 4, 5, 5],
           mb: [3, 4, 5, 5],
@@ -53,7 +53,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
       </Text>
       <Flex
         sx={{
-          height: ["200px", "300px", "600px", "600px"],
+          height: ["190px", "300px", "450px", "600px"],
           position: "relative",
           mb: [3, 4, 5, 5],
         }}>
@@ -67,7 +67,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         />
         <Box
           sx={{
-            height: ["200px", "300px", "600px", "600px"],
+            height: ["190px", "300px", "450px", "600px"],
             width: "100%",
             position: "absolute",
             top: 0,
@@ -209,7 +209,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
               {"역할_ROLE"}
             </TextParagraphTitle>
             <Text
-              variant={"body1"}
+              variant={[null, null, "body2", "body1"]}
               sx={{
                 mb: 4,
                 lineHeight: 1,
@@ -223,7 +223,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
               {"타임라인_TIMELINE"}
             </TextParagraphTitle>
             <Text
-              variant={"body1"}
+              variant={[null, null, "body2", "body1"]}
               sx={{
                 lineHeight: 1,
               }}>
@@ -242,7 +242,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
               {"크레딧_CREDITS"}
             </TextParagraphTitle>
             <Text
-              variant={"body1"}
+              variant={[null, null, "body2", "body1"]}
               sx={{
                 mb: 4,
                 lineHeight: 1,
@@ -275,7 +275,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
               width: ["col12.6"],
             }}>
             <Text
-              variant={"body1"}
+              variant={[null, null, "body2", "body1"]}
               sx={{
                 mb: 4,
                 maxWidth: "paragraph.lg",

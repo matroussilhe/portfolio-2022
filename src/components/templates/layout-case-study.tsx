@@ -54,8 +54,8 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
         <SectionFooter
           footer={footer}
           sx={{
-            mt: [-12, -5, 5, 5], // TODO: change to pt and change value to be contant pb - content.mb
-            pb: [8, 15, 25, 25],
+            mt: [-12, -5, 0, 5], // TODO: change to pt and change value to be contant pb - content.mb
+            pb: [8, 15, 20, 25],
           }}
         />
       </Flex>
