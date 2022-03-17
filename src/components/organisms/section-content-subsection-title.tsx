@@ -27,12 +27,12 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
       <Flex
         ref={ref}
         sx={{
-          pt: [2, 5, 5, 5], // WIP: responsive
-          pb: [4, 5, 5, 5], // WIP: responsive
+          pt: [2, 2, 5, 5], // WIP: responsive
+          pb: [4, 4, 5, 5], // WIP: responsive
         }}
         {...rest}>
         <Text
-          variant={["subheading1", "heading5", "heading5", "heading5"]}>
+          variant={["subheading2", "subheading1", "heading5", "heading5"]}>
           {content.title.toUpperCase()}
         </Text>
       </Flex>

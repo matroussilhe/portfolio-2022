@@ -29,7 +29,7 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
         ref={ref}
         sx={{
           pt: [0, 0, 0, 0],
-          pb: [8, 20, 20, 20], // WIP: responsive
+          pb: [8, 8, 20, 20], // WIP: responsive
           flexDirection: "row",
           flexWrap: "wrap",
         }}
@@ -44,9 +44,9 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
               justifyContent: "flex-start",
             }}>
             <Text
-              variant={["subheading1", "heading5", "heading5", "heading5"]} // WIP: responsive
+              variant={["subheading1", "heading6", "heading5", "heading5"]} // WIP: responsive
               sx={{
-                maxWidth: "paragraph.md",
+                maxWidth: ["paragraph.sm", "paragraph.sm", "paragraph.sm", "paragraph.md"],
                 whiteSpace: "pre-wrap",
                 lineHeight: 1.3,
               }}>
@@ -65,12 +65,12 @@ export const SectionContentLeftQuoteRightParagraph: FunctionComponent<SectionCon
           }}>
           <Flex
             sx={{
-              justifyContent: "flex-end",
+              justifyContent: ["flex-start", "flex-start", "flex-end", "flex-end"], // WIP: responsive
             }}>
             <Text
               variant={["body2", "body2", "body2", "body1"]} // WIP: responsive
               sx={{
-                maxWidth: "paragraph.md",
+                maxWidth: ["paragraph.sm", "paragraph.sm", "paragraph.sm", "paragraph.md"],
                 whiteSpace: "pre-wrap",
               }}>
               {content.paragraph}

@@ -31,7 +31,7 @@ export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionCon
         ref={ref}
         sx={{
           pt: [0, 0, 0, 0],
-          pb: [8, 20, 20, 20], // WIP: responsive
+          pb: [8, 8, 20, 20], // WIP: responsive
           flexDirection: "row",
           flexWrap: "wrap",
         }}
@@ -63,12 +63,12 @@ export const SectionContentLeftImageRightParagraph: FunctionComponent<SectionCon
           }}>
           <Flex
             sx={{
-              justifyContent: "flex-end",
+              justifyContent: ["flex-start", "flex-start", "flex-end", "flex-end"],
             }}>
             <Text
               variant={["body2", "body2", "body2", "body1"]} // WIP: responsive
               sx={{
-                maxWidth: "paragraph.md",
+                maxWidth: ["paragraph.sm", "paragraph.sm", "paragraph.sm", "paragraph.md"],
                 whiteSpace: "pre-wrap",
               }}>
               {content.paragraph}

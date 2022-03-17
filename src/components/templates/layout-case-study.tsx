@@ -43,7 +43,7 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
           sx={{
             pt: [20, 20, 25, 25], // WIP: responsive
             // TODO: use section_title.pt as pb (or use same space as above title)
-            pb: [8, 10, 10, 10], // WIP: responsive
+            pb: [8, 8, 10, 10], // WIP: responsive
           }}
         />
         <SectionContent
@@ -56,8 +56,8 @@ export const LayoutCaseStudy: FunctionComponent<LayoutCaseStudyProps> = ({
           footer={footer}
           sx={{
             // TODO: change to pt and change value to be contant pb - content.mb
-            pt: [4, 0, 0, 5], // WIP: responsive
-            pb: [12, 15, 20, 25], // WIP: responsive
+            pt: [4, 4, 0, 5], // WIP: responsive
+            pb: [12, 12, 20, 25], // WIP: responsive
           }}
         />
       </Flex>
