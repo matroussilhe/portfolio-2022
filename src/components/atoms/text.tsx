@@ -14,7 +14,7 @@ export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, Tex
   variant = "body1",
   ...rest
 }, ref) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
   const as = useMemo(() => {

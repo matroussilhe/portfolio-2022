@@ -18,7 +18,7 @@ export const Icon: FunctionComponent<IconProps> = ({
   size = null,
   color = "on-background",
 }) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveSize = getResponsiveProp(size);
 

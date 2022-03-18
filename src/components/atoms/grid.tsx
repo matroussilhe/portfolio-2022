@@ -103,7 +103,7 @@ export const Grid: FunctionComponent<GridProps> = ({
   itemSx,
   children,
 }) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveGap = getResponsiveProp(gap);
 

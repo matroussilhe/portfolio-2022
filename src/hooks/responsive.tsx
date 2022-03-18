@@ -5,7 +5,7 @@ import { useResponsiveContext } from "@providers";
 /**
  * Hook containing responsive helper functions
  *
- * @returns function used to parse a prop array into a single prop based on active breakpoint
+ * @returns responsive helper functions
  */
 export const useResponsive = () => {
   const {
@@ -15,6 +15,12 @@ export const useResponsive = () => {
     xlOnly,
   } = useResponsiveContext();
 
+  /**
+   * Function used to parse a prop array into a single prop based on active breakpoint
+   *
+   * @param prop array of prop values
+   * @returns single prop for current breakpoint
+   */
   const getResponsiveProp = <T extends unknown>(prop: ResponsiveStyleValue<T>): T | undefined => {
     if (Array.isArray(prop)) {
       const breakpointMap = [
@@ -49,5 +55,7 @@ export const useResponsive = () => {
     }
   };
 
-  return getResponsiveProp;
+  return {
+    getResponsiveProp,
+  };
 };

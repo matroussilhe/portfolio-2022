@@ -24,14 +24,13 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
 }, ref) => {
   return (
     <FlexColumnSpacer
-      // WIP: responsive
       leftColumnWidth={["col12.0", "col12.0", "col12.3", "col12.3"]}
       centerColumnWidth={["col12.12", "col12.12", "col12.9", "col12.9"]}>
       <Flex
         ref={ref}
         sx={{
           pt: [0, 0, 0, 0],
-          pb: [8, 8, 20, 20], // WIP: responsive
+          pb: [8, 8, 10, 20],
           flexDirection: "row",
           flexWrap: "wrap",
         }}
@@ -39,7 +38,7 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
         <Box
           sx={{
             width: ["col12.12", "col12.12", "col12.12", "col12.12"],
-            pb: content.paragraph ? [4, 4, 10, 10] : undefined, // WIP: responsive
+            pb: content.paragraph ? [4, 4, 5, 10] : undefined,
           }}>
           <Flex
             sx={{
@@ -58,14 +57,14 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
         </Box>
         <Box
           sx={{
-            width: ["col12.12", "col12.12", "col12.8", "col12.8"], // WIP: responsive
+            width: ["col12.12", "col12.12", "col12.8", "col12.8"],
           }}>
           <Flex
             sx={{
               justifyContent: "flex-start",
             }}>
             <Text
-              variant={["body2", "body2", "body2", "body1"]} // WIP: responsive
+              variant={["body2", "body2", "body2", "body1"]}
               sx={{
                 maxWidth: ["paragraph.sm", "paragraph.sm", "paragraph.sm", "paragraph.md"],
                 whiteSpace: "pre-wrap",
@@ -76,7 +75,7 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
         </Box>
         <Box
           sx={{
-            width: ["col12.0", "col12.0", "col12.4", "col12.4"], // WIP: responsive
+            width: ["col12.0", "col12.0", "col12.4", "col12.4"],
           }}
         />
       </Flex>

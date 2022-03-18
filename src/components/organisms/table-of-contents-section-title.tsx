@@ -42,7 +42,7 @@ export const TableOfContentsSectionTitle: FunctionComponent<TableOfContentsSecti
       }}
       {...rest}>
       <Text
-        variant={"body1"}
+        variant={["body2", "body2", "body2", "body1"]}
         onClick={onClick}
         sx={{
           cursor: "pointer",

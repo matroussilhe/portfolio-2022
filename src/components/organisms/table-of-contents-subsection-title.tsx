@@ -26,7 +26,7 @@ export const TableOfContentsSubsectionTitle: FunctionComponent<TableOfContentsSu
       }}
       {...rest}>
       <Text
-        variant={"body1"}
+        variant={["body2", "body2", "body2", "body1"]}
         sx={{
           lineHeight: 1,
         }}>

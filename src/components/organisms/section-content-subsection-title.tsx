@@ -21,18 +21,17 @@ export const SectionContentSubsectionTitle: FunctionComponent<SectionContentSubs
 }, ref) => {
   return (
     <FlexColumnSpacer
-      // WIP: responsive
       leftColumnWidth={["col12.0", "col12.0", "col12.3", "col12.3"]}
       centerColumnWidth={["col12.12", "col12.12", "col12.9", "col12.9"]}>
       <Flex
         ref={ref}
         sx={{
-          pt: [2, 2, 5, 5], // WIP: responsive
-          pb: [4, 4, 5, 5], // WIP: responsive
+          pt: [2, 2, 4, 5],
+          pb: [4, 4, 4, 5],
         }}
         {...rest}>
         <Text
-          variant={["subheading2", "subheading1", "heading5", "heading5"]}>
+          variant={["subheading2", "subheading1", "heading6", "heading5"]}>
           {content.title.toUpperCase()}
         </Text>
       </Flex>

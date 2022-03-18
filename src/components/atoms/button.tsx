@@ -68,7 +68,7 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef<HTMLButtonEleme
   shape = "round",
   ...rest
 }, ref) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
   const responsiveSize = getResponsiveProp(size);

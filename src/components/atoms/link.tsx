@@ -14,7 +14,7 @@ export const Link: FunctionComponent<LinkProps> = ({
   href,
   ...rest
 }) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
 

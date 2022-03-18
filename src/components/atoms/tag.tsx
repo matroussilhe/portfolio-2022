@@ -69,7 +69,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   shape = "round",
   ...rest
 }) => {
-  const getResponsiveProp = useResponsive();
+  const { getResponsiveProp } = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
   const responsiveSize = getResponsiveProp(size);

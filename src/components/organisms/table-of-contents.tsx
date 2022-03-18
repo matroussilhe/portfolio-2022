@@ -20,6 +20,7 @@ import {
 } from "@components";
 import {
   ScrollToOptions,
+  useResponsive,
   useScroll,
 } from "@hooks";
 import {
@@ -35,7 +36,7 @@ const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
 const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
 const SUBSECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
 
-const SUBSECTION_TITLE_HEIGHT = 32;
+const SUBSECTION_TITLE_HEIGHT = [28, 28, 28, 32];
 
 export type TableOfContentsComponent = {
   [key in ContentSliceType]: FunctionComponent<any> | (() => null);
@@ -128,6 +129,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   isVisible = false,
   ...rest
 }) => {
+  const { getResponsiveProp } = useResponsive();
   const { scrollTo } = useScroll();
 
   const [isIn, setIsIn] = useState<boolean>(false);
@@ -187,6 +189,9 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
 
   // display index in front of section titles
   let sectionTitleIndex = 0;
+
+  // get responsive display props
+  const responsiveSubsectionTitleHeight = getResponsiveProp(SUBSECTION_TITLE_HEIGHT);
 
   return (
     <CSSTransition
@@ -266,7 +271,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                 key={`section-content-${index}`}
                 content={content}
                 sx={{
-                  pb: isExtended ? `${SUBSECTION_TITLE_HEIGHT}px` : "0px",
+                  pb: isExtended ? `${responsiveSubsectionTitleHeight}px` : "0px",
                 }}
                 {...extraProps}
               />
@@ -290,7 +295,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                 <StyledFlexSubsectionTitle
                   ref={refsRef.current[index]}
                   sx={{
-                    mt: `-${SUBSECTION_TITLE_HEIGHT}px`,
+                    mt: `-${responsiveSubsectionTitleHeight}px`,
                     visibility: isVisible ? "visible" : "hidden",
                   }}>
                   <Component

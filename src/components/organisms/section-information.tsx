@@ -38,6 +38,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
       sx={{
         backgroundColor: "background",
         flexDirection: "column",
+        overflow: "hidden",
       }}
       {...rest}>
       <TextParagraphTitle

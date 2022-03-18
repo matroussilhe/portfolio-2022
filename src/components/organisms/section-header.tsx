@@ -287,7 +287,7 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
               target={"_blank"}>
               <TextIcon
                 sx={{
-                  fontSize: "1.75rem",
+                  fontSize: [null, null, "1.375rem", "1.75rem"],
                 }}>
                 {"See live website"}
               </TextIcon>
