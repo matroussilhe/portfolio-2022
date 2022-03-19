@@ -12,7 +12,6 @@ import {
   TextProps,
 } from "@components";
 import {
-  easeInOutQuad,
   getRandomInteger,
   getRandomUniqueSortedIntegers,
   shuffle,
@@ -37,6 +36,10 @@ export type TextAnimatedOptions = {
 export type TextAnimatedProps = TextProps & {
   children: string;
   options?: TextAnimatedOptions;
+};
+
+export const easeInOutQuad = (x: number): number => {
+  return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
 };
 
 export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({

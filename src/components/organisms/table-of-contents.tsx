@@ -28,16 +28,6 @@ import {
   ContentSliceType,
 } from "@services";
 
-const TABLE_OF_CONTENTS_TRANSITION_NAME = "table-of-content-slide";
-const TABLE_OF_CONTENTS_TRANSITION_DURATION = 250;
-const TABLE_OF_CONTENTS_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
-
-const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
-const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
-const SUBSECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
-
-const SUBSECTION_TITLE_HEIGHT = [28, 28, 28, 32];
-
 export type TableOfContentsComponent = {
   [key in ContentSliceType]: FunctionComponent<any> | (() => null);
 };
@@ -55,6 +45,16 @@ export type TableOfContentsProps = FlexProps & {
 };
 
 export type StyledFlexSectionTitleProps = FlexProps & {};
+
+const TABLE_OF_CONTENTS_TRANSITION_NAME = "table-of-content-slide";
+const TABLE_OF_CONTENTS_TRANSITION_DURATION = 250;
+const TABLE_OF_CONTENTS_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+
+const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
+const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
+const SUBSECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.4, 0.0, 0.2, 1)";
+
+const SUBSECTION_TITLE_HEIGHT = [28, 28, 28, 32];
 
 const StyledFlex = styled(Flex)<StyledFlexSectionTitleProps>`
   opacity: 0;

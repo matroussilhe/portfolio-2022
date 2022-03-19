@@ -13,34 +13,55 @@ import { rootEm } from "@styles";
 import { theme } from "@themes";
 
 export type ResponsiveContext = {
-  width?: number;
-  height?: number;
-  breakpoints?: number[];
-  smOnly?: boolean;
-  mdOnly?: boolean;
-  lgOnly?: boolean;
-  xlOnly?: boolean;
-  smAndUp?: boolean;
-  mdAndUp?: boolean;
-  lgAndUp?: boolean;
-  xlAndUp?: boolean;
-  smAndDown?: boolean;
-  mdAndDown?: boolean;
-  lgAndDown?: boolean;
-  xlAndDown?: boolean;
-  mobile?: boolean;
-  tablet?: boolean;
-  desktop?: boolean;
+  width: number;
+  height: number;
+  breakpoints: number[];
+  smOnly: boolean;
+  mdOnly: boolean;
+  lgOnly: boolean;
+  xlOnly: boolean;
+  smAndUp: boolean;
+  mdAndUp: boolean;
+  lgAndUp: boolean;
+  xlAndUp: boolean;
+  smAndDown: boolean;
+  mdAndDown: boolean;
+  lgAndDown: boolean;
+  xlAndDown: boolean;
+  mobile: boolean;
+  tablet: boolean;
+  desktop: boolean;
 };
 
-export const ResponsiveContext = createContext<ResponsiveContext>({});
+export const DEFAULT_RESPONSIVE_CONTEXT = {
+  width: 0,
+  height: 0,
+  breakpoints: [],
+  smOnly: false,
+  mdOnly: false,
+  lgOnly: false,
+  xlOnly: false,
+  smAndUp: false,
+  mdAndUp: false,
+  lgAndUp: false,
+  xlAndUp: false,
+  smAndDown: false,
+  mdAndDown: false,
+  lgAndDown: false,
+  xlAndDown: false,
+  mobile: false,
+  tablet: false,
+  desktop: false,
+};
+
+export const ResponsiveContext = createContext<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);
 
 export const useResponsiveContext = () => {
   return useContext(ResponsiveContext);
 };
 
 export const ResponsiveContextProvider: FunctionComponent = (props) => {
-  const [value, setValue] = useState<ResponsiveContext>({});
+  const [value, setValue] = useState<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);
 
   const hasWindow = typeof window !== "undefined";
   useEffect(() => {
@@ -84,9 +105,13 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
     };
     const throttledHandleResize = throttle(handleResize, 500);
 
+    // call handler right away to update state with initial window size
     handleResize();
 
+    // add event listener
     window.addEventListener("resize", throttledHandleResize);
+
+    // remove event listener on cleanup
     return () => window.removeEventListener("resize", throttledHandleResize);
   }, [hasWindow]);
 

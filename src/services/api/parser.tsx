@@ -59,8 +59,16 @@ export type Social = {
   groups: SocialItem[][];
 };
 
+export type PhotoItem = {
+  image: string;
+  dimensions: {
+    width: number;
+    height: number;
+  };
+};
+
 export type Photo = {
-  images: string[];
+  photos: PhotoItem[];
 };
 
 export type AboutPageDocument = {
@@ -183,12 +191,12 @@ export const parseIndexPageDocument = (document: any): IndexPageDocument => {
           date: helper.asText(item.primary.date) || "",
           tags: item.items.map((item: any) => item.tag),
           images: [
-            item.primary?.first_image?.url || null,
-            item.primary?.second_image?.url || null,
+            item.primary?.first_image?.url || "",
+            item.primary?.second_image?.url || "",
           ],
-          colorLight: item.primary.color_light,
-          colorDark: item.primary.color_dark,
-          link: item.primary.link,
+          colorLight: item.primary.color_light || "",
+          colorDark: item.primary.color_dark || "",
+          link: item.primary.link || "",
         });
       } else if (item.slice_type === "archive") {
         acc.archives.push({
@@ -196,7 +204,7 @@ export const parseIndexPageDocument = (document: any): IndexPageDocument => {
           description: helper.asText(item.primary.description) || "",
           date: helper.asText(item.primary.date) || "",
           tags: item.items.map((item: any) => item.tag),
-          ...(item.primary["link"] ? { link: item.primary["link"] } : {}),
+          link: item.primary.link || "",
         });
       }
 
@@ -231,7 +239,13 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
       } else if (item.slice_type === "social") {
         acc.social.groups = parseGroups(item);
       } else if (item.slice_type === "photo") {
-        acc.photo.images = item.items.map((item: any) => item.image.url || null);
+        acc.photo.photos = item.items.map((item: any) => ({
+          image: item.image.url || "",
+          dimensions: {
+            width: item.image?.dimensions?.width || 0,
+            height: item.image?.dimensions?.height || 0,
+          },
+        }));
       }
 
       return acc;
@@ -252,7 +266,7 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
         groups: [],
       },
       photo: {
-        images: [],
+        photos: [],
       },
     });
 
@@ -277,7 +291,7 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
         groups: [],
       },
       photo: {
-        images: [],
+        photos: [],
       },
     };
   }
