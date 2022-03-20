@@ -33,7 +33,7 @@ export type ResponsiveContext = {
   desktop: boolean;
 };
 
-export const DEFAULT_RESPONSIVE_CONTEXT = {
+export const DEFAULT_RESPONSIVE_CONTEXT: ResponsiveContext = {
   width: 0,
   height: 0,
   breakpoints: [],

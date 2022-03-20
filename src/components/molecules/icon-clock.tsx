@@ -6,6 +6,9 @@ import {
   Text,
 } from "@components";
 import {
+  usePreferenceContext,
+} from "@providers";
+import {
   get,
 } from "@services";
 
@@ -110,20 +113,21 @@ const getCity = (mode: IconClockMode, data?: GeolocationData) => {
 };
 
 export const IconClock: FunctionComponent<IconClockProps> = () => {
+  const {
+    clockMode: mode,
+    setClockMode: setMode,
+  } = usePreferenceContext();
+
   const [data, setData] = useState<GeolocationData>();
-  const [mode, setMode] = useState<IconClockMode>("local");
   const [time, setTime] = useState<string>("");
   const [city, setCity] = useState<string>("");
 
-  // request geolocation data
+  // request geolocation data on init
   useEffect(() => {
-    async function getData() {
+    const getData = async () => {
       const data = await getGeolocationData();
-
       setData(data);
-      setTime(getLocalTime(data));
-      setCity(getLocalCity(data));
-    }
+    };
 
     getData();
   }, []);
@@ -136,6 +140,12 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
 
     return () => clearInterval(id);
   }, [mode, data]);
+
+  // sync on mode or data change
+  useEffect(() => {
+    setTime(getTime(mode, data));
+    setCity(getCity(mode, data));
+  }, [data, mode]);
 
   // toggle mode on click
   const handleClick = () => {

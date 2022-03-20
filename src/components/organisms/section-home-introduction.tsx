@@ -1,4 +1,7 @@
-import React, { Fragment, FunctionComponent, useState } from "react";
+import React, {
+  Fragment,
+  FunctionComponent,
+} from "react";
 
 import {
   Box,
@@ -7,16 +10,21 @@ import {
   Responsive,
   TextAnimated,
 } from "@components";
-import { generateId } from "@services";
+import {
+  usePreferenceContext,
+} from "@providers";
 
-export type SectionHomeIntroductionMode = "en" | "ko";
+export type SectionIntroductionModee = "en" | "ko";
 
 export type SectionHomeIntroductionProps = FlexProps & {};
 
 export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionProps> = ({
   ...rest
 }) => {
-  const [mode, setMode] = useState<SectionHomeIntroductionMode>("en");
+  const {
+    introductionMode: mode,
+    setIntroductionMode: setMode,
+  } = usePreferenceContext();
 
   // toggle mode on click
   const handleClick = () => {
@@ -34,8 +42,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
           cursor: "pointer",
         }}>
         {mode === "en" ? (
-          <Fragment
-            key={generateId()}>
+          <Fragment>
             <Responsive smOnly>
               <TextAnimated
                 variant={"subheading1"}
@@ -210,8 +217,7 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
             </Responsive>
           </Fragment>
         ) : (
-          <Fragment
-            key={generateId()}>
+          <Fragment>
             <Responsive smOnly>
               <TextAnimated
                 variant={"subheading1"}

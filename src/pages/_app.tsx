@@ -4,8 +4,16 @@ import { Global } from "@emotion/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 
-import { ResponsiveContextProvider, ThemeProvider } from "@providers";
-import { fontStyle, globalStyle, resetStyle } from "@styles";
+import {
+  PreferenceContextProvider,
+  ResponsiveContextProvider,
+  ThemeProvider,
+} from "@providers";
+import {
+  fontStyle,
+  globalStyle,
+  resetStyle,
+} from "@styles";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
@@ -17,8 +25,10 @@ const App = ({ Component, pageProps }: AppProps) => {
       </Head>
       <ThemeProvider>
         <ResponsiveContextProvider>
-          <Global styles={`${fontStyle}${globalStyle}${resetStyle}`}/>
-          <Component {...pageProps}/>
+          <PreferenceContextProvider>
+            <Global styles={`${fontStyle}${globalStyle}${resetStyle}`}/>
+            <Component {...pageProps}/>
+          </PreferenceContextProvider>
         </ResponsiveContextProvider>
       </ThemeProvider>
     </Fragment>

@@ -4,5 +4,4 @@ export * from "./api/parser";
 export * from "./api/query";
 export * from "./array";
 export * from "./http";
-export * from "./id";
 export * from "./integer";
