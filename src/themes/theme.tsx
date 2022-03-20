@@ -302,6 +302,10 @@ export const theme = getTheme({
   },
   links: {
     default: {
+      display: "inline-block",
+    },
+    regular: {
+      variant: "links.default",
       textDecoration: "none",
       "&:hover": {
         textDecoration: "underline",
@@ -309,6 +313,7 @@ export const theme = getTheme({
       },
     },
     discreet: {
+      variant: "links.default",
       textDecoration: "none",
       "&:hover": {
         textDecoration: "none",

@@ -68,7 +68,8 @@ export const List: FunctionComponent<ListProps> = ({
         const isLast = index === children.length - 1;
 
         return (
-          <Fragment key={`list-item-${index}`}>
+          <Fragment
+            key={`list-item-${index}`}>
             {isFirst &&
             <Divider/>
             }

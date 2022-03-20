@@ -4,8 +4,6 @@ export type SpaceProps = {};
 
 export const Space: FunctionComponent<SpaceProps> = () => {
   return (
-    <Fragment>
-      &nbsp;
-    </Fragment>
+    <Fragment>&nbsp;</Fragment>
   );
 };

@@ -1,6 +1,7 @@
 import React, { FunctionComponent } from "react";
 
 import {
+  Box,
   Flex,
   FlexProps,
   Link,
@@ -35,18 +36,20 @@ export const SectionFooter: FunctionComponent<SectionFooterProps> = ({
         }}>
         {"NEXT CASE STUDY"}
       </Text>
-      <Link
-        href={footer.link}>
-        <Text
-          variant={["heading4", "heading3", "heading2", "heading1"]}
-          sx={{
-            ml: [3, 4, 5, 5],
-            mb: ["16px", "28px", 5, 8],
-            fontWeight: "bold",
-          }}>
-          {footer.title}
-        </Text>
-      </Link>
+      <Box>
+        <Link
+          href={footer.link}>
+          <Text
+            variant={["heading4", "heading3", "heading2", "heading1"]}
+            sx={{
+              ml: [3, 4, 5, 5],
+              mb: ["16px", "28px", 5, 8],
+              fontWeight: "bold",
+            }}>
+            {footer.title}
+          </Text>
+        </Link>
+      </Box>
       <Text
         variant={["label3", "label2", "body2", "subheading1"]}
         sx={{

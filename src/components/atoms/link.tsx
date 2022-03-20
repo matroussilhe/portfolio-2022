@@ -5,12 +5,12 @@ import { Link as ThemeUILink, LinkProps as ThemeUILinkProps } from "theme-ui";
 
 import { useResponsive } from "@hooks";
 
-export type LinkVariant = "default" | "discreet";
+export type LinkVariant = "regular" | "discreet";
 
 export type LinkProps = NextLinkProps & ThemeUILinkProps;
 
 export const Link: FunctionComponent<LinkProps> = ({
-  variant = "default",
+  variant = "regular",
   href,
   ...rest
 }) => {
@@ -19,8 +19,13 @@ export const Link: FunctionComponent<LinkProps> = ({
   const responsiveVariant = getResponsiveProp(variant);
 
   return (
-    <NextLink href={href} passHref>
-      <ThemeUILink variant={responsiveVariant} {...rest}/>
+    <NextLink
+      href={href}
+      passHref>
+      <ThemeUILink
+        variant={responsiveVariant}
+        {...rest}
+      />
     </NextLink>
   );
 };

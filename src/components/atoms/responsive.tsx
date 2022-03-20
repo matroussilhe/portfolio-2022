@@ -31,5 +31,7 @@ export const Responsive: FunctionComponent<ResponsiveProps> = (props) => {
     }
   }
 
-  return show ? <Fragment>{props.children}</Fragment> : null;
+  return show
+    ? <Fragment>{props.children}</Fragment>
+    : null;
 };
