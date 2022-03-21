@@ -13,7 +13,7 @@ import {
 } from "@components";
 import {
   useResponsiveContext,
-} from "@providers";
+} from "@hooks";
 import {
   getRandomInteger,
   Photo,

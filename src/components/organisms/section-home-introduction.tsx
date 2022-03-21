@@ -12,7 +12,7 @@ import {
 } from "@components";
 import {
   usePreferenceContext,
-} from "@providers";
+} from "@hooks";
 
 export type SectionIntroductionModee = "en" | "ko";
 

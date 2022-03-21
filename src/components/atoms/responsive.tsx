@@ -1,6 +1,7 @@
 import React, { Fragment, FunctionComponent } from "react";
 
-import { ResponsiveContext, useResponsiveContext } from "@providers";
+import { useResponsiveContext } from "@hooks";
+import { ResponsiveContext } from "@providers";
 
 export type ResponsiveProps = {
   smOnly?: boolean;

@@ -1,7 +1,6 @@
 import React, {
   createContext,
   FunctionComponent,
-  useContext,
   useEffect,
   useState,
 } from "react";
@@ -55,10 +54,6 @@ export const DEFAULT_RESPONSIVE_CONTEXT: ResponsiveContext = {
 };
 
 export const ResponsiveContext = createContext<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);
-
-export const useResponsiveContext = () => {
-  return useContext(ResponsiveContext);
-};
 
 export const ResponsiveContextProvider: FunctionComponent = (props) => {
   const [value, setValue] = useState<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);

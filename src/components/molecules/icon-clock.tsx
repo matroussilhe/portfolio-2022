@@ -7,7 +7,7 @@ import {
 } from "@components";
 import {
   usePreferenceContext,
-} from "@providers";
+} from "@hooks";
 import {
   get,
 } from "@services";

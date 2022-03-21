@@ -1,6 +1,6 @@
 import { ResponsiveStyleValue } from "theme-ui";
 
-import { useResponsiveContext } from "@providers";
+import { useResponsiveContext } from "@hooks";
 
 /**
  * Hook containing responsive helper functions

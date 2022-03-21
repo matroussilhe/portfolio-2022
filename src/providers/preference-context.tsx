@@ -1,7 +1,6 @@
 import React, {
   createContext,
   FunctionComponent,
-  useContext,
   useState,
 } from "react";
 
@@ -25,10 +24,6 @@ export const DEFAULT_NAVIGATION_CONTEXT: PreferenceContext = {
 };
 
 export const PreferenceContext = createContext<PreferenceContext>(DEFAULT_NAVIGATION_CONTEXT);
-
-export const usePreferenceContext = () => {
-  return useContext(PreferenceContext);
-};
 
 export const PreferenceContextProvider: FunctionComponent = (props) => {
   const [introductionMode, setIntroductionMode] = useState<SectionIntroductionModee>(DEFAULT_NAVIGATION_CONTEXT.introductionMode);
