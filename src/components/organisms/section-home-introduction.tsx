@@ -33,6 +33,96 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
     setMode(newMode);
   };
 
+  // get smOnly texts and options
+  const smOnlyTexts = {
+    en: [
+      "안녕! I'm Mathieu,",
+      "a Fullstack Engineer",
+      "who loves building",
+      "all kinds of products",
+      "using creative and",
+      "systematic solutions.",
+      "I'm currently fully employed",
+      "at QMIT and",
+      "live in Seoul, Korea.",
+    ],
+    ko: [
+      "Hello! 저는 Mathieu입니다.",
+      "창의적이고 체계적인",
+      "솔루션을 활용하여",
+      "모든 종류의 제품을",
+      "만드는 것을 좋아하는",
+      "풀스택 개발자입니다.",
+      "저는 현재 QMIT에서",
+      "풀타임으로 일하며",
+      "대한민국 서울에 살고 있습니다.",
+    ],
+  };
+  const smOnlySpeeds = {
+    en: 25,
+    ko: 40,
+  };
+  const smOnlyExtraDelay = {
+    en: 50,
+    ko: 50,
+  };
+  const smOnlyOptions = smOnlyTexts[mode].reduce((acc, item, index) => {
+    if (index === 0) {
+      acc.push({
+        duration: smOnlyTexts[mode][index].length * smOnlySpeeds[mode],
+        delay: 0,
+      });
+    } else {
+      acc.push({
+        duration: smOnlyTexts[mode][index].length * smOnlySpeeds[mode],
+        delay: acc[index - 1].duration + acc[index - 1].delay + smOnlyExtraDelay[mode],
+      });
+    }
+
+    return acc;
+  }, [] as { duration: number; delay: number }[]);
+
+  // get mdAndUp texts and options
+  const mdAndUpTexts = {
+    en: [
+      "안녕! I'm Mathieu, a Fullstack Engineer",
+      "who loves building all kinds of products",
+      "using creative and systematic solutions.",
+      "I'm currently fully employed at QMIT",
+      "and live in Seoul, Korea.",
+    ],
+    ko: [
+      "Hello! 저는 Mathieu입니다.",
+      "창의적이고 체계적인 솔루션을 활용하여 모든 종류의",
+      "제품을 만드는 것을 좋아하는 풀스택 개발자입니다.",
+      "저는 현재 QMIT에서 풀타임으로 일하며",
+      "대한민국 서울에 살고 있습니다.",
+    ],
+  };
+  const mdAndUpSpeeds = {
+    en: 25,
+    ko: 40,
+  };
+  const mdAndUpExtraDelay = {
+    en: 50,
+    ko: 50,
+  };
+  const mdAndUpOptions = mdAndUpTexts[mode].reduce((acc, item, index) => {
+    if (index === 0) {
+      acc.push({
+        duration: mdAndUpTexts[mode][index].length * mdAndUpSpeeds[mode],
+        delay: 0,
+      });
+    } else {
+      acc.push({
+        duration: mdAndUpTexts[mode][index].length * mdAndUpSpeeds[mode],
+        delay: acc[index - 1].duration + acc[index - 1].delay + mdAndUpExtraDelay[mode],
+      });
+    }
+
+    return acc;
+  }, [] as { duration: number; delay: number }[]);
+
   return (
     <Flex
       {...rest}>
@@ -41,357 +131,41 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         sx={{
           cursor: "pointer",
         }}>
-        {mode === "en" ? (
-          <Fragment>
-            <Responsive smOnly>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"안녕! I'm Mathieu,"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"a Fullstack Engineer"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"who loves building"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"all kinds of products"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"using creative and"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"systematic solutions."}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"I'm currently fully employed"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"at QMIT and"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"live in Seoul, Korea."}
-              </TextAnimated>
-            </Responsive>
-            <Responsive mdAndUp>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"안녕! I'm Mathieu, a Fullstack Engineer"}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"who loves building all kinds of products"}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"using creative and systematic solutions."}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"I'm currently fully employed at QMIT"}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"and live in Seoul, Korea."}
-              </TextAnimated>
-            </Responsive>
-          </Fragment>
-        ) : (
-          <Fragment>
-            <Responsive smOnly>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"Hello! 저는 Mathieu입니다."}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"창의적이고 체계적인"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"솔루션을 활용하여"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"모든 종류의 제품을"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"만드는 것을 좋아하는"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"풀스택 개발자입니다."}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"저는 현재 QMIT에서"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"풀타임으로 일하며"}
-              </TextAnimated>
-              <TextAnimated
-                variant={"subheading1"}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"대한민국 서울에 살고 있습니다."}
-              </TextAnimated>
-            </Responsive>
-            <Responsive mdAndUp>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"Hello! 저는 Mathieu입니다."}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"창의적이고 체계적인 솔루션을 활용하여 모든 종류의"}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"제품을 만드는 것을 좋아하는 풀스택 개발자입니다."}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"저는 현재 QMIT에서 풀타임으로 일하며"}
-              </TextAnimated>
-              <TextAnimated
-                variant={[null, "subheading1", "subheading1", "heading6"]}
-                options={{
-                  duration: 900,
-                  delay: 0,
-                }}
-                sx={{
-                  lineHeight: 1.4,
-                  color: "on-surface",
-                }}>
-                {"대한민국 서울에 살고 있습니다."}
-              </TextAnimated>
-            </Responsive>
-          </Fragment>
-        )}
+        <Fragment
+          key={`home-introduction-${mode}`}>
+          <Responsive smOnly>
+            {smOnlyTexts[mode].map((smOnlyText, index) => {
+              return (
+                <TextAnimated
+                  key={`text-animated-${index}`}
+                  variant={"subheading1"}
+                  options={smOnlyOptions[index]}
+                  sx={{
+                    lineHeight: 1.4,
+                    color: "on-surface",
+                  }}>
+                  {smOnlyText}
+                </TextAnimated>
+              );
+            })}
+          </Responsive>
+          <Responsive mdAndUp>
+            {mdAndUpTexts[mode].map((mdAndUpText, index) => {
+              return (
+                <TextAnimated
+                  key={`text-animated-${index}`}
+                  variant={[null, "subheading1", "subheading1", "heading6"]}
+                  options={mdAndUpOptions[index]}
+                  sx={{
+                    lineHeight: 1.4,
+                    color: "on-surface",
+                  }}>
+                  {mdAndUpText}
+                </TextAnimated>
+              );
+            })}
+          </Responsive>
+        </Fragment>
       </Box>
     </Flex>
   );

@@ -38,8 +38,24 @@ export type TextAnimatedProps = TextProps & {
   options?: TextAnimatedOptions;
 };
 
-export const easeInOutQuad = (x: number): number => {
-  return x < 0.5 ? 2 * x * x : 1 - Math.pow(-2 * x + 2, 2) / 2;
+/**
+ * Custom easing function that increase progress at start/end of animation and reduce progress in the middle of the animation
+ * since timeout work in the opposite way from for example a distance, regular easing functions produce opposite effect
+ * we want to write slower when eased, so longer timeout duration
+ * we want to write faster when not eased, so slower timeout duration
+ *
+ * @param absoluteProgress absolute progress of the animation in the bounds of 0 (beginning of the animation) and 1 (end of animation)
+ * @param stepProgress uneased progress per step, used as base for slower/faster progress than average
+ * @returns easead step progress
+ */
+const easeInOutCustom = (absoluteProgress: number, stepProgress: number) => {
+  if (absoluteProgress < 0.15) {
+    return stepProgress * 1.666;
+  } else if (absoluteProgress >= 0.15 && absoluteProgress < 0.85) {
+    return stepProgress * 0.715;
+  } else {
+    return stepProgress * 1.666;
+  }
 };
 
 export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
@@ -212,25 +228,26 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     return shuffledActions;
   }, [replace, text.length, write]);
 
-  const getDelays = useCallback(() => {
-    const linearStepDuration = duration / text.length;
-
+  const getDelays = useCallback((count: number) => {
+    const stepProgress = 1 / count;
     const delays: number[] = [];
-    for (let i = 0; i < text.length; ++i) {
-      // calculate linear progress
-      const linearElaspedTime = i * linearStepDuration;
-      const linearProgress = linearElaspedTime / duration;
+    let accumulatedDelay = 0;
+
+    for (let i = 0; i < count; ++i) {
+      // calculate absolute progress
+      const absoluteProgress = i / count;
 
       // calculate eased progress
-      const easedProgess = easeInOutQuad(linearProgress);
+      const easedProgress = easeInOutCustom(absoluteProgress, stepProgress);
 
-      // calculate eased delay
-      const easedDelay = duration * easedProgess;
-      delays.push(easedDelay);
+      // calculate delay
+      const delay = easedProgress * duration;
+      delays.push(accumulatedDelay + delay);
+      accumulatedDelay += delay;
     }
 
     return delays;
-  }, [duration, text.length]);
+  }, [duration]);
 
   const start = useCallback(() => {
     initCursors();
@@ -238,7 +255,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
 
     // trigger actions at eased timeouts
     const actions = getActions();
-    const delays = getDelays();
+    const delays = getDelays(actions.length);
     const timeouts = delays.map(((delay, index) => {
       return setTimeout(() => {
         actions[index]();

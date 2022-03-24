@@ -57,16 +57,16 @@ const OVERLAP_LIMIT = 0.4;
 const MAX_WHEEL = 100;
 const AUTO_SPEED = -1;
 
-const lerp = (x1: number, x2: number, t: number) => {
-  return x1 + (x2 - x1) * t;
-};
-
 const easeOutCubic = (x: number) => {
   return Math.pow(x - 1, 3) + 1;
 };
 
 const easeInCubic = (x: number) => {
   return Math.pow(x, 3);
+};
+
+const lerp = (x1: number, x2: number, t: number) => {
+  return x1 + (x2 - x1) * t;
 };
 
 const calculateDistance = (x1: number, x2: number, y1: number, y2: number) => {
@@ -113,7 +113,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     autoScroll.current = 0;
     timeAutoScroll.current = 0;
 
-    for (let i = 0; i < gridItems.current.length; i++) {
+    for (let i = 0; i < gridItems.current.length; ++i) {
       const current = gridItems.current[i];
 
       current.target -= deltaWheelY * current.scrollSpeed;
@@ -158,7 +158,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
   }, [windowHeight]);
 
   const update = useCallback(() => {
-    for (let i = 0; i < gridItems.current.length; i++) {
+    for (let i = 0; i < gridItems.current.length; ++i) {
       const current = gridItems.current[i];
       current.previousY = current.y;
 
@@ -193,7 +193,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     }
 
     if (target.current === oldTarget.current) {
-      fakeTimer.current++;
+      ++fakeTimer.current;
     } else {
       fakeTimer.current = 0;
     }
@@ -212,7 +212,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     const halfWindowWidth = windowWidth / 2;
     const paddingVertical = PADDING_VERTICAL * windowWidth;
 
-    for (let i = 0; i < gridItems.current.length; i++) {
+    for (let i = 0; i < gridItems.current.length; ++i) {
       const current = gridItems.current[i];
 
       let columnWidth = halfWindowWidth / COLUMNS - PADDING_COLUMN;
@@ -247,7 +247,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     }
     totalHeight.current = furthestEnd + paddingVertical / 2;
 
-    for (let i = 0; i < gridItems.current.length; i++) {
+    for (let i = 0; i < gridItems.current.length; ++i) {
       const current = gridItems.current[i];
       current.y = totalHeight.current * targetPercent.current;
       current.target = totalHeight.current * targetPercent.current;
@@ -285,14 +285,9 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
           allClear = true;
 
           const newX = gridItem.xColumn + randomOffsetX;
-          for (let i = 0; i < previousItems.length; i++) {
+          for (let i = 0; i < previousItems.length; ++i) {
             const previousItem = previousItems[i];
-            const distanceAfterOffset = calculateDistance(
-              newX,
-              previousItem.xColumn,
-              gridItem.yColumn + randomOffsetY,
-              previousItem.yColumn
-            );
+            const distanceAfterOffset = calculateDistance(newX, previousItem.xColumn, gridItem.yColumn + randomOffsetY, previousItem.yColumn);
 
             if (distanceAfterOffset < OVERLAP_LIMIT) {
               allClear = false;
@@ -306,7 +301,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
               allClear = false;
             }
           }
-          maxTry++;
+          ++maxTry;
         }
         gridItem.xColumn += randomOffsetX;
         gridItem.yColumn += randomOffsetY;
@@ -321,7 +316,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     let currentColumn = 0;
     const positions = [];
 
-    for (let i = 0; i < itemsLength; i++) {
+    for (let i = 0; i < itemsLength; ++i) {
       const newRow = currentRow + 1 + Math.round(RANDOM_X_SKIP_MAX * Math.random());
       currentRow = newRow;
 

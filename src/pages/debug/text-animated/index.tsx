@@ -14,11 +14,11 @@ const DebugTextAnimated = () => {
       }}>
       <TextAnimated
         options={{
-          duration: 3000,
+          duration: 10000,
           delay: 0,
-          cursorCount: 10,
+          cursorCount: 1,
         }}>
-        {"Hello, my name is Mathieu and I am curious about many things!"}
+        {"XXXXXXXXXXXXXXXXXXXX"}
       </TextAnimated>
     </Flex>
   );
