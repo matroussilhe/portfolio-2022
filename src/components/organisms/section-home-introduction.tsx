@@ -23,13 +23,11 @@ export type SectionHomeIntroductionProps = FlexProps & {};
 export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionProps> = ({
   ...rest
 }) => {
+  const { smOnly } = useResponsiveContext();
   const {
     introductionMode: mode,
     setIntroductionMode: setMode,
   } = usePreferenceContext();
-  const {
-    smOnly,
-  } = useResponsiveContext();
 
   // toggle mode on click
   const handleClick = () => {
@@ -84,11 +82,11 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
   const speeds = {
     smOnly: {
       en: 25,
-      ko: 40,
+      ko: 37,
     },
     mdAndUp: {
       en: 25,
-      ko: 40,
+      ko: 37,
     },
   };
   const extraDelays = {
@@ -103,12 +101,12 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
   };
   const glitchProbabilities = {
     smOnly: {
-      en: 25,
-      ko: 40,
+      en: 20,
+      ko: 30,
     },
     mdAndUp: {
-      en: 25,
-      ko: 40,
+      en: 20,
+      ko: 30,
     },
   };
   const breakpoint = smOnly ? "smOnly" : "mdAndUp";

@@ -6,6 +6,8 @@ import React, {
   useState,
 } from "react";
 
+import { useColorMode } from "theme-ui";
+
 import {
   Space,
   Text,
@@ -64,6 +66,8 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   children,
   ...rest
 }) => {
+  const [colorMode] = useColorMode();
+
   // props
   const text = children;
   const {
@@ -318,10 +322,14 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
           return (
             <span
               key={`glitch-${outputindex}-${index}`}
-              sx={{
-                opacity: 0.15,
-                textShadow: `0px 0px 2px ${theme.colors["on-surface"]}`,
-              }}>
+              sx={colorMode === "light"
+                ? {
+                  opacity: 0.11,
+                  textShadow: "0px 0px 2px rgba(0, 0, 0, 0.75)",
+                } : {
+                  opacity: 0.13,
+                  textShadow: "0px 0px 2px rgba(255, 255, 255, 0.75)",
+                }}>
               {item.value}
             </span>
           );
