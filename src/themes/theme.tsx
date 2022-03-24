@@ -29,7 +29,7 @@ export const theme = getTheme({
     initialColorModeName: "light",
     printColorModeName: "light",
     useRootStyles: true,
-    useColorSchemeMediaQuery: "initial", // TODO: set to "system" on release
+    useColorSchemeMediaQuery: "system",
     useBorderBox: false,
     useLocalStorage: true,
   },
