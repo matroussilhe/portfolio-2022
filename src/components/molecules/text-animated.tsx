@@ -76,7 +76,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   } = {
     duration: 1000,
     delay: 0,
-    glitchCharacters: "ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲ쎠ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖ",
+    glitchCharacters: "--/",
     glitchProbability: 25,
     minCursorCount: 1,
     maxCursorCount: 2,

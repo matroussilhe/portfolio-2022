@@ -9,9 +9,11 @@ import {
   FlexProps,
   Responsive,
   TextAnimated,
+  TextAnimatedOptions,
 } from "@components";
 import {
   usePreferenceContext,
+  useResponsiveContext,
 } from "@hooks";
 
 export type SectionIntroductionModee = "en" | "ko";
@@ -25,6 +27,9 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
     introductionMode: mode,
     setIntroductionMode: setMode,
   } = usePreferenceContext();
+  const {
+    smOnly,
+  } = useResponsiveContext();
 
   // toggle mode on click
   const handleClick = () => {
@@ -33,95 +38,105 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
     setMode(newMode);
   };
 
-  // get smOnly texts and options
-  const smOnlyTexts = {
-    en: [
-      "안녕! I'm Mathieu,",
-      "a Fullstack Engineer",
-      "who loves building",
-      "all kinds of products",
-      "using creative and",
-      "systematic solutions.",
-      "I'm currently fully employed",
-      "at QMIT and",
-      "live in Seoul, Korea.",
-    ],
-    ko: [
-      "Hello! 저는 Mathieu입니다.",
-      "창의적이고 체계적인",
-      "솔루션을 활용하여",
-      "모든 종류의 제품을",
-      "만드는 것을 좋아하는",
-      "풀스택 개발자입니다.",
-      "저는 현재 QMIT에서",
-      "풀타임으로 일하며",
-      "대한민국 서울에 살고 있습니다.",
-    ],
+  // get props by breakpoint and mode
+  const texts = {
+    smOnly: {
+      en: [
+        "안녕! I'm Mathieu,",
+        "a Fullstack Engineer",
+        "who loves building",
+        "all kinds of products",
+        "using creative and",
+        "systematic solutions.",
+        "I'm currently fully employed",
+        "at QMIT and",
+        "live in Seoul, Korea.",
+      ],
+      ko: [
+        "Hello! 저는 Mathieu입니다.",
+        "창의적이고 체계적인",
+        "솔루션을 활용하여",
+        "모든 종류의 제품을",
+        "만드는 것을 좋아하는",
+        "풀스택 개발자입니다.",
+        "저는 현재 QMIT에서",
+        "풀타임으로 일하며",
+        "대한민국 서울에 살고 있습니다.",
+      ],
+    },
+    mdAndUp: {
+      en: [
+        "안녕! I'm Mathieu, a Fullstack Engineer",
+        "who loves building all kinds of products",
+        "using creative and systematic solutions.",
+        "I'm currently fully employed at QMIT",
+        "and live in Seoul, Korea.",
+      ],
+      ko: [
+        "Hello! 저는 Mathieu입니다.",
+        "창의적이고 체계적인 솔루션을 활용하여 모든 종류의",
+        "제품을 만드는 것을 좋아하는 풀스택 개발자입니다.",
+        "저는 현재 QMIT에서 풀타임으로 일하며",
+        "대한민국 서울에 살고 있습니다.",
+      ],
+    },
   };
-  const smOnlySpeeds = {
-    en: 25,
-    ko: 40,
+  const speeds = {
+    smOnly: {
+      en: 25,
+      ko: 40,
+    },
+    mdAndUp: {
+      en: 25,
+      ko: 40,
+    },
   };
-  const smOnlyExtraDelay = {
-    en: 50,
-    ko: 50,
+  const extraDelays = {
+    smOnly: {
+      en: 50,
+      ko: 50,
+    },
+    mdAndUp: {
+      en: 50,
+      ko: 50,
+    },
   };
-  const smOnlyOptions = smOnlyTexts[mode].reduce((acc, item, index) => {
+  const glitchProbabilities = {
+    smOnly: {
+      en: 25,
+      ko: 40,
+    },
+    mdAndUp: {
+      en: 25,
+      ko: 40,
+    },
+  };
+  const breakpoint = smOnly ? "smOnly" : "mdAndUp";
+  const textOptions = texts[breakpoint][mode].reduce((acc, item, index) => {
+    const textLength = texts[breakpoint][mode][index].length;
+    const speed = speeds[breakpoint][mode];
+    const glitchProbability = glitchProbabilities[breakpoint][mode];
+
     if (index === 0) {
       acc.push({
-        duration: smOnlyTexts[mode][index].length * smOnlySpeeds[mode],
+        duration: textLength * speed,
         delay: 0,
+        glitchProbability,
       });
     } else {
+      const previousDuration = acc[index - 1].duration || 0;
+      const previousDelay = acc[index - 1].delay || 0;
+      const extraDelay = extraDelays[breakpoint][mode];
+
       acc.push({
-        duration: smOnlyTexts[mode][index].length * smOnlySpeeds[mode],
-        delay: acc[index - 1].duration + acc[index - 1].delay + smOnlyExtraDelay[mode],
+        duration: textLength * speed,
+        delay: previousDuration + previousDelay + extraDelay,
+        glitchProbability,
       });
     }
 
     return acc;
-  }, [] as { duration: number; delay: number }[]);
-
-  // get mdAndUp texts and options
-  const mdAndUpTexts = {
-    en: [
-      "안녕! I'm Mathieu, a Fullstack Engineer",
-      "who loves building all kinds of products",
-      "using creative and systematic solutions.",
-      "I'm currently fully employed at QMIT",
-      "and live in Seoul, Korea.",
-    ],
-    ko: [
-      "Hello! 저는 Mathieu입니다.",
-      "창의적이고 체계적인 솔루션을 활용하여 모든 종류의",
-      "제품을 만드는 것을 좋아하는 풀스택 개발자입니다.",
-      "저는 현재 QMIT에서 풀타임으로 일하며",
-      "대한민국 서울에 살고 있습니다.",
-    ],
-  };
-  const mdAndUpSpeeds = {
-    en: 25,
-    ko: 40,
-  };
-  const mdAndUpExtraDelay = {
-    en: 50,
-    ko: 50,
-  };
-  const mdAndUpOptions = mdAndUpTexts[mode].reduce((acc, item, index) => {
-    if (index === 0) {
-      acc.push({
-        duration: mdAndUpTexts[mode][index].length * mdAndUpSpeeds[mode],
-        delay: 0,
-      });
-    } else {
-      acc.push({
-        duration: mdAndUpTexts[mode][index].length * mdAndUpSpeeds[mode],
-        delay: acc[index - 1].duration + acc[index - 1].delay + mdAndUpExtraDelay[mode],
-      });
-    }
-
-    return acc;
-  }, [] as { duration: number; delay: number }[]);
+  }, [] as TextAnimatedOptions[]);
 
   return (
     <Flex
@@ -134,33 +149,33 @@ export const SectionHomeIntroduction: FunctionComponent<SectionHomeIntroductionP
         <Fragment
           key={`home-introduction-${mode}`}>
           <Responsive smOnly>
-            {smOnlyTexts[mode].map((smOnlyText, index) => {
+            {texts[breakpoint][mode].map((text, index) => {
               return (
                 <TextAnimated
                   key={`text-animated-${index}`}
                   variant={"subheading1"}
-                  options={smOnlyOptions[index]}
+                  options={textOptions[index]}
                   sx={{
                     lineHeight: 1.4,
                     color: "on-surface",
                   }}>
-                  {smOnlyText}
+                  {text}
                 </TextAnimated>
               );
             })}
           </Responsive>
           <Responsive mdAndUp>
-            {mdAndUpTexts[mode].map((mdAndUpText, index) => {
+            {texts[breakpoint][mode].map((text, index) => {
               return (
                 <TextAnimated
                   key={`text-animated-${index}`}
                   variant={[null, "subheading1", "subheading1", "heading6"]}
-                  options={mdAndUpOptions[index]}
+                  options={textOptions[index]}
                   sx={{
                     lineHeight: 1.4,
                     color: "on-surface",
                   }}>
-                  {mdAndUpText}
+                  {text}
                 </TextAnimated>
               );
             })}
