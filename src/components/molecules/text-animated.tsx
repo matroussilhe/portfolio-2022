@@ -28,9 +28,10 @@ export type TextAnimatedOutput = TextAnimatedOutputItem[];
 export type TextAnimatedOptions = {
   duration?: number; // animation duration
   delay?: number; // delay before animation start
-  glitches?: string; // characters used as glitch
-  probability?: number; // probability for a character to appear as glitch on init (0~100%)
-  cursorCount?: number; // amount of cursors inside the output
+  glitchCharacters?: string; // characters used as glitch
+  glitchProbability?: number; // probability for a character to appear as glitch on init (0~100%)
+  minCursorCount?: number; // minimum amount of cursors inside the output
+  maxCursorCount?: number; // maximum amount of cursors inside the output
 };
 
 export type TextAnimatedProps = TextProps & {
@@ -68,15 +69,17 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   const {
     duration,
     delay,
-    glitches,
-    probability,
-    cursorCount,
+    glitchCharacters,
+    glitchProbability,
+    minCursorCount,
+    maxCursorCount,
   } = {
     duration: 1000,
     delay: 0,
-    glitches: "ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲ쎠ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖ",
-    probability: 25,
-    cursorCount: 2,
+    glitchCharacters: "ㅂㅈㄷㄱㅅㅁㄴㅇㄹㅎㅋㅌㅊㅍㅃㅉㄸㄲ쎠ㅑㅐㅔㅗㅓㅏㅣㅠㅜㅡㅒㅖ",
+    glitchProbability: 25,
+    minCursorCount: 1,
+    maxCursorCount: 2,
     ...options,
   };
 
@@ -116,6 +119,9 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
   }, []);
 
   const initCursors = useCallback(() => {
+    // get random amount of cursors
+    const cursorCount = getRandomInteger(minCursorCount, maxCursorCount);
+
     // get random positioned cursors on text (i.e. unique and sorted integers)
     const cursors = getRandomUniqueSortedIntegers(1, text.length - 1, cursorCount - 1);
 
@@ -125,7 +131,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     // init cursors values
     textCursorsRef.current = newTextCursors;
     outputCursorsRef.current = newTextCursors.map(() => 0);
-  }, [cursorCount, text.length]);
+  }, [maxCursorCount, minCursorCount, text.length]);
 
   const getRandomGlitches = useCallback((rollCount: number) => {
     const items: TextAnimatedOutputItem[] = [];
@@ -134,11 +140,11 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       const roll = getRandomInteger(0, 100);
 
       // add a glitch if roll succeeds
-      const isSuccessfulRoll = roll <= probability;
+      const isSuccessfulRoll = roll <= glitchProbability;
       if (isSuccessfulRoll) {
         // get a random glitch character
-        const roll = getRandomInteger(0, glitches.length - 1);
-        const value = glitches[roll];
+        const roll = getRandomInteger(0, glitchCharacters.length - 1);
+        const value = glitchCharacters[roll];
 
         items.push({
           type: "glitch",
@@ -148,7 +154,7 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
     }
 
     return items;
-  }, [glitches, probability]);
+  }, [glitchCharacters, glitchProbability]);
 
   const initOutputs = useCallback(() => {
     const newOutputs = textCursorsRef.current.map((textCursor, index) => {
@@ -157,8 +163,8 @@ export const TextAnimated: FunctionComponent<TextAnimatedProps> = ({
       const textSegmentLength = nextTextCursor - textCursor;
 
       // init output with glitches (i.e. up to text segment length)
-      const glitches = getRandomGlitches(textSegmentLength);
-      const newOutput = [...glitches];
+      const glitchCharacters = getRandomGlitches(textSegmentLength);
+      const newOutput = [...glitchCharacters];
 
       return newOutput;
     });
