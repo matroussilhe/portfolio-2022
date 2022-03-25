@@ -22,7 +22,7 @@ export type IconClockMode = "local" | "other";
 export type IconClockProps = {};
 
 const getGeolocationData = async (): Promise<GeolocationData | undefined> => {
-  // get client location data
+  // get client (i.e. device) geolocation data
   const response = await get("https://ipapi.co/json/");
 
   // parse response
