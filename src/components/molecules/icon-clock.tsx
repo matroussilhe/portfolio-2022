@@ -22,12 +22,16 @@ export type IconClockMode = "local" | "other";
 export type IconClockProps = {};
 
 const getGeolocationData = async (): Promise<GeolocationData | undefined> => {
-  const response = await get("http://ip-api.com/json/?fields=status,city,timezone");
+  // get client location data
+  const response = await get("https://ipapi.co/json/");
 
-  if (response?.status === "success") {
+  // parse response
+  const { timezone, city } = response || {};
+
+  if (timezone && city) {
     return {
-      timezone: response.timezone,
-      city: response.city,
+      timezone: timezone,
+      city: city,
     };
   } else {
     return undefined;
