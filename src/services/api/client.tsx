@@ -1,9 +1,9 @@
 import * as prismic from "@prismicio/client";
 
-export const REPOSITORY_NAME = "matroussilhe-portfolio-2022";
+export const PRISMIC_REPOSITORY_NAME = process.env.PRISMIC_REPOSITORY_NAME as string;
 
 export const client = (req = null) => {
-  const endpoint = prismic.getEndpoint(REPOSITORY_NAME);
+  const endpoint = prismic.getEndpoint(PRISMIC_REPOSITORY_NAME);
 
   const client = prismic.createClient(endpoint, {});
 
