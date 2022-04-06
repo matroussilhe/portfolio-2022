@@ -4,6 +4,7 @@ import { Global } from "@emotion/react";
 import type { AppProps } from "next/app";
 import Head from "next/head";
 import Script from "next/script";
+import { useThemeUI } from "theme-ui";
 
 import {
   useAnalytics,
@@ -21,6 +22,7 @@ import {
   globalStyle,
   resetStyle,
 } from "@styles";
+import { theme } from "@themes";
 
 const App = ({ Component, pageProps }: AppProps) => {
   useAnalytics();
@@ -28,9 +30,12 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Fragment>
       <Head>
-        <title>{"Mathieu Roussilhe | Fullstack Engineer"}</title>
-        <meta name={"description"} content={"Mathieu Roussilhe's portfolio"}/>
         <link rel={"icon"} href={"/icons/favicon.ico"}/>
+        <title>{"Mathieu Roussilhe | Fullstack Engineer"}</title>
+        <meta name={"description"} content={"My name is Mathieu Roussilhe, I'm a fullstack engineer, and this is my portfolio. Dive into it to find out more about my work, skills and personality!"}/>
+        <meta name={"robots"} content={"index, follow"}/>
+        <meta name={"viewport"} content={"width=device-width, initial-scale=1.0"}/>
+        <meta name={"theme-color"} content={theme.colors.background}/>
       </Head>
       {/* google tag manager */}
       <Script

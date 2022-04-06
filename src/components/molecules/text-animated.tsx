@@ -18,7 +18,6 @@ import {
   getRandomUniqueSortedIntegers,
   shuffle,
 } from "@services";
-import { theme } from "@themes";
 
 export type TextAnimatedOutputItem = {
   type: "glitch" | "character";
