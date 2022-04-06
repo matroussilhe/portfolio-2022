@@ -1,7 +1,6 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import {
-  Box,
   Flex,
   Grid,
   Responsive,
