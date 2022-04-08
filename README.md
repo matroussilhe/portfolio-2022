@@ -4,8 +4,6 @@ My personal website built with Next (i.e. React framework), Theme UI (i.e. desig
 ## Screenshots
 ![portfolio](https://github.com/matroussilhe/assets/blob/master/images/portfolio-2022/home-light.png)
 ![portfolio](https://github.com/matroussilhe/assets/blob/master/images/portfolio-2022/home-dark.png)
-![portfolio](https://github.com/matroussilhe/assets/blob/master/images/portfolio-2022/case-study-header.png)
-![portfolio](https://github.com/matroussilhe/assets/blob/master/images/portfolio-2022/case-study-content.png)
 
 ## Technologies
 * [react](https://github.com/facebook/react)
