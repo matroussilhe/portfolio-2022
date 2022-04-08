@@ -6,10 +6,10 @@ My personal website built with Next (i.e. React framework), Theme UI (i.e. desig
 ![portfolio](https://github.com/matroussilhe/assets/blob/master/images/portfolio-2022/home-dark.png)
 
 ## Technologies
-* [react](https://github.com/facebook/react)
-* [next](https://github.com/vercel/next.js/)
-* [theme-ui](https://github.com/system-ui/theme-ui)
-* [prismic](https://prismic.io/)
+* [React](https://github.com/facebook/react)
+* [Next](https://github.com/vercel/next.js/)
+* [Theme UI](https://github.com/system-ui/theme-ui)
+* [Prismic](https://prismic.io/)
 
 ## Status
 Current version of my porfolio.
