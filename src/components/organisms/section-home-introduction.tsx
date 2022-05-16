@@ -16,7 +16,7 @@ import {
   useResponsiveContext,
 } from "@hooks";
 
-export type SectionIntroductionModee = "en" | "ko";
+export type SectionIntroductionMode = "en" | "ko";
 
 export type SectionHomeIntroductionProps = FlexProps & {};
 

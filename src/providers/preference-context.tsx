@@ -6,12 +6,12 @@ import React, {
 
 import {
   IconClockMode,
-  SectionIntroductionModee,
+  SectionIntroductionMode,
 } from "@components";
 
 export type PreferenceContext = {
-  introductionMode: SectionIntroductionModee;
-  setIntroductionMode: (mode: SectionIntroductionModee) => void;
+  introductionMode: SectionIntroductionMode;
+  setIntroductionMode: (mode: SectionIntroductionMode) => void;
   clockMode: IconClockMode;
   setClockMode: (mode: IconClockMode) => void;
 };
@@ -26,7 +26,7 @@ export const DEFAULT_NAVIGATION_CONTEXT: PreferenceContext = {
 export const PreferenceContext = createContext<PreferenceContext>(DEFAULT_NAVIGATION_CONTEXT);
 
 export const PreferenceContextProvider: FunctionComponent = (props) => {
-  const [introductionMode, setIntroductionMode] = useState<SectionIntroductionModee>(DEFAULT_NAVIGATION_CONTEXT.introductionMode);
+  const [introductionMode, setIntroductionMode] = useState<SectionIntroductionMode>(DEFAULT_NAVIGATION_CONTEXT.introductionMode);
   const [clockMode, setClockMode] = useState<IconClockMode>(DEFAULT_NAVIGATION_CONTEXT.clockMode);
 
   const value = {
