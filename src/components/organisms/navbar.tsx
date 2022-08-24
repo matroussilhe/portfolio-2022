@@ -89,7 +89,7 @@ export const Navbar: FunctionComponent<NavbarProps> = ({
             sx={{
               userSelect: "none",
             }}>
-            {"Informations"}
+            {"Information"}
           </Button>
         </Link>
       </Box>
