@@ -25,7 +25,7 @@ type StyledBoxListItemProps = BoxProps & {
   gap?: ListGap;
 };
 
-const gridItemGap = variant({
+const listItemGap = variant({
   prop: "gap",
   variants: {
     sm: {
@@ -44,7 +44,7 @@ const gridItemGap = variant({
 } as VariantArgs);
 
 const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
-  gridItemGap,
+  listItemGap,
 );
 
 export const List: FunctionComponent<ListProps> = ({
