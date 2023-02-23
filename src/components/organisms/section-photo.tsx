@@ -406,7 +406,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
           <Image
             key={`section-photo-photo-${index}`}
             className={"about-photo"}
-            src={`${photo.image}&w=600`}
+            src={`${photo.image}&w=640`}
             width={photo.dimensions.width}
             height={photo.dimensions.height}
             loading={"lazy"}
@@ -421,9 +421,9 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
               width: "300px",
               height: "auto",
               aspectRatio: `${photo.dimensions.width} / ${photo.dimensions.height}`,
-              opacity: 0,
-              transition: "opacity 1000ms ease-out",
               pointerEvents: "none",
+              opacity: 0,
+              transition: "opacity 900ms ease-out",
             }}
           />
         );

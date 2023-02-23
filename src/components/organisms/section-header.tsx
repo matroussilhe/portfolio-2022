@@ -59,6 +59,8 @@ export const SectionHeader: FunctionComponent<SectionHeaderProps> = ({
         }}>
         <Image
           src={header.image}
+          loading={"lazy"}
+          decoding={"async"}
           sx={{
             width: "100%",
             height: "auto",

@@ -191,8 +191,8 @@ export const parseIndexPageDocument = (document: any): IndexPageDocument => {
           date: helper.asText(item.primary.date) || "",
           tags: item.items.map((item: any) => item.tag),
           images: [
-            item.primary?.first_image?.url || "",
-            item.primary?.second_image?.url || "",
+            helper.asImageSrc(item.primary?.first_image, { auto: ["compress", "format"], q: 75 }) || "",
+            helper.asImageSrc(item.primary?.second_image, { auto: ["compress", "format"], q: 75 }) || "",
           ],
           colorLight: item.primary.color_light || "",
           colorDark: item.primary.color_dark || "",
@@ -240,7 +240,7 @@ export const parseAboutPageDocument = (document: any): AboutPageDocument => {
         acc.social.groups = parseGroups(item);
       } else if (item.slice_type === "photo") {
         acc.photo.photos = item.items.map((item: any) => ({
-          image: item.image.url || "",
+          image: helper.asImageSrc(item.image, { auto: ["compress", "format"], q: 75 }) || "",
           dimensions: {
             width: item.image?.dimensions?.width || 0,
             height: item.image?.dimensions?.height || 0,
@@ -304,7 +304,7 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
         acc.header = {
           title: helper.asText(item.primary.title) || "",
           subtitle: helper.asText(item.primary.subtitle) || "",
-          image: item.primary.image.url || "",
+          image: helper.asImageSrc(item.primary.image, { auto: ["compress", "format"], q: 75 }) || "",
           role: helper.asText(item.primary.role) || "",
           timeline: helper.asText(item.primary.timeline) || "",
           tags: item.items.map((item: any) => item.tag),
@@ -330,14 +330,14 @@ export const parseCaseStudyPageDocument = (document: any): CaseStudyPageDocument
       } else if (item.slice_type === "left_image_right_paragraph") {
         acc.contents.push({
           type: item.slice_type,
-          image: item.primary.image.url || "",
+          image: helper.asImageSrc(item.primary.image, { auto: ["compress", "format"], q: 75 }) || "",
           legend: item.primary.legend || "",
           paragraph: helper.asText(item.primary.paragraph) || "",
         });
       } else if (item.slice_type === "top_image_bottom_paragraph") {
         acc.contents.push({
           type: item.slice_type,
-          image: item.primary.image.url || "",
+          image: helper.asImageSrc(item.primary.image, { auto: ["compress", "format"], q: 75 }) || "",
           legend: item.primary.legend || "",
           paragraph: helper.asText(item.primary.paragraph) || "",
         });

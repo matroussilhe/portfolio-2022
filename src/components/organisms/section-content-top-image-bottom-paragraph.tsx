@@ -46,6 +46,8 @@ export const SectionContentTopImageBottomParagraph: FunctionComponent<SectionCon
             }}>
             <Image
               src={content.image}
+              loading={"lazy"}
+              decoding={"async"}
               sx={{
                 mb: 1,
               }}

@@ -43,6 +43,8 @@ export const GridItemWorkImage: FunctionComponent<GridItemWorkImageProps> = ({
             }}>
             <Image
               src={images[0]}
+              loading={"lazy"}
+              decoding={"async"}
               sx={{
                 width: "75%",
               }}
@@ -78,6 +80,8 @@ export const GridItemWorkImage: FunctionComponent<GridItemWorkImageProps> = ({
               }}>
               <Image
                 src={images[0]}
+                loading={"lazy"}
+                decoding={"async"}
                 sx={{
                   width: "75%",
                   mr: "6.25%",
@@ -104,6 +108,8 @@ export const GridItemWorkImage: FunctionComponent<GridItemWorkImageProps> = ({
               }}>
               <Image
                 src={images[1]}
+                loading={"lazy"}
+                decoding={"async"}
                 sx={{
                   width: "75%",
                   ml: "6.25%",
