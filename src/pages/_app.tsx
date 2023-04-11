@@ -8,6 +8,7 @@ import Script from "next/script";
 import {
   useAnalytics,
 } from "@hooks";
+import { useLoading } from "@hooks/loading";
 import {
   PreferenceContextProvider,
   ResponsiveContextProvider,
@@ -25,6 +26,7 @@ import { theme } from "@themes";
 
 const App = ({ Component, pageProps }: AppProps) => {
   useAnalytics();
+  const loading = useLoading();
 
   return (
     <Fragment>
@@ -55,6 +57,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <ResponsiveContextProvider>
           <PreferenceContextProvider>
             <Global styles={`${fontStyle}${globalStyle}${resetStyle}`}/>
+            {loading}
             <Component {...pageProps}/>
           </PreferenceContextProvider>
         </ResponsiveContextProvider>
