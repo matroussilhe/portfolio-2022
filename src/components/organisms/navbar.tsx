@@ -16,7 +16,7 @@ export type NavbarProps = FlexProps & {
 };
 
 // use hardcoded value to avoid excessive query of work count on each page load
-const WORK_COUNT = 2;
+const WORK_COUNT = 3;
 
 export const Navbar: FunctionComponent<NavbarProps> = ({
   iconColor,
