@@ -39,7 +39,7 @@ export const SectionContact: FunctionComponent<SectionContactProps> = ({
               links={[
                 {
                   href: "mailto:mathieu.roussilhe@gmail.com",
-                  text: "Mathieu.roussilhe@gmail.com",
+                  text: "mathieu.roussilhe@gmail.com",
                 },
               ]}
             />
