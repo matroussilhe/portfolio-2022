@@ -1,3 +1,5 @@
+export const SCROLL_OFFSET_THRESHOLD = 4;
+
 export type ScrollToOptions = {
   top: number;
   left?: number;
@@ -17,10 +19,11 @@ export const useScroll = () => {
 
     // listen to scroll
     const onScroll = () => {
-      const topFixedOffset = options.top.toFixed();
-      const windowFixedOffset = window.pageYOffset.toFixed();
+      const topFixedOffset = Math.round(options.top);
+      const windowFixedOffset = Math.round(window.pageYOffset);
+      const scrollOffset = Math.abs(topFixedOffset - windowFixedOffset);
 
-      if (topFixedOffset === windowFixedOffset) {
+      if (scrollOffset <= SCROLL_OFFSET_THRESHOLD) {
         window.removeEventListener("scroll", onScroll);
         callback();
       }
