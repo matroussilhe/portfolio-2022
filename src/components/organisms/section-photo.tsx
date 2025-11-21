@@ -381,14 +381,6 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     };
   }, [createGrid, initScroll, update]);
 
-  // get random background color
-  const backgroundColor = useMemo(() => {
-    const backgroundColors = ["red-700", "green-700", "blue-700"];
-    const index = getRandomInteger(0, backgroundColors.length - 1);
-
-    return backgroundColors[index];
-  }, []);
-
   return (
     <Flex
       ref={ref}
@@ -396,7 +388,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
         position: "sticky",
         top: 0,
         height: "100vh",
-        backgroundColor,
+        backgroundColor: "surface",
         overflow: "hidden",
         flexWrap: "wrap",
       }}

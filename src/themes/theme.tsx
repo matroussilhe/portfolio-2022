@@ -18,9 +18,6 @@ const palette = {
   "grayscale-100": "#F6F6F6",
   "grayscale-50": "#FCFCFC",
   "grayscale-0": "#FFFFFF",
-  "red-700": "#53261C",
-  "green-700": "#333E34",
-  "blue-700": "#4C58A4",
 };
 
 export const theme = getTheme({
