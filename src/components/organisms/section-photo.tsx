@@ -15,7 +15,6 @@ import {
   useResponsiveContext,
 } from "@hooks";
 import {
-  getRandomInteger,
   Photo,
 } from "@services";
 
@@ -381,6 +380,16 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
     };
   }, [createGrid, initScroll, update]);
 
+  // sort photos randomly
+  const shuffledPhotos = useMemo(
+    () => {
+      return [...photo.photos].sort(() => {
+        return Math.random() - 0.5;
+      });
+    },
+    [photo.photos]
+  );
+
   return (
     <Flex
       ref={ref}
@@ -393,7 +402,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
         flexWrap: "wrap",
       }}
       {...rest}>
-      {photo.photos.map((photo, index) => {
+      {shuffledPhotos.map((photo, index) => {
         return (
           <Image
             key={`section-photo-photo-${index}`}
