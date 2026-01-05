@@ -40,7 +40,7 @@ export const SectionHomeFooter: FunctionComponent<SectionHomeFooterProps> = ({
                 links={[
                   {
                     href: "mailto:mathieu.roussilhe@gmail.com",
-                    text: "mathieu.roussilhe@gmail.com",
+                    text: "Mathieu.roussilhe@gmail.com",
                   },
                 ]}
               />
