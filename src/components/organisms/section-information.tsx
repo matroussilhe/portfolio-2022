@@ -52,7 +52,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={["body2", "body2", "body2", "body1"]}
         sx={{
           pb: [8, 8, 10, 12],
-          maxWidth: "paragraph.sm",
+          maxWidth: "paragraph.lg",
           whiteSpace: "pre-wrap",
         }}>
         {bio.description}
@@ -68,7 +68,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         variant={["body2", "body2", "body2", "body1"]}
         sx={{
           pb: [8, 8, 10, 12],
-          maxWidth: "paragraph.sm",
+          maxWidth: "paragraph.lg",
           whiteSpace: "pre-wrap",
         }}>
         {expertise.description}
