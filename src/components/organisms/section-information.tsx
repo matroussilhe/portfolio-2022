@@ -100,7 +100,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           ml: [3, 3, 4, 4],
           mb: [4, 4, 5, 5],
         }}>
-        {"취미_OTHER INTERESTS"}
+        {"취미_INTERESTS"}
       </TextParagraphTitle>
       <Grid
         gap={["lg", "lg", "lg", "xl"]}
@@ -122,7 +122,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
           ml: [3, 3, 4, 4],
           mb: [4, 4, 5, 5],
         }}>
-        {"연락처_SOCIALS"}
+        {"링크_LINKS"}
       </TextParagraphTitle>
       <Grid
         gap={["lg", "lg", "lg", "xl"]}
@@ -134,7 +134,7 @@ export const SectionInformation: FunctionComponent<SectionInformationProps> = ({
         }}>
         {social.groups.map((group, index) => (
           <GridItemInformationLink
-            key={`grid-item-information-link-interest-${index}`}
+            key={`grid-item-information-link-link-${index}`}
             items={group}
           />
         ))}
