@@ -29,12 +29,20 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <Fragment>
       <Head>
-        <link rel={"icon"} href={"/icons/favicon.ico"}/>
-        <title>{"Mathieu Roussilhe | Fullstack Engineer"}</title>
-        <meta name={"description"} content={"My name is Mathieu Roussilhe, I'm a fullstack engineer, and this is my portfolio. Dive into it to find out more about my work, skills and personality!"}/>
-        <meta name={"robots"} content={"index, follow"}/>
+        {/* core */}
+        <meta charSet={"UTF-8"}/>
         <meta name={"viewport"} content={"width=device-width, initial-scale=1.0"}/>
+        <meta name={"robots"} content={"index, follow"}/>
+        <title>{"Mathieu Roussilhe"}</title>
+        <meta name={"description"} content={"Software Engineer"}/>
         <meta name={"theme-color"} content={theme.colors.background}/>
+        <link rel={"icon"} href={"/icons/favicon.ico"}/>
+        <link rel={"canonical"} href={"https://matroussilhe.com"}/>
+        {/* open graph */}
+        <meta property={"og:type"} content={"website"}/>
+        <meta property={"og:url"} content={"https://matroussilhe.com"}/>
+        <meta property={"og:title"} content={"Mathieu Roussilhe"}/>
+        <meta property={"og:description"} content={"Software Engineer"}/>
       </Head>
       {/* google tag manager */}
       <Script
