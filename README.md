@@ -7,7 +7,7 @@ My personal website built with Next.js (i.e. React framework), Theme UI (i.e. de
 
 ## Technologies
 * [React](https://github.com/facebook/react)
-* [Next](https://github.com/vercel/next.js/)
+* [Next.js](https://github.com/vercel/next.js/)
 * [Theme UI](https://github.com/system-ui/theme-ui)
 * [Prismic](https://prismic.io/)
 
