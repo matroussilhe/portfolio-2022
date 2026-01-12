@@ -34,7 +34,7 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name={"viewport"} content={"width=device-width, initial-scale=1.0"}/>
         <meta name={"robots"} content={"index, follow"}/>
         <title>{"Mathieu Roussilhe"}</title>
-        <meta name={"description"} content={"Software Engineer"}/>
+        <meta name={"description"} content={"Software Engineer | 9+ years of experience | TypeScript, React, Node.js, AWS"}/>
         <meta name={"theme-color"} content={theme.colors.background}/>
         <link rel={"icon"} href={"/icons/favicon.ico"}/>
         <link rel={"canonical"} href={"https://matroussilhe.com"}/>
