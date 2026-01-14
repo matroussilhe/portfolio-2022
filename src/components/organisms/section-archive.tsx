@@ -26,7 +26,7 @@ export const SectionArchive: FunctionComponent<SectionArchiveProps> = ({
       {...rest}>
       <TextSectionTitle
         title={"Archive"}
-        subtitle={"(EARLY WORK)"}
+        subtitle={"(HIGHLIGHTS)"}
       />
       <List
         gap={["sm", "md", "lg", "lg"]}
