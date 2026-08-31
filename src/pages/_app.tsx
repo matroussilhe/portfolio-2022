@@ -38,6 +38,17 @@ const App = ({ Component, pageProps }: AppProps) => {
         <meta name={"theme-color"} content={theme.colors.background}/>
         <link rel={"icon"} href={"/icons/favicon.ico"}/>
         <link rel={"canonical"} href={"https://matroussilhe.com"}/>
+        {[
+          "Maison-Regular",
+          "SctoGroteskA-Black",
+          "SctoGroteskA-Bold",
+          "SctoGroteskA-Medium",
+          "SctoGroteskA-Regular",
+        ].map((font) => {
+          return (
+            <link key={font} rel={"preload"} href={`/fonts/${font}.woff2`} as={"font"} crossOrigin={"anonymous"}/>
+          );
+        })}
         {/* open graph */}
         <meta property={"og:type"} content={"website"}/>
         <meta property={"og:url"} content={"https://matroussilhe.com"}/>
