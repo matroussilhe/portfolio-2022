@@ -28,7 +28,7 @@ export const IconTheme: FunctionComponent<IconThemeProps> = ({
         userSelect: "none",
       }}>
       <Icon
-        src={"/images/circle.svg"}
+        name={"circle"}
         size={"20px"}
         color={color}
       />

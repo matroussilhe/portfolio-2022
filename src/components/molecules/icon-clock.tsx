@@ -169,7 +169,7 @@ export const IconClock: FunctionComponent<IconClockProps> = () => {
         userSelect: "none",
       }}>
       <Icon
-        src={"/images/circle.svg"}
+        name={"circle"}
         size={"20px"}
         color={"on-surface"}
       />

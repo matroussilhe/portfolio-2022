@@ -65,8 +65,8 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
                 href={archive.link}
                 target={"_blank"}>
                 <Icon
-                  src={"/images/arrow.svg"}
-                  size={"16px"}
+                  name={"arrow"}
+                  size={"14px"}
                   color={"on-background"}
                 />
               </Link>
@@ -181,7 +181,7 @@ export const ListItemArchive: FunctionComponent<ListItemArchiveProps> = ({
                 href={archive.link}
                 target={"_blank"}>
                 <Icon
-                  src={"/images/arrow.svg"}
+                  name={"arrow"}
                   size={"16px"}
                   color={"on-background"}
                 />

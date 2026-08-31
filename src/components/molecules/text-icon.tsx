@@ -28,7 +28,7 @@ export const TextIcon: FunctionComponent<TextIconProps> = ({
         {children}
       </Text>
       <Icon
-        src={"/images/arrow.svg"}
+        name={"arrow"}
         size={["10px", "10px", "10px", "12px"]}
         color={"on-background"}
       />
