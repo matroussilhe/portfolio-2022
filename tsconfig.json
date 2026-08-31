@@ -62,7 +62,8 @@
       "@themes/*": [
         "./src/themes/*"
       ]
-    }
+    },
+    "incremental": true
   },
   "include": [
     "next.config.js",
