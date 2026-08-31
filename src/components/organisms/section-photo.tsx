@@ -406,15 +406,15 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
         return (
           <Image
             key={`section-photo-photo-${index}`}
-            className={"about-photo"}
             src={`${photo.image}&w=640`}
-            width={photo.dimensions.width}
-            height={photo.dimensions.height}
             loading={"lazy"}
             decoding={"async"}
             onLoad={(event) => {
               (event.currentTarget as HTMLImageElement).style.opacity = "1";
             }}
+            className={"about-photo"}
+            width={photo.dimensions.width}
+            height={photo.dimensions.height}
             sx={{
               position: "absolute",
               top: 0,
