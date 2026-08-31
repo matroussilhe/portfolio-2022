@@ -1,7 +1,7 @@
 import React, { Fragment, FunctionComponent } from "react";
 
 import { useResponsiveContext } from "@hooks";
-import { ResponsiveContext } from "@providers";
+import { ResponsiveState } from "@providers";
 
 export type ResponsiveProps = {
   smOnly?: boolean;
@@ -26,7 +26,7 @@ export const Responsive: FunctionComponent<ResponsiveProps> = (props) => {
 
   let show = false;
   for (const [key, value] of Object.entries(props)) {
-    if (responsiveContext?.[key as keyof ResponsiveContext] === true && value === true) {
+    if (responsiveContext?.[key as keyof ResponsiveState] === true && value === true) {
       show = true;
       break;
     }

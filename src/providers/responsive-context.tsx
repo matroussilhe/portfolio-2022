@@ -11,7 +11,7 @@ import { get } from "theme-ui";
 import { rootEm } from "@styles";
 import { theme } from "@themes";
 
-export type ResponsiveContext = {
+export type ResponsiveState = {
   width: number;
   height: number;
   breakpoints: number[];
@@ -32,7 +32,7 @@ export type ResponsiveContext = {
   desktop: boolean;
 };
 
-export const DEFAULT_RESPONSIVE_CONTEXT: ResponsiveContext = {
+export const DEFAULT_RESPONSIVE_STATE: ResponsiveState = {
   width: 0,
   height: 0,
   breakpoints: [],
@@ -53,50 +53,58 @@ export const DEFAULT_RESPONSIVE_CONTEXT: ResponsiveContext = {
   desktop: false,
 };
 
-export const ResponsiveContext = createContext<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);
+export const ResponsiveContext = createContext<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
+
+export const getBreakpoints = (): number[] => {
+  const themeBreakpoints = get(theme, "breakpoints") as string[];
+
+  return themeBreakpoints?.reduce((acc, item) => {
+    acc.push(parseFloat(item.replace("rem", "")) * rootEm);
+
+    return acc;
+  }, [0]);
+};
+
+export const getResponsiveState = (width: number, height: number): ResponsiveState => {
+  const breakpoints = getBreakpoints();
+  const sm = width < breakpoints[1];
+  const md = width < breakpoints[2] && !(sm);
+  const lg = width < breakpoints[3] && !(sm || md);
+  const xl = width >= breakpoints[3];
+
+  return {
+    width,
+    height,
+    breakpoints,
+    smOnly: sm,
+    mdOnly: md,
+    lgOnly: lg,
+    xlOnly: xl,
+    smAndUp: (sm || md || lg || xl),
+    mdAndUp: !(sm) && (md || lg || xl),
+    lgAndUp: !(sm || md) && (lg || xl),
+    xlAndUp: !(sm || md || lg) && (xl),
+    smAndDown: (sm) && !(md || lg || xl),
+    mdAndDown: (sm || md) && !(lg || xl),
+    lgAndDown: (sm || md || lg) && !(xl),
+    xlAndDown: (sm || md || lg || xl),
+    mobile: (sm) && !(md || lg || xl),
+    tablet: (md) && !(sm || lg || xl),
+    desktop: (lg || xl) && !(sm || md),
+  };
+};
 
 export const ResponsiveContextProvider: FunctionComponent = (props) => {
-  const [value, setValue] = useState<ResponsiveContext>(DEFAULT_RESPONSIVE_CONTEXT);
+  const [value, setValue] = useState<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
   const hasWindow = typeof window !== "undefined";
   useEffect(() => {
     if (hasWindow !== true) return;
 
-    const themeBreakpoints = get(theme, "breakpoints") as string[];
-    const breakpoints = themeBreakpoints?.reduce((acc, item) => {
-      acc.push(parseFloat(item.replace("rem", "")) * rootEm);
-
-      return acc;
-    }, [0]);
-
     const handleResize = () => {
-      const width = window.innerWidth;
-      const height = window.innerHeight;
-      const sm = width < breakpoints[1];
-      const md = width < breakpoints[2] && !(sm);
-      const lg = width < breakpoints[3] && !(sm || md);
-      const xl = width >= breakpoints[3];
+      const newResponsiveState = getResponsiveState(window.innerWidth, window.innerHeight);
 
-      setValue({
-        width,
-        height,
-        breakpoints,
-        smOnly: sm,
-        mdOnly: md,
-        lgOnly: lg,
-        xlOnly: xl,
-        smAndUp: (sm || md || lg || xl),
-        mdAndUp: !(sm) && (md || lg || xl),
-        lgAndUp: !(sm || md) && (lg || xl),
-        xlAndUp: !(sm || md || lg) && (xl),
-        smAndDown: (sm) && !(md || lg || xl),
-        mdAndDown: (sm || md) && !(lg || xl),
-        lgAndDown: (sm || md || lg) && !(xl),
-        xlAndDown: (sm || md || lg || xl),
-        mobile: (sm) && !(md || lg || xl),
-        tablet: (md) && !(sm || lg || xl),
-        desktop: (lg || xl) && !(sm || md),
-      });
+      setValue(newResponsiveState);
     };
     const throttledHandleResize = throttle(handleResize, 500);
 

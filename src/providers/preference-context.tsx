@@ -9,25 +9,25 @@ import {
   SectionIntroductionMode,
 } from "@components";
 
-export type PreferenceContext = {
+export type PreferenceState = {
   introductionMode: SectionIntroductionMode;
   setIntroductionMode: (mode: SectionIntroductionMode) => void;
   clockMode: IconClockMode;
   setClockMode: (mode: IconClockMode) => void;
 };
 
-export const DEFAULT_NAVIGATION_CONTEXT: PreferenceContext = {
+export const DEFAULT_PREFERENCE_STATE: PreferenceState = {
   introductionMode: "en",
   setIntroductionMode: () => {},
   clockMode: "local",
   setClockMode: () => {},
 };
 
-export const PreferenceContext = createContext<PreferenceContext>(DEFAULT_NAVIGATION_CONTEXT);
+export const PreferenceContext = createContext<PreferenceState>(DEFAULT_PREFERENCE_STATE);
 
 export const PreferenceContextProvider: FunctionComponent = (props) => {
-  const [introductionMode, setIntroductionMode] = useState<SectionIntroductionMode>(DEFAULT_NAVIGATION_CONTEXT.introductionMode);
-  const [clockMode, setClockMode] = useState<IconClockMode>(DEFAULT_NAVIGATION_CONTEXT.clockMode);
+  const [introductionMode, setIntroductionMode] = useState<SectionIntroductionMode>(DEFAULT_PREFERENCE_STATE.introductionMode);
+  const [clockMode, setClockMode] = useState<IconClockMode>(DEFAULT_PREFERENCE_STATE.clockMode);
 
   const value = {
     introductionMode,
