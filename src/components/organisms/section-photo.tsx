@@ -83,7 +83,7 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
   } = useResponsiveContext();
 
   // element refs
-  const ref = useRef<HTMLDivElement>(document.createElement("div"));
+  const ref = useRef<HTMLDivElement>(null);
   const gridItems = useRef<SectionPhotoGridItem[]>([]);
 
   // calculation refs
@@ -257,7 +257,9 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
   }, [windowHeight, windowWidth]);
 
   const createGrid = useCallback(() => {
-    const DOMElements = ref.current && ref.current.querySelectorAll(".about-photo");
+    if (!ref.current) return;
+
+    const DOMElements = ref.current.querySelectorAll(".about-photo");
     const positions = createGridPositions(DOMElements.length);
 
     gridItems.current = Array.from(DOMElements).map((item, index) => {
@@ -354,6 +356,8 @@ export const SectionPhoto: FunctionComponent<SectionPhotoProps> = ({
   };
 
   const initScroll = useCallback(() => {
+    if (!ref.current) return;
+
     const onWheel = (event: WheelEvent) => {
       event.preventDefault();
       updateTarget(event);
