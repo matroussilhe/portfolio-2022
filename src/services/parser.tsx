@@ -1,4 +1,4 @@
-import { helper } from "@services";
+import * as helper from "@prismicio/helpers";
 
 // INDEX
 export type Work = {
