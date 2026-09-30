@@ -1,16 +1,13 @@
 import React, { Fragment, FunctionComponent, ReactNode } from "react";
 
-import styled from "@emotion/styled";
-import { variant, VariantArgs } from "styled-system";
 import { ResponsiveStyleValue, ThemeUIStyleObject } from "theme-ui";
 
 import {
   Box,
-  BoxProps,
   Divider,
   Flex,
 } from "@components";
-import { useResponsive } from "@hooks";
+import { resolveResponsiveVariant, VariantStyleMap } from "@hooks";
 
 export type ListGap = "sm" | "md" | "lg";
 
@@ -21,31 +18,20 @@ export type ListProps = {
   itemSx?: ThemeUIStyleObject;
 };
 
-type StyledBoxListItemProps = BoxProps & {
-  gap?: ListGap;
-};
-
-const listItemGap = variant({
-  prop: "gap",
-  variants: {
-    sm: {
-      mt: "24px",
-      mb: "24px",
-    },
-    md: {
-      mt: "32px",
-      mb: "32px",
-    },
-    lg: {
-      mt: "40px",
-      mb: "40px",
-    },
+const GAP_VARIANTS: VariantStyleMap<ListGap> = {
+  sm: {
+    mt: "24px",
+    mb: "24px",
   },
-} as VariantArgs);
-
-const StyledBoxListItem = styled(Box)<StyledBoxListItemProps>(
-  listItemGap,
-);
+  md: {
+    mt: "32px",
+    mb: "32px",
+  },
+  lg: {
+    mt: "40px",
+    mb: "40px",
+  },
+};
 
 export const List: FunctionComponent<ListProps> = ({
   gap = "md",
@@ -53,9 +39,7 @@ export const List: FunctionComponent<ListProps> = ({
   itemSx,
   children,
 }) => {
-  const { getResponsiveProp } = useResponsive();
-
-  const responsiveGap = getResponsiveProp(gap);
+  const gapSx = resolveResponsiveVariant(GAP_VARIANTS, gap);
 
   return (
     <Flex
@@ -73,13 +57,13 @@ export const List: FunctionComponent<ListProps> = ({
             {isFirst &&
             <Divider/>
             }
-            <StyledBoxListItem
-              gap={responsiveGap}
+            <Box
               sx={{
+                ...gapSx,
                 ...itemSx,
               }}>
               {child}
-            </StyledBoxListItem>
+            </Box>
             {!isLast &&
             <Divider/>
             }

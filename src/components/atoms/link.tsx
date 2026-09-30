@@ -3,7 +3,7 @@ import React, { FunctionComponent } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { Link as ThemeUILink, LinkProps as ThemeUILinkProps } from "theme-ui";
 
-import { useResponsive } from "@hooks";
+import { getBaseVariant } from "@hooks";
 
 export type LinkVariant = "regular" | "discreet";
 
@@ -14,16 +14,12 @@ export const Link: FunctionComponent<LinkProps> = ({
   href,
   ...rest
 }) => {
-  const { getResponsiveProp } = useResponsive();
-
-  const responsiveVariant = getResponsiveProp(variant);
-
   return (
     <NextLink
       href={href}
       passHref>
       <ThemeUILink
-        variant={responsiveVariant}
+        variant={getBaseVariant(variant)}
         {...rest}
       />
     </NextLink>

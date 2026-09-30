@@ -1,8 +1,14 @@
 import React, { forwardRef, FunctionComponent, useMemo } from "react";
 
-import { ResponsiveStyleValue, Text as ThemeUIText, TextProps as ThemeUITextProps } from "theme-ui";
+import {
+  get,
+  ResponsiveStyleValue,
+  Text as ThemeUIText,
+  TextProps as ThemeUITextProps,
+} from "theme-ui";
 
-import { useResponsive } from "@hooks";
+import { getBaseVariant, resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { theme } from "@themes";
 
 export type TextVariant = "heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6" | "subheading1" | "subheading2" | "body1" | "body2" | "body3" | "label1" | "label2" | "label3" | "label4";
 
@@ -10,17 +16,17 @@ export type TextProps = Omit<ThemeUITextProps, "variant"> & {
   variant?: ResponsiveStyleValue<TextVariant>;
 };
 
+const TEXT_VARIANTS = get(theme, "text") as VariantStyleMap<TextVariant>;
+
 export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, TextProps>(({
   variant = "body1",
+  sx,
   ...rest
 }, ref) => {
-  const { getResponsiveProp } = useResponsive();
+  const variantSx = resolveResponsiveVariant(TEXT_VARIANTS, variant);
 
-  const responsiveVariant = getResponsiveProp(variant);
-  // eslint-disable-next-line no-console
-  console.log("[responsive] Text render", performance.now(), { variant, responsiveVariant });
   const as = useMemo(() => {
-    switch (responsiveVariant) {
+    switch (getBaseVariant(variant)) {
       case "heading1":
         return "h1";
       case "heading2":
@@ -54,13 +60,13 @@ export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, Tex
       default:
         return "p";
     }
-  }, [responsiveVariant]);
+  }, [variant]);
 
   return (
     <ThemeUIText
       ref={ref}
-      variant={responsiveVariant}
       as={as}
+      sx={{ ...variantSx, ...sx }}
       {...rest}
     />
   );

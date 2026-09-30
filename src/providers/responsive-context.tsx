@@ -56,6 +56,8 @@ export const DEFAULT_RESPONSIVE_STATE: ResponsiveState = {
 
 export const ResponsiveContext = createContext<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
+const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
+
 export const getBreakpoints = (): number[] => {
   const themeBreakpoints = get(theme, "breakpoints") as string[];
 
@@ -99,31 +101,18 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
   const [value, setValue] = useState<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
   const hasWindow = typeof window !== "undefined";
-  // eslint-disable-next-line no-console
-  console.log("[responsive] provider render", performance.now(), { hasWindow });
-
-  (hasWindow ? useLayoutEffect : useEffect)(() => {
-    // eslint-disable-next-line no-console
-    console.log("[responsive] effect fired", performance.now(), { hasWindow });
-
+  useIsomorphicLayoutEffect(() => {
     if (hasWindow !== true) return;
 
-    const handleResize = (trigger: string) => {
+    const handleResize = () => {
       const newResponsiveState = getResponsiveState(window.innerWidth, window.innerHeight);
-
-      // eslint-disable-next-line no-console
-      console.log("[responsive] handleResize", performance.now(), {
-        trigger,
-        innerWidth: window.innerWidth,
-        resolved: newResponsiveState,
-      });
 
       setValue(newResponsiveState);
     };
-    const throttledHandleResize = throttle(() => handleResize("resize-event"), 500);
+    const throttledHandleResize = throttle(handleResize, 500);
 
     // call handler right away to update state with initial window size
-    handleResize("initial-mount");
+    handleResize();
 
     // add event listener
     window.addEventListener("resize", throttledHandleResize);
