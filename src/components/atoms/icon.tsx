@@ -35,7 +35,7 @@ export const ICON_SVGS: Record<IconName, FunctionComponent<IconSvgProps>> = {
 
 export const Icon: FunctionComponent<IconProps> = ({
   name,
-  size,
+  size = null,
   color = "on-background",
 }) => {
   const IconSvg = ICON_SVGS[name];

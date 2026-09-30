@@ -6,7 +6,7 @@ import {
   Box,
   Flex,
 } from "@components";
-import { resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { getResponsiveSx, VariantStyleMap } from "@services";
 
 export type GridGap = "sm" | "md" | "lg" | "xl";
 
@@ -77,8 +77,8 @@ export const Grid: FunctionComponent<GridProps> = ({
   itemSx,
   children,
 }) => {
-  const containerGapSx = resolveResponsiveVariant(CONTAINER_GAP_VARIANTS, gap);
-  const itemGapSx = resolveResponsiveVariant(ITEM_GAP_VARIANTS, gap);
+  const containerGapSx = getResponsiveSx(CONTAINER_GAP_VARIANTS, gap);
+  const itemGapSx = getResponsiveSx(ITEM_GAP_VARIANTS, gap);
 
   return (
     <Flex

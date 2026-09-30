@@ -1,4 +1,4 @@
-import React, { forwardRef, FunctionComponent, useMemo } from "react";
+import React, { forwardRef, FunctionComponent } from "react";
 
 import {
   get,
@@ -7,7 +7,7 @@ import {
   TextProps as ThemeUITextProps,
 } from "theme-ui";
 
-import { getBaseVariant, resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { getResponsiveSx, VariantStyleMap } from "@services";
 import { theme } from "@themes";
 
 export type TextVariant = "heading1" | "heading2" | "heading3" | "heading4" | "heading5" | "heading6" | "subheading1" | "subheading2" | "body1" | "body2" | "body3" | "label1" | "label2" | "label3" | "label4";
@@ -20,46 +20,10 @@ const TEXT_VARIANTS = get(theme, "text") as VariantStyleMap<TextVariant>;
 
 export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, TextProps>(({
   variant = "body1",
+  as = "p",
   ...rest
 }, ref) => {
-  const variantSx = resolveResponsiveVariant(TEXT_VARIANTS, variant);
-
-  const as = useMemo(() => {
-    switch (getBaseVariant(variant)) {
-      case "heading1":
-        return "h1";
-      case "heading2":
-        return "h2";
-      case "heading3":
-        return "h3";
-      case "heading4":
-        return "h4";
-      case "heading5":
-        return "h5";
-      case "heading6":
-        return "h6";
-      case "subheading1":
-        return "h6";
-      case "subheading2":
-        return "h6";
-      case "body1":
-        return "p";
-      case "body2":
-        return "p";
-      case "body3":
-        return "p";
-      case "label1":
-        return "span";
-      case "label2":
-        return "span";
-      case "label3":
-        return "span";
-      case "label4":
-        return "span";
-      default:
-        return "p";
-    }
-  }, [variant]);
+  const variantSx = getResponsiveSx(TEXT_VARIANTS, variant);
 
   return (
     <ThemeUIText

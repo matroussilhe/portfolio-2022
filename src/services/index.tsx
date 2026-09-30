@@ -5,3 +5,4 @@ export * from "./http";
 export * from "./integer";
 export * from "./parser";
 export * from "./query";
+export * from "./responsive";

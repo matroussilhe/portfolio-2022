@@ -2,14 +2,14 @@ import React, { forwardRef, FunctionComponent } from "react";
 
 import { Button as ThemeUIButton, ButtonProps as ThemeUIButtonProps, ResponsiveStyleValue } from "theme-ui";
 
-import { getBaseVariant, resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { getResponsiveSx, VariantStyleMap } from "@services";
 
 export type ButtonVariant = "primary" | "secondary";
 export type ButtonSize = "sm" | "md" | "lg";
 export type ButtonShape = "round" | "square";
 
 export type ButtonProps = Omit<ThemeUIButtonProps, "variant" | "size" | "shape"> & {
-  variant?: ResponsiveStyleValue<ButtonVariant>;
+  variant?: ButtonVariant;
   size?: ResponsiveStyleValue<ButtonSize>;
   shape?: ResponsiveStyleValue<ButtonShape>;
 };
@@ -50,13 +50,13 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef<HTMLButtonEleme
   shape = "round",
   ...rest
 }, ref) => {
-  const sizeSx = resolveResponsiveVariant(SIZE_VARIANTS, size);
-  const shapeSx = resolveResponsiveVariant(SHAPE_VARIANTS, shape);
+  const sizeSx = getResponsiveSx(SIZE_VARIANTS, size);
+  const shapeSx = getResponsiveSx(SHAPE_VARIANTS, shape);
 
   return (
     <ThemeUIButton
       ref={ref}
-      variant={getBaseVariant(variant)}
+      variant={variant}
       sx={{ ...sizeSx, ...shapeSx }}
       {...rest}
     />

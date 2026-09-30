@@ -3,11 +3,11 @@ import React, { FunctionComponent } from "react";
 import NextLink, { LinkProps as NextLinkProps } from "next/link";
 import { Link as ThemeUILink, LinkProps as ThemeUILinkProps } from "theme-ui";
 
-import { getBaseVariant } from "@hooks";
-
 export type LinkVariant = "regular" | "discreet";
 
-export type LinkProps = NextLinkProps & ThemeUILinkProps;
+export type LinkProps = Omit<NextLinkProps & ThemeUILinkProps, "variant"> & {
+  variant?: LinkVariant;
+};
 
 export const Link: FunctionComponent<LinkProps> = ({
   variant = "regular",
@@ -19,7 +19,7 @@ export const Link: FunctionComponent<LinkProps> = ({
       href={href}
       passHref>
       <ThemeUILink
-        variant={getBaseVariant(variant)}
+        variant={variant}
         {...rest}
       />
     </NextLink>

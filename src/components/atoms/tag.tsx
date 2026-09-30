@@ -3,14 +3,14 @@ import React, { FunctionComponent } from "react";
 import { ResponsiveStyleValue } from "theme-ui";
 
 import { Box, BoxProps } from "@components";
-import { getBaseVariant, resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { getResponsiveSx, VariantStyleMap } from "@services";
 
 export type TagVariant = "primary" | "secondary" | "on-background";
 export type TagSize = "sm" | "md" | "lg";
 export type TagShape = "round" | "square";
 
 export type TagProps = Omit<BoxProps, "variant" | "size" | "shape"> & {
-  variant?: ResponsiveStyleValue<TagVariant>;
+  variant?: TagVariant;
   size?: ResponsiveStyleValue<TagSize>;
   shape?: ResponsiveStyleValue<TagShape>;
 };
@@ -51,13 +51,12 @@ export const Tag: FunctionComponent<TagProps> = ({
   shape = "round",
   ...rest
 }) => {
-  const sizeSx = resolveResponsiveVariant(SIZE_VARIANTS, size);
-  const shapeSx = resolveResponsiveVariant(SHAPE_VARIANTS, shape);
-  const baseVariant = getBaseVariant(variant);
+  const sizeSx = getResponsiveSx(SIZE_VARIANTS, size);
+  const shapeSx = getResponsiveSx(SHAPE_VARIANTS, shape);
 
   return (
     <Box
-      variant={baseVariant ? `tags.${baseVariant}` : undefined}
+      variant={variant ? `tags.${variant}` : undefined}
       sx={{ ...sizeSx, ...shapeSx }}
       {...rest}
     />

@@ -7,7 +7,7 @@ import {
   Divider,
   Flex,
 } from "@components";
-import { resolveResponsiveVariant, VariantStyleMap } from "@hooks";
+import { getResponsiveSx, VariantStyleMap } from "@services";
 
 export type ListGap = "sm" | "md" | "lg";
 
@@ -39,7 +39,7 @@ export const List: FunctionComponent<ListProps> = ({
   itemSx,
   children,
 }) => {
-  const gapSx = resolveResponsiveVariant(GAP_VARIANTS, gap);
+  const gapSx = getResponsiveSx(GAP_VARIANTS, gap);
 
   return (
     <Flex

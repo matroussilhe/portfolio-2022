@@ -56,8 +56,6 @@ export const DEFAULT_RESPONSIVE_STATE: ResponsiveState = {
 
 export const ResponsiveContext = createContext<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
-const useIsomorphicLayoutEffect = typeof window !== "undefined" ? useLayoutEffect : useEffect;
-
 export const getBreakpoints = (): number[] => {
   const themeBreakpoints = get(theme, "breakpoints") as string[];
 
@@ -101,7 +99,7 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
   const [value, setValue] = useState<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
   const hasWindow = typeof window !== "undefined";
-  useIsomorphicLayoutEffect(() => {
+  (hasWindow ? useLayoutEffect : useEffect)(() => {
     if (hasWindow !== true) return;
 
     const handleResize = () => {
