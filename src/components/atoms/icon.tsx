@@ -3,7 +3,6 @@ import React, { FunctionComponent } from "react";
 import { ResponsiveStyleValue } from "theme-ui";
 
 import { Box } from "@components";
-import { useResponsive } from "@hooks";
 import { ThemeColor } from "@themes";
 
 export type IconName = "circle" | "arrow";
@@ -36,24 +35,22 @@ export const ICON_SVGS: Record<IconName, FunctionComponent<IconSvgProps>> = {
 
 export const Icon: FunctionComponent<IconProps> = ({
   name,
-  size = null,
+  size,
   color = "on-background",
 }) => {
-  const { getResponsiveProp } = useResponsive();
-
-  const responsiveSize = getResponsiveProp(size);
-
   const IconSvg = ICON_SVGS[name];
 
   return (
     <Box
       sx={{
-        color: color,
+        color,
         lineHeight: 0,
+        width: size,
+        height: size,
       }}>
       <IconSvg
-        width={responsiveSize ?? undefined}
-        height={responsiveSize ?? undefined}
+        width={size ? "100%" : undefined}
+        height={size ? "100%" : undefined}
       />
     </Box>
   );

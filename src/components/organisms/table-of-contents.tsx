@@ -20,7 +20,6 @@ import {
 } from "@components";
 import {
   ScrollToOptions,
-  useResponsive,
   useScroll,
 } from "@hooks";
 import {
@@ -54,7 +53,7 @@ const SUBSECTION_TITLE_TRANSITION_NAME = "subsection-title-slide";
 const SUBSECTION_TITLE_TRANSITION_DURATION = 250;
 const SUBSECTION_TITLE_TRANSITION_EASING = "cubic-bezier(0.22, 0.61, 0.36, 1);"; // easeOutCubic
 
-const SUBSECTION_TITLE_HEIGHT = [28, 28, 28, 32];
+const SUBSECTION_TITLE_HEIGHT = ["28px", "28px", "28px", "32px"];
 
 const StyledFlex = styled(Flex)<StyledFlexSectionTitleProps>`
   opacity: 0;
@@ -129,7 +128,6 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
   isVisible = false,
   ...rest
 }) => {
-  const { getResponsiveProp } = useResponsive();
   const { scrollTo } = useScroll();
 
   const [isIn, setIsIn] = useState<boolean>(false);
@@ -189,9 +187,6 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
 
   // display index in front of section titles
   let sectionTitleIndex = 0;
-
-  // get responsive display props
-  const responsiveSubsectionTitleHeight = getResponsiveProp(SUBSECTION_TITLE_HEIGHT);
 
   return (
     <CSSTransition
@@ -271,7 +266,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                 key={`section-content-${index}`}
                 content={content}
                 sx={{
-                  pb: isExtended ? `${responsiveSubsectionTitleHeight}px` : "0px",
+                  pb: isExtended ? SUBSECTION_TITLE_HEIGHT : "0px",
                 }}
                 {...extraProps}
               />
@@ -295,7 +290,7 @@ export const TableOfContents: FunctionComponent<TableOfContentsProps> = ({
                 <StyledFlexSubsectionTitle
                   ref={refsRef.current[index]}
                   sx={{
-                    mt: `-${responsiveSubsectionTitleHeight}px`,
+                    mt: SUBSECTION_TITLE_HEIGHT.map(height => `-${height}`),
                     visibility: isVisible ? "visible" : "hidden",
                   }}>
                   <Component
