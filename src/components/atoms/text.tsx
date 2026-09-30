@@ -20,7 +20,6 @@ const TEXT_VARIANTS = get(theme, "text") as VariantStyleMap<TextVariant>;
 
 export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, TextProps>(({
   variant = "body1",
-  sx,
   ...rest
 }, ref) => {
   const variantSx = resolveResponsiveVariant(TEXT_VARIANTS, variant);
@@ -66,7 +65,7 @@ export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, Tex
     <ThemeUIText
       ref={ref}
       as={as}
-      sx={{ ...variantSx, ...sx }}
+      sx={variantSx}
       {...rest}
     />
   );

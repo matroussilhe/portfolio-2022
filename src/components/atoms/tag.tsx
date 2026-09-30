@@ -49,7 +49,6 @@ export const Tag: FunctionComponent<TagProps> = ({
   variant = "on-background",
   size = "md",
   shape = "round",
-  sx,
   ...rest
 }) => {
   const sizeSx = resolveResponsiveVariant(SIZE_VARIANTS, size);
@@ -59,7 +58,7 @@ export const Tag: FunctionComponent<TagProps> = ({
   return (
     <Box
       variant={baseVariant ? `tags.${baseVariant}` : undefined}
-      sx={{ ...sizeSx, ...shapeSx, ...sx }}
+      sx={{ ...sizeSx, ...shapeSx }}
       {...rest}
     />
   );

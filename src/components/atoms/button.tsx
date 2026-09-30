@@ -48,7 +48,6 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef<HTMLButtonEleme
   variant = "primary",
   size = "md",
   shape = "round",
-  sx,
   ...rest
 }, ref) => {
   const sizeSx = resolveResponsiveVariant(SIZE_VARIANTS, size);
@@ -58,7 +57,7 @@ export const Button: FunctionComponent<ButtonProps> = forwardRef<HTMLButtonEleme
     <ThemeUIButton
       ref={ref}
       variant={getBaseVariant(variant)}
-      sx={{ ...sizeSx, ...shapeSx, ...sx }}
+      sx={{ ...sizeSx, ...shapeSx }}
       {...rest}
     />
   );
