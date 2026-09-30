@@ -2,6 +2,7 @@ import React, {
   createContext,
   FunctionComponent,
   useEffect,
+  useLayoutEffect,
   useState,
 } from "react";
 
@@ -98,7 +99,7 @@ export const ResponsiveContextProvider: FunctionComponent = (props) => {
   const [value, setValue] = useState<ResponsiveState>(DEFAULT_RESPONSIVE_STATE);
 
   const hasWindow = typeof window !== "undefined";
-  useEffect(() => {
+  (hasWindow ? useLayoutEffect : useEffect)(() => {
     if (hasWindow !== true) return;
 
     const handleResize = () => {
