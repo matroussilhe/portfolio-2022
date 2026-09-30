@@ -17,6 +17,8 @@ export const Text: FunctionComponent<TextProps> = forwardRef<HTMLDivElement, Tex
   const { getResponsiveProp } = useResponsive();
 
   const responsiveVariant = getResponsiveProp(variant);
+  // eslint-disable-next-line no-console
+  console.log("[responsive] Text render", performance.now(), { variant, responsiveVariant });
   const as = useMemo(() => {
     switch (responsiveVariant) {
       case "heading1":
