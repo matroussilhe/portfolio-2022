@@ -1,7 +1,6 @@
 import React from "react";
 
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import { useRouter } from "next/dist/client/router";
 
 import {
   LayoutCaseStudy,
@@ -45,12 +44,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
 };
 
 const CaseStudy: NextPage<CaseStudyProps> = ({ document }) => {
-  const router = useRouter();
-  const { id } = router.query;
-
   return (
     <LayoutCaseStudy
-      key={`case-study-${id}`}
+      key={`case-study-${document.header.title}`}
       header={document.header}
       contents={document.contents}
       footer={document.footer}
